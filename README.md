@@ -5,9 +5,19 @@
 # Graph constructors for AGT
 
 This branch is for the inclusion of graph constructors in the AGT package. 
-Currently, we work with the package ofconstructors of Vidali found at
+Currently, we have included the package of constructors of Vidali found at
 
 <https://github.com/jaanos/gap-graphs.git>
+
+almost identically, with slight adjustments. Mainly,
+
+- We use the delcaration/implementation structure of GAP4
+- To avert a clash of function definition for HammingGraph with grape, 
+  we have temporarily renamed our function HammingGraph2
+- Similarly, we currently have other graphs defined multiple times, for which we do the same.
+
+This is a work in progress.
+
 
 # The AGT package for GAP
 
