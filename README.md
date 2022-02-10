@@ -2,6 +2,13 @@
 [![codecov](https://codecov.io/gh/gap-packages/agt/branch/master/graph/badge.svg)](https://codecov.io/gh/gap-packages/agt)
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/gap-packages/agt/master)
 
+# Graph constructors for AGT
+
+This branch is for the inclusion of graph constructors in the AGT package. 
+Currently, we work with the package ofconstructors of Vidali found at
+
+<https://github.com/jaanos/gap-graphs.git>
+
 # The AGT package for GAP
 
 The AGT package contains a methods used for the determination of  various 
