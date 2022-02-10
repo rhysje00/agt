@@ -13,8 +13,12 @@ ReadPackage( "agt", "lib/eigenv.gi" );
 ReadPackage( "agt", "lib/regsubs.gi" );
 ReadPackage( "agt", "srglib/Brouwer_Parameters.g" );
 ReadPackage( "agt", "lib/srglib.gi" );
-
-
+ReadPackage( "agt", "lib/SRGConstructors/auxfuncs.gi");
+ReadPackage( "agt", "lib/SRGConstructors/opers.gi");
+ReadPackage( "agt", "lib/SRGConstructors/grpact.gi");
+ReadPackage( "agt", "lib/SRGConstructors/formfuncs.gi");
+ReadPackage( "agt", "lib/SRGConstructors/dualfunc.gi");
+ReadPackage( "agt", "lib/SRGConstructors/adjfunc.gi");
 #############################################################################
 ##
 #E
