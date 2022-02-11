@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#W  grpact.gi          Algebraic Graph Theory package         Rhys J. Evans
+#W  grpact.gi          Algebraic Graph Theory package         Janoš Vidali
 ##
 ##
 #Y  Copyright (C) 2020

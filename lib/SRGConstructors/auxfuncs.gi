@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#W  auxfunc.gi          Algebraic Graph Theory package         Rhys J. Evans
+#W  auxfunc.gi          Algebraic Graph Theory package         Janoš Vidali
 ##
 ##
 #Y  Copyright (C) 2020

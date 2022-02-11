@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#W  dualfunc.gi          Algebraic Graph Theory package         Rhys J. Evans
+#W  dualfunc.gi          Algebraic Graph Theory package         Janoš Vidali
 ##
 ##
 #Y  Copyright (C) 2020

@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#W  adjfunc.gd          Algebraic Graph Theory package         Rhys J. Evans
+#W  adjfunc.gd          Algebraic Graph Theory package         Janoš Vidali
 ##
 ##
 #Y  Copyright (C) 2020

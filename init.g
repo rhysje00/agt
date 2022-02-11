@@ -18,6 +18,19 @@ ReadPackage( "agt", "lib/SRGConstructors/grpact.gd");
 ReadPackage( "agt", "lib/SRGConstructors/formfuncs.gd");
 ReadPackage( "agt", "lib/SRGConstructors/dualfunc.gd");
 ReadPackage( "agt", "lib/SRGConstructors/adjfunc.gd");
+ReadPackage( "agt", "lib/SRGConstructors/auxgrps.gd");
+ReadPackage( "agt", "lib/SRGConstructors/grphinf.gd");
+ReadPackage( "agt", "lib/SRGConstructors/gencon.gd");
+ReadPackage( "agt", "lib/SRGConstructors/basic.gd");
+ReadPackage( "agt", "lib/SRGConstructors/setgrph.gd");
+ReadPackage( "agt", "lib/SRGConstructors/geoconf.gd");
+ReadPackage( "agt", "lib/SRGConstructors/vctgrph.gd");
+ReadPackage( "agt", "lib/SRGConstructors/frmgrph.gd");
+ReadPackage( "agt", "lib/SRGConstructors/spcsgrph.gd");
+ReadPackage( "agt", "lib/SRGConstructors/codegrph.gd");
+ReadPackage( "agt", "lib/SRGConstructors/geogrph.gd");
+ReadPackage( "agt", "lib/SRGConstructors/nmgrph.gd");
+
 
 #############################################################################
 ##

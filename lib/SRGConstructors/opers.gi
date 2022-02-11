@@ -1,3 +1,13 @@
+#############################################################################
+##
+#W  opers.gi          Algebraic Graph Theory package         Janoš Vidali
+##
+##
+#Y  Copyright (C) 2020
+##
+##  Implementation file for functions involving operations for graphs.
+##  
+##
 
 # The vector product of two vectors with 3 elements.
 InstallGlobalFunction( VectorProduct,

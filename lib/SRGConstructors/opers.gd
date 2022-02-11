@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#W  opers.gd          Algebraic Graph Theory package         Rhys J. Evans
+#W  opers.gd          Algebraic Graph Theory package         Janoš Vidali
 ##
 ##
 #Y  Copyright (C) 2020
