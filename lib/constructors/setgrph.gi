@@ -11,58 +11,271 @@
 
 
 # The Kneser graph on k-subsets of a set with n elements.
-InstallGlobalFunction( KneserGraph,
-function(arg)
-  local n, k, invt, vcs;
-  if Length(arg) < 2 then
-    Error("at least two arguments expected");
-    return fail;
+InstallMethod( KneserGraphCons, "as a set graph with full automorphism group",
+     true, [IsSetGraph and FullAutomorphismGroup, IsInt, IsInt, IsBool], 0,
+function(filter, n, k, invt)
+  local G, vcs;
+  if n < 2*k then
+    invt := true;
+  fi;
+  if n = 2*k then
+    vcs := List(Combinations([2..n], k),
+                s -> [Difference([1..n], s), s]);
+    G := ComplementGraph(CocktailPartyGraph(Length(vcs)));
+    AssignVertexNames(G, List(G.names, t -> vcs[t[1]][t[2]]));
   else
-    n := arg[1];
-    k := arg[2];
-    if Length(arg) > 2 then
-      invt := arg[3];
+    if invt then
+      vcs := Combinations([1..n], k);
     else
-      invt := true;
+      vcs := [[1..k]];
+    fi;
+    if n < 2*k then
+      G := NullGraph(SymmetricGroup(Length(vcs)), Length(vcs));
+      AssignVertexNames(G, vcs);
+    else
+      G := Graph(SymmetricGroup(n), vcs, OnSets, DisjointSets, invt);
     fi;
   fi;
-  if invt then
-    vcs := Combinations([1..n], k);
+  return G;
+end );
+
+InstallMethod( KneserGraphCons, "as a set graph", true,
+     [IsSetGraph, IsInt, IsInt, IsBool], 0,
+function(filter, n, k, invt)
+  return KneserGraphCons(IsSetGraph and FullAutomorphismGroup,
+                         n, k, invt);
+end );
+
+InstallMethod( KneserGraphCons, "with full automorphism group", true,
+     [FullAutomorphismGroup, IsInt, IsInt, IsBool], 0,
+function(filter, n, k, invt)
+  return KneserGraphCons(IsSetGraph and FullAutomorphismGroup,
+                         n, k, invt);
+end );
+
+InstallMethod( KneserGraphCons, "default", true,
+     [IsObject, IsInt, IsInt, IsBool], 0,
+function(filter, n, k, invt)
+  return KneserGraphCons(IsSetGraph, n, k, invt);
+end );
+
+InstallGlobalFunction( KneserGraph,
+function(arg)
+  local j, filt;
+  if IsAFilter(arg[1]) then
+    filt := arg[1];
+    j := 2;
   else
-    vcs := [[1..k]];
+    filt := IsObject;
+    j := 1;
   fi;
-  return Graph(SymmetricGroup(n), vcs, OnSets, DisjointSets);
+  if Length(arg) = j+1 then
+    return KneserGraphCons(filt, arg[j], arg[j+1], true);
+  elif Length(arg) = j+2 then
+    return KneserGraphCons(filt, arg[j], arg[j+1], arg[j+2]);
+  else
+    Error("usage: KneserGraph( [<filter>, ]<int>, <int>[, <bool>] )");
+  fi;
 end );
 
 # The Odd graph of diameter d on 2*d+1 points.
 InstallGlobalFunction( OddGraph,
-d -> KneserGraph(2*d+1, d, false)
-);
+function(arg)
+  local j, filt;
+  if IsAFilter(arg[1]) then
+    filt := arg[1];
+    j := 2;
+  else
+    filt := IsObject;
+    j := 1;
+  fi;
+  if Length(arg) = j then
+    return KneserGraphCons(filt, 2*arg[j]+1, arg[j], false);
+  else
+    Error("usage: OddGraph( [<filter>, ]<int> )");
+  fi;
+end );
 
 # The doubled Odd graph on 2*d+1 points.
-InstallGlobalFunction( DoubledOddGraph,
-function(d)
+InstallMethod( DoubledOddGraphCons,
+     "as a set graph with full automorphism group", true,
+     [IsSetGraph and FullAutomorphismGroup, IsInt], 0,
+function(filter, d)
   local n, dp;
   n := 2*d+1;
   dp := DirectProduct(SymmetricGroup(n), SymmetricGroup(2));
-  return Graph(dp, Union(Combinations([1..n], d), Combinations([1..n], d+1)),
-               OnDoubledOdd(n, dp), SymmetrizedInclusion, true);
+  return Graph(dp, Union(Combinations([1..n], d),
+                         Combinations([1..n], d+1)),
+                  OnDoubledOdd(n, dp), SymmetrizedInclusion, true);
+end );
+
+InstallMethod( DoubledOddGraphCons, "as a set graph", true,
+     [IsSetGraph, IsInt], 0,
+function(filter, d)
+  return DoubledOddGraphCons(IsSetGraph and FullAutomorphismGroup, d);
+end );
+
+InstallMethod( DoubledOddGraphCons, "with full automorphism group", true,
+     [FullAutomorphismGroup, IsInt], 0,
+function(filter, d)
+  return DoubledOddGraphCons(IsSetGraph and FullAutomorphismGroup, d);
+end );
+
+InstallMethod( DoubledOddGraphCons, "default", true,
+     [IsObject, IsInt], 0,
+function(filter, d)
+  return DoubledOddGraphCons(IsSetGraph, d);
+end );
+
+InstallGlobalFunction( DoubledOddGraph,
+function(arg)
+  local j, filt;
+  if IsAFilter(arg[1]) then
+    filt := arg[1];
+    j := 2;
+  else
+    filt := IsObject;
+    j := 1;
+  fi;
+  if Length(arg) = j then
+    return DoubledOddGraphCons(filt, arg[j]);
+  else
+    Error("usage: DoubledOddGraph( [<filter>, ]<int> )");
+  fi;
+end );
+
+# The Johnson graph on d-subsets of a set with n elements.
+InstallMethod( JohnsonGraphCons, "as a set graph with full automorphism group",
+     true, [IsSetGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
+function(filter, n, d)
+  local dp;
+  if n = 2*d then
+    dp := DirectProduct(SymmetricGroup(n), Group((1,2)));
+    return Graph(dp, Combinations([1..n], d), OnJohnson(n, dp),
+                 SetIntersection(d-1), true);
+  else
+    return JohnsonGraphCons(IsSetGraph, n, d);
+  fi;
+end );
+
+InstallMethod( JohnsonGraphCons, "as a set graph", true,
+     [IsSetGraph, IsInt, IsInt], 0,
+function(filter, n, d)
+  return JohnsonGraph(n, d);
+end );
+
+InstallMethod( JohnsonGraphCons, "with full automorphism group", true,
+     [FullAutomorphismGroup, IsInt, IsInt], 0,
+function(filter, n, d)
+  return JohnsonGraphCons(IsSetGraph and FullAutomorphismGroup, n, d);
+end );
+
+InstallMethod( JohnsonGraphCons, "default", true,
+     [IsObject, IsInt, IsInt], 0,
+function(filter, n, d)
+  return JohnsonGraphCons(IsSetGraph, n, d);
 end );
 
 # The folded Johnson graph.
+InstallMethod( FoldedJohnsonGraphCons,
+     "as a set graph with full automorphism group", true,
+     [IsSetGraph and FullAutomorphismGroup, IsInt], 0,
+function(filter, d)
+  local G;
+  if d = 3 then
+    G := CompleteGraph(SymmetricGroup(10));
+    AssignVertexNames(G, List(Combinations([2..6], 3),
+                              s -> [Difference([1..6], s), s]));
+    return G;
+  else
+    return FoldedJohnsonGraphCons(IsSetGraph, d);
+  fi;
+end );
+
+InstallMethod( FoldedJohnsonGraphCons, "as a set graph", true,
+     [IsSetGraph, IsInt], 0,
+function(filter, d)
+  return AntipodalQuotientGraph(JohnsonGraphCons(IsSetGraph, 2*d, d));
+end );
+
+InstallMethod( FoldedJohnsonGraphCons, "with full automorphism group", true,
+     [FullAutomorphismGroup, IsInt], 0,
+function(filter, d)
+  return FoldedJohnsonGraphCons(IsSetGraph and FullAutomorphismGroup, d);
+end );
+
+InstallMethod(FoldedJohnsonGraphCons, "default", true,
+     [IsObject, IsInt], 0,
+function(filter, d)
+  return FoldedJohnsonGraphCons(IsSetGraph, d);
+end );
+
 InstallGlobalFunction( FoldedJohnsonGraph,
-d -> AntipodalQuotientGraph(JohnsonGraph(2*d, d))
-);
+function(arg)
+  local j, filt;
+  if IsAFilter(arg[1]) then
+    filt := arg[1];
+    j := 2;
+  else
+    filt := IsObject;
+    j := 1;
+  fi;
+  if Length(arg) = j then
+    return FoldedJohnsonGraphCons(filt, arg[j]);
+  else
+    Error("usage: FoldedJohnsonGraph( [<filter>, ]<int> )");
+  fi;
+end );
 
 # The three Chang graphs with v=28, k=12, lm=6, mu=4
-InstallGlobalFunction( ChangGraph,
-function(j)
-  local J, S, Ss;
-  Ss := [List([1..4], i -> [i, i+4]),
-         Set(List([1..8], i -> Set([i, (i mod 8)+1]))),
-         Union(List([1..3], i -> Set([i, (i mod 3)+1])),
-               List([1..5], i -> Set([i+3, (i mod 5)+4])))];
-  J := JohnsonGraph(8, 2);
-  S := List(Ss[j], x -> Position(J.names, x));
+InstallMethod( ChangGraphCons,
+     "as a set graph with full automorphism group", true,
+     [IsSetGraph and FullAutomorphismGroup, IsInt], 0,
+function(filter, j)
+  local J, dp;
+  J := JohnsonGraphCons(IsSetGraph, 8, 2);
+  dp := DirectProduct(Stabilizer(SymmetricGroup(8),
+                               ChangGraphSwitchingSet[j], OnSetsSets),
+                      Group(ChangGraphInvolution[j]));
+  return SwitchedGraph(J, List(ChangGraphSwitchingSet[j],
+                                  x -> Position(J.names, x)),
+                          Action(dp, J.names, OnChang(dp)));
+end );
+
+InstallMethod( ChangGraphCons, "as a set graph", true,
+     [IsSetGraph, IsInt], 0,
+function(filter, j)
+  local J, S;
+  J := JohnsonGraphCons(IsSetGraph, 8, 2);
+  S := List(ChangGraphSwitchingSet[j], x -> Position(J.names, x));
   return SwitchedGraph(J, S, Stabilizer(J.group, S, OnSets));
+end );
+
+InstallMethod( ChangGraphCons, "with full automorphism group", true,
+     [FullAutomorphismGroup, IsInt], 0,
+function(filter, j)
+  return ChangGraphCons(IsSetGraph and FullAutomorphismGroup, j);
+end );
+
+InstallMethod( ChangGraphCons, "default", true,
+     [IsObject, IsInt], 0,
+function(filter, j)
+  return ChangGraphCons(IsSetGraph, j);
+end );
+
+InstallGlobalFunction( ChangGraph,
+function(arg)
+  local j, filt;
+  if IsAFilter(arg[1]) then
+    filt := arg[1];
+    j := 2;
+  else
+    filt := IsObject;
+    j := 1;
+  fi;
+  if Length(arg) = j then
+    return ChangGraphCons(filt, arg[j]);
+  else
+    Error("usage: ChangGraph( [<filter>, ]<int> )");
+  fi;
 end );

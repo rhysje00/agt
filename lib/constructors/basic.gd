@@ -9,7 +9,10 @@
 ##
 
 
+
+
 # Complete multipartite graphs.
+DeclareConstructor( "CompleteMultipartiteGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 
 # Cycle graphs.
@@ -24,7 +27,13 @@ DeclareGlobalFunction( "CocktailPartyGraph" );
 DeclareGlobalFunction( "PaleyGraph" );
 
 # Latin square graphs.
+DeclareConstructor( "LatinSquareGraphCons", [IsObject, IsObject, IsBool]);
 DeclareGlobalFunction( "LatinSquareGraph" );
 
 # Complete Taylor graphs, i.e. complete bipartite graphs minus a matching.
 DeclareGlobalFunction( "CompleteTaylorGraph" );
+
+# Haar graphs
+DeclareConstructor( "HaarGraphCons", [IsObject, IsInt, IsList]);
+DeclareGlobalFunction( "HaarGraph" );
+

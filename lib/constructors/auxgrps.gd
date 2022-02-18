@@ -8,12 +8,11 @@
 ##  Declaration file for functions involving auxiliary groups.
 ##
 
-
 # The field addition group as a permutation group.
 DeclareGlobalFunction( "FieldAdditionPermutationGroup" );
 
 # The field multiplication group as a permutation group.
-DeclareGlobalFunction( "FieldMultiplicationPermutationGroup" );
+#DeclareGlobalFunction( "FieldMultiplicationPermutationGroup" );
 
 # The field exponentiation group as a permutation group.
 DeclareGlobalFunction( "FieldExponentiationPermutationGroup" );

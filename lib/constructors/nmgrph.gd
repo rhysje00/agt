@@ -8,7 +8,6 @@
 ##  Declaration file for functions that construct named graphs. 
 ##
 
-
 # The tetrahedron with v=4, k=3, lm=2.
 DeclareGlobalFunction( "TetrahedronGraph" );
 
@@ -17,6 +16,11 @@ DeclareGlobalFunction( "OctahedronGraph" );
 
 # The Petersen graph with v=10, k=3, lm=0, mu=1.
 DeclareGlobalFunction( "PetersenGraph2" );
+
+# The Shrikhande graph with parameters v = 16, k = 6, lm = 2, mu = 2,
+# i.e., the same as H(2, 4), but not isomorphic to it.
+DeclareConstructor("ShrikhandeGraphCons", [IsObject]);
+DeclareGlobalFunction( "ShrikhandeGraph" );
 
 # The Clebsch graph with v=16, k=10, lm=6, mu=6.
 DeclareGlobalFunction( "ClebschGraph" );
@@ -49,6 +53,7 @@ DeclareGlobalFunction( "IcosahedronGraph" );
 DeclareGlobalFunction( "SylvesterGraph" );
 
 # The Perkel graph with intersection array {6, 5, 2; 1, 1, 3}.
+DeclareConstructor( "PerkelGraphCons", [IsObject]);
 DeclareGlobalFunction( "PerkelGraph" );
 
 # The Gosset graph with intersection array {27, 10, 1; 1, 10, 27}.
@@ -70,6 +75,11 @@ DeclareGlobalFunction( "CoxeterGraph" );
 # The doubly truncated Witt graph with intersection array {7,6,4,4; 1,1,1,6}.
 DeclareGlobalFunction( "Witt22Graph" );
 
+# The unital graph of AG(2,3) subplanes in PG(2,4)
+# with intersection array {9,8,6,3; 1,1,3,8}
+DeclareConstructor("UnitalGraphCons", [IsObject]);
+DeclareGlobalFunction( "UnitalGraph" );
+
 # The dodecahedron with intersection array {3,2,1,1,1; 1,1,1,2,3}.
 DeclareGlobalFunction( "DodecahedronGraph" );
 
@@ -77,4 +87,5 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 DeclareGlobalFunction( "DesarguesGraph" );
 
 # The Biggs-Smith graph with intersection array {3,2,2,2,1,1,1; 1,1,1,1,1,1,3}.
+DeclareConstructor( "BiggsSmithGraphCons", [IsObject]);
 DeclareGlobalFunction( "BiggsSmithGraph" );

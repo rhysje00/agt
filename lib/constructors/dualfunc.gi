@@ -21,7 +21,7 @@ x -> Intersection(x)[1]
 
 # Duality function for bipartite doubles.
 InstallGlobalFunction( BipartiteDoubleDualityFunction,
-f -> x -> [x[1][1], f(List(x, y -> y[2]))]
+f -> x -> [f(List(x, y -> y[1])), x[1][2]]
 );
 
 # Duality function for Grassmann graphs.

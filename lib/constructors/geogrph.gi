@@ -40,8 +40,8 @@ function(q)
                   List(H, z -> [z, mul(z, w[1]) + w[2]]))));
   dp := DirectProduct(Concatenation(ListWithIdenticalEntries(5,
                                       FieldAdditionPermutationGroup(q)),
-                      [FieldMultiplicationPermutationGroup(q),
-                       Group([[c[2], Z(q)^0], [-c[1], 0*Z(q)]])]));
+                      [Group(Z(q)), Group([[c[2], Z(q)^0],
+                                           [-c[1], 0*Z(q)]])]));
   G := Graph(dp, Union(P, L), OnHallPlane(q, dp),
               PointLineIncidence, true);
   G.halfDuality := DefaultDualityFunction;
@@ -117,7 +117,7 @@ function(arg)
           end;
   H := Graph(dp, Cartesian([1, 2], P), OnHughesPlane(q, rdiv, dp),
               function(x, y)
-                  return x[1] <> y[1] and orth(x[2], y[2]);
+                return x[1] <> y[1] and orth(x[2], y[2]);
               end, true);
   df := x -> [x[1][1]^(1, 2),
               Intersection(List(x,

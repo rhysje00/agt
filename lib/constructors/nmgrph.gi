@@ -28,6 +28,20 @@ function()
   return OddGraph(2);
 end );
 
+# The Shrikhande graph with parameters v = 16, k = 6, lm = 2, mu = 2,
+# i.e., the same as H(2, 4), but not isomorphic to it.
+# The Shrikhande graph with parameters v=16, k=6, lm=2, mu=2,
+# i.e., the same as H(2, 4), but not isomorphic to it.
+InstallMethod( ShrikhandeGraphCons, "as a vector graph", true, 
+     [IsVectorGraph], 0,
+filter -> ComplementGraph(LatinSquareGraph(Group(Z(5))))
+ );
+
+InstallGlobalFunction( ShrikhandeGraph,
+function()
+ return ShrikhandeGraphCons(IsVectorGraph);
+end );
+
 # The Clebsch graph with v=16, k=10, lm=6, mu=6.
 InstallGlobalFunction( ClebschGraph,
 function()
@@ -144,14 +158,18 @@ function()
 end );
 
 # The Perkel graph with intersection array {6, 5, 2; 1, 1, 3}.
+InstallMethod( PerkelGraphCons, "as a conjugacy class graph", true,
+     [IsConjugacyClassGraph], 0,
+function(filter)
+  local G;
+  G := PSL(2, 19);
+  return Graph(G,
+           Elements(Group( [ ( 2,12,15)( 3,17,16)( 4, 8,10)( 5, 6,13)( 9,20,18)(11,19,14),( 1, 2)( 3,20)( 4,19)( 5,18)( 6,17)( 7,16)( 8,15)( 9,14)(10,13)(11,12) ] )^G), ConjugateGroup, GroupIntersection(10), true);
+end );
+
 InstallGlobalFunction( PerkelGraph,
-function() 
-  return Graph(PSL(2, 19),
-                    Elements(Filtered(ConjugacyClassesSubgroups(PSL(2, 19)),
-                        x -> Size(x) = 57 and Order(x[1]) = 60)[1]),
-                    ConjugateGroup, function(x, y)
-                        return Order(Intersection(x, y)) = 10;
-                    end, true);
+function()
+  return PerkelGraphCons(IsConjugacyClassGraph);
 end );
 
 # The Gosset graph with intersection array {27, 10, 1; 1, 10, 27}.
@@ -200,25 +218,50 @@ function()
                                 OnSets, DisjointSets);
 end );
 
+# The unital graph of AG(2,3) subplanes in PG(2,4)
+# with intersection array {9,8,6,3; 1,1,3,8}
+InstallMethod( UnitalGraphCons, "as a spaces graph", true, [IsSpacesGraph], 0,
+function(filter)
+  local A, U, V;
+  A := SetIntersection(1);
+  V := GF(4)^3;
+  U := [[0*Z(2), Z(2)^0, Z(2)^0],
+        [Z(2)^0, 0*Z(2), 0*Z(2)],
+        [Z(2)^0, 0*Z(2), Z(2)^0],
+        [Z(2)^0, 0*Z(2), Z(4)],
+        [Z(2)^0, Z(2)^0, 0*Z(2)],
+        [Z(2)^0, Z(2)^0, Z(2)^0],
+        [Z(2)^0, Z(2)^0, Z(4)^2],
+        [Z(2)^0, Z(4), Z(2)^0],
+        [Z(2)^0, Z(4)^2, 0*Z(2)]];
+  return Graph(GL(3, 4), [Set(Filtered(Subspaces(V, 1), x -> A(x, U)))],
+               OnSetsSubspaces(V), A);
+end );
+
+InstallGlobalFunction( UnitalGraph,
+function()
+  return UnitalGraphCons(IsSpacesGraph);
+end );
+
 # The dodecahedron with intersection array {3,2,1,1,1; 1,1,1,2,3}.
 InstallGlobalFunction( DodecahedronGraph,
 function() 
   return List([function()
-        local G, O, act, dp, p1, p2, u, v;
-        dp := DirectProduct(AlternatingGroup(5), Group((1, 2)));
-        p1 := Projection(dp, 1);
-        p2 := Projection(dp, 2);
-        act := function(t, g)
-            return OnTuples(t{Permuted([1,2], Image(p2, g))}, Image(p1, g));
-        end;
-        u := [1, 2];
-        v := [3, 4];
-        O := Arrangements([1..5], 2);
-        G := EdgeOrbitsGraph(Action(dp, O, act),
-                             [Position(O, u), Position(O, v)]);
-        AssignVertexNames(G, O);
-        return G;
-    end])[1]();
+    local G, O, act, dp, p1, p2, u, v;
+    dp := DirectProduct(AlternatingGroup(5), Group((1, 2)));
+    p1 := Projection(dp, 1);
+    p2 := Projection(dp, 2);
+    act := function(t, g)
+             return OnTuples(t{Permuted([1,2], Image(p2, g))}, Image(p1, g));
+           end;
+    u := [1, 2];
+    v := [3, 4];
+    O := Arrangements([1..5], 2);
+    G := EdgeOrbitsGraph(Action(dp, O, act),
+                         [Position(O, u), Position(O, v)]);
+    AssignVertexNames(G, O);
+    return G;
+   end])[1]();
 end );
 
 # The Desargues graph with intersection array {3,2,2,1,1; 1,1,2,2,3}.
@@ -228,12 +271,20 @@ function()
 end );
 
 # The Biggs-Smith graph with intersection array {3,2,2,2,1,1,1; 1,1,1,1,1,1,3}.
+InstallMethod(BiggsSmithGraphCons, "as a conjugacy class graph", true,
+     [IsConjugacyClassGraph], 0,
+function(filter)
+  local G;
+  G := PSL(2, 17);
+  return Graph(G,
+    Elements(Group( [ ( 3,11)( 4,12)( 5,13)( 6,14)( 7,15)( 8,16)( 9,17)(10,18),
+                ( 1, 2)( 3, 5)( 6,18)( 7,17)( 8,16)( 9,15)(10,14)(11,13),
+                ( 1, 4,16)( 2,12, 8)( 3, 9, 6)( 5, 7,14)(10,11,15)(13,17,18),
+                ( 3, 7,11,15)( 4, 8,12,16)( 5, 9,13,17)( 6,10,14,18) ] )^G),
+                        ConjugateGroup, GroupIntersection(8), true);
+end );
+
 InstallGlobalFunction( BiggsSmithGraph,
 function()
-  return Graph(PSL(2, 17),
-                    Elements(Filtered(ConjugacyClassesSubgroups(PSL(2, 17)),
-                        x -> Size(x) = 102 and Order(x[1]) = 24)[1]),
-                    ConjugateGroup, function(x, y)
-                        return Order(Intersection(x, y)) = 8;
-                    end, true);
+  return BiggsSmithGraphCons(IsConjugacyClassGraph);
 end );

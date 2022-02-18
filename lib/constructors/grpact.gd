@@ -10,6 +10,12 @@
 ##
 
 
+# Action on a finite field element.
+DeclareGlobalFunction( "OnFFE" );
+
+# Action of a matrix on a finite field element as a vector for a given basis.
+DeclareGlobalFunction( "OnFFEByBasis" );
+
 # Action of a group on a signed point.
 DeclareGlobalFunction( "OnSignedPoints" );
 
@@ -22,8 +28,13 @@ DeclareGlobalFunction( "OnSum" );
 # Action of a product group on the multiplication table of its factors.
 DeclareGlobalFunction( "OnLatinSquare" );
 
+DeclareGlobalFunction( "OnJohnson" );
+
+# Action on the vertices of the Chang graphs.
+DeclareGlobalFunction( "OnChang" );
+
 # Action of a wreath product on vectors over a ring.
-DeclareGlobalFunction( "OnZmodnZVectors" );
+DeclareGlobalFunction( "OnWreathProduct" );
 
 # Action of a wreath product on pairs of vectors with 3 elements.
 DeclareGlobalFunction( "OnVectorPairs" );
@@ -44,8 +55,14 @@ DeclareGlobalFunction( "OnSetsSubspaces" );
 # Action on the vertices of doubled Odd graphs.
 DeclareGlobalFunction( "OnDoubledOdd" );
 
+# Action on the vertices of Grassmann graphs.
+DeclareGlobalFunction( "OnGrassmann" );
+
 # Action on the vertices of doubled Grassmann graphs.
-DeclareGlobalFunction( "OnDoubledGrassmann" );
+#DeclareGlobalFunction( "OnDoubledGrassmann" );
+
+# Action on the vertices of dual polar graphs.
+DeclareGlobalFunction( "OnDualPolar" );
 
 # Action on the vertices of Paley graphs.
 DeclareGlobalFunction( "OnPaley" );

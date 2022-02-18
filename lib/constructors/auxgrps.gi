@@ -12,19 +12,18 @@
 # The field addition group as a permutation group.
 InstallGlobalFunction( FieldAdditionPermutationGroup,
 q -> Group(List(Elements(Basis(GF(q))),
-    g -> Permutation(g, GF(q), function(x, y) return x+y; end)))
-);
+    g -> Permutation(g, FiniteFieldCanonicalOrdering(q), \+)))
+ );
+ 
 
-# The field multiplication group as a permutation group.
-InstallGlobalFunction( FieldMultiplicationPermutationGroup,
-q -> CyclicGroup(IsPermGroup, q-1)
-);
+
 
 # The field exponentiation group as a permutation group.
 InstallGlobalFunction( FieldExponentiationPermutationGroup,
-q -> Action(Group(FrobeniusAutomorphism(GF(q))), GF(q))
-);
-
+q -> Action(Group(FrobeniusAutomorphism(GF(q))),
+            FiniteFieldCanonicalOrdering(q))
+ );
+ 
 # The group of even permutations of columns of a matrix
 # as a permutation group over matrix elements.
 InstallGlobalFunction( MatrixColumnEvenPermutationGroup,

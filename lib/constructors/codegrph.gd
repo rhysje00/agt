@@ -10,10 +10,8 @@
 
 
 # De Caen, Mathon and Moorhouse's Preparata graph Pr(t, e)
+DeclareConstructor( "PreparataGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PreparataGraph" );
-
-# Quotient graph of the Preparata graph
-DeclareGlobalFunction( "PreparataQuotientGraph" );
 
 # The coset graph of a Kasami code over an odd power extension
 # of a binary field.
