@@ -13,24 +13,27 @@ ReadPackage( "agt", "lib/eigenv.gi" );
 ReadPackage( "agt", "lib/regsubs.gi" );
 ReadPackage( "agt", "srglib/Brouwer_Parameters.g" );
 ReadPackage( "agt", "lib/srglib.gi" );
-ReadPackage( "agt", "lib/SRGConstructors/auxfuncs.gi");
-ReadPackage( "agt", "lib/SRGConstructors/opers.gi");
-ReadPackage( "agt", "lib/SRGConstructors/grpact.gi");
-ReadPackage( "agt", "lib/SRGConstructors/formfuncs.gi");
-ReadPackage( "agt", "lib/SRGConstructors/dualfunc.gi");
-ReadPackage( "agt", "lib/SRGConstructors/adjfunc.gi");
-ReadPackage( "agt", "lib/SRGConstructors/auxgrps.gi");
-ReadPackage( "agt", "lib/SRGConstructors/grphinf.gi");
-ReadPackage( "agt", "lib/SRGConstructors/gencon.gi");
-ReadPackage( "agt", "lib/SRGConstructors/basic.gi");
-ReadPackage( "agt", "lib/SRGConstructors/setgrph.gi");
-ReadPackage( "agt", "lib/SRGConstructors/geoconf.gi");
-ReadPackage( "agt", "lib/SRGConstructors/vctgrph.gi");
-ReadPackage( "agt", "lib/SRGConstructors/frmgrph.gi");
-ReadPackage( "agt", "lib/SRGConstructors/spcsgrph.gi");
-ReadPackage( "agt", "lib/SRGConstructors/codegrph.gi");
-ReadPackage( "agt", "lib/SRGConstructors/geogrph.gi");
-ReadPackage( "agt", "lib/SRGConstructors/nmgrph.gi");
+
+ReadPackage( "agt", "lib/constructors/glbvar.gi" );
+ReadPackage( "agt", "lib/constructors/auxfuncs.gi");
+ReadPackage( "agt", "lib/constructors/opers.gi");
+ReadPackage( "agt", "lib/constructors/grpact.gi");
+ReadPackage( "agt", "lib/constructors/formfuncs.gi");
+ReadPackage( "agt", "lib/constructors/dualfunc.gi");
+ReadPackage( "agt", "lib/constructors/adjfunc.gi");
+ReadPackage( "agt", "lib/constructors/auxgrps.gi");
+ReadPackage( "agt", "lib/constructors/grphinf.gi");
+ReadPackage( "agt", "lib/constructors/geoconf.gi");
+ReadPackage( "agt", "lib/constructors/gencon.gi"); 
+ReadPackage( "agt", "lib/constructors/basic.gi"); 
+ReadPackage( "agt", "lib/constructors/setgrph.gi");
+ReadPackage( "agt", "lib/constructors/vctgrph.gi"); 
+ReadPackage( "agt", "lib/constructors/frmgrph.gi");
+ReadPackage( "agt", "lib/constructors/spcsgrph.gi");
+ReadPackage( "agt", "lib/constructors/codegrph.gi");
+ReadPackage( "agt", "lib/constructors/geogrph.gi");
+ReadPackage( "agt", "lib/constructors/nmgrph.gi");
+
 #############################################################################
 ##
 #E

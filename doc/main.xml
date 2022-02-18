@@ -46,6 +46,9 @@
 
 <#Include SYSTEM "srglib.xml">
 
+<#Include SYSTEM "grphcons.xml">
+
+
 </Body>
 
 <Bibliography Databases="references"/>
