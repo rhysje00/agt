@@ -29,7 +29,7 @@ SetPackageInfo( rec(
 
   IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ), 
 
-  SupportEmail := "r.evans@qmul.ac.uk",
+  SupportEmail := "rhysjevans00@gmail.com",
 
   ArchiveURL := Concatenation( ~.SourceRepository.URL,
                                "/releases/download/v", ~.Version,
@@ -44,14 +44,23 @@ SetPackageInfo( rec(
       FirstNames := "Rhys J.",
       LastName := "Evans",
       WWWHome := "https://www.qmul.ac.uk/maths/profiles/evansr.html",
-      Email := "r.evans@qmul.ac.uk",
-      PostalAddress := "Mile End Road, London, E14NS",
-      Place := "London",
-      Institution := "School of Mathematical Sciences, Queen Mary University of London",
+      Email := "rhysjevans00@gmail.com",
+      PostalAddress := "Novosibirsk, Russia",
+      Place := "Akademgorodok, Novosibirsk",
+      Institution := "Sobolev Institute of Mathematics",
+    ),
+    
+    rec(
+      LastName := "Vidali",
+      FirstNames := "Janoš",
+      IsAuthor := true,
+      IsMaintainer := true,
+      Email := "janos.vidali@fmf.uni-lj.si",
+      WWWHome := "http://lkrv.fri.uni-lj.si/~janos/",
     ),
   ],
 
-  Status := "other",
+  Status := "deposited",
 
   README_URL := 
     Concatenation( ~.PackageWWWHome, "/README.md" ),

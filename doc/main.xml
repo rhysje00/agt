@@ -14,9 +14,14 @@
   <Version>Version &VERSION;</Version>
   <Date>&RELEASEDATE;</Date>
   <Author> Rhys J. Evans
-    <Email>r.evans@qmul.ac.uk</Email>
+    <Email>rhysjevans00@gmail.com</Email>
     <Homepage>https://www.qmul.ac.uk/maths/profiles/evansr.html</Homepage>
   </Author>
+  <Author> Janoš Vidali
+    <Email>janos.vidali@fmf.uni-lj.si</Email>
+    <Homepage>http://lkrv.fri.uni-lj.si/~janos/</Homepage>
+  </Author>
+  
     <Copyright> 
     <Index>License</Index>
     &copyright; 2020 by Rhys J. Evans <P/>
