@@ -9,14 +9,19 @@
 ##  
 ##
 
-
-# The graph obtained from an adjacency function on the vertex set.
+#############################################################################
+##
+#F  AdjFunGraph( <V>, <F> )
+##  
 InstallGlobalFunction( AdjFunGraph,
-function(E, F)
-  return Graph(Group(()), E, function(x, y) return x; end, F, true);
+function(V, F)
+  return Graph(Group(()), V, function(x, g) return x; end, F, true);
 end);
 
-# A generic product graph, without naming vertices.
+#############################################################################
+##
+#F  ProductGraph( [<filter>, ]<graphs>, <func> )
+##  
 InstallMethod( ProductGraphCons, "without names", true,
                [NoVertexNames, IsList, IsFunction], 0,
 function(filter, Gs, F)
@@ -32,7 +37,6 @@ function(filter, Gs, F)
       OnProduct(Length(Gs), dp), F, true);
 end );
 
-# A generic product graph.
 InstallMethod( ProductGraphCons, "with names", true,
      [IsObject, IsList, IsFunction], 0,
 function(filter, Gs, F)
@@ -65,7 +69,10 @@ function(arg)
   fi;
 end );
 
-# A generic power graph, without naming vertices.
+#############################################################################
+##
+#F  PowerGraph( [<filter>, ]<graph>, <int>, <func> )
+##  
 InstallMethod( PowerGraphCons, "without names", true,
     [NoVertexNames, IsRecord, IsInt, IsFunction], 0,
 function(filter, G, n, F)
@@ -81,7 +88,6 @@ function(filter, G, n, F)
                OnWreathProduct(n, G.order, wp), F, true);
 end );
 
-# A generic power graph.
 InstallMethod( PowerGraphCons, "with names", true,
     [IsObject, IsRecord, IsInt, IsFunction], 0,
 function(filter, G, n, F)
@@ -111,8 +117,10 @@ function(arg)
   fi;
 end );
 
-
-# The box product of two or more graphs.
+#############################################################################
+##
+#F  BoxProductGraph( [<filter>, ]<graphs> )
+##  
 InstallGlobalFunction( BoxProductGraph,
 function(arg)
   local Gs, j, filt;
@@ -135,10 +143,13 @@ function(arg)
     end);
 end );
 
-# The box power of a graph.
+#############################################################################
+##
+#F  BoxPowerGraph( [<filter>, ]<graph>, <int> )
+##  
 InstallGlobalFunction( BoxPowerGraph,
 function(arg)
-  local G, Gs, j, n, filt;
+  local G, j, n, filt;
   if IsAFilter(arg[1]) then
     filt := arg[1];
     j := 2;
@@ -159,7 +170,10 @@ function(arg)
   fi;
 end );
 
-# The cross product of two or more graphs.
+#############################################################################
+##
+#F  CrossProductGraph( [<filter>, ]<graphs> )
+##  
 InstallGlobalFunction( CrossProductGraph,
 function(arg)
   local Gs, j, filt;
@@ -181,7 +195,10 @@ function(arg)
     end);
 end );
 
-# The cross power of a graph.
+#############################################################################
+##
+#F  CrossPowerGraph( [<filter, ]<graph>, <int> )
+##  
 InstallGlobalFunction( CrossPowerGraph,
 function(arg)
   local G, Gs, j, n, filt;
@@ -203,7 +220,10 @@ function(arg)
   fi;
 end );
 
-# The strong product of two or more graphs.
+#############################################################################
+##
+#F  StrongProductGraph( [<filter>, ]<graphs> )
+##  
 InstallGlobalFunction( StrongProductGraph,
 function(arg)
   local Gs, j, filt;
@@ -225,7 +245,10 @@ function(arg)
   end);
 end );
 
-# The strong power of a graph.
+#############################################################################
+##
+#F  StrongPowerGraph( [<filter, ]<graph>, <int> )
+##  
 InstallGlobalFunction( StrongPowerGraph,
 function(arg)
   local G, Gs, j, n, filt;
@@ -247,7 +270,10 @@ function(arg)
   fi;
 end );
 
-# The join of a list of graphs, without naming vertices.
+#############################################################################
+##
+#F  GraphJoin( [<filter>, ]<graphs> )
+##  
 InstallMethod( GraphJoinCons, "without names", true,
      [NoVertexNames, IsList], 0,
 function(filter, Gs)
@@ -292,8 +318,10 @@ function(arg)
   return GraphJoinCons(filt, Gs);
 end );
 
-
-# The bipartite double of a graph.
+#############################################################################
+##
+#F  BipartiteDoubleGraph( <graph> )
+##  
 InstallGlobalFunction( BipartiteDoubleGraph,
 function(G)
   local H;
@@ -323,7 +351,10 @@ function(filter, G)
   return H;
 end );
 
-# The extended bipartite double of a graph.
+#############################################################################
+##
+#F  ExtendedBipartiteDoubleGraph( <graph> )
+##  
 InstallMethod( ExtendedBipartiteDoubleGraphCons, "with names", true,
      [IsObject, IsRecord], 0,
 function(filter, G)
@@ -358,8 +389,10 @@ function(arg)
   fi;
 end );
 
-# The halved graph of a bipartite graph. The optional second argument
-# allows choosing between the first and second halves.
+#############################################################################
+##
+#F  HalvedGraph( <graph>[, <int>] )
+##  
 InstallGlobalFunction( HalvedGraph,
 function(arg)
   local n, G, G2, H, vs;

@@ -16,7 +16,7 @@
 ##  
 ##  <#GAPDoc Label="DesarguesianPlaneIncidenceGraph">
 ##  <ManSection>
-##  <Func Name="DearguesianPlaneIncidenceGraph"
+##  <Func Name="DesarguesianPlaneIncidenceGraph"
 ##   Arg='arg'/>
 ##  <Returns>A .</Returns>
 ##

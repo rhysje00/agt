@@ -13,9 +13,9 @@ literature.
 
 <#Include Label="PowerGraph">
 
-<#Include Label="BoxPowerGraph">
-
 <#Include Label="BoxProductGraph">
+
+<#Include Label="BoxPowerGraph">
 
 <#Include Label="CrossProductGraph">
 
