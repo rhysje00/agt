@@ -600,9 +600,9 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 ##  the halved graph is defined.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a connected bipartite graph with bipartition <M>U,W</M>.
-##  The <E>halved graph</E> of <M>\Gamma</M> with respect is the graph with 
-##  vertex set <M>U</M>, and distinct vertices <M>x,y</M> are adjacent if and only if
-##  <M>x,y</M> are at graph distance 2 in <M>\Gamma.</M> 
+##  The <E>halved graph</E> of <M>\Gamma</M> with respect to <M>U</M> is the 
+##  graph with vertex set <M>U</M>, and distinct vertices <M>x,y</M> are adjacent
+##  if and only if <M>x,y</M> are at graph distance 2 in <M>\Gamma.</M> 
 ## 
 ##    <Example>
 ##      <![CDATA[
@@ -618,143 +618,239 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "HalvedGraph" );
 
-# The antipodal quotient of an antipodal cover.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  AntipodalQuotientGraph( [<filter>, ]<graph> )
 ##  
 ##  <#GAPDoc Label="AntipodalQuotientGraph">
 ##  <ManSection>
 ##  <Func Name="AntipodalQuotientGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]gamma'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a distance-regular graph <A>gamma</A> which is an antipodal cover, 
+##  this function returns the anitpodal quotient graph of <A>gamma</A>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
+##  Each vertex of the resulting graph will correspond to a subset of vertices
+##  of <A>gamma</A>. If <A>fil</A> is not given, or is <K>IsObject</K>, the vertex 
+##  name of a given vertex in the resulting graph will be the corresponding subset
+##  of vertex names of <A>gamma</A>. If <A>fil</A> is <K>NoVertexNames</K>, vertices 
+##  will have vertex names consisting of subsets of the integers 
+##  <K>[1..gamma.order]</K>.
+##  <P/>
+##  Let <M>\Gamma</M> be a distance-regular graph with diameter <M>d</M>. For
+##  any <M>u\in V(\Gamma)</M>, let <M>\Gamma_d\left[u\right]</M> denote the set
+##  of vertices at distance <M>d</M> from <M>u</M>, and <M>u</M> itself. 
+##  Then <M>\Gamma</M> is <E>antipodal</E> if for all <M>u\in V(\Gamma)</M>,
+##  the set <M>\Gamma_d\left[u\right]</M> consists of vertices which are pairwise
+##  at distance <M>d</M>. The <E>antipodal quotient</E> of <M>\Gamma</M> is 
+##  the graph with vertex set <M>\{\Gamma_d\left[u\right]:u\in V(\Gamma)\}</M>,
+##  and distinct vertices are adjacent if there is an edge between them in 
+##  <M>\Gamma</M>.
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> h:=CycleGraph(8);;
+##gap> AntipodalQuotientGraph(h);
+##rec( adjacencies := [ [ 2, 4 ] ], group := Group([ (1,2,3,4), (2,4) ]), 
+##  isGraph := true, names := [ [ 1, 5 ], [ 2, 6 ], [ 3, 7 ], [ 4, 8 ] ], 
+##  order := 4, representatives := [ 1 ], schreierVector := [ -1, 1, 1, 2 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("AntipodalQuotientGraphCons", [IsObject, IsRecord]);
 DeclareGlobalFunction( "AntipodalQuotientGraph" );
 
-# A graph with the set of d-dimensional subspaces of V filtered by S
-# as the vertex set, acted upon by the matrix group G,
-# with two subspaces being adjacent iff their intersection has dimension d-1.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  SubspaceGraph( <mtrxgrp>, <subspcs>, <vctspc>, <int>[, <act>, <invt>] )
 ##  
 ##  <#GAPDoc Label="SubspaceGraph">
 ##  <ManSection>
 ##  <Func Name="SubspaceGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='G, S, V, d[, A, invt]'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This is a general function to construct a graph with vertex set
+##  a subset of <A>d</A>-dimensional subspaces <A>S</A> of a vector space <A>V</A>, 
+##  and distinct vertices are adjacent if and only if their intersection has
+##  dimension <A>d-1</A>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
+##  This function accepts the following arguments.
+##  <List>
+##    <Mark><A>G</A></Mark>
+##    <Item>A subgroup of the matrix group of invertible linear 
+##          transformations acting on vector space <A>V</A>.</Item>
+##    <Mark><A>S</A></Mark>
+##    <Item>This argument can be either
+##      <List>
+##        <Item>a list of <A>d</A>-dimensional subspaces of <A>V</A>, or</Item>
+##        <Item>a function which acts as a filter on the set of 
+##              <A>d</A>-dimensional subspaces of <A>V</A>.</Item>
+##      </List>
+##    </Item>
+##    <Mark><A>V</A></Mark>
+##    <Item>A finite vector space.</Item>
+##    <Mark><A>d</A></Mark>
+##    <Item>A positive integer of size at most the dimension of <A>V</A>.</Item>
+##    <Mark><A>A</A></Mark>
+##    <Item>If <A>A</A> is given, it must define a group action of <A>G</A> on 
+##          the subspaces <A>S</A>. The resulting graph will be defined by this
+##          action. If <A>A</A> is not given, the action of <A>G</A> on 
+##          the subspaces <A>S</A> is assumed to be the natural action.</Item>
+##    <Mark><A>invt</A></Mark>
+##    <Item>If <A>invt</A> is given, it must take a boolean value. If <A>invt</A>
+##          is <K>true</K>, the subspaces <A>S</A> will be to be invariant under 
+##          the action of <A>G</A>. Otherwise, this is not assumed. 
+##    </Item>
+##  </List>
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> q:=2;; n:=4;; d:=2;; V:=GF(q)^n;; S:=Elements;; G:=GL(n,q);;
+##gap> gamma:=SubspaceGraph(G,S,V,d);;
+##gap> SRGParameters(gamma);
+##[ 35, 18, 9, 9 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "SubspaceGraph" );
 
-# The clique (dual geometry) graph of a collinearity graph. The optional second
-# argument allows choosing a connected component of the resulting graph.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  CliqueGraph( [<filter>, ]<graph>[, <list>] )
 ##  
 ##  <#GAPDoc Label="CliqueGraph">
 ##  <ManSection>
 ##  <Func Name="CliqueGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]gamma[, ls]'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  TODO
+##  Given a collinearity graph <A>gamma</A> of a partial geometry (true?), this function 
+##  returns the clique graph of <A>gamma</A>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
+##  Each vertex of the resulting graph will correspond to a subset of vertices
+##  of <A>gamma</A>. If <A>fil</A> is not given, or is <K>IsObject</K>, the vertex 
+##  name of a given vertex in the resulting graph will be the corresponding subset
+##  of <E>dual</E> vertex names of <A>gamma</A> (this needs to be explained better).
+##  If <A>fil</A> is <K>NoVertexNames</K>, vertices 
+##  will have vertex names consisting of subsets of the integers 
+##  <K>[1..gamma.order]</K>.
+##  <P/>
+##  If <A>ls</A> is given, it must be an positive integer or list of positive 
+##  integers. Then the resulting graph will be defined on the orbit of the lines
+##  <K>Cliques(gamma){ls}</K> under gamma.group.
+##  <P/>
+##  Let <M>P</M> be a partial geometry with collinearity graph <A>gamma</A>. 
+##  The <E>clique graph</E> of <M>P</M> is the graph with vertex set the lines of 
+##  <M>P</M>, and distinct vertices are adjacent if they intersect at a single 
+##  point. As the maximal cliques of <M>\Gamma</M> are the lines in <M>P</M>,
+##  we can construct this graph by using <M>\Gamma</M>.
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> K7:=CompleteGraph(SymmetricGroup(7));;
+##gap> P:=PartialLinearSpaces(K7,2,2)[1];;
+##gap> CliqueGraph(gamma);
+##rec( adjacencies := [ [ 2, 4, 9, 21 ] ], 
+##  duality := function( x ) ... end, 
+##  group := Group([ (1,2)(3,6)(5,10)(7,14)(9,18)(11,17)(15,16)
+##      (19,21), (1,2,4)(3,6,13)(5,10,8)(7,15,17)(9,18,12)(11,16,14)
+##      (19,20,21), (1,2,4)(3,7,16)(5,11,15)(6,8,17)(9,19,20)
+##      (10,13,14)(12,21,18), (1,3,8,17,18,11,20)(2,5,12,21,6,7,16)
+##      (4,9,13,14,10,19,15) ]), isGraph := true, 
+##  names := [ [ 1, [ 1, 2, 3 ] ], [ 2, [ 1, 2, 3 ] ], 
+##      [ 4, [ 1, 4, 5 ] ], [ 3, [ 1, 2, 3 ] ], [ 5, [ 1, 4, 5 ] ], 
+##      [ 4, [ 2, 4, 6 ] ], [ 7, [ 2, 5, 7 ] ], [ 7, [ 3, 4, 7 ] ], 
+##      [ 1, [ 1, 4, 5 ] ], [ 6, [ 2, 4, 6 ] ], [ 5, [ 2, 5, 7 ] ], 
+##      [ 3, [ 3, 4, 7 ] ], [ 4, [ 3, 4, 7 ] ], [ 7, [ 1, 6, 7 ] ], 
+##      [ 5, [ 3, 5, 6 ] ], [ 6, [ 3, 5, 6 ] ], [ 6, [ 1, 6, 7 ] ], 
+##      [ 2, [ 2, 4, 6 ] ], [ 2, [ 2, 5, 7 ] ], [ 3, [ 3, 5, 6 ] ], 
+##      [ 1, [ 1, 6, 7 ] ] ], order := 21, 
+##  primality := function( x ) ... end, representatives := [ 1 ], 
+##  schreierVector := [ -1, 1, 4, 2, 4, 1, 3, 4, 4, 1, 3, 4, 2, 1, 
+##      2, 3, 3, 1, 3, 4, 3 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("CliqueGraphCons", [IsObject, IsRecord, IsList]);
 DeclareGlobalFunction( "CliqueGraph" );
 
-# The incidence graph of a collinearity graph.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  IncidenceGraph( [<filter>, ]<graph>[, <list>] )
 ##  
 ##  <#GAPDoc Label="IncidenceGraph">
 ##  <ManSection>
 ##  <Func Name="IncidenceGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]gamma[, ls]'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  TODO
+##  Given a collinearity graph <A>gamma</A> of a partial geometry (true?), this function 
+##  returns the incidence graph of <A>gamma</A>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
+##  Each vertex of the resulting graph will correspond to a vertex or subset of 
+##  vertices of <A>gamma</A>. If <A>fil</A> is not given, or is <K>IsObject</K>, 
+##  the vertex name of a given vertex in the resulting graph will be the <E>dual</E>  ##  of the corresponding vertex name(s) of <A>gamma</A> (this needs to be explained better).
+##  If <A>fil</A> is <K>NoVertexNames</K>, vertices 
+##  will have vertex names consisting of integers and subsets of the integers 
+##  <K>[1..gamma.order]</K>.
+##  <P/>
+##  If <A>ls</A> is given, it must be an positive integer or list of positive 
+##  integers. Then the resulting graph will be defined on the orbit of the lines
+##  <K>Cliques(gamma){ls}</K> under gamma.group.
+##  <P/>
+##  Let <M>P</M> be a partial geometry with collinearity graph <A>gamma</A>. 
+##  The <E>incidence graph</E> of <M>P</M> is the graph with vertex set the union
+##  of the points and lines of <M>P</M>, and distinct vertices are adjacent if 
+##  they are incident. As the maximal cliques of <M>\Gamma</M> are the lines of
+##  <M>P</M>, we can construct this graph by using <M>\Gamma</M>.
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> K7:=CompleteGraph(SymmetricGroup(7));;
+##gap> P:=PartialLinearSpaces(K7,2,2)[1];;
+##gap> IncidenceGraph(P);    
+##rec( adjacencies := [ [ 15, 23, 35 ], [ 15, 16, 18 ], [ 1, 8 ] ], 
+##  group := <permutation group with 4 generators>, 
+##  halfDuality := function( x ) ... end, 
+##  halfPrimality := function( x ) ... end, isGraph := true, 
+##  names := [ 1, 2, 4, 3, 5, 7, 6, [ 1, 2, 3 ], [ 1, 4, 5 ], 
+##      [ 2, 4, 6 ], [ 2, 5, 7 ], [ 3, 4, 7 ], [ 1, 6, 7 ], 
+##      [ 3, 5, 6 ], [ 1, [ 1, 2, 3 ] ], [ 2, [ 1, 2, 3 ] ], 
+##      [ 4, [ 1, 4, 5 ] ], [ 3, [ 1, 2, 3 ] ], [ 5, [ 1, 4, 5 ] ], 
+##      [ 4, [ 2, 4, 6 ] ], [ 7, [ 2, 5, 7 ] ], [ 7, [ 3, 4, 7 ] ], 
+##      [ 1, [ 1, 4, 5 ] ], [ 6, [ 2, 4, 6 ] ], [ 5, [ 2, 5, 7 ] ], 
+##      [ 3, [ 3, 4, 7 ] ], [ 4, [ 3, 4, 7 ] ], [ 7, [ 1, 6, 7 ] ], 
+##      [ 5, [ 3, 5, 6 ] ], [ 6, [ 3, 5, 6 ] ], [ 6, [ 1, 6, 7 ] ], 
+##      [ 2, [ 2, 4, 6 ] ], [ 2, [ 2, 5, 7 ] ], [ 3, [ 3, 5, 6 ] ], 
+##      [ 1, [ 1, 6, 7 ] ] ], order := 35, 
+##  representatives := [ 1, 8, 15 ], 
+##  schreierVector := [ -1, 1, 4, 2, 4, 3, 1, -2, 4, 1, 3, 4, 1, 2, 
+##      -3, 1, 4, 2, 4, 1, 3, 4, 4, 1, 3, 4, 2, 1, 2, 3, 3, 1, 3, 4, 
+##      3 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("IncidenceGraphCons", [IsObject, IsRecord, IsList]);
 DeclareGlobalFunction( "IncidenceGraph" );

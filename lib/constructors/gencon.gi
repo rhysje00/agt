@@ -437,7 +437,10 @@ function(arg)
   return H;
 end );
 
-# The antipodal quotient of an antipodal cover, without naming vertices.
+#############################################################################
+##
+#F  AntipodalQuotientGraph( [<filter>, ]<graph> )
+##  
 InstallMethod( AntipodalQuotientGraphCons, "without names", true,
      [NoVertexNames, IsRecord], 0,
 function(filter, G)
@@ -489,9 +492,10 @@ function(arg)
   fi;
 end );
 
-# A graph with the set of d-dimensional subspaces of V filtered by S
-# as the vertex set, acted upon by the matrix group G,
-# with two subspaces being adjacent iff their intersection has dimension d-1.
+#############################################################################
+##
+#F  SubspaceGraph( <mtrxgrp>, <subspcs>, <vctspc>, <int>[, <act>, <invt>] )
+##  
 InstallGlobalFunction( SubspaceGraph,
 function(arg)
   local A, G, H, S, V, d, invt, vcs;
@@ -528,9 +532,10 @@ function(arg)
   return H;
 end );
 
-# The clique (dual geometry) graph of a collinearity graph. The optional second
-# argument allows choosing a connected component of the resulting graph.
-# The clique graph of a collinearity graph, without naming vertices.
+#############################################################################
+##
+#F  CliqueGraph( [<filter>, ]<graph>[, <list>] )
+##  
 InstallMethod( CliqueGraphCons, "without names", true,
      [NoVertexNames, IsRecord, IsList], 0,
 function(filter, G, C)
@@ -596,7 +601,10 @@ function(arg)
   return CliqueGraphCons(filt, G, C{n});
 end );
 
-# The incidence graph of a collinearity graph, without naming vertices.
+#############################################################################
+##
+#F  IncidenceGraph( [<filter>, ]<graph>[, <list>] )
+##  
 InstallMethod( IncidenceGraphCons, "without names", true,
     [NoVertexNames, IsRecord, IsList], 0,
 function(filter, G, C)
