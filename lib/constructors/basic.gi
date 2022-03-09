@@ -10,8 +10,10 @@
 ##
 
 
-# Complete multipartite graphs given a list of part sizes
-# with the full automorphism group.
+#############################################################################
+##
+#F  CompleteMultipartiteGraph2( [<filter>, ]<list>  )
+##  
 InstallOtherMethod( CompleteMultipartiteGraphCons,
      "for a list of part sizes with full automorphism group", true,
      [FullAutomorphismGroup, IsList], 0,
@@ -55,6 +57,10 @@ function(filter, m, n)
                end, DifferentParts, true);
 end );
 
+#############################################################################
+##
+#F  CompleteMultipartiteGraph2( [<filter>, ]<int>, <int>  )
+##  
 InstallMethod( CompleteMultipartiteGraphCons, "for equal part sizes",
      true, [IsObject, IsInt, IsInt], 0,
 function(filter, m, n)
@@ -80,7 +86,10 @@ function(arg)
   fi;
 end );
 
-# Cycle graphs.
+#############################################################################
+##
+#F  CycleGraph( <int> )
+##  
 InstallGlobalFunction( CycleGraph,
 n -> Graph(DihedralGroup(IsPermGroup, 2*n), [1..n],
   OnPoints, function(x, y)
@@ -88,14 +97,18 @@ n -> Graph(DihedralGroup(IsPermGroup, 2*n), [1..n],
   end, true)
 );
 
-# Cocktail party graphs.
+#############################################################################
+##
+#F  CocktailPartyGraph( <int> )
+##  
 InstallGlobalFunction( CocktailPartyGraph,
    n -> CompleteMultipartiteGraphCons(FullAutomorphismGroup, n, 2)
  );
 
-# Paley graphs.
-# For q = 1 (mod 4) a prime power, the graph is strongly regular.
-# For q = 3 (mod 4) a prime power, the graph is directed.
+#############################################################################
+##
+#F  PaleyGraph( <int> )
+##  
 InstallGlobalFunction( PaleyGraph,
 function(q)
   local dp;
@@ -130,7 +143,7 @@ function(filter, M, invt)
                end, true);
 end );
 
-# Latin square graphs from groups with full automorphism group.
+# Latin square graphs from groups with full automorphism group. Reference?
 InstallMethod( LatinSquareGraphCons,
      "for groups with full automorphism group", true,
      [FullAutomorphismGroup, IsGroup, IsBool], 0,
@@ -168,7 +181,7 @@ function(filter, G, invt)
     return Graph(dp, vcs, OnLatinSquare(dp),
                 function(x, y)
                   return x <> y and (x[1] = y[1] or x[2] = y[2]
-                                 or x[1]*x[2] = y[1]*y[2]);
+                                 or x[1]*x[2] = y[1]*y[2]); # LatinSquareAdjacency?
                  end, invt);
   fi;
 end );
