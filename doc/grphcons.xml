@@ -4,6 +4,17 @@
 In this chapter we give functions which return various graphs found in the 
 literature. 
 
+<Section Label="Vertex naming and automorphisms">
+<Heading>Vertex naming and automorphisms</Heading>
+
+TODO: Describe 
+        - Filters: NoVertexNames, FullAutomorphismGroup, and Is:type:Graph (may not affect functions?
+        - Additional info: .primality, .duality, .halfPrimality, .halfDuality
+        
+This will make function entries less convoluted.
+
+</Section>
+
 <Section Label="General constructions">
 <Heading>General constructions</Heading>
 

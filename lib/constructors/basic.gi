@@ -120,8 +120,10 @@ function(q)
       end, true);
 end );
 
-# Latin square graphs.
-# Latin square graphs from Cayley tables.
+#############################################################################
+##
+#F  LatinSquareGraph( <matrix> )
+##  
 InstallMethod( LatinSquareGraphCons,
      "for Cayley tables", true,
      [IsObject, IsList, IsBool], 0,
@@ -143,7 +145,10 @@ function(filter, M, invt)
                end, true);
 end );
 
-# Latin square graphs from groups with full automorphism group. Reference?
+#############################################################################
+##
+#F  LatinSquareGraph( [<filter>, ]<group>[, <bool>] )
+##  
 InstallMethod( LatinSquareGraphCons,
      "for groups with full automorphism group", true,
      [FullAutomorphismGroup, IsGroup, IsBool], 0,
@@ -226,7 +231,10 @@ function(arg)
   fi;
 end );
 
-# Complete Taylor graphs, i.e. complete bipartite graphs minus a matching.
+#############################################################################
+##
+#F  CompleteTaylorGraph( <integer> )
+##  
 InstallGlobalFunction( CompleteTaylorGraph,
 function(n)
   local G;
@@ -237,7 +245,10 @@ function(n)
   return G;
 end );
 
-# Haar graphs
+#############################################################################
+##
+#F  HaarGraph( [<filter>, ]<integer>[, <list>] )
+##  
 InstallMethod( HaarGraphCons, "", true, [IsObject, IsInt, IsList], 0,
 function(filter, n, adj)
   return Graph(Group([DirectProductElement([(),

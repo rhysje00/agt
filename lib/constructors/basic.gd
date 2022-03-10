@@ -8,6 +8,7 @@
 ##  Declaration file for functions that construct basic graphs. 
 ##
 
+#TODO info on srg parms etc
 #############################################################################
 ##
 #F  CompleteMultipartiteGraph2( [<filter>, ]<list>  )
@@ -57,6 +58,7 @@
 DeclareConstructor( "CompleteMultipartiteGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 
+#TODO info on parms
 #############################################################################
 ##
 #F  CycleGraph( <int> )
@@ -164,104 +166,144 @@ DeclareGlobalFunction( "CocktailPartyGraph" );
 ##
 DeclareGlobalFunction( "PaleyGraph" );
 
-# Latin square graphs. AutGroup reference?
+#TODO AutGroup reference? Info on parms
 #############################################################################
 ##
-#F  LatinSquare( <parms> )
+#F  LatinSquareGraph( <matrix> )
+#F  LatinSquareGraph( [<filter>, ]<group>[, <bool>] )
 ##  
 ##  <#GAPDoc Label="LatinSquareGraph">
 ##  <ManSection>
 ##  <Func Name="LatinSquareGraph"
-##   Arg='arg'/>
+##   Arg='mat'/>
+##  <Func Name="LatinSquareGraph"
+##   Arg='[fil, ]grp' Label="for groups"/>
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a matrix <A>mat</A>, this function returns the Latin Square graph
+##  associated to <A>mat</A>. Given a group <A>grp</A>, this function 
+##  returns the Latin square graph associated to the Cayley table of 
+##  <A>grp</A>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>
+##  Let <M>M</M> be an <M>n\times m</M> matrix. Then <E>Latin square graph</E>
+##  associated with <M>M</M> is the graph with vertex set 
+##  <M>\{1..n\}\times \{1..m\}</M>, and distinct vertices <M>(i,j),(k,\ell)</M>
+##  are adjcacent if and only if either
+##  <List>
+##    <Item><M>i=k</M>, or </Item>
+##    <Item><M>j=\ell</M>, or</Item>
+##    <Item><M>M_{i,j}=M_{k,\ell}</M>.</Item>
+##  </List>
+##  When associated to a Cayley table of a group <M>G</M>, the matrix is  
+##  indexed by <M>G\times G</M>, and the graph has vertex set <M>G\times G</M>.
+##  <P/>
+##  TODO invt change (no effect on matrix input)
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> LatinSquareGraph(CyclicGroup(4));
+##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 9, 12, 13, 15 ] ], 
+##  group := <permutation group with 8 generators>, isGraph := true, 
+##  names := [ [ <identity> of ..., <identity> of ... ], 
+##      [ <identity> of ..., f2 ], [ <identity> of ..., f1 ], 
+##      [ <identity> of ..., f1*f2 ], [ f2, <identity> of ... ], 
+##      [ f2, f2 ], [ f2, f1 ], [ f2, f1*f2 ], [ f1, <identity> of ... ], 
+##      [ f1, f2 ], [ f1, f1 ], [ f1, f1*f2 ], [ f1*f2, <identity> of ... ],
+##      [ f1*f2, f2 ], [ f1*f2, f1 ], [ f1*f2, f1*f2 ] ], order := 16, 
+##  representatives := [ 1 ], 
+##  schreierVector := [ -1, 4, 3, 8, 2, 4, 3, 8, 1, 4, 3, 7, 2, 4, 7, 8 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "LatinSquareGraphCons", [IsObject, IsObject, IsBool]);
 DeclareGlobalFunction( "LatinSquareGraph" );
 
-# Complete Taylor graphs, i.e. complete bipartite graphs minus a matching.
+#TODO info on parms
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  CompleteTaylorGraph( <integer> )
 ##  
 ##  <#GAPDoc Label="CompleteTaylorGraph">
 ##  <ManSection>
 ##  <Func Name="CompleteTaylorGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='int'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given an integer <A>int</A> greater than 1, this function returns the 
+##  complete Taylor graph with <A>2*int</A> vertices.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>n</M> be an integer greater than 1. The <E>complete Taylor graph</E>
+##  with parts of size <M>n</M> (a.k.a the <M>n</M>-crown graph) is the
+##  bipartite graph with parts <M>\{x_1\dots x_n,\},\{y_1\dots y_n\}</M>,
+##  and vertices <M>x_i,y_j</M> are adjacent if and only if <M>i\not=j</M>.
+##  <P/>
+##  The graph returned by this function has vertex set consisting of pairs 
+##  of integers. The first entry corresponds to the part the vertex is 
+##  contained in, the second entry is its index in the part.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> CompleteTaylorGraph(3);
+##rec( adjacencies := [ [ 5, 6 ] ], 
+##  group := Group([ (1,2)(4,5), (1,2,3)(4,5,6), (1,4)(2,5)(3,6) ]), 
+##  isGraph := true, isSimple := true, 
+##  names := [ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 2, 1 ], [ 2, 2 ], [ 2, 3 ] ], 
+##  order := 6, representatives := [ 1 ], 
+##  schreierVector := [ -1, 1, 2, 3, 3, 3 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "CompleteTaylorGraph" );
 
-# Haar graphs
+#TODO why have a filter?
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  HaarGraph( [<filter>, ]<integer>[, <list>] )
 ##  
 ##  <#GAPDoc Label="HaarGraph">
 ##  <ManSection>
 ##  <Func Name="HaarGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]int[, list]'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given an integer <A>int</A>, this graph returns the Haar graph of 
+##  <A>int</A>. If <A>list</A> is given, this function returns the cyclic
+##  cyclic Haar graph with symbol <A>list</A>
 ##  <P/>
-##  para2
+##  TODO insert definition(s) or reference.
 ## 
 ## 
 ## 
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> HaarGraph(11);
+##rec( adjacencies := [ [ 5, 6, 8 ] ], 
+##  group := Group([ (1,2,3,4)(5,6,7,8), (1,5)(2,8)(3,7)(4,6) ]), 
+##  isGraph := true, 
+##  names := [ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 2, 1 ], [ 2, 2 ], 
+##      [ 2, 3 ], [ 2, 4 ] ], order := 8, representatives := [ 1 ], 
+##  schreierVector := [ -1, 1, 1, 1, 2, 1, 2, 2 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "HaarGraphCons", [IsObject, IsInt, IsList]);
 DeclareGlobalFunction( "HaarGraph" );
 

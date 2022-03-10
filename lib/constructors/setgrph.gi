@@ -10,7 +10,10 @@
 ##
 
 
-# The Kneser graph on k-subsets of a set with n elements.
+#############################################################################
+##
+#F  KneserGraph( [<filter>, ]<integer> <integer>[, <bool>] )
+##  
 InstallMethod( KneserGraphCons, "as a set graph with full automorphism group",
      true, [IsSetGraph and FullAutomorphismGroup, IsInt, IsInt, IsBool], 0,
 function(filter, n, k, invt)
@@ -78,7 +81,10 @@ function(arg)
   fi;
 end );
 
-# The Odd graph of diameter d on 2*d+1 points.
+#############################################################################
+##
+#F  OddGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( OddGraph,
 function(arg)
   local j, filt;
@@ -96,7 +102,10 @@ function(arg)
   fi;
 end );
 
-# The doubled Odd graph on 2*d+1 points.
+#############################################################################
+##
+#F  DoubledOddGraph( [<filter>, ]<integer> )
+##  
 InstallMethod( DoubledOddGraphCons,
      "as a set graph with full automorphism group", true,
      [IsSetGraph and FullAutomorphismGroup, IsInt], 0,
