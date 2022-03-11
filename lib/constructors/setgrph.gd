@@ -176,55 +176,80 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 ##  we construct the full automorphism group and use it to construct the 
 ##  graph, and <K>gamma.group</K> is this group.
 ##  <P/>
+##  Let <M>d</M> be an integer where <M>d&gt;2</M>. The <E>folded Johnson
+##  graph</E> <M>\overline{J}(2d,d)</M> is the antipodal quotient of the
+##  Johnson graph <M>J(2d,d)</M> (see <Ref Func="AntipodalQuotientGraph"/>).
 ##  
-## 
-## 
-## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> FoldedJohnsonGraph(3);
+##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9, 10 ] ], 
+##  group := Group([ (1,2,3)(4,5,6,8,9,7), (2,4)(5,7)(8,10) ]), 
+##  isGraph := true, 
+##  names := [ [ [ 1, 2, 3 ], [ 4, 5, 6 ] ], [ [ 1, 5, 6 ], [ 2, 3, 4 ] ], 
+##      [ [ 1, 2, 6 ], [ 3, 4, 5 ] ], [ [ 1, 3, 4 ], [ 2, 5, 6 ] ], 
+##      [ [ 1, 3, 6 ], [ 2, 4, 5 ] ], [ [ 1, 2, 4 ], [ 3, 5, 6 ] ], 
+##      [ [ 1, 4, 5 ], [ 2, 3, 6 ] ], [ [ 1, 4, 6 ], [ 2, 3, 5 ] ], 
+##      [ [ 1, 2, 5 ], [ 3, 4, 6 ] ], [ [ 1, 3, 5 ], [ 2, 4, 6 ] ] ], 
+##  order := 10, representatives := [ 1 ], 
+##  schreierVector := [ -1, 1, 1, 2, 1, 1, 2, 1, 1, 2 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("JohnsonGraphCons", [IsObject, IsInt, IsInt]);
 DeclareConstructor("FoldedJohnsonGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "FoldedJohnsonGraph" );
 
-# The three Chang graphs with v=28, k=12, lm=6, mu=4
+#TODO check ref matches our def
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  ChangGraph( [<filter>, ]<integer> )
 ##  
 ##  <#GAPDoc Label="ChangGraph">
 ##  <ManSection>
 ##  <Func Name="ChangGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]i'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given an integer <A>i</A> in <C>[1,2,3]</C>, this function returns the 
+##  <M><A>i</A>^{th}</M> Chang graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  There are four pairwise non-isomorphic strongly regular graphs with 
+##  parameters <M>(28,12,6,4)</M>. They are the triangular graph
+##  <M>T(8)</M> (<Ref Func="TriangularGraph"/>) and the <E>Chang graphs</E>
+##  (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>).
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> ChangGraph(1);
+##rec( 
+##  adjacencies := [ [ 2, 3, 5, 6, 7, 8, 9, 10, 12, 13, 17, 22 ], 
+##      [ 8, 9, 12, 13, 14, 16, 18, 20, 21, 26, 27, 28 ] ], 
+##  group := <permutation group of size 384 with 6 generators>, 
+##  isGraph := true, isSimple := true, 
+##  names := [ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [ 1, 7 ], 
+##      [ 1, 8 ], [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 2, 7 ], 
+##      [ 2, 8 ], [ 3, 4 ], [ 3, 5 ], [ 3, 6 ], [ 3, 7 ], [ 3, 8 ], 
+##      [ 4, 5 ], [ 4, 6 ], [ 4, 7 ], [ 4, 8 ], [ 5, 6 ], [ 5, 7 ], 
+##      [ 5, 8 ], [ 6, 7 ], [ 6, 8 ], [ 7, 8 ] ], order := 28, 
+##  representatives := [ 1, 4 ], 
+##  schreierVector := [ -1, 5, 6, -2, 2, 5, 6, 1, 5, 3, 1, 1, 1, 1, 5, 2, 1, 
+##      4, 6, 1, 4, 6, 3, 3, 3, 4, 5, 6 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "ChangGraph" );
 DeclareConstructor("ChangGraphCons", [IsObject, IsInt]);

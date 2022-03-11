@@ -185,7 +185,10 @@ function(filter, n, d)
   return JohnsonGraphCons(IsSetGraph, n, d);
 end );
 
-# The folded Johnson graph.
+#############################################################################
+##
+#F  FoldedJohnsonGraph( [<filter>, ]<integer> )
+##  
 InstallMethod( FoldedJohnsonGraphCons,
      "as a set graph with full automorphism group", true,
      [IsSetGraph and FullAutomorphismGroup, IsInt], 0,
@@ -236,7 +239,10 @@ function(arg)
   fi;
 end );
 
-# The three Chang graphs with v=28, k=12, lm=6, mu=4
+#############################################################################
+##
+#F  ChangGraph( [<filter>, ]<integer> )
+##  
 InstallMethod( ChangGraphCons,
      "as a set graph with full automorphism group", true,
      [IsSetGraph and FullAutomorphismGroup, IsInt], 0,

@@ -9,8 +9,10 @@
 ##  
 ##
 
-# The Hamming graph H(d, e) of vectors with d elements
-# over an alphabet with e elements.
+#############################################################################
+##
+#F  HammingGraph2( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( HammingGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -54,7 +56,10 @@ function(arg)
   fi;
 end );
 
-# The d-dimensional hypercube
+#############################################################################
+##
+#F  HypercubeGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( HypercubeGraph,
 function(arg)
   local j, filt;
@@ -72,8 +77,10 @@ function(arg)
   fi;
 end );
     
-# The Doob graph Doob(n, d) of diameter 2*n+d
-# as a box product of n copies of the Shrikhande graph and H(d, 4).
+#############################################################################
+##
+#F  DoobGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( DoobGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -118,7 +125,10 @@ function(arg)
   fi;
 end );
 
-# The halved d-cube.
+#############################################################################
+##
+#F  HalvedCubeGraph( [<filter>, ]<integer> )
+##  
 InstallMethod( HalvedCubeGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt], 0,
@@ -175,7 +185,10 @@ function(arg)
   fi;
 end );
 
-# The folded d-cube.
+#############################################################################
+##
+#F  FoldedCubeGraph( [<filter>, ]<integer> )
+##  
 InstallMethod( FoldedCubeGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt], 0,
@@ -293,12 +306,13 @@ function(arg)
   fi;
 end );
 
-# The Brouwer graph Br(q) of pairs of 3-dimensional vectors over F_q,
-# with two pairs being adjacent whenever the difference of the first vectors
-# equals the cross product of the second vectors.
+#############################################################################
+##
+#F  BrouwerGraph( [<filter>, ]<integer> )
+##  
 
 # Convert an integer to a bitstring of length w
-# Temporarily placed here for use in the Brouwer graph constructor
+# TODO Temporarily placed here for use in the Brouwer graph constructor
 BindGlobal("IntToBits", function(x, w)
     return List([1..w], i -> Int(x / 2^(w-i)) mod 2);
 end);
@@ -385,8 +399,10 @@ function(arg)
   fi;
 end );
 
-# The Pasechnik graph Pa(q) as the extended bipartite double
-# of the Brouwer graph Br(q).
+#############################################################################
+##
+#F  PasechnikGraph( [<filter>, ]<integer> )
+##  
 InstallMethod( PasechnikGraphCons, "as a vector graph", true,
      [IsVectorGraph, IsInt], 0,
 function(filter, q)
