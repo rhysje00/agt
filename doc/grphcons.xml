@@ -50,7 +50,7 @@ This will make function entries less convoluted.
 
 <#Include Label="CliqueGraph">
 
-<#Include Label="IncidenceGraph">
+<#Include Label="AGT_IncidenceGraph">
 
 
 </Section>

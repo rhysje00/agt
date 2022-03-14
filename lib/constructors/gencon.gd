@@ -791,13 +791,15 @@ DeclareGlobalFunction( "SubspaceGraph" );
 DeclareConstructor("CliqueGraphCons", [IsObject, IsRecord, IsList]);
 DeclareGlobalFunction( "CliqueGraph" );
 
+# TODO this is in conflict with fining package. Not good as use of both packages
+# quite likely.
 #############################################################################
 ##
 #F  IncidenceGraph( [<filter>, ]<graph>[, <list>] )
 ##  
-##  <#GAPDoc Label="IncidenceGraph">
+##  <#GAPDoc Label="AGT_IncidenceGraph">
 ##  <ManSection>
-##  <Func Name="IncidenceGraph"
+##  <Func Name="AGT_IncidenceGraph"
 ##   Arg='[fil, ]gamma[, ls]'/>
 ##  <Returns>A graph.</Returns>
 ##
@@ -853,4 +855,4 @@ DeclareGlobalFunction( "CliqueGraph" );
 ##  <#/GAPDoc>
 ##
 DeclareConstructor("IncidenceGraphCons", [IsObject, IsRecord, IsList]);
-DeclareGlobalFunction( "IncidenceGraph" );
+DeclareGlobalFunction( "AGT_IncidenceGraph" );

@@ -433,7 +433,10 @@ function(arg)
   fi;
 end );
 
-# The additive symplectic cover of the complete graph on q^{2n} vertices.
+#############################################################################
+##
+#F  AdditiveSymplecticCoverGraph( [<filter>, ]<integer>, <integer>[, <integer>] )
+##  
 InstallMethod( AdditiveSymplecticCoverGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt, IsInt, IsInt], 0,
@@ -499,6 +502,10 @@ function(filter, q, n, h)
   return AdditiveSymplecticCoverGraphCons(IsVectorGraph, q, n, h);
 end );
 
+#############################################################################
+##
+#F  AdditiveSymplecticCoverGraph( [<filter>, ]<graph>[, <integer>] )
+##  
 InstallOtherMethod( AdditiveSymplecticCoverGraphCons,
      "as a code graph for quotients given a graph", true,
      [IsVectorGraph, IsRecord, IsInt], 0,
@@ -568,8 +575,10 @@ function(arg)
   Error("usage: AdditiveSymplecticCoverGraph( [<filter>, ]{<int>, <int>[, <int>] |<graph>, <int> })");
 end );
 
-# The multiplicative symplectic cover of the complete graph on q+1 vertices.
-# It is distance-regular when m divides q-1 and either q or m is even.
+#############################################################################
+##
+#F  MultiplicativeSymplecticCoverGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( MultiplicativeSymplecticCoverGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -638,8 +647,10 @@ function(arg)
   fi;
 end );
 
-# The affine polar graph VO^{(+/-)}(d, q)
-# with respect to a nondegenerate quadratic form.
+#############################################################################
+##
+#F  AffinePolarGraphVO( [<integer>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( AffinePolarGraphVO,
 function(arg)
   local d, e, q, B, G, Q, V, dp;
@@ -656,8 +667,8 @@ function(arg)
     q := arg[3];
   fi;
   G := GO(e, d, q);
-  dp := DirectProduct(Concatenation([G],
-        ListWithIdenticalEntries(d, FieldAdditionPermutationGroup(q))));
+  dp := DirectProduct(Concatenation([G, Group(Z(q))],
+           ListWithIdenticalEntries(d, FieldAdditionPermutationGroup(q))));
   Q := InvariantQuadraticForm(G).matrix;
   return Graph(dp, Elements(GF(q)^d), OnAffine(q, d, dp), function(x, y)
                   return x <> y and IsZero((x-y)*Q*(x-y));
@@ -666,6 +677,7 @@ end );
 
 # The affine polar graph VNO^{(+/-)}(d, q)
 # with respect to a nondegenerate quadratic form.
+# TODO q even handling
 InstallGlobalFunction( AffinePolarGraphVNO,
 function(arg)
   local d, e, q, B, G, H, Q, V, dp;
@@ -682,8 +694,8 @@ function(arg)
     q := arg[3];
   fi;
   G := GO(e, d, q);
-  dp := DirectProduct(Concatenation([G],
-        ListWithIdenticalEntries(d, FieldAdditionPermutationGroup(q))));
+  dp := DirectProduct(Concatenation([G, Group(Z(q))],
+            ListWithIdenticalEntries(d, FieldAdditionPermutationGroup(q))));  
   Q := InvariantQuadraticForm(G).matrix;
   return Graph(dp, Elements(GF(q)^d), OnAffine(q, d, dp),
               function(x, y)

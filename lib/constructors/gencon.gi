@@ -657,7 +657,7 @@ function(filter, G, C)
 end );
 
 # The incidence graph of a collinearity graph.
-InstallGlobalFunction( IncidenceGraph,
+InstallGlobalFunction( AGT_IncidenceGraph,
 function(arg)
   local C, G, H, j, n, filt;
   if IsAFilter(arg[1]) then

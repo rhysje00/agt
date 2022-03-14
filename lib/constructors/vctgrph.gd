@@ -343,6 +343,7 @@ DeclareConstructor( "PasechnikGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "PasechnikGraph" );
 
 # The additive symplectic cover of the complete graph on q^{2n} vertices.
+# TODO need reference and/or definition, and to include second usage
 #############################################################################
 ##
 #F  AdditiveSymplecticCoverGraph( [<filter>, ]<integer>, <integer>[, <integer>] )
@@ -354,132 +355,179 @@ DeclareGlobalFunction( "PasechnikGraph" );
 ##   Arg='[fil, ]q, n[, h]'/>
 ##  <Func Name="AdditiveSymplecticCoverGraph"
 ##   Arg='[fil, ]gamma[, h]' Label="for a graph"/>
-##  <Returns>A .</Returns>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>n</A>, this function 
+##  returns the additive symplectic cover graph associated with the symplectic
+##  invariant bilinear form acting on <M>\mathbb{F}_{<A>q</A>}^{2<A>n</A>}</M>. 
+##  If <A>h</A> is a non-negative integer, this function returns the additive
+##  symplectic cover graph defined as above, modulo a <A>h</A>-dimensional 
+##  subspace of <M>\mathbb{F}_{<A>q</A>}</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>
+##  Let <M>q</M> be a prime power and <M>n</M> and positive integer. Let
+##  <M>K</M> be a <M>h</M>-dimensional subspace of <M>\mathbb{F}_q</M>, and 
+##  denote the cosets of <M>K</M> in <M>\mathbb{F}_q</M> by <M>\overline{K}</M>.
+##  Let <M>B</M> be the symplectic invariant bilinear form acting on 
+##  <M>\mathbb{F}_q^{2n}</M>. 
+##  <P/>
+##  Then the <E>additive symplectic cover graph</E> with respect to these is the 
+##  graph with vertex set <M>\overline{K}\times \mathbb{F}_q^{2n}</M>, and distinct 
+##  vertices <M>(a+K,x),(b+K,y)</M> are adjacent if and only if <M>B(x,y)\in a-b+K</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=AdditiveSymplecticCoverGraph(2,2);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 15 ], [ 1, 6, 8 ], [ 8, 6, 1 ], [ 15, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("AdditiveSymplecticCoverGraphCons",
                     [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "AdditiveSymplecticCoverGraph" );
 
 # The multiplicative symplectic cover of the complete graph on q+1 vertices.
 # It is distance-regular when m divides q-1 and either q or m is even.
+# TODO need reference and/or definition, 
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  MultiplicativeSymplecticCoverGraph( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="MultiplicativeSymplecticCoverGraph">
 ##  <ManSection>
 ##  <Func Name="MultiplicativeSymplecticCoverGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]q, m'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>m</A>, this function 
+##  returns the multiplicative symplectic cover graph associated with the symplectic
+##  invariant bilinear form acting on <M>\mathbb{F}_{<A>q</A>}^{2}</M> and  
+##  multiplicative subgroup of <M>\mathbb{F}_{<A>q</A>}</M> of order <A>m</A>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>
+##  Let <M>q</M> be a prime power and <M>m</M> and positive integer. Let
+##  <M>K</M> be a multiplicative subgroup of <M>\mathbb{F}_q</M> of order <M>m</M> 
+##  Let <M>B</M> be the symplectic invariant bilinear form acting on 
+##  <M>\mathbb{F}_q^{2}</M>. 
+##  <P/>
+##  Then the <E>multiplicative symplectic cover graph</E> with respect to these is the 
+##  graph with vertex set <M>K\mathbb{F}_q^{2}\setminus \{(0,0)\}</M>, and distinct 
+##  vertices <M>Kx,Ky</M> are adjacent if and only if <M>B(x,y)\in K</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=MultiplicativeSymplecticCoverGraph(9,4);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 9 ], [ 1, 4, 4 ], [ 4, 4, 1 ], [ 9, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("MultiplicativeSymplecticCoverGraphCons",
                     [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "MultiplicativeSymplecticCoverGraph" );
 
-# The affine polar graph VO^{(+/-)}(d, q)
-# with respect to a nondegenerate quadratic form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  AffinePolarGraphVO( [<integer>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="AffinePolarGraphVO">
 ##  <ManSection>
 ##  <Func Name="AffinePolarGraphVO"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[e, ]d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the affine polar graph <M>VO_{<A>d</A>}(<A>q</A>)</M>. If 
+##  <A>e</A> is given and lies in <C>[0,-1,1]</C>, then this function returns
+##  the affine polar graph <M>VO_{<A>d</A>}^{<A>e</A>}(<A>q</A>)</M> with 
+##  respect to a parabolic, elliptic and hyperbolic quadratic form, 
+##  repectively. If <A>e</A> is not given, the function works as if 
+##  <A>e</A> is <C>0</C>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>Q</M> be a nondegenerate quadratic form acting on  
+##  <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
+##  elliptic let <M>e=-1</M> or hyperbolic let <M>e=1</M>. 
+##  <P/>
+##  The <E>affine polar graph</E> <M>VO_{d}^{e}(q)</M> is the graph with 
+##  vertex set <M>\mathbb{F}_q^{d}</M>, and distinct vertices <M>x,y</M>
+##  are adjacent if and only if <M>Q(x-y)=0</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> AffinePolarGraphVO(1,2,4);
+##rec( adjacencies := [ [ 2, 3, 4, 5, 9, 13 ] ], 
+##  group := <permutation group with 7 generators>, isGraph := true, 
+##  names := [ [ 0*Z(2), 0*Z(2) ], [ 0*Z(2), Z(2)^0 ], [ 0*Z(2), Z(2^2) ], 
+##      [ 0*Z(2), Z(2^2)^2 ], [ Z(2)^0, 0*Z(2) ], [ Z(2)^0, Z(2)^0 ], 
+##      [ Z(2)^0, Z(2^2) ], [ Z(2)^0, Z(2^2)^2 ], [ Z(2^2), 0*Z(2) ], 
+##      [ Z(2^2), Z(2)^0 ], [ Z(2^2), Z(2^2) ], [ Z(2^2), Z(2^2)^2 ], 
+##      [ Z(2^2)^2, 0*Z(2) ], [ Z(2^2)^2, Z(2)^0 ], [ Z(2^2)^2, Z(2^2) ], 
+##      [ Z(2^2)^2, Z(2^2)^2 ] ], order := 16, representatives := [ 1 ], 
+##  schreierVector := [ -1, 6, 7, 1, 4, 6, 7, 7, 5, 6, 7, 1, 5, 6, 7, 1 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "AffinePolarGraphVO" );
 
-# The affine polar graph VNO^{(+/-)}(d, q)
-# with respect to a nondegenerate quadratic form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  AffinePolarGraphVNO( [<integer>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="AffinePolarGraphVNO">
 ##  <ManSection>
 ##  <Func Name="AffinePolarGraphVNO"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[e, ]d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the affine polar graph <M>VNO_{2<A>d</A>}(<A>q</A>)</M>. If 
+##  <A>e</A> is given and lies in <C>[0,-1,1]</C>, then this function returns
+##  the affine polar graph <M>VNO_{<A>d</A>}^{<A>e</A>}(<A>q</A>)</M> with 
+##  respect to a parabolic, elliptic and hyperbolic quadratic form, 
+##  repectively. If <A>e</A> is not given, the function works as if 
+##  <A>e</A> is <C>0</C>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>Q</M> be a nondegenerate quadratic form acting on  
+##  <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
+##  elliptic let <M>e=-1</M> or hyperbolic let <M>e=1</M>. 
+##  <P/>
+##  The <E>affine polar graph</E> <M>VNO_{d}^{e}(q)</M> is the graph with 
+##  vertex set <M>\mathbb{F}_q^{d}</M>, and distinct vertices <M>x,y</M>
+##  are adjacent if and only if <M>Q(x-y)</M> is a nonzero square.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=AffinePolarGraphVNO(1,4,3);;
+##gap> SRGParameters(gamma);
+##[ 81, 24, 9, 6 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "AffinePolarGraphVNO" );
