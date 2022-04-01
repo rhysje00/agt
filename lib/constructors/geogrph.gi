@@ -9,8 +9,10 @@
 ##  
 ##
 
-
-# The incidence graph of a Desarguesian projective plane.
+#############################################################################
+##
+#F  DesarguesianPlaneIncidenceGraph( <integer> )
+##  
 InstallGlobalFunction( DesarguesianPlaneIncidenceGraph,
 function(q)
   local G, V, dp;
@@ -49,12 +51,10 @@ function(q)
   return G;
 end );
 
-# The incidence graph of a Hughes plane. If the second parameter n is zero or
-# unspecified, a Dickson semifield of order q^2 is used and the first parameter
-# q must be an odd prime power. Otherwise, an exceptional near-field of order
-# q^2 is used, so q must be 5, 7, 11, 23, 29, or 59. As there are two
-# exceptional near-fields of order 11^2, setting n to 1 or 2 chooses one of
-# these semifields when q = 11.
+#############################################################################
+##
+#F  HughesPlaneIncidenceGraph( <integer>[, <integer>] )
+##  
 InstallGlobalFunction( HughesPlaneIncidenceGraph,
 function(arg)
   local c, n, q, A, B, F, G, H, P, df, dp, th, mul, rdiv, gens, orth;
@@ -127,28 +127,36 @@ function(arg)
   return H;
 end );
 
-# The collinearity graph of the generalized quadrangle Q(d, q)
-# of order (q, q^{d-3}).
+#############################################################################
+##
+#F  GeneralizedQuadrangleQ( <integer>, <integer> )
+##  
 InstallGlobalFunction( GeneralizedQuadrangleQ,
 function(d, q)
   return PolarGraphO(4-d, d+1, q);
 end );
 
-# The collinearity graph of the generalized quadrangle H(d, r^2)
-# of order (r^2, r^{d-5/2}).
+#############################################################################
+##
+#F  GeneralizedQuadrangleH( <integer>, <integer> )
+##  
 InstallGlobalFunction( GeneralizedQuadrangleH,
 function(d, r)
   return PolarGraphU(d+1, r);
 end );
 
-# The collinearity graph of the generalized quadrangle W(q) of order (q, q).
+#############################################################################
+##
+#F  GeneralizedQuadrangleW( <integer> )
+##  
 InstallGlobalFunction( GeneralizedQuadrangleW,
 q -> PolarGraphSp(4, q)
 );
 
-# The collinearity graph of the generalized quadrangle T_d(O) of order
-# (q, q^{d-1}) derived from the projective space PG(d+1, q) containing the
-# oval or ovoid O in a hyperplane.
+#############################################################################
+##
+#F  GeneralizedQuadrangleT( <integer>, <integer>, <list>[, <group>] )
+##  
 InstallGlobalFunction( GeneralizedQuadrangleT,
 function(arg)
   local d, o, q, G, H, O, V, gr;
@@ -213,9 +221,10 @@ function(arg)
   return gr;
 end );
 
-# The collinearity graph of the generalized quadrangle T*(O) of order
-# (2^h-1, 2^h+1) derived from the projective space PG(3, 2^h) containing the
-# hyperoval O in a hyperplane.
+#############################################################################
+##
+#F  GeneralizedQuadrangleTstar( <integer>, <list>[, <group>] )
+##  
 InstallGlobalFunction( GeneralizedQuadrangleTstar,
 function(arg)
   local o, q, G, H, O, V, gr;
@@ -255,9 +264,10 @@ function(arg)
   return gr;
 end );
 
-# The collinearity graph of the generalized quadrangle P(G, z) of
-# order (s-1, s+1) derived by removing the neighbourhood of a regular point z
-# of a generalized quadrangle G of order (s, s).
+#############################################################################
+##
+#F  GeneralizedQuadrangleP( <graph>, <vertex> )
+##  
 InstallGlobalFunction( GeneralizedQuadrangleP,
 function(Q, z)
   local H, P;

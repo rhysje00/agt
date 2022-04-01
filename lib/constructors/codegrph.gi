@@ -9,7 +9,10 @@
 ##  
 ##
 
-# De Caen, Mathon and Moorhouse's Preparata graph Pr(t, e)
+#############################################################################
+##
+#F  PreparataGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( PreparataGraphCons,
      "as a code graph with full automorphism group", true,
      [IsCodeGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -167,8 +170,10 @@ function(arg)
   fi;
 end );
 
-# The coset graph of a Kasami code over an odd power extension
-# of a binary field.
+#############################################################################
+##
+#F  KasamiGraph( <integer>, <integer>, <integer> )
+##  
 InstallGlobalFunction( KasamiGraph,
 function(i, j, m)
   local q, s, t, dp, G;
@@ -183,15 +188,19 @@ function(i, j, m)
         end, true);
 end );
 
-# The coset graph of an extended Kasami code over an odd power extension
-# of a binary field.
+#############################################################################
+##
+#F  ExtendedKasamiGraph( <integer>, <integer>, <integer> )
+##  
 InstallGlobalFunction( ExtendedKasamiGraph,
 function(i, j, m)
   return ExtendedBipartiteDoubleGraph(KasamiGraph(i, j, m));
 end );
 
-# The coset graph of a Kasami code over a quadratic extension
-# of a binary field.
+#############################################################################
+##
+#F  QuadraticKasamiGraph( <integer> )
+##  
 InstallGlobalFunction( QuadraticKasamiGraph,
 function(i)
   local q, s, t, dp;
@@ -207,8 +216,10 @@ function(i)
         end, true);
 end );
 
-# The coset graph of an extended Kasami code over a quadratic extension
-# of a binary field.
+#############################################################################
+##
+#F  ExtendedQuadraticKasamiGraph( <integer> )
+##  
 InstallGlobalFunction( ExtendedQuadraticKasamiGraph,
 function(i)
   return ExtendedBipartiteDoubleGraph(QuadraticKasamiGraph(i));

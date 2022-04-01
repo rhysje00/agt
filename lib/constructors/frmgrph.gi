@@ -9,7 +9,10 @@
 ##  
 ##
 
-
+#############################################################################
+##
+#F  BilinearFormsGraph( [<filter>, ]<int>, <int>, <int> )
+##  
 # The bilinear forms graph H_q(d, e) of matrices over GF(r^2).
 InstallMethod( BilinearFormsGraphCons,
      "as a forms graph with full automorphism group", true,
@@ -64,7 +67,10 @@ function(arg)
   fi;
 end );
 
-# The Hermitean forms graph Her(d, r) of Hermitean matrices over GF(r^2).
+#############################################################################
+##
+#F  HermiteanFormsGraph( [<filter>, ]<int>, <int> )
+##  
 InstallMethod( HermiteanFormsGraphCons, "as a forms graph", true,
      [IsFormsGraph, IsInt, IsInt], 0,
 function(filter, d, r)

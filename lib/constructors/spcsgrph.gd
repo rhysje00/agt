@@ -8,143 +8,187 @@
 ##  Declaration file for functions that construct subspace graphs. 
 ##
 
-# The Grassmann graph J_q(n, d) of d-dimensional subspaces of F_q^n.
+#TODO n>=d
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  GrassmannGraph( [<filter>, ]<int>, <int>, <int> )
 ##  
-##  <#GAPDoc Label="GrassmanGraph">
+##  <#GAPDoc Label="GrassmannGraph">
 ##  <ManSection>
-##  <Func Name="GrassmanGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##  <Func Name="GrassmannGraph"
+##   Arg='[fil, ]q, n, d'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integers <A>n,d</A>, this 
+##  function returns the Grassmann graph 
+##  <M>J_{<A>q</A>}(<A>n</A>,<A>d</A>)</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>n,d</M> be positive integers. 
+##  The <E>Grassmann graph</E> <M>J_q(n,d)</M> is the graph with vertex-set 
+##  the <M>d</M>-dimensional subspaces of <M>\mathbb{F}_q^n</M>,  and 
+##  distinct vertices <M>U,V</M> are adjacent if and only if 
+##  <M>U\cap V</M> has dimension <M>d-1</M>. 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=GrassmannGraph(4,4,2);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 100 ], [ 1, 35, 64 ], [ 25, 75, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "GrassmannGraphCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "GrassmannGraph" );
 
-# The doubled Grassmann graph 2J_q(2d+1, d) of d- and (d+1)-dimensional
-# subspaces of F_q^{2d+1}.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DoubledGrassmannGraph( [<filter>, ]<int>, <int> )
 ##  
-##  <#GAPDoc Label="DoubledGrassmanGraph">
+##  <#GAPDoc Label="DoubledGrassmannGraph">
 ##  <ManSection>
-##  <Func Name="DoubledGrassmanGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##  <Func Name="DoubledGrassmannGraph"
+##   Arg='[fil, ]q, d'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this 
+##  function returns the doubled Grassmann graph 
+##  <M>2J_{<A>q</A>}(2<A>d</A>+1,<A>d</A>)</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>d</M> be a positive integer. 
+##  The <E>doubled Grassmann graph</E> <M>J_q(n,d)</M> is the graph with 
+##  vertex-set the <M>d</M>-dimensional and <M>d+1</M>-dimensional subspaces 
+##  of <M>\mathbb{F}_q^n</M>, and distinct vertices <M>U,V</M> are adjacent if 
+##  and only if <M>U\subseteq V</M> or <M>V\subseteq U</M>. This graph is 
+##  isomorphic to the bipartite double of the Grassmann graph 
+##  <M>J_q(2d+1,d)</M> (See <Ref Func="BipartiteDoubleGraph"/> and 
+##  <Ref Func="GrassmannGraph"/>).
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=DoubledGrassmannGraph(3,1);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 4 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 4, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "DoubledGrassmannGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DoubledGrassmannGraph" );
 
-# The twisted Grassmann graph TG_d(q) of (d+1)-dimensional subspaces of
-# F_q^{2d+1} which are not subspaces of a hyperplane H, and (d-1)-dimensional
-# subspaces of H.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  TwistedGrassmannGraph( [<filter>, ]<int>, <int> )
 ##  
-##  <#GAPDoc Label="TwistedGrassmanGraph">
+##  <#GAPDoc Label="TwistedGrassmannGraph">
 ##  <ManSection>
-##  <Func Name="TwistedGrassmanGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##  <Func Name="TwistedGrassmannGraph"
+##   Arg='[fil, ]q, d'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this 
+##  function returns the twisted Grassmann graph 
+##  <M>\tilde{J}_{<A>q</A>}(2<A>d</A>+1, <A>d</A>)</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power, <M>d</M> be a positive integer and 
+##  <M>H</M> be a fixed hyperplane in <M>\mathbb{F}_q^{2d+1}</M>. For the
+##  vector space <M>V=\mathbb{F}_q^{2d+1}</M>, let <M>A</M> be the set of 
+##  <M>d+1</M>-dimensional subspaces not contained in <M>H</M>, and <M>B</M> 
+##  be all <M>d-1</M>-dimensional subspaces in <M>V</M>. The <E>twisted 
+##  Grassmann graph</E> <M>\tilde{J}_q(2d+1,d)</M> has 
+##  vertex-set <M>A\cup B</M>, and distinct vertices <M>U,W</M> are adjacent ##  if and only if one of the following is true. 
+##  <List>
+##    <Item><M>U,W\in A</M> and <M>U\cap W</M> has dimension <M>d</M>, or 
+##    </Item>
+##    <Item><M>U\in A, W\in B</M> and <M>B\subset A</M>, or</Item>
+##    <Item><M>U, W\in B</M> and <M>U\cap W</M> has dimension <M>d-2</M>.
+##    </Item>
+##  </List>
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=TwistedGrassmannGraph(2,2);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 42 ], [ 1, 17, 24 ], [ 9, 33, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "TwistedGrassmannGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "TwistedGrassmannGraph" );
 
 # The polar graph O^{(+/-)}(d, q) of isotropic lines of F_q^d
 # with respect to a nondegenerate quadratic form.
+##  isotropic lines = vectors, Elements[2] is non-zero , B is bilinear form 
+##  use InvariantBilinearForm?
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  PolarGraphO( [<filter>, <integer>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="PolarGraphO">
 ##  <ManSection>
 ##  <Func Name="PolarGraphO"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[e, ]d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the polar graph <M>O(<A>d</A>, <A>q</A>)</M>. If 
+##  <A>e</A> is given and lies in <C>[0,-1,1]</C>, then this function returns
+##  the affine polar graph <M>O^{<A>e</A>}(<A>d</A>, <A>q</A>)</M> with 
+##  respect to a parabolic, elliptic and hyperbolic quadratic form, 
+##  repectively. If <A>e</A> is not given, the function works as if 
+##  <A>e</A> is <C>0</C>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>Q</M> be a nondegenerate quadratic form acting on  
+##  <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
+##  elliptic let <M>e=-1</M> or hyperbolic let <M>e=1</M>. Further, let 
+##  <M>B</M> be the bilinear form associated with the quadratic form <M>Q</M>.
+##  <P/>
+##  The <E>polar graph</E> <M>O^{e}(d,q)</M> has vertex-set consisting of the
+##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
+##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=PolarGraphO(5,3);;
+##gap> SRGParameters(gamma);
+##[ 40, 12, 2, 4 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "PolarGraphOCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphO" );
 
@@ -152,34 +196,42 @@ DeclareGlobalFunction( "PolarGraphO" );
 # with respect to a nondegenerate quadratic form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  PolarGraphNOorth( [<filter>, ]<integer>, <integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="PolarGraphNOorth">
 ##  <ManSection>
 ##  <Func Name="PolarGraphNOorth"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='e, d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A>, positive integer <A>d</A> and <A>e</A> in
+##  <C>[-1,1]</C>, this function returns the polar graph 
+##  <M>NO^{<A>e</A>}(<A>d</A>, <A>q</A>)</M> with respect to an elliptic and 
+##  hyperbolic quadratic form, repectively.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>Q</M> be an elliptic or hyperbolic nondegenerate quadratic form acting 
+##  on <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is elliptic let <M>e=-1</M> and 
+##  if it is hyperbolic let <M>e=1</M>. Further, let <M>B</M> be the bilinear
+##  form associated with the quadratic form <M>Q</M>.
+##  <P/>
+##  The <E>polar graph</E> <M>NO^{e}(d,q)</M> has vertex-set consisting of the
+##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  <M>Q(u)\not=0</M> for all <M>u\in U</M> (i.e. the nonisotropic lines in 
+##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=PolarGraphNOorth(1,5,3);;
+##gap> SRGParameters(gamma);
+##[ 45, 12, 3, 3 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "PolarGraphNOorthCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphNOorth" );
 
@@ -187,174 +239,210 @@ DeclareGlobalFunction( "PolarGraphNOorth" );
 # with respect to a nondegenerate symplectic form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  PolarGraphSp( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="PolarGraphSp">
 ##  <ManSection>
 ##  <Func Name="PolarGraphSp"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the polar graph <M>Sp(<A>d</A>, <A>q</A>)</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
+##  <M>\mathbb{F}_{q}^{d}</M>.
+##  <P/>
+##  The <E>polar graph</E> <M>Sp(d,q)</M> has vertex-set consisting of the
+##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
+##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=PolarGraphSp(4,5);;
+##gap> SRGParameters(gamma);
+##[ 156, 30, 4, 6 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "PolarGraphSpCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphSp" );
 
 # The polar graph U(d, r) of isotropic lines of F_{r^2}^d
 # with respect to a nondegenerate Hermitean form.
+## In function, seems to calculate unnecessary things?
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  PolarGraphU( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="PolarGraphU">
 ##  <ManSection>
 ##  <Func Name="PolarGraphU"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='d, r'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>r</A> and positive integer <A>d</A>, this function 
+##  returns the polar graph <M>U(<A>d</A>, <A>r</A>)</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>r</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>B</M> be a nondegenerate hermitean form acting on  
+##  <M>\mathbb{F}_{r^2}^{d}</M>.
+##  <P/>
+##  The <E>polar graph</E> <M>U(d,r)</M> has vertex-set consisting of the
+##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
+##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=PolarGraphU(4,2);;
+##gap> SRGParameters(gamma);    
+##[ 45, 12, 3, 3 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "PolarGraphUCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphU" );
 
-# The dual polar graph B_d(q) of isotropic d-dimensional subspaces of
-# F_q^{2d+1} with respect to a nondegenerate quadratic form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DualPolarGraphB( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="DualPolarGraphB">
 ##  <ManSection>
 ##  <Func Name="DualPolarGraphB"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the dual polar graph <M>B_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>Q</M> be a nondegenerate parabolic quadratic form acting on  
+##  <M>\mathbb{F}_{q}^{2d+1}</M>.
+##  <P/>
+##  The <E>dual polar graph</E> <M>B_d(q)</M> has vertex-set consisting of the
+##  <M>d</M>-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{2d+1}</M> such 
+##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
+##  in <M>\mathbb{F}_q^{2d+1}</M>). Any two distinct vertices <M>U,W</M>
+##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=DualPolarGraphB(2,4);;
+##gap> SRGParameters(gamma);
+##[ 85, 20, 3, 5 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "DualPolarGraphBCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphB" );
 
-# The dual polar graph C_d(q) of isotropic d-dimensional subspaces of
-# F_q^{2d} with respect to a nondegenerate symplectic form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DualPolarGraphC( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="DualPolarGraphC">
 ##  <ManSection>
 ##  <Func Name="DualPolarGraphC"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the dual polar graph <M>C_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
+##  <M>\mathbb{F}_{q}^{2d}</M>.
+##  <P/>
+##  The <E>dual polar graph</E> <M>C_d(q)</M> has vertex-set consisting of the
+##  <M>d</M>-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{2d}</M> such 
+##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
+##  in <M>\mathbb{F}_q^{2d}</M>). Any two distinct vertices <M>U,W</M>
+##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=DualPolarGraphC(2,5);;
+##gap> SRGParameters(gamma);        
+##[ 156, 30, 4, 6 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "DualPolarGraphCCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphC" );
 
-# The dual polar graph D_d(q) of isotropic d-dimensional subspaces of
-# F_q^{2d} with respect to a nondegenerate quadratic form of Witt index d.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DualPolarGraphD( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="DualPolarGraphD">
 ##  <ManSection>
 ##  <Func Name="DualPolarGraphD"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the dual polar graph <M>D_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>Q</M> be a nondegenerate hyperbolic quadratic form acting on  
+##  <M>\mathbb{F}_{q}^{2d}</M>.
+##  <P/>
+##  The <E>dual polar graph</E> <M>D_d(q)</M> has vertex-set consisting of the
+##  <M>d</M>-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{2d}</M> such 
+##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
+##  in <M>\mathbb{F}_q^{2d}</M>). Any two distinct vertices <M>U,W</M>
+##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=DualPolarGraphD(4,2);;
+##gap> GlobalParameters(gamma);     
+##[ [ 0, 0, 15 ], [ 1, 0, 14 ], [ 3, 0, 12 ], [ 7, 0, 8 ], [ 15, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "DualPolarGraphDCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphD" );
 
@@ -362,104 +450,137 @@ DeclareGlobalFunction( "DualPolarGraphD" );
 # F_q^{2d+2} with respect to a nondegenerate quadratic form of Witt index d.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DualPolarGraph2D( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="DualPolarGraph2D">
 ##  <ManSection>
 ##  <Func Name="DualPolarGraph2D"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]d, q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
+##  returns the dual polar graph <M>^2D_{<A>d</A>+1}(<A>q</A>)</M>. 
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>Q</M> be a nondegenerate elliptic quadratic form acting on  
+##  <M>\mathbb{F}_{q}^{2d+2}</M>.
+##  <P/>
+##  The <E>dual polar graph</E> <M>^2D_{d+1}(q)</M> has vertex-set consisting 
+##  of the <M>d</M>-dimensional subspaces <M>U</M> of 
+##  <M>\mathbb{F}_q^{2d+2}</M> such that <M>Q(u)=0</M> for all <M>u\in U</M> 
+##  (i.e. totally isotropic subspaces in <M>\mathbb{F}_q^{2d+2}</M>). Any two 
+##  distinct vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> 
+##  has dimension <M>d-1</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=DualPolarGraph2D(2,2);;
+##gap> SRGParameters(gamma);
+##[ 45, 12, 3, 3 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "DualPolarGraph2DCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraph2D" );
 
-# The dual polar graph ^2A_{e-1}(r) of isotropic [e/2]-dimensional
-# subspaces of F_{r^2}^e with respect to a nondegenerate Hermitean form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DualPolarGraph2A( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="DualPolarGraph2A">
 ##  <ManSection>
 ##  <Func Name="DualPolarGraph2A"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]e, r'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>r</A> and positive integer <A>e</A>, this function 
+##  returns the dual polar graph <M>^2A_{<A>e</A>-1}(<A>r</A>)</M>. 
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  <M>B</M> be a nondegenerate hermitean form acting on  
+##  <M>\mathbb{F}_{r^2}^{e}</M>.
+##  <P/>
+##  The <E>dual polar graph</E> <M>^2A_{e-1}(r)</M> has vertex-set consisting 
+##  of the <M>\lfloor e/2 \rfloor</M>-dimensional subspaces <M>U</M> of 
+##  <M>\mathbb{F}_{r^2}^{e}</M> such that <M>B(u,w)=0</M> for all 
+##  <M>u,w\in U</M> (i.e. totally isotropic subspaces in 
+##  <M>\mathbb{F}_{r^2}^{e}</M>). Any two distinct vertices <M>U,W</M> are 
+##  adjacent if and only if <M>U\cap W</M> has dimension 
+##  <M>\lfloor e/2 \rfloor -1</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=DualPolarGraph2A(4,3);;
+##gap> SRGParameters(gamma);
+##[ 112, 30, 2, 10 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "DualPolarGraph2ACons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraph2A" );
 
-# The Doro graph of nonisotropic 1-dimensional subspaces of F_q^4 with respect
-# to a nondegenerate quadratic form. It is distance-regular for q = 4, 5.
+#TODO unsure of the definition (elliptic, hyperbolic line)
+# implemented uses {[4]} is garunteed Nonisotropic?
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DoroGraph( [<filter>, ]q )
 ##  
 ##  <#GAPDoc Label="DoroGraph">
 ##  <ManSection>
 ##  <Func Name="DoroGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]q'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A>, this function returns the Doro graoh 
+##  <M>Doro(<A>q</A>)</M>. 
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>q</M> be a prime power and <M>Q</M> be a nondegenerate elliptic 
+##  quadratic form acting on <M>\mathbb{F}_{q}^{4}</M>.
+##  <P/>
+##  The <E>Doro graph</E> <M>Doro(q)</M> has vertex-set consisting 
+##  of the 1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{4}</M> such 
+##  that <M>Q(u)\not=0</M> for all non-zero <M>u\in U</M> (i.e. nonisotropic 
+##  subspaces in <M>\mathbb{F}_q^{4}</M>). Any two distinct vertices 
+##  <M>U,W</M> are adjacent if and only if <M>U + W</M> is a hyperbolic line.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=DoroGraph(4);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 12 ], [ 1, 1, 10 ], [ 3, 6, 3 ], [ 8, 4, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "DoroGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "DoroGraph" );
 
@@ -467,33 +588,44 @@ DeclareGlobalFunction( "DoroGraph" );
 # respect to a nondegenerate sesquilinear form.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  UnitaryNonisotropicsGraph( [<filter>, ]<integer> )
 ##  
 ##  <#GAPDoc Label="UnitaryNonisotropicsGraph">
 ##  <ManSection>
 ##  <Func Name="UnitaryNonisotropicsGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='r'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>r</A>, this function returns the unitary 
+##  nonisotropics graph on <M>\mathbb{F}_{<A>r</A>^2}^3</M>. 
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group.
+##  <P/>  
+##  Let <M>r</M> be a prime power and <M>B</M> be a nondegenerate hermitean 
+##  form acting on <M>\mathbb{F}_{r^2}^{3}</M>.
+##  <P/>
+##  The <E>unitary nonisotropics graph</E> on <M>\mathbb{F}_{r^2}^{3}</M> has 
+##  vertex-set consisting of the 1-dimensional subspaces <M>U</M> of 
+##  <M>\mathbb{F}_{r^2}^3</M> such that <M>B(u,u)\not=0</M> for all 
+##  <M>u\in U</M> (i.e. nonisotropic subspaces in <M>\mathbb{F}_{r^2}^3</M>). 
+##  Any two distinct vertices <M>U,W</M> are adjacent if and only if 
+##  <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=UnitaryNonisotropicsGraph(3);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 6 ], [ 1, 1, 4 ], [ 1, 1, 4 ], [ 3, 3, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "UnitaryNonisotropicsGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "UnitaryNonisotropicsGraph" );

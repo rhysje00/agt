@@ -130,11 +130,11 @@ This will make function entries less convoluted.
 <Section Label="Subspace constructions">
 <Heading>Subspace constructions</Heading>
 
-<#Include Label="GrassmanGraph">
+<#Include Label="GrassmannGraph">
 
-<#Include Label="DoubledGrassmanGraph">
+<#Include Label="DoubledGrassmannGraph">
 
-<#Include Label="TwistedGrassmanGraph">
+<#Include Label="TwistedGrassmannGraph">
 
 <#Include Label="PolarGraphO">
 
@@ -197,11 +197,6 @@ This will make function entries less convoluted.
 <#Include Label="GeneralizedQuadrangleP">
 
 <#Include Label="GeneralizedQuadrangleAS">
-
-<#Include Label="IncidenceGraphFromFile">
-
-<#Include Label="ColinearityGraphFromFile">
-
 
 
 </Section>

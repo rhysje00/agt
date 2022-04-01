@@ -8,73 +8,77 @@
 ##  Declaration file for functions that construct forms graphs. 
 ##
 
-
-
-
-# The bilinear forms graph H_q(d, e) of matrices over GF(r^2).
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  BilinearFormsGraph( [<filter>, ]<int>, <int>, <int> )
 ##  
 ##  <#GAPDoc Label="BilinearFormsGraph">
 ##  <ManSection>
 ##  <Func Name="BilinearFormsGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]q, d, e'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>q</A> and positive integers <A>d,e</A>, this 
+##  function returns the bilinear forms graph 
+##  <M>H_{<A>q</A>}(<A>d</A>,<A>e</A>)</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
+##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
+##  <K>gamma</K> may not have been constructed using its full automorphism
+##  group, and <K>gamma.group</K> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  we construct the full automorphism group and use it to construct the 
+##  graph, and <K>gamma.group</K> is this group. 
+##  <P/>
+##  Let <M>q</M> be a prime power and <M>d,e</M> be positive integers. The
+##  <E>bilinear forms graph</E> <M>H_q(d,e)</M> is the graph with vertex-set
+##  <M>M_{d\times e}(\mathbb{F}_q)</M>, and distinct vertices <M>A,B</M> are 
+##  adjacent if and only if the rank of <M>A-B</M> is 1. 
 ## 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=BilinearFormsGraph(2,2,2);;
+##gap> SRGParameters(gamma);
+##[ 16, 9, 4, 6 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "BilinearFormsGraphCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "BilinearFormsGraph" );
 
-# The Hermitean forms graph Her(d, r) of Hermitean matrices over GF(r^2).
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  HermiteanFormsGraph( [<filter>, ]<int>, <int> )
 ##  
 ##  <#GAPDoc Label="HermiteanFormsGraph">
 ##  <ManSection>
 ##  <Func Name="HermiteanFormsGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg='[fil, ]d, r'/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  Given a prime power <A>r</A> and positive integer <A>d</A>, this 
+##  function returns the hemritean forms graph 
+##  <M>Q_{<A>q</A>}(<A>d</A>)</M>.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  Let <M>r</M> be a prime power and <M>d</M> be a positive integer. The
+##  <E>hermitean forms graph</E> <M>Q_{r}(d)</M> is the graph with vertex-set
+##  the hermitean matrices in <M>M_{d\times d}(\mathbb{F}_{r^2})</M>, and 
+##  distinct vertices <M>A,B</M> are adjacent if and only if the rank of 
+##  <M>A-B</M> is 1. 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=HermiteanFormsGraph(2,3);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 20 ], [ 1, 1, 18 ], [ 6, 14, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "HermiteanFormsGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "HermiteanFormsGraph" );

@@ -9,8 +9,10 @@
 ##  
 ##
 
-
-# The Grassmann graph J_q(n, d) of d-dimensional subspaces of F_q^n.
+#############################################################################
+##
+#F  GrassmannGraph( [<filter>, ]<int>, <int>, <int> )
+##  
 InstallMethod( GrassmannGraphCons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt, IsInt, IsInt], 0,
@@ -77,8 +79,10 @@ function(arg)
   fi;
 end );
 
-# The doubled Grassmann graph 2J_q(2d+1, d) of d- and (d+1)-dimensional
-# subspaces of F_q^{2d+1}.
+#############################################################################
+##
+#F  DoubledGrassmannGraph( [<filter>, ]<int>, <int> )
+##  
 InstallMethod( DoubledGrassmannGraphCons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -132,9 +136,10 @@ function(arg)
   fi;
 end );
 
-# The twisted Grassmann graph TG_d(q) of (d+1)-dimensional subspaces of
-# F_q^{2d+1} which are not subspaces of a hyperplane H, and (d-1)-dimensional
-# subspaces of H.
+#############################################################################
+##
+#F  TwistedGrassmannGraph( [<filter>, ]<int>, <int> )
+##  
 InstallMethod( TwistedGrassmannGraphCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt], 0,
 function(filter, d, q)
@@ -179,8 +184,10 @@ function(arg)
   fi;
 end );
 
-# The polar graph O^{(+/-)}(d, q) of isotropic lines of F_q^d
-# with respect to a nondegenerate quadratic form.
+#############################################################################
+##
+#F  PolarGraphO( [<filter>, <integer>, ]<integer>, <integer> )
+##  
 InstallMethod( PolarGraphOCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt, IsInt], 0,
 function(filter, e, d, q)
@@ -228,8 +235,10 @@ function(arg)
   return PolarGraphOCons(filt, e, d, q);
 end );
 
-# The polar graph NO^{+/-}orth(d, q) of nonisotropic lines of F_q^d
-# with respect to a nondegenerate quadratic form.
+#############################################################################
+##
+#F  PolarGraphNOorth( [<filter>, ]<integer>, <integer>, <integer> )
+##  
 InstallMethod( PolarGraphNOorthCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt, IsInt], 0,
 function(filter, e, d, q)
@@ -277,8 +286,10 @@ function(arg)
   fi;
 end );
 
-# The polar graph Sp(d, q) of isotropic lines of F_q^d
-# with respect to a nondegenerate symplectic form.
+#############################################################################
+##
+#F  PolarGraphSp( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( PolarGraphSpCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt], 0,
 function(filter, d, q)
@@ -318,8 +329,10 @@ function(arg)
   fi;
 end );
 
-# The polar graph U(d, r) of isotropic lines of F_{r^2}^d
-# with respect to a nondegenerate Hermitean form.
+#############################################################################
+##
+#F  PolarGraphU( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( PolarGraphUCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt], 0,
 function(filter, d, r)
@@ -362,8 +375,10 @@ function(arg)
   fi;
 end );
 
-# The dual polar graph B_d(q) of isotropic d-dimensional subspaces of
-# F_q^{2d+1} with respect to a nondegenerate quadratic form.
+#############################################################################
+##
+#F  DualPolarGraphB( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( DualPolarGraphBCons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -437,8 +452,10 @@ function(arg)
   fi;
 end );
 
-# The dual polar graph C_d(q) of isotropic d-dimensional subspaces of
-# F_q^{2d} with respect to a nondegenerate symplectic form.
+#############################################################################
+##
+#F  DualPolarGraphC( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( DualPolarGraphCCons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -503,8 +520,10 @@ function(arg)
   fi;
 end );
 
-# The dual polar graph C_d(q) of isotropic d-dimensional subspaces of
-# F_q^{2d} with respect to a nondegenerate symplectic form.
+#############################################################################
+##
+#F  DualPolarGraphD( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( DualPolarGraphDCons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -565,8 +584,6 @@ function(filter, d, q)
   return DualPolarGraphDCons(IsSpacesGraph, d, q);
 end );
 
-# The dual polar graph D_d(q) of isotropic d-dimensional subspaces of
-# F_q^{2d} with respect to a nondegenerate quadratic form of Witt index d.
 InstallGlobalFunction( DualPolarGraphD,
 function(arg)
   local j, filt;
@@ -584,8 +601,10 @@ function(arg)
   fi;
 end );
 
-# The dual polar graph ^2D_{d+1}(q) of isotropic d-dimensional subspaces of
-# F_q^{2d+2} with respect to a nondegenerate quadratic form of Witt index d.
+#############################################################################
+##
+#F  DualPolarGraph2D( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( DualPolarGraph2DCons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -650,8 +669,10 @@ function(arg)
   fi;
 end );
 
-# The dual polar graph ^2A_{e-1}(r) of isotropic [e/2]-dimensional
-# subspaces of F_{r^2}^e with respect to a nondegenerate Hermitean form.
+#############################################################################
+##
+#F  DualPolarGraph2A( [<filter>, ]<integer>, <integer> )
+##  
 InstallMethod( DualPolarGraph2ACons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -721,8 +742,10 @@ function(arg)
   fi;
 end );
 
-# The Doro graph of nonisotropic 1-dimensional subspaces of F_q^4 with respect
-# to a nondegenerate quadratic form. It is distance-regular for q = 4, 5.
+#############################################################################
+##
+#F  DoroGraph( [<filter>, ]q )
+##  
 InstallMethod( DoroGraphCons,
      "as a spaces graph with full automorphism group", true,
      [IsSpacesGraph and FullAutomorphismGroup, IsInt], 0,
@@ -787,8 +810,10 @@ function(arg)
   fi;
 end );
 
-# The unitary nonisotropics graph of 1-dimensional subspaces of F_(r^2)^3 with
-# respect to a nondegenerate sesquilinear form.
+#############################################################################
+##
+#F  UnitaryNonisotropicsGraph( [<filter>, ]<integer> )
+##  
 InstallMethod( UnitaryNonisotropicsGraphCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt], 0,
 function(filter, r)
