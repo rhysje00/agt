@@ -9,29 +9,37 @@
 ##  
 ##
 
-
-# The tetrahedron with v=4, k=3, lm=2.
+#############################################################################
+##
+#F  TetrahedronGraph(  )
+##  
 InstallGlobalFunction( TetrahedronGraph,
 function()
   return CompleteGraph(SymmetricGroup(4));
 end );
 
-# The octahedron with v=6, k=4, lm=2, mu=4.
+#############################################################################
+##
+#F  OctahedronGraph(  )
+##  
 InstallGlobalFunction( OctahedronGraph,
 function()
   return CocktailPartyGraph(3);
 end );
 
-# The Petersen graph with v=10, k=3, lm=0, mu=1.
+#############################################################################
+##
+#F  PetersenGraph2(  )
+##  
 InstallGlobalFunction( PetersenGraph2,
 function()
   return OddGraph(2);
 end );
 
-# The Shrikhande graph with parameters v = 16, k = 6, lm = 2, mu = 2,
-# i.e., the same as H(2, 4), but not isomorphic to it.
-# The Shrikhande graph with parameters v=16, k=6, lm=2, mu=2,
-# i.e., the same as H(2, 4), but not isomorphic to it.
+#############################################################################
+##
+#F  ShrikhandeGraph(  )
+##  
 InstallMethod( ShrikhandeGraphCons, "as a vector graph", true, 
      [IsVectorGraph], 0,
 filter -> ComplementGraph(LatinSquareGraph(Group(Z(5))))
@@ -42,13 +50,19 @@ function()
  return ShrikhandeGraphCons(IsVectorGraph);
 end );
 
-# The Clebsch graph with v=16, k=10, lm=6, mu=6.
+#############################################################################
+##
+#F  ClebschGraph(  )
+##  
 InstallGlobalFunction( ClebschGraph,
 function()
   return HalvedCubeGraph(5);
 end );
 
-# The Schlaefli graph with v=27, k=16, lm=10, mu=8.
+#############################################################################
+##
+#F  SchlaefliGraph(  )
+##  
 InstallGlobalFunction( SchlaefliGraph,
 function()
   return Graph(DirectProduct(SymmetricGroup(6), SymmetricGroup(2)),
@@ -56,7 +70,10 @@ function()
           OnRoots, RootAdjacency);
 end );
 
-# The Hoffman-Singleton graph with v=50, k=7, lm=0, mu=1.
+#############################################################################
+##
+#F  HoffmanSingletonGraph2(  )
+##  
 InstallGlobalFunction( HoffmanSingletonGraph2,
 function()
   return List([function()
@@ -84,21 +101,30 @@ function()
     end])[1]();
 end );
 
-# The Gewirtz graph with v=56, k=10, lm=0, mu=2.
+#############################################################################
+##
+#F  GewirtzGraph(  )
+##  
 InstallGlobalFunction( GewirtzGraph,
 function()
   return Graph(MathieuGroup(21), [[1,2,3,7,10,20]],
                                     OnSets, DisjointSets);
 end );
 
-# The strongly regular Witt graph with v=77, k=16, lm=0, mu=4.
+#############################################################################
+##
+#F  WittStronglyRegularGraph(  )
+##  
 InstallGlobalFunction( WittStronglyRegularGraph,
 function()
   return Graph(MathieuGroup(22),
                                     [[1,2,3,7,10,20]], OnSets, DisjointSets);
 end );
 
-# The graph with v=210, k=99, lm=48, mu=45 constructed by M. Klin
+#############################################################################
+##
+#F  KlinGraph(  )
+##  
 InstallGlobalFunction( KlinGraph,
 function()
   return List([function()
@@ -115,19 +141,28 @@ function()
     end])[1]();
 end );
 
-# The cube with intersection array {3, 2, 1; 1, 2, 3}
+#############################################################################
+##
+#F  CubeGraph(  )
+##  
 InstallGlobalFunction( CubeGraph,
 function()
   return HammingGraph2(3, 2);
 end );
 
-# The Heawood graph with intersection array {3, 2, 2; 1, 1, 3}.
+#############################################################################
+##
+#F  HeawoodGraph(  )
+##  
 InstallGlobalFunction( HeawoodGraph,
 function()
   return DesarguesianPlaneIncidenceGraph(2);
 end );
 
-# The icosahedron with intersection array {5, 2, 1; 1, 2, 5}.
+#############################################################################
+##
+#F  IcosahedronGraph(  )
+##  
 InstallGlobalFunction( IcosahedronGraph,
 function()
   return Graph(DirectProduct(AlternatingGroup(5),
@@ -139,7 +174,10 @@ function()
                                      end);
 end );
 
-# The Sylvester graph with intersection array {5, 4, 2; 1, 1, 4}
+#############################################################################
+##
+#F  SylvesterGraph(  )
+##  
 InstallGlobalFunction( SylvesterGraph,
 function()
   return Graph(SymmetricGroup(6),
@@ -172,29 +210,40 @@ function()
   return PerkelGraphCons(IsConjugacyClassGraph);
 end );
 
-# The Gosset graph with intersection array {27, 10, 1; 1, 10, 27}.
+#############################################################################
+##
+#F  GossetGraph(  )
+##  
 InstallGlobalFunction( GossetGraph,
 function()
   return Graph(DirectProduct(SymmetricGroup(8), SymmetricGroup(2)),
         [[-3,-3,1,1,1,1,1,1]], OnRoots, RootAdjacency);
 end );
 
-# The truncated Witt graph with intersection array {15, 14, 12; 1, 1, 9}.
+#############################################################################
+##
+#F  Witt23Graph(  )
+##  
 InstallGlobalFunction( Witt23Graph,
 function()
   return Graph(MathieuGroup(23), [[1,4,8,12,13,19,21,23]],
                                 OnSets, DisjointSets);
 end );
 
-# The large Witt graph with intersection array {30, 28, 24; 1, 3, 15}.
+#############################################################################
+##
+#F  Witt24Graph(  )
+##  
 InstallGlobalFunction( Witt24Graph,
 function()
   return Graph(MathieuGroup(24), [[1,4,8,12,13,19,21,23]],
                                 OnSets, DisjointSets);
 end );
 
-# The bipartite graph associated to Higman's design
-# with intersection array {50, 49, 36; 1, 14, 50}.
+#############################################################################
+##
+#F  HigmanGraph(  )
+##  
 InstallGlobalFunction( HigmanGraph,
 function()
   return Graph(Stabilizer(MathieuGroup(24), [23, 24], OnSets),
@@ -205,13 +254,19 @@ function()
                             end);
 end );
 
-# The Coxeter graph with intersection array {3,2,2,1; 1,1,1,2}.
+#############################################################################
+##
+#F  CoxeterGraph(  )
+##  
 InstallGlobalFunction( CoxeterGraph,
 function()
   return PolarGraphNOorth(1, 3, 7);
 end );
 
-# The doubly truncated Witt graph with intersection array {7,6,4,4; 1,1,1,6}.
+#############################################################################
+##
+#F  Witt22Graph(  )
+##  
 InstallGlobalFunction( Witt22Graph,
 function()
   return Graph(MathieuGroup(22), [[1,2,3,4,5,10,18,21]],

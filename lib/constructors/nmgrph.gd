@@ -8,129 +8,126 @@
 ##  Declaration file for functions that construct named graphs. 
 ##
 
-# The tetrahedron with v=4, k=3, lm=2.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  TetrahedronGraph(  )
 ##  
 ##  <#GAPDoc Label="TetrahedronGraph">
 ##  <ManSection>
 ##  <Func Name="TetrahedronGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Tetrahedron graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Tetrahedron graph</E> is the skeleton of the tetrahedron. This
+##  graph is isomorphic to the complete graph with 4 vertices.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> TetrahedronGraph();
+##rec( adjacencies := [ [ 2, 3, 4 ] ], group := Sym( [ 1 .. 4 ] ), 
+##  isGraph := true, isSimple := true, order := 4, representatives := [ 1 ], 
+##  schreierVector := [ -1, 1, 1, 1 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "TetrahedronGraph" );
 
-# The octahedron with v=6, k=4, lm=2, mu=4.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  OctahedronGraph(  )
 ##  
 ##  <#GAPDoc Label="OctahedronGraph">
 ##  <ManSection>
 ##  <Func Name="OctahedronGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Octahedron graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Octahedron graph</E> is the skeleton of the tetrahedron. This
+##  graph is isomorphic to the Cocktail party graph with 6 vertices, and is 
+##  strongly regular with parameters <M>(6,4,2,4)</M> (see 
+##  <Ref Func="CocktailPartyGraph"/>).
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> OctahedronGraph();
+##rec( adjacencies := [ [ 3, 4, 5, 6 ] ], 
+##  group := Group([ (1,2), (1,3)(2,4), (1,3,5)(2,4,6) ]), isGraph := true, 
+##  names := [ [ 1, 1 ], [ 1, 2 ], [ 2, 1 ], [ 2, 2 ], [ 3, 1 ], [ 3, 2 ] ], 
+##  order := 6, representatives := [ 1 ], 
+##  schreierVector := [ -1, 1, 2, 2, 3, 3 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "OctahedronGraph" );
 
-# The Petersen graph with v=10, k=3, lm=0, mu=1.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  PetersenGraph2(  )
 ##  
 ##  <#GAPDoc Label="PetersenGraph2">
 ##  <ManSection>
 ##  <Func Name="PetersenGraph2"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Petersen graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Petersen graph</E> is the graph with vertex-set the 
+##  <M>2</M>-subsets of <M>\{1,...,5\}</M>, and distinct vertices are 
+##  adjacent if and onlt if their intersection is empty. By definition, 
+##  this is exactly the Odd graph of diameter <M>2</M> and the Kneser graph
+##  <M>K(5,2)</M> (see <Ref Func="OddGraph"/> and <Ref Func="KneserGraph"/>).
+##  This graph is strongly regular with parameters <M>(10,3,0,1)</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> PetersenGraph2();
+##rec( adjacencies := [ [ 3, 5, 8 ] ], 
+##  group := Group([ (1,2,3,5,7)(4,6,8,9,10), (2,4)(6,9)(7,10) ]), 
+##  isGraph := true, 
+##  names := [ [ 1, 2 ], [ 2, 3 ], [ 3, 4 ], [ 1, 3 ], [ 4, 5 ], [ 2, 4 ], 
+##      [ 1, 5 ], [ 3, 5 ], [ 1, 4 ], [ 2, 5 ] ], order := 10, 
+##  representatives := [ 1 ], schreierVector := [ -1, 1, 1, 2, 1, 1, 1, 1, 2, 2 
+##     ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "PetersenGraph2" );
 
-# The Shrikhande graph with parameters v = 16, k = 6, lm = 2, mu = 2,
-# i.e., the same as H(2, 4), but not isomorphic to it.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  ShrikhandeGraph(  )
 ##  
 ##  <#GAPDoc Label="ShrikhandeGraph">
 ##  <ManSection>
 ##  <Func Name="ShrikhandeGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Shrikhande graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Shrikhande graph</E> is the complement graph of the Latin square
+##  graph of the group <M>\mathbb{Z}_4</M> 
+##  (see <Ref Func="LatinSquareGraph"/>). This graph is strongly regular 
+##  with parameters <M>(16,6,2,2)</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
+##gap> gamma:=ShrikhandeGraph();;
+##gap> SRGParameters(gamma);
 ##[ 16, 6, 2, 2 ]
 ##      ]]>
 ##    </Example>
@@ -138,96 +135,91 @@ DeclareGlobalFunction( "PetersenGraph2" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("ShrikhandeGraphCons", [IsObject]);
 DeclareGlobalFunction( "ShrikhandeGraph" );
 
 # The Clebsch graph with v=16, k=10, lm=6, mu=6.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  ClebschGraph(  )
 ##  
 ##  <#GAPDoc Label="ClebschGraph">
 ##  <ManSection>
 ##  <Func Name="ClebschGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Clebsch graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Clebsch graph</E> is the halved graph of the <M>5</M>-dimensional
+##  hypercube graph (see <Ref Func="HalvedCubeGraph"/>, 
+##  <Ref Func="HypercubeGraph"/> and <Ref Func="HalvedGraph"/> ). This graph
+##  is strongly regular with parameters <M>(16,10,6,6)</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=ClebschGraph();;
+##gap> SRGParameters(gamma);
+##[ 16, 10, 6, 6 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "ClebschGraph" );
 
-# The Schlaefli graph with v=27, k=16, lm=10, mu=8.
+#TODO need def
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  SchlaefliGraph(  )
 ##  
 ##  <#GAPDoc Label="SchlaefliGraph">
 ##  <ManSection>
 ##  <Func Name="SchlaefliGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Schläfli graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Schläfli graph</E> is the TODO. This graph
+##  is strongly regular with parameters <M>(27,16,10,8)</M>.ä
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=SchlaefliGraph();;
+##gap> SRGParameters(gamma);
+##[ 27, 16, 10, 8 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "SchlaefliGraph" );
 
-# The Hoffman-Singleton graph with v=50, k=7, lm=0, mu=1.
+#TODO implementation list use?
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  HoffmanSingletonGraph2(  )
 ##  
 ##  <#GAPDoc Label="HoffmanSingletonGraph2">
 ##  <ManSection>
 ##  <Func Name="HoffmanSingletonGraph2"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Hoffman-Singleton graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Hoffman-Singleton graph</E> can be constructed as follows. Let 
+##  <M>P_h</M> be a pentagon and <M>Q_i</M> be a pentagram for 
+##  <M>h,i\in\{1,...,5\}</M>, and consider the union of these graphs. Then 
+##  add an edge between <M>j\in P_h</M> and <M>hi+j\in Q_i</M> for each 
+##  <M>j\in P_h</M> and <M>i\in\{1,...,5\}</M>. The resulting graph is 
+##  the Hoffman-Singleton graph, which is strongly regular with parameters
+##  <M>(50,7,0,1)</M>. For more information on this graph, see 
+##  <Cite Key="B_2018b"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph(arg);
@@ -238,161 +230,161 @@ DeclareGlobalFunction( "SchlaefliGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 
-# The Gewirtz graph with v=56, k=10, lm=0, mu=2.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  GewirtzGraph(  )
 ##  
-##  <#GAPDoc Label="GerwitzGraph">
+##  <#GAPDoc Label="GewirtzGraph">
 ##  <ManSection>
-##  <Func Name="GerwitzGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##  <Func Name="GewirtzGraph"
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Gewirtz graph (also known as the Sims-Gewirtz
+##  graph).
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Gewirtz graph</E> has vertex-set consisting of the blocks of the
+##  unique Steiner system in <M>S(3,6,22)</M> which do not contain a fixed
+##  point. Any two distinct vertices are adjacent if and only if their 
+##  intersection is empty. This graph is strongly regular with parameters#
+##  <M>(56,10,0,2)</M>. For more information on this graph, see 
+##  <Cite Key="B_2018b"/>. 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=GewirtzGraph();;
+##gap> SRGParameters(gamma);
+##[ 56, 10, 0, 2 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "GewirtzGraph" );
 
-# The strongly regular Witt graph with v=77, k=16, lm=0, mu=4.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  WittStronglyRegularGraph(  )
 ##  
 ##  <#GAPDoc Label="WittStronglyRegularGraph">
 ##  <ManSection>
 ##  <Func Name="WittStronglyRegularGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Witt strongly regular graph (also known as 
+##  the <M>M_{22}</M> graph).
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Witt strongly regular graph</E> has vertex-set consisting of 
+##  the blocks of the unique Steiner system in <M>S(3,6,22)</M>. Any 
+##  two distinct vertices are adjacent if and only if their 
+##  intersection is empty. This graph is strongly regular with 
+##  parameters <M>(77,16,0,4)</M>. For more information on this graph, see 
+##  <Cite Key="B_2018b"/>. 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=WittStronglyRegularGraph();;
+##gap> SRGParameters(gamma);
+##[ 77, 16, 0, 4 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "WittStronglyRegularGraph" );
 
-# The graph with v=210, k=99, lm=48, mu=45 constructed by M. Klin
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  KlinGraph(  )
 ##  
 ##  <#GAPDoc Label="KlinGraph">
 ##  <ManSection>
 ##  <Func Name="KlinGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Klin graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Klin graph</E> can be constructed as follows. Let <M>G=S_7</M>
+##  and <M>H=\langle (1,2,3,4,5,6),(1,4) \rangle</M> be a subgroup of 
+##  <M>G</M>. The vertex-set of the Klin graph is the set of right cosets
+##   of <M>H</M> in <M>G</M>. Any two distinct vertices <M>Hg_1,Hg_2</M> 
+##  are adjacent if and if <M>g_2g_1^{-1}</M> is in 
+##  <Display> \{(3,4,5,6,7), (2,4,6,3,5,7), (3,5,6,7), (2,4,5,6,7,3),
+##              (2,3,5,6,7), (2,4,5,6), (2,3,5,6)\}.</Display>
+##  This graph is strongly regular with parameters <M>(210,99,48,45)</M>.
+##  For more information on this graph, see REF.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gap> gamma:=KlinGraph();;
+##gap> SRGParameters(gamma);
+##[ 210, 99, 48, 45 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "KlinGraph" );
 
-# The cube with intersection array {3, 2, 1; 1, 2, 3}
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  CubeGraph(  )
 ##  
 ##  <#GAPDoc Label="CubeGraph">
 ##  <ManSection>
 ##  <Func Name="CubeGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Cube graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Cube graph</E> is the skeleton of the cube. This graph is 
+##  isomorphic to the 3-dimensional hypercube graph and the Hamming graph
+##  <M>H(3,2)</M> (see <Ref Func="HypercubeGraph"/> and 
+##  <Ref Func="HammingGraph2"/>). This graph is distance-regular with 
+##  intersection array <M>\{3,2,1;1,2,3\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> CubeGraph();
+##rec( adjacencies := [ [ 2, 3, 5 ] ], 
+##  group := Group([ (1,5)(2,6)(3,7)(4,8), (1,3)(2,4)(5,7)(6,8), (1,2)(3,4)
+##      (5,6)(7,8), (2,5,3)(4,6,7), (3,5)(4,6) ]), isGraph := true, 
+##  names := [ [ 1, 1, 1 ], [ 1, 1, 2 ], [ 1, 2, 1 ], [ 1, 2, 2 ], 
+##      [ 2, 1, 1 ], [ 2, 1, 2 ], [ 2, 2, 1 ], [ 2, 2, 2 ] ], order := 8, 
+##  representatives := [ 1 ], schreierVector := [ -1, 3, 2, 3, 1, 3, 2, 3 ] )
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "CubeGraph" );
 
-# The Heawood graph with intersection array {3, 2, 2; 1, 1, 3}.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  HeawoodGraph(  )
 ##  
 ##  <#GAPDoc Label="HeawoodGraph">
 ##  <ManSection>
 ##  <Func Name="HeawoodGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Heawood graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Heawood graph</E> is the incidence graph of the Desarguesian 
+##  plane <M>PG(2,2)</M> (see <Ref Func="DesarguesianPlaneIncidenceGraph"/>).
+##  This graph is distance-regular with intersection array 
+##  <M>\{3,2,2;1,1,3\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph(arg);
@@ -403,319 +395,298 @@ DeclareGlobalFunction( "CubeGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "HeawoodGraph" );
 
-# The icosahedron with intersection array {5, 2, 1; 1, 2, 5}.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  IcosahedronGraph(  )
 ##  
 ##  <#GAPDoc Label="IcosahedronGraph">
 ##  <ManSection>
 ##  <Func Name="IcosahedronGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Icosahedron graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Icosahedron graph</E> is the skeleton of the icosahedron. This 
+##  graph is distance-regular with intersection array 
+##  <M>\{5,2,1;1,2,5\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=IcosahedronGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 5 ], [ 1, 2, 2 ], [ 2, 2, 1 ], [ 5, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "IcosahedronGraph" );
 
-# The Sylvester graph with intersection array {5, 4, 2; 1, 1, 4}
+#TODO def
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  SylvesterGraph(  )
 ##  
 ##  <#GAPDoc Label="SylvesterGraph">
 ##  <ManSection>
 ##  <Func Name="SylvesterGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Sylvester graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Sylvester graph</E> is the TODO.
+##  This graph is distance-regular with intersection array 
+##  <M>\{5,4,2;1,1,4\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=SylvesterGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 5 ], [ 1, 0, 4 ], [ 1, 2, 2 ], [ 4, 1, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "SylvesterGraph" );
 
-# The Perkel graph with intersection array {6, 5, 2; 1, 1, 3}.
+#TODO def
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  PerkelGraph(  )
 ##  
 ##  <#GAPDoc Label="PerkelGraph">
 ##  <ManSection>
 ##  <Func Name="PerkelGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Perkel graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Perkel graph</E> is the TODO.
+##  This graph is distance-regular with intersection array 
+##  <M>\{6,5,2;1,1,3\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=PerkelGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 6 ], [ 1, 0, 5 ], [ 1, 3, 2 ], [ 3, 3, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "PerkelGraphCons", [IsObject]);
 DeclareGlobalFunction( "PerkelGraph" );
 
-# The Gosset graph with intersection array {27, 10, 1; 1, 10, 27}.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  GossetGraph(  )
 ##  
 ##  <#GAPDoc Label="GossetGraph">
 ##  <ManSection>
 ##  <Func Name="GossetGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Gosset graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Gosset graph</E> can be constructed as follows. Consider the 
+##  vector <M>e=(-3,-3,1,1,1,1,1,1)</M> in <M>\mathbb{R}^8</M>. The
+##  vertex-set of the Gosset graph  is the set of vecotrs obtained from 
+##  permuting coordinates and taking opposite vectors of <M>e</M>. Any two
+##  distinct vectors <M>u,w</M> are adjacent if and only if their inner 
+##  product <M>u.v</M> is equal to 8. This graph is distance-regular with
+##  intersection array <M>\{27,10,1;1,10,27\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=GossetGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 27 ], [ 1, 16, 10 ], [ 10, 16, 1 ], [ 27, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "GossetGraph" );
 
-# The truncated Witt graph with intersection array {15, 14, 12; 1, 1, 9}.
+#TODO ref
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  Witt23Graph(  )
 ##  
 ##  <#GAPDoc Label="Witt23Graph">
 ##  <ManSection>
 ##  <Func Name="Witt23Graph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the truncated Witt graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>truncated Witt graph</E> can be constructed as follows. The
+##  vertex-set of the graph is the set of weight 8 vectors of the large 
+##  Witt design not containing a fixed symbol. Any two distinct vertices
+##  <M>u,w</M> are adjacent if and only if the intersection of their 
+##  supports is empty. This graph is distance-regular with
+##  intersection array <M>\{15,14,12;1,1,9\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=Witt23Graph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 15 ], [ 1, 0, 14 ], [ 1, 2, 12 ], [ 9, 6, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "Witt23Graph" );
 
-# The large Witt graph with intersection array {30, 28, 24; 1, 3, 15}.
+#TODO ref
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  Witt24Graph(  )
 ##  
 ##  <#GAPDoc Label="Witt24Graph">
 ##  <ManSection>
 ##  <Func Name="Witt24Graph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the large Witt graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>large Witt graph</E> can be constructed as follows. The
+##  vertex-set of the graph is the set of weight 8 vectors of the large 
+##  Witt design. Any two distinct vertices <M>u,w</M> are adjacent if and
+##  only if the intersection of their supports is empty. This graph is
+##  distance-regular with intersection array <M>\{30,28,24;1,3,15\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=Witt24Graph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 30 ], [ 1, 1, 28 ], [ 3, 3, 24 ], [ 15, 15, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "Witt24Graph" );
 
-# The bipartite graph associated to Higman's design
-# with intersection array {50, 49, 36; 1, 14, 50}.
+#TODO ref
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  HigmanGraph(  )
 ##  
 ##  <#GAPDoc Label="HigmanGraph">
 ##  <ManSection>
 ##  <Func Name="HigmanGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Higman graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Higman graph</E> is the incidence graph of Higman's symmetric 
+##  design. This graph is distance-regular with intersection array 
+##  <M>\{50,49,36;1,14,50\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=HigmanGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 50 ], [ 1, 0, 49 ], [ 14, 0, 36 ], [ 50, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "HigmanGraph" );
 
-# The Coxeter graph with intersection array {3,2,2,1; 1,1,1,2}.
+# TODO def in how we define it?
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  CoxeterGraph(  )
 ##  
 ##  <#GAPDoc Label="CoxeterGraph">
 ##  <ManSection>
 ##  <Func Name="CoxeterGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Coxeter graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Coxeter graph</E> is the TODO. This graph is distance-regular 
+##  with intersection array <M>\{3,2,2,1;1,1,1,2\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=CoxeterGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 3 ], [ 1, 0, 2 ], [ 1, 0, 2 ], [ 1, 1, 1 ], [ 2, 1, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "CoxeterGraph" );
 
-# The doubly truncated Witt graph with intersection array {7,6,4,4; 1,1,1,6}.
+#TODO ref
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  Witt22Graph(  )
 ##  
 ##  <#GAPDoc Label="Witt22Graph">
 ##  <ManSection>
 ##  <Func Name="Witt22Graph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the doubly truncated Witt graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>doubly truncated Witt graph</E> can be constructed as follows. 
+##  Thevertex-set of the graph is the set of weight 8 vectors of the large 
+##  Witt design not containing two fixed symbols. Any two distinct vertices
+##  <M>u,w</M> are adjacent if and only if the intersection of their 
+##  supports is empty. This graph is distance-regular with
+##  intersection array <M>\{7,6,4,4;1,1,1,6\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 7 ], [ 1, 0, 6 ], [ 1, 2, 4 ], [ 1, 2, 4 ], [ 6, 1, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "Witt22Graph" );
 
 # The unital graph of AG(2,3) subplanes in PG(2,4)
 # with intersection array {9,8,6,3; 1,1,3,8}
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  UnitalGraph(  )
 ##  
 ##  <#GAPDoc Label="UnitalGraph">
 ##  <ManSection>
 ##  <Func Name="UnitalGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
 ##  para1
@@ -736,20 +707,19 @@ DeclareGlobalFunction( "Witt22Graph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor("UnitalGraphCons", [IsObject]);
 DeclareGlobalFunction( "UnitalGraph" );
 
 # The dodecahedron with intersection array {3,2,1,1,1; 1,1,1,2,3}.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DodecahedronGraph(  )
 ##  
 ##  <#GAPDoc Label="DodecahedronGraph">
 ##  <ManSection>
 ##  <Func Name="DodecahedronGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
 ##  para1
@@ -770,19 +740,18 @@ DeclareGlobalFunction( "UnitalGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "DodecahedronGraph" );
 
 # The Desargues graph with intersection array {3,2,2,1,1; 1,1,2,2,3}.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  DesarguesGraph(  )
 ##  
 ##  <#GAPDoc Label="DesarguesGraph">
 ##  <ManSection>
 ##  <Func Name="DesarguesGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
 ##  para1
@@ -803,19 +772,18 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareGlobalFunction( "DesarguesGraph" );
 
 # The Biggs-Smith graph with intersection array {3,2,2,2,1,1,1; 1,1,1,1,1,1,3}.
 #############################################################################
 ##
-#F  AdjFunGraph( <parms> )
+#F  BiggsSmithGraph(  )
 ##  
 ##  <#GAPDoc Label="BiggsSmithGraph">
 ##  <ManSection>
 ##  <Func Name="BiggsSmithGraph"
-##   Arg='arg'/>
-##  <Returns>A .</Returns>
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
 ##  para1
@@ -836,6 +804,5 @@ DeclareGlobalFunction( "DesarguesGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-
 DeclareConstructor( "BiggsSmithGraphCons", [IsObject]);
 DeclareGlobalFunction( "BiggsSmithGraph" );

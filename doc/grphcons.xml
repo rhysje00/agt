@@ -218,7 +218,7 @@ This will make function entries less convoluted.
 
 <#Include Label="HoffmanSingletonGraph2">
 
-<#Include Label="GerwitzGraph">
+<#Include Label="GewirtzGraph">
 
 <#Include Label="WittStronglyRegularGraph">
 
