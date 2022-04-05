@@ -273,8 +273,10 @@ function()
                                 OnSets, DisjointSets);
 end );
 
-# The unital graph of AG(2,3) subplanes in PG(2,4)
-# with intersection array {9,8,6,3; 1,1,3,8}
+#############################################################################
+##
+#F  UnitalGraph(  )
+##  
 InstallMethod( UnitalGraphCons, "as a spaces graph", true, [IsSpacesGraph], 0,
 function(filter)
   local A, U, V;
@@ -298,7 +300,10 @@ function()
   return UnitalGraphCons(IsSpacesGraph);
 end );
 
-# The dodecahedron with intersection array {3,2,1,1,1; 1,1,1,2,3}.
+#############################################################################
+##
+#F  DodecahedronGraph(  )
+##  
 InstallGlobalFunction( DodecahedronGraph,
 function() 
   return List([function()
@@ -319,13 +324,19 @@ function()
    end])[1]();
 end );
 
-# The Desargues graph with intersection array {3,2,2,1,1; 1,1,2,2,3}.
+#############################################################################
+##
+#F  DesarguesGraph(  )
+##  
 InstallGlobalFunction( DesarguesGraph,
 function()
   return DoubledOddGraph(2);
 end );
 
-# The Biggs-Smith graph with intersection array {3,2,2,2,1,1,1; 1,1,1,1,1,1,3}.
+#############################################################################
+##
+#F  BiggsSmithGraph(  )
+##  
 InstallMethod(BiggsSmithGraphCons, "as a conjugacy class graph", true,
      [IsConjugacyClassGraph], 0,
 function(filter)

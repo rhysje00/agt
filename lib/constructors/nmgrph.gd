@@ -666,6 +666,7 @@ DeclareGlobalFunction( "CoxeterGraph" );
 ##  intersection array <M>\{7,6,4,4;1,1,1,6\}</M>.
 ##    <Example>
 ##      <![CDATA[
+##gap> gamma:=Witt22Graph();;
 ##gap> GlobalParameters(gamma);
 ##[ [ 0, 0, 7 ], [ 1, 0, 6 ], [ 1, 2, 4 ], [ 1, 2, 4 ], [ 6, 1, 0 ] ]
 ##      ]]>
@@ -676,8 +677,7 @@ DeclareGlobalFunction( "CoxeterGraph" );
 ##
 DeclareGlobalFunction( "Witt22Graph" );
 
-# The unital graph of AG(2,3) subplanes in PG(2,4)
-# with intersection array {9,8,6,3; 1,1,3,8}
+#TODO notation, ref and check def
 #############################################################################
 ##
 #F  UnitalGraph(  )
@@ -689,18 +689,18 @@ DeclareGlobalFunction( "Witt22Graph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Unital graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Unital graph</E> can be constructed as follows. 
+##  The vertex-set of the graph is the set of subplanes in <M>PG(2,4)</M> 
+##  isomorphic to <M>AG(2,3)</M>. Any two distinct vertices <M>U,W</M> are 
+##  adjacent if and only if they intersect in one point. This graph is 
+##  distance-regular with intersection array <M>\{9,8,6,3;1,1,3,8\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap>  gamma:=UnitalGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 9 ], [ 1, 0, 8 ], [ 1, 2, 6 ], [ 3, 3, 3 ], [ 8, 1, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -710,7 +710,6 @@ DeclareGlobalFunction( "Witt22Graph" );
 DeclareConstructor("UnitalGraphCons", [IsObject]);
 DeclareGlobalFunction( "UnitalGraph" );
 
-# The dodecahedron with intersection array {3,2,1,1,1; 1,1,1,2,3}.
 #############################################################################
 ##
 #F  DodecahedronGraph(  )
@@ -722,18 +721,16 @@ DeclareGlobalFunction( "UnitalGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Dodecahedron graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Dodecahedron graph</E> is the skeleton of the dodecahedron. This
+##  graph is distance-regular with parameters 
+##  <M>\{3,2,1,1,1;1,1,1,2,3\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 3 ], [ 1, 0, 2 ], [ 1, 1, 1 ], [ 1, 1, 1 ], [ 2, 0, 1 ], 
+##  [ 3, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -742,7 +739,6 @@ DeclareGlobalFunction( "UnitalGraph" );
 ##
 DeclareGlobalFunction( "DodecahedronGraph" );
 
-# The Desargues graph with intersection array {3,2,2,1,1; 1,1,2,2,3}.
 #############################################################################
 ##
 #F  DesarguesGraph(  )
@@ -754,18 +750,17 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Desargues graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Desargues graph</E> is the bipartite double of the Petersen 
+##  graph (see <Ref Func="PetersenGraph2"/> and 
+##  <Ref Func="DoubledOddGraph"/>). This graph is distance-regular with 
+##  parameters  <M>\{3,2,2,1,1;1,1,2,2,3\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 3 ], [ 1, 0, 2 ], [ 1, 0, 2 ], [ 2, 0, 1 ], [ 2, 0, 1 ], 
+##  [ 3, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -774,7 +769,7 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 ##
 DeclareGlobalFunction( "DesarguesGraph" );
 
-# The Biggs-Smith graph with intersection array {3,2,2,2,1,1,1; 1,1,1,1,1,1,3}.
+#TODO def ref
 #############################################################################
 ##
 #F  BiggsSmithGraph(  )
@@ -786,18 +781,16 @@ DeclareGlobalFunction( "DesarguesGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  para1
-## 
+##  This function returns the Biggs-Smith graph.
 ##  <P/>
-##  para2
-## 
-## 
-## 
-## 
+##  The <E>Biggs-Smith graph</E> is TODO. This graph is distance-regular with 
+##  parameters  <M>\{3,2,2,2,1,1,1;1,1,1,1,1,1,3\}</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=BiggsSmithGraph();;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 3 ], [ 1, 0, 2 ], [ 1, 0, 2 ], [ 1, 0, 2 ], [ 1, 1, 1 ], 
+##  [ 1, 1, 1 ], [ 1, 1, 1 ], [ 3, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>

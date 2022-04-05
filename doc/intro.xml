@@ -60,7 +60,7 @@ true
 
 <Listing Type="bibtex">
 @Manual{agt,
-        author = {Evans, Rhys J.},
+        author = {Evans, Rhys J. and Vidali, Janoš},
         key = {agt},
         title = {{AGT -- Algebraic Graph Theory package for GAP, Version &VERSION;}},
         url = {\verb+(&PKGWWWHOME;)+},
