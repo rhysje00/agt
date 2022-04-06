@@ -28,17 +28,16 @@
 ##  integers <A>nparts,sparts</A>, functions returns the complete
 ##  multipartite graph with <A>nparts</A> parts, each of size <A>sparts</A>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  The resulting graph will have vertex names pairs of positive integers,
 ##  with first entry denoting the part the vertex is contained in, and the
 ##  second entry denoting the number of the vertex in its part.
-##
 ##    <Example>
 ##      <![CDATA[
 ##gap> CompleteMultipartiteGraph2(3,4);
@@ -73,10 +72,9 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 ##  Given an integer <A>int</A> greater than 1, this function returns the  
 ##  cycle graph with <A>int</A> vertices.
 ##  <P/>
-##  The resulting graph <K>gamma</K> will have vertex names <K>[1..int]</K>, 
+##  The resulting graph <C>gamma</C> will have vertex names <C>[1..int]</C>, 
 ##  and vertices <M>x,y</M> are adjacent if and only if 
-##  <M>x-y\equiv\pm 1\;(mod\;<A>int</A>)</M>.
-## 
+##  <M>x-y\equiv \pm 1\;(mod\;<A>int</A>)</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> CycleGraph(5);
@@ -108,7 +106,6 @@ DeclareGlobalFunction( "CycleGraph" );
 ##  <P/>
 ##  The Cocktail party graphs are the complete multipartite graphs with all
 ##  parts of size 2 (see <Ref Func="CompleteMultipartiteGraph2"/>).
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> CocktailPartyGraph(4);
@@ -142,8 +139,8 @@ DeclareGlobalFunction( "CocktailPartyGraph" );
 ##  Paley graph of order <A>int</A>.
 ##  <P/>
 ##  Let <M>q</M> be a positive power of an odd prime number. Then the   
-##  <E>Paley graph</E> of order <M>q</M>,<M>P_q</M> is the graph with vertex set 
-##  <M>\mathbb{F}_q</M>, and distinct vertices <M>x,y</M> are adjacent if 
+##  <E>Paley graph</E> of order <M>q</M>,<M>P_q</M> is the graph with vertex-set 
+##  <M>GF(q)</M>, and distinct vertices <M>x,y</M> are adjacent if 
 ##  and only if <M>x-y</M> is a square. Therefore, this graph is undirected
 ##  if and only if <M>q\equiv 1\;(mod\; 4)</M>. When 
 ##  <M>q\equiv 1\;(mod\; 4)</M>, <M>P_q</M> is strongly regular with parameters
@@ -186,15 +183,15 @@ DeclareGlobalFunction( "PaleyGraph" );
 ##  returns the Latin square graph associated to the Cayley table of 
 ##  <A>grp</A>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  Let <M>M</M> be an <M>n\times m</M> matrix. Then <E>Latin square graph</E>
-##  associated with <M>M</M> is the graph with vertex set 
+##  associated with <M>M</M> is the graph with vertex-set 
 ##  <M>\{1..n\}\times \{1..m\}</M>, and distinct vertices <M>(i,j),(k,\ell)</M>
 ##  are adjcacent if and only if either
 ##  <List>
@@ -203,7 +200,7 @@ DeclareGlobalFunction( "PaleyGraph" );
 ##    <Item><M>M_{i,j}=M_{k,\ell}</M>.</Item>
 ##  </List>
 ##  When associated to a Cayley table of a group <M>G</M>, the matrix is  
-##  indexed by <M>G\times G</M>, and the graph has vertex set <M>G\times G</M>.
+##  indexed by <M>G\times G</M>, and the graph has vertex-set <M>G\times G</M>.
 ##  <P/>
 ##  TODO invt change (no effect on matrix input)
 ##    <Example>
@@ -245,10 +242,10 @@ DeclareGlobalFunction( "LatinSquareGraph" );
 ##  <P/>
 ##  Let <M>n</M> be an integer greater than 1. The <E>complete Taylor graph</E>
 ##  with parts of size <M>n</M> (a.k.a the <M>n</M>-crown graph) is the
-##  bipartite graph with parts <M>\{x_1\dots x_n,\},\{y_1\dots y_n\}</M>,
+##  bipartite graph with parts <M>\{x_1,...,x_n\},\{y_1,...,y_n\}</M>,
 ##  and vertices <M>x_i,y_j</M> are adjacent if and only if <M>i\not=j</M>.
 ##  <P/>
-##  The graph returned by this function has vertex set consisting of pairs 
+##  The graph returned by this function has vertex-set consisting of pairs 
 ##  of integers. The first entry corresponds to the part the vertex is 
 ##  contained in, the second entry is its index in the part.
 ##    <Example>
@@ -285,10 +282,6 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 ##  cyclic Haar graph with symbol <A>list</A>
 ##  <P/>
 ##  TODO insert definition(s) or reference.
-## 
-## 
-## 
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> HaarGraph(11);
@@ -307,3 +300,6 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 DeclareConstructor( "HaarGraphCons", [IsObject, IsInt, IsList]);
 DeclareGlobalFunction( "HaarGraph" );
 
+#############################################################################
+##
+#E

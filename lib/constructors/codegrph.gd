@@ -26,18 +26,18 @@
 ##  <M>gcd(2<A>t</A>-1,<A>e</A>)=1</M>, this function returns the Preparata 
 ##  graph <M>Pr(<A>t</A>,<A>e</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>t,e</M> be positive integer such that <M>gcd(2t-1,e)=1</M>. Let 
 ##  <M>q=2^{2t-1},s=2^e</M>. 
 ##  <P/>
 ##  The <E>Preparata graph</E> <M>Pr(t,e)</M> has vertex-set 
-##  <M>\mathbb{F}_q\times\mathbb{F}_2\times\mathbb{F}_q</M>. Any two distinct 
+##  <M>GF(q) \times GF(2) \times GF(q)</M>. Any two distinct 
 ##  vertices <M>(a,i,\alpha),(b,j,\beta)</M> are adjacent if and only if 
 ##  <M>\alpha+\beta=a^sb+ab^s+(i+j)(a^{s+1}+b^{s+1})</M>.
 ##    <Example>
@@ -69,14 +69,14 @@ DeclareGlobalFunction( "PreparataGraph" );
 ##
 ##  <Description>
 ##  Given positive integers <A>i,j,m</A>, this function returns the Kasami 
-##  graph on <M>\mathbb{F}_{q^{2<A>j</A>+1}}^2</M> with adjacency parameter 
+##  graph on <M>GF(q^{2<A>j</A>+1})^2</M> with adjacency parameter 
 ##  <A>m</A>, where <M>q=2^{<A>i</A>}</M>. 
 ##  <P/>
 ##  Let <M>i,j,m</M> be positive integers and let 
 ##  <M>q=2^i,t=2^m+1</M>. 
 ##  <P/>
 ##  The <E>Kasami graph</E> <M>Kas(i,j,m)</M> has vertex-set 
-##  <M>\mathbb{F}_{q^{2j+1}}^2</M>. Any two distinct 
+##  <M>GF(q^{2j+1})^2</M>. Any two distinct 
 ##  vertices <M>(a,\alpha),(b,\beta)</M> are adjacent if and only if 
 ##  <M>a+b=(\alpha+\beta)^t</M>.
 ##    <Example>
@@ -104,7 +104,7 @@ DeclareGlobalFunction( "KasamiGraph" );
 ##
 ##  <Description>
 ##  Given positive integers <A>i,j,m</A>, this function returns the 
-##  extended Kasami graph on <M>\mathbb{F}_{q^{2<A>j</A>+1}}^2</M> with 
+##  extended Kasami graph on <M>GF(q^{2<A>j</A>+1})^2</M> with 
 ##  adjacency parameter <A>m</A>, where <M>q=2^{<A>i</A>}</M>. 
 ##  <P/>
 ##  Let <M>i,j,m</M> be positive integers and let 
@@ -139,14 +139,14 @@ DeclareGlobalFunction( "ExtendedKasamiGraph" );
 ##
 ##  <Description>
 ##  Given a positive integer <A>i</A>, this function returns the quadratic 
-##  Kasami graph on <M>\mathbb{F}_{q}\times \mathbb{F}_{q^2}</M>,  where 
+##  Kasami graph on <M>GF(q) \times GF(q^2)</M>,  where 
 ##  <M>q=2^{<A>i</A>}</M>. 
 ##  <P/>
 ##  Let <M>i</M> be a positive integer and let 
 ##  <M>q=2^i,t=q+1</M>. 
 ##  <P/>
 ##  The <E>quadratic Kasami graph</E> <M>QKas(i)</M> has vertex-set 
-##  <M>\mathbb{F}_{q}\times \mathbb{F}_{q^2}</M>. Any two distinct 
+##  <M>GF(q) \times GF(q^2)</M>. Any two distinct 
 ##  vertices <M>(a,\alpha),(b,\beta)</M> are adjacent if and only if 
 ##  <M>a+b=(\alpha+\beta)^t</M>.
 ##    <Example>
@@ -174,7 +174,7 @@ DeclareGlobalFunction( "QuadraticKasamiGraph" );
 ##
 ##  <Description>
 ##  Given a positive integer <A>i</A>, this function returns the extended 
-#   quadratic Kasami graph on <M>\mathbb{F}_{q}\times \mathbb{F}_{q^2}</M>,  
+#   quadratic Kasami graph on <M>GF(q) \times GF(q^2)</M>,  
 ##  where <M>q=2^{<A>i</A>}</M>. 
 ##  <P/>
 ##  Let <M>i</M> be a positive integer and let 
@@ -195,3 +195,7 @@ DeclareGlobalFunction( "QuadraticKasamiGraph" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "ExtendedQuadraticKasamiGraph" );
+
+#############################################################################
+##
+#E

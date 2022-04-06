@@ -354,3 +354,7 @@ InstallGlobalFunction( BiggsSmithGraph,
 function()
   return BiggsSmithGraphCons(IsConjugacyClassGraph);
 end );
+
+#############################################################################
+##
+#E

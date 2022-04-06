@@ -22,15 +22,15 @@
 ##  Given positive integers <A>d,e</A>, this function returns the Hamming 
 ##  graph <M>H(<A>d</A>,<A>e</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>d,e</M> be positive integers. The <E>Hamming graph</E> 
-##  <M>H(d,e)</M> is the graph with vertex set <M>\{1\dots e\}^d</M>, and
+##  <M>H(d,e)</M> is the graph with vertex-set <M>\{1,...,e\}^d</M>, and
 ##  distinct vertices <M>x,y</M> are adjacent if and only if they differ 
 ##  in exactly one coordinate.
 ##    <Example>
@@ -67,19 +67,18 @@ DeclareGlobalFunction( "HammingGraph2" );
 ##  Given a positive integer <A>d</A>, this function returns the 
 ##  <A>d</A>-dimensional hypercube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E><M>d</M>-dimensional hypercube
-##  graph</E> is the graph with vertex set <M>\{1,2\}^d</M>, and
+##  graph</E> is the graph with vertex-set <M>\{1,2\}^d</M>, and
 ##  distinct vertices <M>x,y</M> are adjacent if and only if they differ 
 ##  in exactly one coordinate (i.e. the Hamming graph <M>H(d,2)</M> 
 ##  <Ref Func="HammingGraph2"/>).
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> HypercubeGraph(3);
@@ -111,12 +110,12 @@ DeclareGlobalFunction( "HypercubeGraph" );
 ##  Given positive integers <A>n,d</A>, this function returns the Doob graph
 ##  <M>D(<A>n</A>,<A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>n,d</M> be positive integers. The <E>Doob graph</E> <M>D(n,d)</M>
 ##  is the graph box product of <M>n</M> copies of the Shrikhande graph and
@@ -151,17 +150,16 @@ DeclareGlobalFunction( "DoobGraph" );
 ##  Given a positive integer <A>d</A>, this function returns the halved 
 ##  <A>d</A>-cube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E>halved <M>d</M>-cube</E> is
 ##  the halved graph of the <M>d</M>-dimensional hypercube graph. (See  
 ##  <Ref Func="HalvedGraph"/> and <Ref Func="HypercubeGraph"/>.)
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> HalvedCubeGraph(4);
@@ -195,12 +193,12 @@ DeclareGlobalFunction( "HalvedCubeGraph" );
 ##  Given a positive integer <A>d</A>, this function returns the folded 
 ##  <A>d</A>-cube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E>folded <M>d</M>-cube</E> is
 ##  the antipodal quotient graph of the <M>d</M>-dimensional hypercube graph.  
@@ -241,12 +239,12 @@ DeclareGlobalFunction( "FoldedCubeGraph" );
 ##  Given a integer <A>d</A> with <A>d&gt;2</A>, this function returns the 
 ##  folded halved <M>2<A>d</A></M>-cube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E>folded halved 
 ##  <M>d</M>-cube</E> is the antipodal quotient of the halved graph of the
@@ -284,15 +282,15 @@ DeclareSynonym("HalvedFoldedCubeGraph", FoldedHalvedCubeGraph);
 ##  Given a prime power <A>q</A>, this function returns the Brouwer graph 
 ##  <M>Br(q)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power. The <E>Brouwer graph</E> <M>Br(q)</M>
-##  is the graph with vertex set <M>\mathbb{F}_q^3\times \mathbb{F}_q^3</M>,
+##  is the graph with vertex-set <M>GF(q)^3 \times GF(q)^3</M>,
 ##  and distinct vertices <M>(x_1,y_2),(x_2,y_2)</M> are adjacent if and 
 ##  only if <M>x_1-y_1=x_2\times y_2</M> (where <M>\times</M> is the cross
 ##  product of vectors). 
@@ -360,26 +358,26 @@ DeclareGlobalFunction( "PasechnikGraph" );
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>n</A>, this function 
 ##  returns the additive symplectic cover graph associated with the symplectic
-##  invariant bilinear form acting on <M>\mathbb{F}_{<A>q</A>}^{2<A>n</A>}</M>. 
+##  invariant bilinear form acting on <M>GF(<A>q</A>)^{2<A>n</A>}</M>. 
 ##  If <A>h</A> is a non-negative integer, this function returns the additive
 ##  symplectic cover graph defined as above, modulo a <A>h</A>-dimensional 
-##  subspace of <M>\mathbb{F}_{<A>q</A>}</M>.
+##  subspace of <M>GF(<A>q</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>n</M> and positive integer. Let
-##  <M>K</M> be a <M>h</M>-dimensional subspace of <M>\mathbb{F}_q</M>, and 
-##  denote the cosets of <M>K</M> in <M>\mathbb{F}_q</M> by <M>\overline{K}</M>.
+##  <M>K</M> be a <M>h</M>-dimensional subspace of <M>GF(q)</M>, and 
+##  denote the cosets of <M>K</M> in <M>GF(q)</M> by <M>\overline{K}</M>.
 ##  Let <M>B</M> be the symplectic invariant bilinear form acting on 
-##  <M>\mathbb{F}_q^{2n}</M>. 
+##  <M>GF(q)^{2n}</M>. 
 ##  <P/>
 ##  Then the <E>additive symplectic cover graph</E> with respect to these is the 
-##  graph with vertex set <M>\overline{K}\times \mathbb{F}_q^{2n}</M>, and distinct 
+##  graph with vertex-set <M>\overline{K} \times GF(q)^{2n}</M>, and distinct 
 ##  vertices <M>(a+K,x),(b+K,y)</M> are adjacent if and only if <M>B(x,y)\in a-b+K</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -412,23 +410,23 @@ DeclareGlobalFunction( "AdditiveSymplecticCoverGraph" );
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>m</A>, this function 
 ##  returns the multiplicative symplectic cover graph associated with the symplectic
-##  invariant bilinear form acting on <M>\mathbb{F}_{<A>q</A>}^{2}</M> and  
-##  multiplicative subgroup of <M>\mathbb{F}_{<A>q</A>}</M> of order <A>m</A>.
+##  invariant bilinear form acting on <M>GF(<A>q</A>)^2</M> and  
+##  multiplicative subgroup of <M>GF(<A>q</A>)</M> of order <A>m</A>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>m</M> and positive integer. Let
-##  <M>K</M> be a multiplicative subgroup of <M>\mathbb{F}_q</M> of order <M>m</M> 
+##  <M>K</M> be a multiplicative subgroup of <M>GF(q)</M> of order <M>m</M> 
 ##  Let <M>B</M> be the symplectic invariant bilinear form acting on 
-##  <M>\mathbb{F}_q^{2}</M>. 
+##  <M>GF(q)^2</M>. 
 ##  <P/>
 ##  Then the <E>multiplicative symplectic cover graph</E> with respect to these is the 
-##  graph with vertex set <M>K\mathbb{F}_q^{2}\setminus \{(0,0)\}</M>, and distinct 
+##  graph with vertex-set <M>K.GF(q)^2 \setminus \{(0,0)\}</M>, and distinct 
 ##  vertices <M>Kx,Ky</M> are adjacent if and only if <M>B(x,y)\in K</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -466,11 +464,11 @@ DeclareGlobalFunction( "MultiplicativeSymplecticCoverGraph" );
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate quadratic form acting on  
-##  <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
+##  <M>GF(q)^d</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
 ##  elliptic let <M>e=-1</M> or hyperbolic let <M>e=1</M>. 
 ##  <P/>
 ##  The <E>affine polar graph</E> <M>VO_{d}^{e}(q)</M> is the graph with 
-##  vertex set <M>\mathbb{F}_q^{d}</M>, and distinct vertices <M>x,y</M>
+##  vertex-set <M>GF(q)^d</M>, and distinct vertices <M>x,y</M>
 ##  are adjacent if and only if <M>Q(x-y)=0</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -513,11 +511,11 @@ DeclareGlobalFunction( "AffinePolarGraphVO" );
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate quadratic form acting on  
-##  <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
+##  <M>GF(q)^d</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
 ##  elliptic let <M>e=-1</M> or hyperbolic let <M>e=1</M>. 
 ##  <P/>
 ##  The <E>affine polar graph</E> <M>VNO_{d}^{e}(q)</M> is the graph with 
-##  vertex set <M>\mathbb{F}_q^{d}</M>, and distinct vertices <M>x,y</M>
+##  vertex-set <M>GF(q)^d</M>, and distinct vertices <M>x,y</M>
 ##  are adjacent if and only if <M>Q(x-y)</M> is a nonzero square.
 ##    <Example>
 ##      <![CDATA[
@@ -531,3 +529,7 @@ DeclareGlobalFunction( "AffinePolarGraphVO" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "AffinePolarGraphVNO" );
+
+#############################################################################
+##
+#E

@@ -21,20 +21,19 @@
 ##
 ##  <Description>
 ##  Given positive integers <A>n,k</A>, with <A>k&lt;n</A>, this function 
-##  returns the Kneser graph on the <A>k</A>-subsets of <K>[1..n]</K>.
+##  returns the Kneser graph on the <A>k</A>-subsets of <C>[1..n]</C>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  Let <M>n,k</M> be positive integers where <M>k &lt;n</M>. The 
-##  <E>Kneser graph</E> <M>K(n,k)</M> has vertex set the <M>k</M>-subsets
-##  of <M>\{1\dots n\}</M>, and distinct vertices <M>X,Y</M> are adjacent
+##  <E>Kneser graph</E> <M>K(n,k)</M> has vertex-set the <M>k</M>-subsets
+##  of <M>\{1,...,n\}</M>, and distinct vertices <M>X,Y</M> are adjacent
 ##  if and only if <M>X\cap Y = \emptyset</M>.
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> KneserGraph(6,2);
@@ -70,12 +69,12 @@ DeclareGlobalFunction( "KneserGraph" );
 ##  Given a positive integer <A>d</A>, this function returns the Odd graph 
 ##  of diameter <A>d</A>
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  Let <M>d</M> be a positive integer. Then the <E>Odd graph</E> of 
 ##  diameter <M>d</M> is the graph <M>K(2d+1,d)</M>. (see 
@@ -114,22 +113,20 @@ DeclareGlobalFunction( "OddGraph" );
 ##  double of Odd graph of diameter <A>d</A> (see <Ref Func="OddGraph"/> and
 ##  <Ref Func="BipartiteDoubleGraph"/>).
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  Let <M>d</M> be a positive integer. The assoicated doubled odd graph has
-##  vertex set consisting of all subsets of <M>\{1\dots n\}</M> with sizes 
+##  vertex-set consisting of all subsets of <M>\{1,...,n\}</M> with sizes 
 ##  in <M>\{d,d+1\}</M>vertices, and distinct vertices <M>X,Y</M> are 
 ##  adjacent if and only if <M>X\subset Y</M> or <M>Y\subset X</M>.
 ##  This is isomorphic to the  bipartite double of the Odd
 ##  graph given by <Ref Func="OddGraph"/> and
 ##  <Ref Func="BipartiteDoubleGraph"/>.
-##
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> DoubledOddGraph(2);
@@ -169,17 +166,16 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 ##  Given an integer <A>d</A>, where <C>d&gt;2</C>, this function returns the
 ##  folded Johnson graph, defined on the Johnson graph <M>J(2d,d)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>
 ##  Let <M>d</M> be an integer where <M>d&gt;2</M>. The <E>folded Johnson
 ##  graph</E> <M>\overline{J}(2d,d)</M> is the antipodal quotient of the
 ##  Johnson graph <M>J(2d,d)</M> (see <Ref Func="AntipodalQuotientGraph"/>).
-##  
 ##    <Example>
 ##      <![CDATA[
 ##gap> FoldedJohnsonGraph(3);
@@ -218,12 +214,12 @@ DeclareGlobalFunction( "FoldedJohnsonGraph" );
 ##  Given an integer <A>i</A> in <C>[1,2,3]</C>, this function returns the 
 ##  <M><A>i</A>^{th}</M> Chang graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  There are four pairwise non-isomorphic strongly regular graphs with 
 ##  parameters <M>(28,12,6,4)</M>. They are the triangular graph
@@ -253,3 +249,7 @@ DeclareGlobalFunction( "FoldedJohnsonGraph" );
 ##
 DeclareGlobalFunction( "ChangGraph" );
 DeclareConstructor("ChangGraphCons", [IsObject, IsInt]);
+
+#############################################################################
+##
+#E

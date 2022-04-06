@@ -24,7 +24,7 @@
 ##  <P/>  
 ##  Let <M>q</M> be a prime power. The 
 ##  <E>Desarguesian plane incidence graph</E> has vertex-set consisting 
-##  of the 1-dimensional and 2-dimensional subspaces <M>\mathbb{F}_q^{3}</M>.
+##  of the 1-dimensional and 2-dimensional subspaces <M>GF(q)^{3}</M>.
 ##  Any two distinct vertices <M>U,W</M> are adjacent if and only if 
 ##  <M>U\cap W</M> is <M>U</M> or <M>W</M> (they are incident in the 
 ##  projective space <M>PG(2,q)</M>.
@@ -458,3 +458,7 @@ DeclareGlobalFunction( "IncidenceGraphFromFile" );
 ##
 
 DeclareGlobalFunction( "CollinearityGraphFromFile" );
+
+#############################################################################
+##
+#E

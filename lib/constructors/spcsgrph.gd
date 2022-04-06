@@ -24,16 +24,16 @@
 ##  function returns the Grassmann graph 
 ##  <M>J_{<A>q</A>}(<A>n</A>,<A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>n,d</M> be positive integers. 
 ##  The <E>Grassmann graph</E> <M>J_q(n,d)</M> is the graph with vertex-set 
-##  the <M>d</M>-dimensional subspaces of <M>\mathbb{F}_q^n</M>,  and 
+##  the <M>d</M>-dimensional subspaces of <M>GF(q)^n</M>,  and 
 ##  distinct vertices <M>U,V</M> are adjacent if and only if 
 ##  <M>U\cap V</M> has dimension <M>d-1</M>. 
 ##    <Example>
@@ -65,17 +65,17 @@ DeclareGlobalFunction( "GrassmannGraph" );
 ##  function returns the doubled Grassmann graph 
 ##  <M>2J_{<A>q</A>}(2<A>d</A>+1,<A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> be a positive integer. 
 ##  The <E>doubled Grassmann graph</E> <M>J_q(n,d)</M> is the graph with 
 ##  vertex-set the <M>d</M>-dimensional and <M>d+1</M>-dimensional subspaces 
-##  of <M>\mathbb{F}_q^n</M>, and distinct vertices <M>U,V</M> are adjacent if 
+##  of <M>GF(q)^n</M>, and distinct vertices <M>U,V</M> are adjacent if 
 ##  and only if <M>U\subseteq V</M> or <M>V\subseteq U</M>. This graph is 
 ##  isomorphic to the bipartite double of the Grassmann graph 
 ##  <M>J_q(2d+1,d)</M> (See <Ref Func="BipartiteDoubleGraph"/> and 
@@ -109,16 +109,16 @@ DeclareGlobalFunction( "DoubledGrassmannGraph" );
 ##  function returns the twisted Grassmann graph 
 ##  <M>\tilde{J}_{<A>q</A>}(2<A>d</A>+1, <A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power, <M>d</M> be a positive integer and 
-##  <M>H</M> be a fixed hyperplane in <M>\mathbb{F}_q^{2d+1}</M>. For the
-##  vector space <M>V=\mathbb{F}_q^{2d+1}</M>, let <M>A</M> be the set of 
+##  <M>H</M> be a fixed hyperplane in <M>GF(q)^{2d+1}</M>. For the
+##  vector space <M>V=GF(q)^{2d+1}</M>, let <M>A</M> be the set of 
 ##  <M>d+1</M>-dimensional subspaces not contained in <M>H</M>, and <M>B</M> 
 ##  be all <M>d-1</M>-dimensional subspaces in <M>V</M>. The <E>twisted 
 ##  Grassmann graph</E> <M>\tilde{J}_q(2d+1,d)</M> has 
@@ -169,14 +169,14 @@ DeclareGlobalFunction( "TwistedGrassmannGraph" );
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate quadratic form acting on  
-##  <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
+##  <M>GF(q)^d</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
 ##  elliptic let <M>e=-1</M> or hyperbolic let <M>e=1</M>. Further, let 
 ##  <M>B</M> be the bilinear form associated with the quadratic form <M>Q</M>.
 ##  <P/>
 ##  The <E>polar graph</E> <M>O^{e}(d,q)</M> has vertex-set consisting of the
-##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such that 
 ##  <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
-##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -212,14 +212,14 @@ DeclareGlobalFunction( "PolarGraphO" );
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be an elliptic or hyperbolic nondegenerate quadratic form acting 
-##  on <M>\mathbb{F}_{q}^{d}</M>. If <M>Q</M> is elliptic let <M>e=-1</M> and 
+##  on <M>GF(q)^d</M>. If <M>Q</M> is elliptic let <M>e=-1</M> and 
 ##  if it is hyperbolic let <M>e=1</M>. Further, let <M>B</M> be the bilinear
 ##  form associated with the quadratic form <M>Q</M>.
 ##  <P/>
 ##  The <E>polar graph</E> <M>NO^{e}(d,q)</M> has vertex-set consisting of the
-##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such that 
 ##  <M>Q(u)\not=0</M> for all <M>u\in U</M> (i.e. the nonisotropic lines in 
-##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -253,12 +253,12 @@ DeclareGlobalFunction( "PolarGraphNOorth" );
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
-##  <M>\mathbb{F}_{q}^{d}</M>.
+##  <M>GF(q)^d</M>.
 ##  <P/>
 ##  The <E>polar graph</E> <M>Sp(d,q)</M> has vertex-set consisting of the
-##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such that 
 ##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
-##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -293,12 +293,12 @@ DeclareGlobalFunction( "PolarGraphSp" );
 ##  <P/>
 ##  Let <M>r</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate hermitean form acting on  
-##  <M>\mathbb{F}_{r^2}^{d}</M>.
+##  <M>GF(r^2)^d</M>.
 ##  <P/>
 ##  The <E>polar graph</E> <M>U(d,r)</M> has vertex-set consisting of the
-##  1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{d}</M> such that 
+##  1-dimensional subspaces <M>U</M> of <M>GF(r^2)^d</M> such that 
 ##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
-##  <M>\mathbb{F}_q^{d}</M>). Any two distinct vertices <M>U,W</M>
+##  <M>GF(r^2)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -328,21 +328,21 @@ DeclareGlobalFunction( "PolarGraphU" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>B_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate parabolic quadratic form acting on  
-##  <M>\mathbb{F}_{q}^{2d+1}</M>.
+##  <M>GF(q)^{2d+1}</M>.
 ##  <P/>
 ##  The <E>dual polar graph</E> <M>B_d(q)</M> has vertex-set consisting of the
-##  <M>d</M>-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{2d+1}</M> such 
+##  <M>d</M>-dimensional subspaces <M>U</M> of <M>GF(q)^{2d+1}</M> such 
 ##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
-##  in <M>\mathbb{F}_q^{2d+1}</M>). Any two distinct vertices <M>U,W</M>
+##  in <M>GF(q)^{2d+1}</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -372,21 +372,21 @@ DeclareGlobalFunction( "DualPolarGraphB" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>C_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
-##  <M>\mathbb{F}_{q}^{2d}</M>.
+##  <M>GF(q)^{2d}</M>.
 ##  <P/>
 ##  The <E>dual polar graph</E> <M>C_d(q)</M> has vertex-set consisting of the
-##  <M>d</M>-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{2d}</M> such 
+##  <M>d</M>-dimensional subspaces <M>U</M> of <M>GF(q)^{2d}</M> such 
 ##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
-##  in <M>\mathbb{F}_q^{2d}</M>). Any two distinct vertices <M>U,W</M>
+##  in <M>GF(q)^{2d}</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -416,21 +416,21 @@ DeclareGlobalFunction( "DualPolarGraphC" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>D_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate hyperbolic quadratic form acting on  
-##  <M>\mathbb{F}_{q}^{2d}</M>.
+##  <M>GF(q)^{2d}</M>.
 ##  <P/>
 ##  The <E>dual polar graph</E> <M>D_d(q)</M> has vertex-set consisting of the
-##  <M>d</M>-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{2d}</M> such 
+##  <M>d</M>-dimensional subspaces <M>U</M> of <M>GF(q)^{2d}</M> such 
 ##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
-##  in <M>\mathbb{F}_q^{2d}</M>). Any two distinct vertices <M>U,W</M>
+##  in <M>GF(q)^{2d}</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
 ##    <Example>
 ##      <![CDATA[
@@ -462,21 +462,21 @@ DeclareGlobalFunction( "DualPolarGraphD" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>^2D_{<A>d</A>+1}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate elliptic quadratic form acting on  
-##  <M>\mathbb{F}_{q}^{2d+2}</M>.
+##  <M>GF(q)^{2d+2}</M>.
 ##  <P/>
 ##  The <E>dual polar graph</E> <M>^2D_{d+1}(q)</M> has vertex-set consisting 
 ##  of the <M>d</M>-dimensional subspaces <M>U</M> of 
-##  <M>\mathbb{F}_q^{2d+2}</M> such that <M>Q(u)=0</M> for all <M>u\in U</M> 
-##  (i.e. totally isotropic subspaces in <M>\mathbb{F}_q^{2d+2}</M>). Any two 
+##  <M>GF(q)^{2d+2}</M> such that <M>Q(u)=0</M> for all <M>u\in U</M> 
+##  (i.e. totally isotropic subspaces in <M>GF(q)^{2d+2}</M>). Any two 
 ##  distinct vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> 
 ##  has dimension <M>d-1</M>.
 ##    <Example>
@@ -507,22 +507,22 @@ DeclareGlobalFunction( "DualPolarGraph2D" );
 ##  Given a prime power <A>r</A> and positive integer <A>e</A>, this function 
 ##  returns the dual polar graph <M>^2A_{<A>e</A>-1}(<A>r</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
-##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
+##  Let <M>q</M> be a prime power and <M>e</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate hermitean form acting on  
-##  <M>\mathbb{F}_{r^2}^{e}</M>.
+##  <M>GF(r^2)^e</M>.
 ##  <P/>
 ##  The <E>dual polar graph</E> <M>^2A_{e-1}(r)</M> has vertex-set consisting 
 ##  of the <M>\lfloor e/2 \rfloor</M>-dimensional subspaces <M>U</M> of 
-##  <M>\mathbb{F}_{r^2}^{e}</M> such that <M>B(u,w)=0</M> for all 
+##  <M>GF(r^2)^e</M> such that <M>B(u,w)=0</M> for all 
 ##  <M>u,w\in U</M> (i.e. totally isotropic subspaces in 
-##  <M>\mathbb{F}_{r^2}^{e}</M>). Any two distinct vertices <M>U,W</M> are 
+##  <M>GF(r^2)^e</M>). Any two distinct vertices <M>U,W</M> are 
 ##  adjacent if and only if <M>U\cap W</M> has dimension 
 ##  <M>\lfloor e/2 \rfloor -1</M>.
 ##    <Example>
@@ -555,20 +555,20 @@ DeclareGlobalFunction( "DualPolarGraph2A" );
 ##  Given a prime power <A>q</A>, this function returns the Doro graoh 
 ##  <M>Doro(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>Q</M> be a nondegenerate elliptic 
-##  quadratic form acting on <M>\mathbb{F}_{q}^{4}</M>.
+##  quadratic form acting on <M>GF(q)^4</M>.
 ##  <P/>
 ##  The <E>Doro graph</E> <M>Doro(q)</M> has vertex-set consisting 
-##  of the 1-dimensional subspaces <M>U</M> of <M>\mathbb{F}_q^{4}</M> such 
+##  of the 1-dimensional subspaces <M>U</M> of <M>GF(q)^4</M> such 
 ##  that <M>Q(u)\not=0</M> for all non-zero <M>u\in U</M> (i.e. nonisotropic 
-##  subspaces in <M>\mathbb{F}_q^{4}</M>). Any two distinct vertices 
+##  subspaces in <M>GF(q)^4</M>). Any two distinct vertices 
 ##  <M>U,W</M> are adjacent if and only if <M>U + W</M> is a hyperbolic line.
 ##    <Example>
 ##      <![CDATA[
@@ -598,22 +598,22 @@ DeclareGlobalFunction( "DoroGraph" );
 ##
 ##  <Description>
 ##  Given a prime power <A>r</A>, this function returns the unitary 
-##  nonisotropics graph on <M>\mathbb{F}_{<A>r</A>^2}^3</M>. 
+##  nonisotropics graph on <M>GF(<A>r</A>^2)^3</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
+##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
+##  <C>gamma</C> may not have been constructed using its full automorphism
+##  group, and <C>gamma.group</C> may be a strict subgroup of the 
+##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
 ##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  graph, and <C>gamma.group</C> is this group.
 ##  <P/>  
 ##  Let <M>r</M> be a prime power and <M>B</M> be a nondegenerate hermitean 
-##  form acting on <M>\mathbb{F}_{r^2}^{3}</M>.
+##  form acting on <M>GF(r^2)^3</M>.
 ##  <P/>
-##  The <E>unitary nonisotropics graph</E> on <M>\mathbb{F}_{r^2}^{3}</M> has 
+##  The <E>unitary nonisotropics graph</E> on <M>GF(r^2)^3</M> has 
 ##  vertex-set consisting of the 1-dimensional subspaces <M>U</M> of 
-##  <M>\mathbb{F}_{r^2}^3</M> such that <M>B(u,u)\not=0</M> for all 
-##  <M>u\in U</M> (i.e. nonisotropic subspaces in <M>\mathbb{F}_{r^2}^3</M>). 
+##  <M>GF(r^2)^3</M> such that <M>B(u,u)\not=0</M> for all 
+##  <M>u\in U</M> (i.e. nonisotropic subspaces in <M>GF(r^2)^3</M>). 
 ##  Any two distinct vertices <M>U,W</M> are adjacent if and only if 
 ##  <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
@@ -629,3 +629,7 @@ DeclareGlobalFunction( "DoroGraph" );
 ##
 DeclareConstructor( "UnitaryNonisotropicsGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "UnitaryNonisotropicsGraph" );
+
+#############################################################################
+##
+#E

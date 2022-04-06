@@ -103,3 +103,7 @@ function(arg)
     Error("usage: HermiteanFormsGraph( [<filter>, ]<int>, <int> )");
   fi;
 end );
+
+#############################################################################
+##
+#E

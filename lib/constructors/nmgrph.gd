@@ -121,7 +121,7 @@ DeclareGlobalFunction( "PetersenGraph2" );
 ##  This function returns the Shrikhande graph.
 ##  <P/>
 ##  The <E>Shrikhande graph</E> is the complement graph of the Latin square
-##  graph of the group <M>\mathbb{Z}_4</M> 
+##  graph of the group <M>&ZZ;_4</M> 
 ##  (see <Ref Func="LatinSquareGraph"/>). This graph is strongly regular 
 ##  with parameters <M>(16,6,2,2)</M>.
 ##    <Example>
@@ -501,7 +501,7 @@ DeclareGlobalFunction( "PerkelGraph" );
 ##  This function returns the Gosset graph.
 ##  <P/>
 ##  The <E>Gosset graph</E> can be constructed as follows. Consider the 
-##  vector <M>e=(-3,-3,1,1,1,1,1,1)</M> in <M>\mathbb{R}^8</M>. The
+##  vector <M>e=(-3,-3,1,1,1,1,1,1)</M> in <M>&RR;^8</M>. The
 ##  vertex-set of the Gosset graph  is the set of vecotrs obtained from 
 ##  permuting coordinates and taking opposite vectors of <M>e</M>. Any two
 ##  distinct vectors <M>u,w</M> are adjacent if and only if their inner 
@@ -784,7 +784,7 @@ DeclareGlobalFunction( "DesarguesGraph" );
 ##  This function returns the Biggs-Smith graph.
 ##  <P/>
 ##  The <E>Biggs-Smith graph</E> is TODO. This graph is distance-regular with 
-##  parameters  <M>\{3,2,2,2,1,1,1;1,1,1,1,1,1,3\}</M>.
+##  parameters  <M>\{3,2,2,2,1,1,1;1,1,1,1,1,1,3\}</M>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=BiggsSmithGraph();;
@@ -799,3 +799,7 @@ DeclareGlobalFunction( "DesarguesGraph" );
 ##
 DeclareConstructor( "BiggsSmithGraphCons", [IsObject]);
 DeclareGlobalFunction( "BiggsSmithGraph" );
+
+#############################################################################
+##
+#E
