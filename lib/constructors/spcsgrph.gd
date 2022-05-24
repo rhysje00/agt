@@ -24,12 +24,9 @@
 ##  function returns the Grassmann graph 
 ##  <M>J_{<A>q</A>}(<A>n</A>,<A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>n,d</M> be positive integers. 
 ##  The <E>Grassmann graph</E> <M>J_q(n,d)</M> is the graph with vertex-set 
@@ -65,12 +62,9 @@ DeclareGlobalFunction( "GrassmannGraph" );
 ##  function returns the doubled Grassmann graph 
 ##  <M>2J_{<A>q</A>}(2<A>d</A>+1,<A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> be a positive integer. 
 ##  The <E>doubled Grassmann graph</E> <M>J_q(n,d)</M> is the graph with 
@@ -109,12 +103,9 @@ DeclareGlobalFunction( "DoubledGrassmannGraph" );
 ##  function returns the twisted Grassmann graph 
 ##  <M>\tilde{J}_{<A>q</A>}(2<A>d</A>+1, <A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power, <M>d</M> be a positive integer and 
 ##  <M>H</M> be a fixed hyperplane in <M>\mathbb{F}_q^{2d+1}</M>. For the
@@ -328,12 +319,9 @@ DeclareGlobalFunction( "PolarGraphU" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>B_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate parabolic quadratic form acting on  
@@ -372,12 +360,9 @@ DeclareGlobalFunction( "DualPolarGraphB" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>C_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
@@ -416,12 +401,9 @@ DeclareGlobalFunction( "DualPolarGraphC" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>D_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate hyperbolic quadratic form acting on  
@@ -462,12 +444,9 @@ DeclareGlobalFunction( "DualPolarGraphD" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>^2D_{<A>d</A>+1}(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate elliptic quadratic form acting on  
@@ -507,12 +486,9 @@ DeclareGlobalFunction( "DualPolarGraph2D" );
 ##  Given a prime power <A>r</A> and positive integer <A>e</A>, this function 
 ##  returns the dual polar graph <M>^2A_{<A>e</A>-1}(<A>r</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate hermitean form acting on  
@@ -555,12 +531,9 @@ DeclareGlobalFunction( "DualPolarGraph2A" );
 ##  Given a prime power <A>q</A>, this function returns the Doro graoh 
 ##  <M>Doro(<A>q</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>Q</M> be a nondegenerate elliptic 
 ##  quadratic form acting on <M>\mathbb{F}_{q}^{4}</M>.
@@ -600,12 +573,9 @@ DeclareGlobalFunction( "DoroGraph" );
 ##  Given a prime power <A>r</A>, this function returns the unitary 
 ##  nonisotropics graph on <M>\mathbb{F}_{<A>r</A>^2}^3</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>r</M> be a prime power and <M>B</M> be a nondegenerate hermitean 
 ##  form acting on <M>\mathbb{F}_{r^2}^{3}</M>.

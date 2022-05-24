@@ -332,7 +332,11 @@ function(G)
   return H;
 end );
 
-# The extended bipartite double of a graph, without naming vertices.
+
+#############################################################################
+##
+#F  ExtendedBipartiteDoubleGraph( <graph> )
+##  
 InstallMethod( ExtendedBipartiteDoubleGraphCons, "without names", true,
      [NoVertexNames, IsRecord], 0,
 function(filter, G)
@@ -351,10 +355,6 @@ function(filter, G)
   return H;
 end );
 
-#############################################################################
-##
-#F  ExtendedBipartiteDoubleGraph( <graph> )
-##  
 InstallMethod( ExtendedBipartiteDoubleGraphCons, "with names", true,
      [IsObject, IsRecord], 0,
 function(filter, G)

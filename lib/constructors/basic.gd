@@ -28,17 +28,13 @@
 ##  integers <A>nparts,sparts</A>, functions returns the complete
 ##  multipartite graph with <A>nparts</A> parts, each of size <A>sparts</A>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  The resulting graph will have vertex names pairs of positive integers,
 ##  with first entry denoting the part the vertex is contained in, and the
 ##  second entry denoting the number of the vertex in its part.
-##
 ##    <Example>
 ##      <![CDATA[
 ##gap> CompleteMultipartiteGraph2(3,4);
@@ -76,7 +72,6 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 ##  The resulting graph <K>gamma</K> will have vertex names <K>[1..int]</K>, 
 ##  and vertices <M>x,y</M> are adjacent if and only if 
 ##  <M>x-y\equiv\pm 1\;(mod\;<A>int</A>)</M>.
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> CycleGraph(5);
@@ -108,7 +103,6 @@ DeclareGlobalFunction( "CycleGraph" );
 ##  <P/>
 ##  The Cocktail party graphs are the complete multipartite graphs with all
 ##  parts of size 2 (see <Ref Func="CompleteMultipartiteGraph2"/>).
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> CocktailPartyGraph(4);
@@ -186,12 +180,9 @@ DeclareGlobalFunction( "PaleyGraph" );
 ##  returns the Latin square graph associated to the Cayley table of 
 ##  <A>grp</A>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>M</M> be an <M>n\times m</M> matrix. Then <E>Latin square graph</E>
 ##  associated with <M>M</M> is the graph with vertex set 
@@ -306,4 +297,3 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 ##
 DeclareConstructor( "HaarGraphCons", [IsObject, IsInt, IsList]);
 DeclareGlobalFunction( "HaarGraph" );
-

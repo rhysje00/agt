@@ -22,12 +22,9 @@
 ##  Given positive integers <A>d,e</A>, this function returns the Hamming 
 ##  graph <M>H(<A>d</A>,<A>e</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>d,e</M> be positive integers. The <E>Hamming graph</E> 
 ##  <M>H(d,e)</M> is the graph with vertex set <M>\{1\dots e\}^d</M>, and
@@ -67,12 +64,9 @@ DeclareGlobalFunction( "HammingGraph2" );
 ##  Given a positive integer <A>d</A>, this function returns the 
 ##  <A>d</A>-dimensional hypercube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E><M>d</M>-dimensional hypercube
 ##  graph</E> is the graph with vertex set <M>\{1,2\}^d</M>, and
@@ -111,12 +105,9 @@ DeclareGlobalFunction( "HypercubeGraph" );
 ##  Given positive integers <A>n,d</A>, this function returns the Doob graph
 ##  <M>D(<A>n</A>,<A>d</A>)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>n,d</M> be positive integers. The <E>Doob graph</E> <M>D(n,d)</M>
 ##  is the graph box product of <M>n</M> copies of the Shrikhande graph and
@@ -151,12 +142,9 @@ DeclareGlobalFunction( "DoobGraph" );
 ##  Given a positive integer <A>d</A>, this function returns the halved 
 ##  <A>d</A>-cube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E>halved <M>d</M>-cube</E> is
 ##  the halved graph of the <M>d</M>-dimensional hypercube graph. (See  
@@ -195,12 +183,9 @@ DeclareGlobalFunction( "HalvedCubeGraph" );
 ##  Given a positive integer <A>d</A>, this function returns the folded 
 ##  <A>d</A>-cube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E>folded <M>d</M>-cube</E> is
 ##  the antipodal quotient graph of the <M>d</M>-dimensional hypercube graph.  
@@ -241,12 +226,9 @@ DeclareGlobalFunction( "FoldedCubeGraph" );
 ##  Given a integer <A>d</A> with <A>d&gt;2</A>, this function returns the 
 ##  folded halved <M>2<A>d</A></M>-cube graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E>folded halved 
 ##  <M>d</M>-cube</E> is the antipodal quotient of the halved graph of the
@@ -284,12 +266,9 @@ DeclareSynonym("HalvedFoldedCubeGraph", FoldedHalvedCubeGraph);
 ##  Given a prime power <A>q</A>, this function returns the Brouwer graph 
 ##  <M>Br(q)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power. The <E>Brouwer graph</E> <M>Br(q)</M>
 ##  is the graph with vertex set <M>\mathbb{F}_q^3\times \mathbb{F}_q^3</M>,
@@ -365,12 +344,9 @@ DeclareGlobalFunction( "PasechnikGraph" );
 ##  symplectic cover graph defined as above, modulo a <A>h</A>-dimensional 
 ##  subspace of <M>\mathbb{F}_{<A>q</A>}</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>n</M> and positive integer. Let
 ##  <M>K</M> be a <M>h</M>-dimensional subspace of <M>\mathbb{F}_q</M>, and 
@@ -415,12 +391,9 @@ DeclareGlobalFunction( "AdditiveSymplecticCoverGraph" );
 ##  invariant bilinear form acting on <M>\mathbb{F}_{<A>q</A>}^{2}</M> and  
 ##  multiplicative subgroup of <M>\mathbb{F}_{<A>q</A>}</M> of order <A>m</A>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>m</M> and positive integer. Let
 ##  <M>K</M> be a multiplicative subgroup of <M>\mathbb{F}_q</M> of order <M>m</M> 

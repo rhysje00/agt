@@ -26,12 +26,9 @@
 ##  <M>gcd(2<A>t</A>-1,<A>e</A>)=1</M>, this function returns the Preparata 
 ##  graph <M>Pr(<A>t</A>,<A>e</A>)</M>. 
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>t,e</M> be positive integer such that <M>gcd(2t-1,e)=1</M>. Let 
 ##  <M>q=2^{2t-1},s=2^e</M>. 

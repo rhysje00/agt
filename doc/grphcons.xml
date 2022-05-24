@@ -7,16 +7,41 @@ literature.
 <Section Label="Vertex naming and automorphisms">
 <Heading>Vertex naming and automorphisms</Heading>
 
+The &AGT; package is designed to investigate and manipulate graphs in &Grape;
+format. When graphs are constructed in this format, useful information on the
+structure and properties of the graph is stored as record entries. Here, we 
+describe how two of these entries are constructed by functions in the &AGT; 
+package: the vertex names and group of automorphisms entries. 
+<P/>
+For many of the constructors found in this chapter, there is an optional 
+argument which affects the information used and stored in the graph it 
+constructs. Here, we list these options and describe how they affect the 
+resulting graph.
+
+<#Include Label="NoVertexNames">
+
+<#Include Label="FullAutomorphismGroup">
+
+
+
+<P/>
 TODO: Describe 
-        - Filters: NoVertexNames, FullAutomorphismGroup, and Is:type:Graph (may not affect functions?
+        - Is:type:Graph (may not affect functions)
         - Additional info: .primality, .duality, .halfPrimality, .halfDuality
         
 This will make function entries less convoluted.
+
+
 
 </Section>
 
 <Section Label="General constructions">
 <Heading>General constructions</Heading>
+
+In this section, we introduce functions which construct graphs that have 
+well-known and general definitions. These include graphs constructed from graph
+operations like taking products, joins, bipartite doubles and antipodal 
+quotients. 
 
 <#Include Label="AdjFunGraph">
 
@@ -58,6 +83,11 @@ This will make function entries less convoluted.
 <Section Label="Basic constructions">
 <Heading>Basic constructions</Heading>
 
+In this section, we introduce functions which construct graphs that have 
+relatively well-known and simple definitions. These include complete 
+multipartite, Paley and Latin square graphs. 
+
+
 <#Include Label="CompleteMultipartiteGraph2">
 
 <#Include Label="CycleGraph">
@@ -77,6 +107,9 @@ This will make function entries less convoluted.
 <Section Label="Subset constructions">
 <Heading>Subset constructions</Heading>
 
+In this section, each function constructs a graph for which each vertex is a 
+subset of a finite set (for example, the Kneser and Odd graphs). 
+
 <#Include Label="KneserGraph">
 
 <#Include Label="OddGraph">
@@ -91,6 +124,10 @@ This will make function entries less convoluted.
 
 <Section Label="Vector constructions">
 <Heading>Vector constructions</Heading>
+
+In this section, each function constructs a graph for which each vertex is a 
+vector lying in a finite vector space (for example, the Hamming and Affine 
+polar graphs). 
 
 <#Include Label="HammingGraph2">
 
@@ -121,6 +158,9 @@ This will make function entries less convoluted.
 <Section Label="Bilinear form constructions">
 <Heading>Bilinear form constructions</Heading>
 
+In this section, each function constructs a graph for which each vertex is a 
+matrix defined over a finite field, and considered as certain sesuilinear forms. 
+
 <#Include Label="BilinearFormsGraph">
 
 <#Include Label="HermiteanFormsGraph">
@@ -129,6 +169,9 @@ This will make function entries less convoluted.
 
 <Section Label="Subspace constructions">
 <Heading>Subspace constructions</Heading>
+
+In this section, each function constructs a graph for which each vertex is a 
+subspace in a finite vector space (for example, the Grassmann and Polar graphs). 
 
 <#Include Label="GrassmannGraph">
 
@@ -256,5 +299,11 @@ This will make function entries less convoluted.
 
 </Section>
 
+<Section Label="Constructions from other packages">
+<Heading>Constructions from other packages</Heading>
+
+TODO: could list graph constructor functions from other packages
+
+</Section>
 
 </Chapter>

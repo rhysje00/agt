@@ -23,12 +23,9 @@
 ##  Given positive integers <A>n,k</A>, with <A>k&lt;n</A>, this function 
 ##  returns the Kneser graph on the <A>k</A>-subsets of <K>[1..n]</K>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>n,k</M> be positive integers where <M>k &lt;n</M>. The 
 ##  <E>Kneser graph</E> <M>K(n,k)</M> has vertex set the <M>k</M>-subsets
@@ -70,12 +67,9 @@ DeclareGlobalFunction( "KneserGraph" );
 ##  Given a positive integer <A>d</A>, this function returns the Odd graph 
 ##  of diameter <A>d</A>
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>d</M> be a positive integer. Then the <E>Odd graph</E> of 
 ##  diameter <M>d</M> is the graph <M>K(2d+1,d)</M>. (see 
@@ -114,12 +108,9 @@ DeclareGlobalFunction( "OddGraph" );
 ##  double of Odd graph of diameter <A>d</A> (see <Ref Func="OddGraph"/> and
 ##  <Ref Func="BipartiteDoubleGraph"/>).
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>d</M> be a positive integer. The assoicated doubled odd graph has
 ##  vertex set consisting of all subsets of <M>\{1\dots n\}</M> with sizes 
@@ -169,12 +160,9 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 ##  Given an integer <A>d</A>, where <C>d&gt;2</C>, this function returns the
 ##  folded Johnson graph, defined on the Johnson graph <M>J(2d,d)</M>.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>d</M> be an integer where <M>d&gt;2</M>. The <E>folded Johnson
 ##  graph</E> <M>\overline{J}(2d,d)</M> is the antipodal quotient of the
@@ -218,12 +206,9 @@ DeclareGlobalFunction( "FoldedJohnsonGraph" );
 ##  Given an integer <A>i</A> in <C>[1,2,3]</C>, this function returns the 
 ##  <M><A>i</A>^{th}</M> Chang graph.
 ##  <P/>
-##  If <A>fil</A> is not given, or is <K>IsObject</K>,  the resulting graph 
-##  <K>gamma</K> may not have been constructed using its full automorphism
-##  group, and <K>gamma.group</K> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <K>FullAutomorphismGroup</K>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <K>gamma.group</K> is this group.
+##  The optional argument <A>fil</A>, if used, can only take value 
+##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  There are four pairwise non-isomorphic strongly regular graphs with 
 ##  parameters <M>(28,12,6,4)</M>. They are the triangular graph

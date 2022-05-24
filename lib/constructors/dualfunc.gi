@@ -8,7 +8,6 @@
 ##  Implementation file for functions involving duality functions. 
 ##
 
-
 # Default function for dual points.
 InstallGlobalFunction( DefaultDualityFunction,
 x -> x
