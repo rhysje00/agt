@@ -812,9 +812,9 @@ DeclareGlobalFunction( "DisjointUnionOfCliques" );
 ##  Given positive integers <A>n1, n2,...</A>, this function returns the complete multipartite
 ##  graph with parts of orders <A>n1, n2,...</A>. 
 ##  <P/>
-##  Let <M>n_{1},n_{2},\dots,n_{t}</M> be positive integers. Then the <E>complete
-##  multipartite graph</E>, <M>K_{n_{1},n_{2},\dots,n_{t}}</M>, has vertex set that
-##  can be partitioned into <M>t</M> disjoint sets <M>X_{1},X_{2},\dots,X_{t}</M> of sizes <M>n_{1},n_{2},\dots,n_{t}</M>
+##  Let <M>n_{1},n_{2},...,n_{t}</M> be positive integers. Then the <E>complete
+##  multipartite graph</E>, <M>K_{n_{1},n_{2},...,n_{t}}</M>, has vertex set that
+##  can be partitioned into <M>t</M> disjoint sets <M>X_{1},X_{2},...,X_{t}</M> of sizes <M>n_{1},n_{2},...,n_{t}</M>
 ##  such that distinct vertices are adjacent if and only if they belong to different
 ##  <M>X_{i}</M>.
 ##    <Example>
@@ -856,8 +856,7 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph" );
 ##  For <M>n\not= 8</M>, <M>T(n)</M> is the unique strongly regular graph with its
 ##  parameters. There are four pairwise non-isomomorphic strongly regular graphs that have the same
 ##  parameters as <M>T(8)</M>, which are the triangular graph <M>T(8)</M> and the
-##  <E>Chang graphs</E> (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>).
-##  
+##  <E>Chang graphs</E> (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>). 
 ##    <Example>
 ##      <![CDATA[
 ##gap> TriangularGraph(7); 
@@ -890,7 +889,7 @@ DeclareGlobalFunction( "TriangularGraph" );
 ##
 ##  <Description>
 ##  Given an integer <A>n</A>, where <M><A>n</A>\geq 2</M>, this function 
-##  returns the square lattice graph on <M>n^{2}</M> points.
+##  returns the square lattice graph on <M>n^2</M> points.
 ##  <P/>
 ##  Let <M>n</M> be an integer, where <M>n\geq 2</M>. The <E>square lattice
 ##  graph</E>, <M>L_{2}(n)</M>, has vertex set <M>\{1,2,...,n\}\times\{1,2,...,n\}</M>, and two 

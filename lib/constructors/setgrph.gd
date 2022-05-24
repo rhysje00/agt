@@ -21,17 +21,16 @@
 ##
 ##  <Description>
 ##  Given positive integers <A>n,k</A>, with <A>k&lt;n</A>, this function 
-##  returns the Kneser graph on the <A>k</A>-subsets of <K>[1..n]</K>.
+##  returns the Kneser graph on the <A>k</A>-subsets of <C>[1..n]</C>.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>n,k</M> be positive integers where <M>k &lt;n</M>. The 
-##  <E>Kneser graph</E> <M>K(n,k)</M> has vertex set the <M>k</M>-subsets
-##  of <M>\{1\dots n\}</M>, and distinct vertices <M>X,Y</M> are adjacent
+##  <E>Kneser graph</E> <M>K(n,k)</M> has vertex-set the <M>k</M>-subsets
+##  of <M>\{1,...,n\}</M>, and distinct vertices <M>X,Y</M> are adjacent
 ##  if and only if <M>X\cap Y = \emptyset</M>.
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> KneserGraph(6,2);
@@ -68,7 +67,7 @@ DeclareGlobalFunction( "KneserGraph" );
 ##  of diameter <A>d</A>
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>d</M> be a positive integer. Then the <E>Odd graph</E> of 
@@ -109,18 +108,16 @@ DeclareGlobalFunction( "OddGraph" );
 ##  <Ref Func="BipartiteDoubleGraph"/>).
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>d</M> be a positive integer. The assoicated doubled odd graph has
-##  vertex set consisting of all subsets of <M>\{1\dots n\}</M> with sizes 
+##  vertex-set consisting of all subsets of <M>\{1,...,n\}</M> with sizes 
 ##  in <M>\{d,d+1\}</M>vertices, and distinct vertices <M>X,Y</M> are 
 ##  adjacent if and only if <M>X\subset Y</M> or <M>Y\subset X</M>.
 ##  This is isomorphic to the  bipartite double of the Odd
 ##  graph given by <Ref Func="OddGraph"/> and
 ##  <Ref Func="BipartiteDoubleGraph"/>.
-##
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> DoubledOddGraph(2);
@@ -161,13 +158,12 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 ##  folded Johnson graph, defined on the Johnson graph <M>J(2d,d)</M>.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>d</M> be an integer where <M>d&gt;2</M>. The <E>folded Johnson
 ##  graph</E> <M>\overline{J}(2d,d)</M> is the antipodal quotient of the
 ##  Johnson graph <M>J(2d,d)</M> (see <Ref Func="AntipodalQuotientGraph"/>).
-##  
 ##    <Example>
 ##      <![CDATA[
 ##gap> FoldedJohnsonGraph(3);
@@ -207,7 +203,7 @@ DeclareGlobalFunction( "FoldedJohnsonGraph" );
 ##  <M><A>i</A>^{th}</M> Chang graph.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  There are four pairwise non-isomorphic strongly regular graphs with 
@@ -238,3 +234,7 @@ DeclareGlobalFunction( "FoldedJohnsonGraph" );
 ##
 DeclareGlobalFunction( "ChangGraph" );
 DeclareConstructor("ChangGraphCons", [IsObject, IsInt]);
+
+#############################################################################
+##
+#E

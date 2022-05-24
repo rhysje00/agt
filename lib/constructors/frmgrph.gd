@@ -29,9 +29,8 @@
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d,e</M> be positive integers. The
 ##  <E>bilinear forms graph</E> <M>H_q(d,e)</M> is the graph with vertex-set
-##  <M>M_{d\times e}(\mathbb{F}_q)</M>, and distinct vertices <M>A,B</M> are 
+##  <M>M_{{d \times e}}(GF(q))</M>, and distinct vertices <M>A,B</M> are 
 ##  adjacent if and only if the rank of <M>A-B</M> is 1. 
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=BilinearFormsGraph(2,2,2);;
@@ -63,7 +62,7 @@ DeclareGlobalFunction( "BilinearFormsGraph" );
 ##  <P/>
 ##  Let <M>r</M> be a prime power and <M>d</M> be a positive integer. The
 ##  <E>hermitean forms graph</E> <M>Q_{r}(d)</M> is the graph with vertex-set
-##  the hermitean matrices in <M>M_{d\times d}(\mathbb{F}_{r^2})</M>, and 
+##  the hermitean matrices in <M>M_{d\times d}(GF(r^2))</M>, and 
 ##  distinct vertices <M>A,B</M> are adjacent if and only if the rank of 
 ##  <M>A-B</M> is 1. 
 ##    <Example>
@@ -79,3 +78,7 @@ DeclareGlobalFunction( "BilinearFormsGraph" );
 ##
 DeclareConstructor( "HermiteanFormsGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "HermiteanFormsGraph" );
+
+#############################################################################
+##
+#E

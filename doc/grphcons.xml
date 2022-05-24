@@ -206,6 +206,11 @@ subspace in a finite vector space (for example, the Grassmann and Polar graphs).
 <Section Label="Code constructions">
 <Heading>Code constructions</Heading>
 
+In this section, each function constructs a graph for which each vertex is a 
+vector lying in a finite vector space (for example, the Hamming and Affine 
+polar graphs). 
+
+
 <#Include Label="PreparataGraph">
 
 <#Include Label="KasamiGraph">

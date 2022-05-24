@@ -224,3 +224,7 @@ InstallGlobalFunction( ExtendedQuadraticKasamiGraph,
 function(i)
   return ExtendedBipartiteDoubleGraph(QuadraticKasamiGraph(i));
 end );
+
+#############################################################################
+##
+#E

@@ -69,7 +69,7 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 ##  Given an integer <A>int</A> greater than 1, this function returns the  
 ##  cycle graph with <A>int</A> vertices.
 ##  <P/>
-##  The resulting graph <K>gamma</K> will have vertex names <K>[1..int]</K>, 
+##  The resulting graph <C>gamma</C> will have vertex names <C>[1..int]</C>, 
 ##  and vertices <M>x,y</M> are adjacent if and only if 
 ##  <M>x-y\equiv\pm 1\;(mod\;<A>int</A>)</M>.
 ##    <Example>
@@ -136,8 +136,8 @@ DeclareGlobalFunction( "CocktailPartyGraph" );
 ##  Paley graph of order <A>int</A>.
 ##  <P/>
 ##  Let <M>q</M> be a positive power of an odd prime number. Then the   
-##  <E>Paley graph</E> of order <M>q</M>,<M>P_q</M> is the graph with vertex set 
-##  <M>\mathbb{F}_q</M>, and distinct vertices <M>x,y</M> are adjacent if 
+##  <E>Paley graph</E> of order <M>q</M>,<M>P_q</M> is the graph with vertex-set 
+##  <M>GF(q)</M>, and distinct vertices <M>x,y</M> are adjacent if 
 ##  and only if <M>x-y</M> is a square. Therefore, this graph is undirected
 ##  if and only if <M>q\equiv 1\;(mod\; 4)</M>. When 
 ##  <M>q\equiv 1\;(mod\; 4)</M>, <M>P_q</M> is strongly regular with parameters
@@ -185,7 +185,7 @@ DeclareGlobalFunction( "PaleyGraph" );
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>M</M> be an <M>n\times m</M> matrix. Then <E>Latin square graph</E>
-##  associated with <M>M</M> is the graph with vertex set 
+##  associated with <M>M</M> is the graph with vertex-set 
 ##  <M>\{1..n\}\times \{1..m\}</M>, and distinct vertices <M>(i,j),(k,\ell)</M>
 ##  are adjcacent if and only if either
 ##  <List>
@@ -194,7 +194,7 @@ DeclareGlobalFunction( "PaleyGraph" );
 ##    <Item><M>M_{i,j}=M_{k,\ell}</M>.</Item>
 ##  </List>
 ##  When associated to a Cayley table of a group <M>G</M>, the matrix is  
-##  indexed by <M>G\times G</M>, and the graph has vertex set <M>G\times G</M>.
+##  indexed by <M>G\times G</M>, and the graph has vertex-set <M>G\times G</M>.
 ##  <P/>
 ##  TODO invt change (no effect on matrix input)
 ##    <Example>
@@ -236,10 +236,10 @@ DeclareGlobalFunction( "LatinSquareGraph" );
 ##  <P/>
 ##  Let <M>n</M> be an integer greater than 1. The <E>complete Taylor graph</E>
 ##  with parts of size <M>n</M> (a.k.a the <M>n</M>-crown graph) is the
-##  bipartite graph with parts <M>\{x_1\dots x_n,\},\{y_1\dots y_n\}</M>,
+##  bipartite graph with parts <M>\{x_1,...,x_n\},\{y_1,...,y_n\}</M>,
 ##  and vertices <M>x_i,y_j</M> are adjacent if and only if <M>i\not=j</M>.
 ##  <P/>
-##  The graph returned by this function has vertex set consisting of pairs 
+##  The graph returned by this function has vertex-set consisting of pairs 
 ##  of integers. The first entry corresponds to the part the vertex is 
 ##  contained in, the second entry is its index in the part.
 ##    <Example>
@@ -276,10 +276,6 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 ##  cyclic Haar graph with symbol <A>list</A>
 ##  <P/>
 ##  TODO insert definition(s) or reference.
-## 
-## 
-## 
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> HaarGraph(11);
@@ -297,3 +293,7 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 ##
 DeclareConstructor( "HaarGraphCons", [IsObject, IsInt, IsList]);
 DeclareGlobalFunction( "HaarGraph" );
+
+#############################################################################
+##
+#E

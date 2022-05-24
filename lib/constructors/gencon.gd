@@ -20,9 +20,9 @@
 ##
 ##  <Description>
 ##  Given a list <A>V</A> and a boolean function <A>func</A> defining a relation
-##  on <A>V</A>, this function returns the graph with vertex set <A>V</A>,
-##  and edge set consisting of all pairs of distinct vertices <K>x,y</K>, 
-##  such that <K>func(x,y)=true</K> 
+##  on <A>V</A>, this function returns the graph with vertex-set <A>V</A>,
+##  and edge set consisting of all pairs of distinct vertices <C>x,y</C>, 
+##  such that <C>func(x,y)=true</C> 
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph([24..33],function(x,y) return Gcd(x,y)=1; end);
@@ -60,9 +60,9 @@ DeclareGlobalFunction( "AdjFunGraph" );
 ##  <P/>
 ##  The input <A>Gs</A> should be a list of graphs and <A>func</A> should be a boolean 
 ##  function defining a relation on the cartesian product of the lists 
-##  <K>[1..Gs[i].order]</K>. Then this function returns the graph with vertex-set the 
+##  <C>[1..Gs[i].order]</C>. Then this function returns the graph with vertex-set the 
 ##  cartesian product of the vertices of the graphs in <A>Gs</A>, and vertices 
-##  <K>x,y</K> are adjacent if and only if <K>func(x,y)=true</K>. 
+##  <C>x,y</C> are adjacent if and only if <C>func(x,y)=true</C>. 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
 ##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
@@ -106,12 +106,12 @@ DeclareGlobalFunction( "ProductGraph" );
 ##  <P/>
 ##  The input <A>gamma</A> should be a graph, and <A>func</A> should be a boolean 
 ##  function defining a relation on the <A>n</A>-tuples of elements of 
-##  <K>[1..gamma.order]</K>. Then this function returns the graph with vertex-set 
+##  <C>[1..gamma.order]</C>. Then this function returns the graph with vertex-set 
 ##  consisting of the <A>n</A>-tuples of elements of vertices of <A>gamma</A>, and 
-##  vertices <K>x,y</K> are adjacent if and only if <K>func(x,y)=true</K>. 
+##  vertices <C>x,y</C> are adjacent if and only if <C>func(x,y)=true</C>. 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
@@ -154,18 +154,17 @@ DeclareGlobalFunction( "PowerGraph" );
 ##  the box product of the given graphs. 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  Let <M>\Gamma,\Delta</M> be graphs. The <E>box product</E> of the graphs 
 ##  <M>\Gamma</M> and <M>\Delta</M> is the graph <M>\Gamma\square \Delta</M> with 
-##  vertex set <M>V(\Gamma)\times V(\Delta)</M>, such that two distinct vertices 
+##  vertex-set <M>V(\Gamma)\times V(\Delta)</M>, such that two distinct vertices 
 ##  <M>(x_1,y_1),(x_2,y_2)</M> are adjacent if and only if either
 ##  <List>
 ##    <Item><M>x_1=x_2</M> and <M>y_1,y_2</M> are adjacent vertices in <M>\Delta</M>, or </Item>
 ##    <Item><M>y_1=y_2</M> and <M>x_1,x_2</M> are adjacent vertices in <M>\Gamma</M>.</Item>
 ##  </List>
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
@@ -207,7 +206,7 @@ DeclareGlobalFunction( "BoxProductGraph" );
 ##  (see <Ref Func="BoxProductGraph"/>). 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
@@ -251,12 +250,12 @@ DeclareGlobalFunction( "BoxPowerGraph" );
 ##  the cross product of the given graphs. 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  Let <M>\Gamma,\Delta</M> be graphs. The <E>cross product</E> of the graphs 
 ##  <M>\Gamma</M> and <M>\Delta</M> (also known as the tensor product) is the graph 
-##  <M>\Gamma\times \Delta</M> with vertex set <M>V(\Gamma)\times V(\Delta)</M>, 
+##  <M>\Gamma\times \Delta</M> with vertex-set <M>V(\Gamma)\times V(\Delta)</M>, 
 ##  such that two distinct vertices <M>(x_1,y_1),(x_2,y_2)</M> are adjacent if
 ##  and only if <M>x_1,x_2</M> are adjacent in <M>\Gamma</M> and <M>y_1,y_2</M> are
 ##  adjacent in <M>\Delta</M>.
@@ -301,7 +300,7 @@ DeclareGlobalFunction( "CrossProductGraph" );
 ##  (see <Ref Func="CrossProductGraph"/>). 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
@@ -345,12 +344,12 @@ DeclareGlobalFunction( "CrossPowerGraph" );
 ##  the strong product of the given graphs. 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  Let <M>\Gamma,\Delta</M> be graphs. The <E>strong product</E> of the graphs 
 ##  <M>\Gamma</M> and <M>\Delta</M> is the graph <M>\Gamma\boxtimes \Delta</M> with
-##  vertex set <M>V(\Gamma)\times V(\Delta)</M>, such that two distinct vertices
+##  vertex-set <M>V(\Gamma)\times V(\Delta)</M>, such that two distinct vertices
 ##  <M>(x_1,y_1),(x_2,y_2)</M> are adjacent if and only if either
 ##  <List>
 ##    <Item><M>x_1=x_2</M> and <M>y_1,y_2</M> are adjacent vertices in <M>\Delta</M>, or </Item>
@@ -358,7 +357,6 @@ DeclareGlobalFunction( "CrossPowerGraph" );
 ##    <Item><M>x_1,x_2</M> are adjacent in <M>\Gamma</M> and <M>y_1,y_2</M> are
 ##             adjacent in <M>\Delta</M>.</Item>
 ##  </List>
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
@@ -400,7 +398,7 @@ DeclareGlobalFunction( "StrongProductGraph" );
 ##  (see <Ref Func="StrongProductGraph"/>). 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
@@ -445,15 +443,15 @@ DeclareGlobalFunction( "StrongPowerGraph" );
 ##  <P/>
 ##  Each vertex of the resulting graph will correspond to a unique vertex from the 
 ##  union of vertex-sets of the given graphs. The vertex corresponding to a vertex 
-##  <K>name</K> in <K>Gi</K> will be named <K>[i,name]</K> in our new graph. 
+##  <C>name</C> in <A>Gi</A> will be named <C>[i,name]</C> in our new graph. 
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  Let <M>\Gamma,\Delta</M> be graphs. The <E>graph join</E> of the graphs 
 ##  <M>\Gamma</M> and <M>\Delta</M> is the graph <M>\Gamma + \Delta</M> with
-##  vertex set <M>V(\Gamma)\cup V(\Delta)</M>, such that two distinct vertices
+##  vertex-set <M>V(\Gamma)\cup V(\Delta)</M>, such that two distinct vertices
 ##  <M>x,y</M> are adjacent if and only if either
 ##  <List>
 ##    <Item><M>x</M> and <M>y</M> are vertices from different graphs, or </Item>
@@ -496,9 +494,9 @@ DeclareGlobalFunction( "GraphJoin" );
 ##  of <A>gamma</A>. 
 ##  <P/>
 ##  Let <M>\Gamma</M> be a graph. The <E>bipartite double cover</E> of 
-##  <M>\Gamma</M> is the graph with vertex set <M>V(\Gamma)\times \{-,+\}</M>, 
-##  and distinct vertices <M>(x,\circ),(y,*)</M> are adjacent if and only if 
-##  <M>\circ\not=*</M> and <M>x,y</M> are adjacent in <M>\Gamma.</M> 
+##  <M>\Gamma</M> is the graph with vertex-set <M>V(\Gamma) \times \{-,+\}</M>, 
+##  and distinct vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if 
+##  <M>\circ\not=\ast</M> and <M>x,y</M> are adjacent in <M>\Gamma.</M> 
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
@@ -540,9 +538,9 @@ DeclareGlobalFunction( "BipartiteDoubleGraph" );
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a graph. The <E>extended bipartite double cover</E> of 
-##  <M>\Gamma</M> is the graph with vertex set <M>V(\Gamma)\times \{-,+\}</M>, 
-##  and distinct vertices <M>(x,\circ),(y,*)</M> are adjacent if and only if
-##  <M>\circ=*</M> or <M>x,y</M> are adjacent in <M>\Gamma.</M> 
+##  <M>\Gamma</M> is the graph with vertex-set <M>V(\Gamma)\times \{-,+\}</M>, 
+##  and distinct vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if
+##  <M>\circ=\ast</M> or <M>x,y</M> are adjacent in <M>\Gamma.</M> 
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
@@ -568,7 +566,7 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 
 #############################################################################
 ##
-#F  HalvedGraph( <graph>[, <int>] )
+#F  HalvedGraph( <graph>[, <integer>] )
 ##  
 ##  <#GAPDoc Label="HalvedGraph">
 ##  <ManSection>
@@ -579,12 +577,12 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 ##  <Description>
 ##  Given a connected bipartite graph <A>gamma</A>, this function returns a 
 ##  halved graph of <A>gamma</A>. The optional input <A>n</A> should take a 
-##  value from <K>[1,2]</K>, and determines the part of the bipartition for which
+##  value from <C>[1,2]</C>, and determines the part of the bipartition for which
 ##  the halved graph is defined.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a connected bipartite graph with bipartition <M>U,W</M>.
 ##  The <E>halved graph</E> of <M>\Gamma</M> with respect to <M>U</M> is the 
-##  graph with vertex set <M>U</M>, and distinct vertices <M>x,y</M> are adjacent
+##  graph with vertex-set <M>U</M>, and distinct vertices <M>x,y</M> are adjacent
 ##  if and only if <M>x,y</M> are at graph distance 2 in <M>\Gamma.</M> 
 ##    <Example>
 ##      <![CDATA[
@@ -617,7 +615,7 @@ DeclareGlobalFunction( "HalvedGraph" );
 ##  this function returns the anitpodal quotient graph of <A>gamma</A>.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a distance-regular graph with diameter <M>d</M>. For
@@ -626,7 +624,7 @@ DeclareGlobalFunction( "HalvedGraph" );
 ##  Then <M>\Gamma</M> is <E>antipodal</E> if for all <M>u\in V(\Gamma)</M>,
 ##  the set <M>\Gamma_d\left[u\right]</M> consists of vertices which are pairwise
 ##  at distance <M>d</M>. The <E>antipodal quotient</E> of <M>\Gamma</M> is 
-##  the graph with vertex set <M>\{\Gamma_d\left[u\right]:u\in V(\Gamma)\}</M>,
+##  the graph with vertex-set <M>\{\Gamma_d\left[u\right]:u\in V(\Gamma)\}</M>,
 ##  and distinct vertices are adjacent if there is an edge between them in 
 ##  <M>\Gamma</M>.
 ##    <Example>
@@ -656,10 +654,10 @@ DeclareGlobalFunction( "AntipodalQuotientGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  This is a general function to construct a graph with vertex set
+##  This is a general function to construct a graph with vertex-set
 ##  a subset of <A>d</A>-dimensional subspaces <A>S</A> of a vector space <A>V</A>, 
 ##  and distinct vertices are adjacent if and only if their intersection has
-##  dimension <A>d-1</A>.
+##  dimension <M><A>d</A>-1</M>.
 ##  <P/>
 ##  This function accepts the following arguments.
 ##  <List>
@@ -685,11 +683,10 @@ DeclareGlobalFunction( "AntipodalQuotientGraph" );
 ##          the subspaces <A>S</A> is assumed to be the natural action.</Item>
 ##    <Mark><A>invt</A></Mark>
 ##    <Item>If <A>invt</A> is given, it must take a boolean value. If <A>invt</A>
-##          is <K>true</K>, the subspaces <A>S</A> will be to be invariant under 
+##          is <C>true</C>, the subspaces <A>S</A> will be to be invariant under 
 ##          the action of <A>G</A>. Otherwise, this is not assumed. 
 ##    </Item>
 ##  </List>
-## 
 ##    <Example>
 ##      <![CDATA[
 ##gap> q:=2;; n:=4;; d:=2;; V:=GF(q)^n;; S:=Elements;; G:=GL(n,q);;
@@ -720,15 +717,15 @@ DeclareGlobalFunction( "SubspaceGraph" );
 ##  returns the clique graph of <A>gamma</A>.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  If <A>ls</A> is given, it must be an positive integer or list of positive 
 ##  integers. Then the resulting graph will be defined on the orbit of the lines
-##  <K>Cliques(gamma){ls}</K> under gamma.group.
+##  <C>Cliques(gamma){ls}</C> under gamma.group.
 ##  <P/>
 ##  Let <M>P</M> be a partial geometry with collinearity graph <A>gamma</A>. 
-##  The <E>clique graph</E> of <M>P</M> is the graph with vertex set the lines of 
+##  The <E>clique graph</E> of <M>P</M> is the graph with vertex-set the lines of 
 ##  <M>P</M>, and distinct vertices are adjacent if they intersect at a single 
 ##  point. As the maximal cliques of <M>\Gamma</M> are the lines in <M>P</M>,
 ##  we can construct this graph by using <M>\Gamma</M>.
@@ -782,15 +779,15 @@ DeclareGlobalFunction( "CliqueGraph" );
 ##  returns the incidence graph of <A>gamma</A>.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  If <A>ls</A> is given, it must be an positive integer or list of positive 
 ##  integers. Then the resulting graph will be defined on the orbit of the lines
-##  <K>Cliques(gamma){ls}</K> under gamma.group.
+##  <C>Cliques(gamma){ls}</C> under gamma.group.
 ##  <P/>
 ##  Let <M>P</M> be a partial geometry with collinearity graph <A>gamma</A>. 
-##  The <E>incidence graph</E> of <M>P</M> is the graph with vertex set the union
+##  The <E>incidence graph</E> of <M>P</M> is the graph with vertex-set the union
 ##  of the points and lines of <M>P</M>, and distinct vertices are adjacent if 
 ##  they are incident. As the maximal cliques of <M>\Gamma</M> are the lines of
 ##  <M>P</M>, we can construct this graph by using <M>\Gamma</M>.
@@ -825,3 +822,7 @@ DeclareGlobalFunction( "CliqueGraph" );
 ##
 DeclareConstructor("IncidenceGraphCons", [IsObject, IsRecord, IsList]);
 DeclareGlobalFunction( "AGT_IncidenceGraph" );
+
+#############################################################################
+##
+#E
