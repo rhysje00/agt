@@ -9,10 +9,9 @@
 ##  
 ##
 
-
 #############################################################################
 ##
-#F  KneserGraph( [<filter>, ]<integer> <integer>[, <bool>] )
+#O  KneserGraphCons( [<filter>, ]<integer> <integer>[, <bool>] )
 ##  
 InstallMethod( KneserGraphCons, "as a set graph with full automorphism group",
      true, [IsSetGraph and FullAutomorphismGroup, IsInt, IsInt, IsBool], 0,
@@ -62,6 +61,10 @@ function(filter, n, k, invt)
   return KneserGraphCons(IsSetGraph, n, k, invt);
 end );
 
+#############################################################################
+##
+#F  KneserGraph( [<filter>, ]<integer> <integer>[, <bool>] )
+##  
 InstallGlobalFunction( KneserGraph,
 function(arg)
   local j, filt;
@@ -104,7 +107,7 @@ end );
 
 #############################################################################
 ##
-#F  DoubledOddGraph( [<filter>, ]<integer> )
+#O  DoubledOddGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( DoubledOddGraphCons,
      "as a set graph with full automorphism group", true,
@@ -136,6 +139,10 @@ function(filter, d)
   return DoubledOddGraphCons(IsSetGraph, d);
 end );
 
+#############################################################################
+##
+#F  DoubledOddGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( DoubledOddGraph,
 function(arg)
   local j, filt;
@@ -187,7 +194,7 @@ end );
 
 #############################################################################
 ##
-#F  FoldedJohnsonGraph( [<filter>, ]<integer> )
+#O  FoldedJohnsonGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( FoldedJohnsonGraphCons,
      "as a set graph with full automorphism group", true,
@@ -222,6 +229,10 @@ function(filter, d)
   return FoldedJohnsonGraphCons(IsSetGraph, d);
 end );
 
+#############################################################################
+##
+#O  FoldedJohnsonGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( FoldedJohnsonGraph,
 function(arg)
   local j, filt;
@@ -241,7 +252,7 @@ end );
 
 #############################################################################
 ##
-#F  ChangGraph( [<filter>, ]<integer> )
+#O  ChangGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( ChangGraphCons,
      "as a set graph with full automorphism group", true,
@@ -278,6 +289,10 @@ function(filter, j)
   return ChangGraphCons(IsSetGraph, j);
 end );
 
+#############################################################################
+##
+#F  ChangGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( ChangGraph,
 function(arg)
   local j, filt;

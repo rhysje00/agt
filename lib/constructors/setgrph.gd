@@ -9,7 +9,6 @@
 ##
 
 # In BCN_1989 9.1A not specific
-# TODO parms, invt
 #############################################################################
 ##
 #F  KneserGraph( [<filter>, ]<integer> <integer>[, <bool>] )
@@ -22,16 +21,22 @@
 ##
 ##  <Description>
 ##  Given positive integers <A>n,k</A>, with <A>k&lt;n</A>, this function 
-##  returns the Kneser graph on the <A>k</A>-subsets of <C>[1..n]</C>.
+##  returns the Kneser graph on the <A>k</A>-subsets of <C>[1..<A>n</A>]</C>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
-##  Let <M>n,k</M> be positive integers where <M>k &lt;n</M>. The 
+##  If the optional argument <A>invt</A> exists, it should only take the value
+##  <K>true</K>. Then this function behaves as described in Section
+##  <Ref Subsect="The invariant vertex-set option of Graph"/>.
+##  <P/>
+##  Let <M>n,k</M> be positive integers where <M>k &lt; n</M>. The 
 ##  <E>Kneser graph</E> <M>K(n,k)</M> has vertex-set the <M>k</M>-subsets
-##  of <M>\{1,...,n\}</M>, and distinct vertices <M>X,Y</M> are adjacent
-##  if and only if <M>X\cap Y = \emptyset</M>.
+##  of <M>\{1,..., n\}</M>, and distinct vertices <M>X,Y</M> are adjacent
+##  if and only if <M>X \cap Y = \emptyset.</M> This graph is edge-regular with
+##  parameters <M>(C(n,k),C(n-k,k),C(n-2k,k))</M>, where <M>C(a,b)</M> denotes 
+##  the binomial coefficient for <M>a \geq b </M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> KneserGraph(6,2);
@@ -52,7 +57,6 @@
 DeclareConstructor( "KneserGraphCons", [IsObject, IsInt, IsInt, IsBool]);
 DeclareGlobalFunction( "KneserGraph" );
 
-# In BCN_1989 9.1D
 #############################################################################
 ##
 #F  OddGraph( [<filter>, ]<integer> )
@@ -67,13 +71,18 @@ DeclareGlobalFunction( "KneserGraph" );
 ##  Given a positive integer <A>d</A>, this function returns the Odd graph 
 ##  of diameter <A>d</A>
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
-##  Let <M>d</M> be a positive integer. Then the <E>Odd graph</E> of 
-##  diameter <M>d</M> is the graph <M>K(2d+1,d)</M>. (see 
-##  <Ref Func="KneserGraph"/>).
+##  Let <M>d</M> be a positive integer. The <E>Odd graph</E> <M>O_{{d+1}}</M>
+##  is the graph <M>K(2d+1,d)</M>. (see <Ref Func="KneserGraph"/>). This graph 
+##  is distance-regular with intersection array given by
+##  <Display Mode="M">
+##     b_j = d+1 - \lfloor (j+1)/2 \rfloor,
+##     c_j = \lfloor (j+1)/2 \rfloor 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>, except for <M>b_d = 0</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 9.1D"/>. 
@@ -95,7 +104,6 @@ DeclareGlobalFunction( "KneserGraph" );
 ##
 DeclareGlobalFunction( "OddGraph" );
 
-# In BCN_1989 9.1D
 #############################################################################
 ##
 #F  DoubledOddGraph( [<filter>, ]<integer> )
@@ -108,20 +116,25 @@ DeclareGlobalFunction( "OddGraph" );
 ##
 ##  <Description>
 ##  Given a positive integer <A>d</A>, this function returns the bipartite 
-##  double of Odd graph of diameter <A>d</A> (see <Ref Func="OddGraph"/> and
-##  <Ref Func="BipartiteDoubleGraph"/>).
+##  double of the Odd graph of diameter <A>d</A>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
-##  Let <M>d</M> be a positive integer. The assoicated doubled odd graph has
-##  vertex-set consisting of all subsets of <M>\{1,...,n\}</M> with sizes 
-##  in <M>\{d,d+1\}</M>vertices, and distinct vertices <M>X,Y</M> are 
-##  adjacent if and only if <M>X\subset Y</M> or <M>Y\subset X</M>.
-##  This is isomorphic to the  bipartite double of the Odd
+##  Let <M>d</M> be a positive integer. The <E>doubled odd graph</E>  has
+##  vertex-set consisting of all subsets of <M>\{1,..., n\}</M> with sizes 
+##  in <M>\{d,d+1\}</M>, and distinct vertices <M>X,Y</M> are 
+##  adjacent if and only if <M>X \subset Y</M> or <M>Y \subset X</M>.
+##  This gives a graph isomorphic to the bipartite double of the Odd
 ##  graph given by <Ref Func="OddGraph"/> and
-##  <Ref Func="BipartiteDoubleGraph"/>.
+##  <Ref Func="BipartiteDoubleGraph"/>. This graph is distance-regular with 
+##  diameter <M>2d+1</M> and intersection array given by
+##  <Display Mode="M">
+##     b_j = 2d+2 - \lfloor (j+1)/2 \rfloor,
+##     c_j = \lfloor (j+1)/2 \rfloor 
+##  </Display>
+##  for <M>0 \leq j \leq 2d+1</M>, except for <M>b_{{2d+1}} = 0</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 9.1D"/>. 
@@ -149,7 +162,6 @@ DeclareGlobalFunction( "OddGraph" );
 DeclareConstructor( "DoubledOddGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "DoubledOddGraph" );
 
-# In BCN_1989 9.1C
 #############################################################################
 ##
 #F  FoldedJohnsonGraph( [<filter>, ]<integer> )
@@ -161,15 +173,16 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given an integer <A>d</A>, where <C>d&gt;2</C>, this function returns the
-##  folded Johnson graph, defined on the Johnson graph <M>J(2d,d)</M>.
+##  Given an integer <A>d</A> where <C><A>d</A>&gt;2</C>, this function 
+##  returns the folded Johnson graph defined on the Johnson graph 
+##  <M>J(2<A>d</A>,<A>d</A>)</M>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
 ##  Let <M>d</M> be an integer where <M>d&gt;2</M>. The <E>folded Johnson
-##  graph</E> <M>\overline{J}(2d,d)</M> is the antipodal quotient of the
+##  graph</E> <M>&Jbar;(2d,d)</M> is the antipodal quotient of the
 ##  Johnson graph <M>J(2d,d)</M> (see <Ref Func="AntipodalQuotientGraph"/>).
 ##  <P/>
 ##  For more information on this graph, see 
@@ -197,7 +210,6 @@ DeclareConstructor("JohnsonGraphCons", [IsObject, IsInt, IsInt]);
 DeclareConstructor("FoldedJohnsonGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "FoldedJohnsonGraph" );
 
-#TODO check ref matches our def # In BCN_1989 3.11 BVM_2022 10.11
 #############################################################################
 ##
 #F  ChangGraph( [<filter>, ]<integer> )
@@ -212,14 +224,29 @@ DeclareGlobalFunction( "FoldedJohnsonGraph" );
 ##  Given an integer <A>i</A> in <C>[1,2,3]</C>, this function returns the 
 ##  <M><A>i</A>^{th}</M> Chang graph.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-##  <P/>  
-##  There are four pairwise non-isomorphic strongly regular graphs with 
-##  parameters <M>(28,12,6,4)</M>. They are the triangular graph
-##  <M>T(8)</M> (<Ref Func="TriangularGraph"/>) and the <E>Chang graphs</E>
-##  (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>).
+##  <P/>
+##  Let <M>i \in \{1, 2, 3\}</M> and consider the triangular graph <M>T(8)</M> 
+##  as the line graph of the complete graph <M>K_8</M>. Further, consider the 
+##  edges of the following graphs as vertices of <M>T(8)</M>:
+##  <Enum>
+##    <Item> 
+##      Four pairwise disjoint edges.
+##    </Item>
+##    <Item> 
+##      An 8-cycle, <M>C_8</M>.
+##    </Item>
+##    <Item> 
+##      The disjoint union of a 3-cycle and a 5-cycle, <M>C_3</M> and 
+##      <M>C_5</M>.
+##    </Item>
+##  </Enum>
+##  The <M>i^{th}</M> <E>Chang graph</E> can be constructed by a Seidel
+##  switching in <M>T(8)</M> with respect to the <M>i^{th}</M> subset of 
+##  vertices above. These graphs are strongly regular with parameters 
+##  <M>(28,12,6,4)</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BV_2022" Where="Section 10.11"/> or 

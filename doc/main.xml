@@ -4,7 +4,10 @@
    [ <!ENTITY AGT "<Package>AGT</Package>">
      <!ENTITY GRAPE "<Package>GRAPE</Package>">
      <!ENTITY neq 
-       "<Alt Only='Text'>{&lt;&gt;}</Alt><Alt Not='Text'>\not=</Alt>">
+      "<Alt Only='Text'>{&lt;&gt;}</Alt><Alt Not='Text'>\not=</Alt>">
+     <!ENTITY Jbar 
+      "<Alt Only='Text'>Jbar</Alt><Alt Not='Text'>\overline{J}</Alt>">
+       
      <#Include Label="PKGVERSIONDATA">
    ]>
 

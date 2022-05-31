@@ -11,7 +11,7 @@
 
 #############################################################################
 ##
-#O  CompleteMultipartiteGraph( [<filter>, ]<list>  )
+#O  CompleteMultipartiteGraphCons( [<filter>, ]<list>  )
 ##  
 InstallOtherMethod( CompleteMultipartiteGraphCons,
      "for a list of part sizes with full automorphism group", true,
@@ -44,7 +44,7 @@ end );
 
 #############################################################################
 ##
-#O  CompleteMultipartiteGraph( [<filter>, ]<integer>, <integer>  )
+#O  CompleteMultipartiteGraphCons( [<filter>, ]<integer>, <integer>  )
 ##  
 InstallMethod( CompleteMultipartiteGraphCons,
      "for equal part sizes with full automorphism group", true,
@@ -125,7 +125,7 @@ end );
 
 #############################################################################
 ##
-#O  LatinSquareGraph( <matrix> )
+#O  LatinSquareGraphCons( <matrix> )
 ##  
 InstallMethod( LatinSquareGraphCons,
      "for Cayley tables", true,
@@ -150,7 +150,7 @@ end );
 
 #############################################################################
 ##
-#O  LatinSquareGraph( [<filter>, ]<group>[, <bool>] )
+#O  LatinSquareGraphCons( [<filter>, ]<group>[, <bool>] )
 ##  
 InstallMethod( LatinSquareGraphCons,
      "for groups with full automorphism group", true,
@@ -254,7 +254,7 @@ end );
 
 #############################################################################
 ##
-#O  HaarGraph( <integer>[, <list>] )
+#O  HaarGraphCons( <integer>[, <list>] )
 ##  
 InstallMethod( HaarGraphCons, "", true, [IsObject, IsInt, IsList], 0,
 function(filter, n, adj)
