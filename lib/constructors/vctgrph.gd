@@ -8,6 +8,7 @@
 ##  Declaration file for functions that construct vector graphs. 
 ##
 
+# In BCN_1989 9.2   # In BVM_2022 1.1.8 not specific
 #############################################################################
 ##
 #F  HammingGraph2( [<filter>, ]<integer>, <integer> )
@@ -30,6 +31,9 @@
 ##  <M>H(d,e)</M> is the graph with vertex-set <M>\{1,...,e\}^d</M>, and
 ##  distinct vertices <M>x,y</M> are adjacent if and only if they differ 
 ##  in exactly one coordinate.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 9.2"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> HammingGraph2(4,2);
@@ -50,6 +54,7 @@
 DeclareConstructor( "HammingGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "HammingGraph2" );
 
+# In BH_20?? 12.3.1 not specific # In BCN_1989 1.2 1.3 not specific
 #############################################################################
 ##
 #F  HypercubeGraph( [<filter>, ]<integer> )
@@ -89,7 +94,8 @@ DeclareGlobalFunction( "HammingGraph2" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "HypercubeGraph" );
-    
+
+# In BCN_1989 9.2B 
 #############################################################################
 ##
 #F  DoobGraph( [<filter>, ]<integer>, <integer> )
@@ -112,6 +118,9 @@ DeclareGlobalFunction( "HypercubeGraph" );
 ##  is the graph box product of <M>n</M> copies of the Shrikhande graph and
 ##  the Hamming graph <M>H(d,4)</M>. (See <Ref Func="BoxProductGraph"/>, 
 ##  <Ref Func="ShrikhandeGraph"/> and <Ref Func="HammingGraph2"/>.)
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.2B"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DoobGraph(2,1);;
@@ -127,6 +136,7 @@ DeclareGlobalFunction( "HypercubeGraph" );
 DeclareConstructor( "DoobGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DoobGraph" );
 
+# In BCN_1989 9.2D
 #############################################################################
 ##
 #F  HalvedCubeGraph( [<filter>, ]<integer> )
@@ -148,6 +158,9 @@ DeclareGlobalFunction( "DoobGraph" );
 ##  Let <M>d</M> be a positive integer. The <E>halved <M>d</M>-cube</E> is
 ##  the halved graph of the <M>d</M>-dimensional hypercube graph. (See  
 ##  <Ref Func="HalvedGraph"/> and <Ref Func="HypercubeGraph"/>.)
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.2D"/>
 ##    <Example>
 ##      <![CDATA[
 ##gap> HalvedCubeGraph(4);
@@ -167,6 +180,7 @@ DeclareGlobalFunction( "DoobGraph" );
 DeclareConstructor( "HalvedCubeGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "HalvedCubeGraph" );
 
+# In BCN_1989 9.2D
 #############################################################################
 ##
 #F  FoldedCubeGraph( [<filter>, ]<integer> )
@@ -188,6 +202,9 @@ DeclareGlobalFunction( "HalvedCubeGraph" );
 ##  Let <M>d</M> be a positive integer. The <E>folded <M>d</M>-cube</E> is
 ##  the antipodal quotient graph of the <M>d</M>-dimensional hypercube graph.  
 ##  (See <Ref Func="AntipodalQuotientGraph"/> and <Ref Func="HypercubeGraph"/>.)
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.2D"/>
 ##    <Example>
 ##      <![CDATA[
 ##gap> FoldedCubeGraph(4);
@@ -210,6 +227,7 @@ DeclareGlobalFunction( "HalvedCubeGraph" );
 DeclareConstructor( "FoldedCubeGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "FoldedCubeGraph" );
 
+# In BCN_1989 9.2D
 #############################################################################
 ##
 #F  FoldedHalvedCubeGraph( [<filter>, ]<integer> )
@@ -233,6 +251,9 @@ DeclareGlobalFunction( "FoldedCubeGraph" );
 ##  <M>d</M>-dimensional hypercube graph.  
 ##  (See <Ref Func="AntipodalQuotientGraph"/>, <Ref Func="HalvedGraph"/> and 
 ##  <Ref Func="HypercubeGraph"/>.)
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.2D"/>
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=FoldedHalvedCubeGraph(4);;
@@ -249,7 +270,7 @@ DeclareGlobalFunction( "FoldedHalvedCubeGraph" );
 DeclareSynonym("HalvedFoldedCubeGraph", FoldedHalvedCubeGraph);
 
 
-# TODO ref
+# In BVM_2022 3.2.4 further reference (Called Brouwer-Pasechnik)
 #############################################################################
 ##
 #F  BrouwerGraph( [<filter>, ]<integer> )
@@ -400,7 +421,7 @@ DeclareGlobalFunction( "AdditiveSymplecticCoverGraph" );
 ##  <P/>
 ##  Then the <E>multiplicative symplectic cover graph</E> with respect to these is the 
 ##  graph with vertex-set <M>K.GF(q)^2 \setminus \{(0,0)\}</M>, and distinct 
-##  vertices <M>Kx,Ky</M> are adjacent if and only if <M>B(x,y)\in K</M>.
+##  vertices <M>Kx,Ky</M> are adjacent if and only if <M>B(x_1,y_1)\in K</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=MultiplicativeSymplecticCoverGraph(9,4);;
@@ -416,6 +437,7 @@ DeclareConstructor("MultiplicativeSymplecticCoverGraphCons",
                     [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "MultiplicativeSymplecticCoverGraph" );
 
+# In BVM_2022 3.3.1
 #############################################################################
 ##
 #F  AffinePolarGraphVO( [<integer>, ]<integer>, <integer> )
@@ -443,6 +465,9 @@ DeclareGlobalFunction( "MultiplicativeSymplecticCoverGraph" );
 ##  The <E>affine polar graph</E> <M>VO_{d}^{e}(q)</M> is the graph with 
 ##  vertex-set <M>GF(q)^d</M>, and distinct vertices <M>x,y</M>
 ##  are adjacent if and only if <M>Q(x-y)=0</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BV_2022" Where="Section 3.3.1"/>
 ##    <Example>
 ##      <![CDATA[
 ##gap> AffinePolarGraphVO(1,2,4);
@@ -463,6 +488,7 @@ DeclareGlobalFunction( "MultiplicativeSymplecticCoverGraph" );
 ##
 DeclareGlobalFunction( "AffinePolarGraphVO" );
 
+# In BVM_2022 3.3.2
 #############################################################################
 ##
 #F  AffinePolarGraphVNO( [<integer>, ]<integer>, <integer> )
@@ -490,6 +516,9 @@ DeclareGlobalFunction( "AffinePolarGraphVO" );
 ##  The <E>affine polar graph</E> <M>VNO_{d}^{e}(q)</M> is the graph with 
 ##  vertex-set <M>GF(q)^d</M>, and distinct vertices <M>x,y</M>
 ##  are adjacent if and only if <M>Q(x-y)</M> is a nonzero square.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 3.3.1"/>
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=AffinePolarGraphVNO(1,4,3);;

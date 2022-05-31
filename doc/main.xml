@@ -2,7 +2,9 @@
 
 <!DOCTYPE Book SYSTEM "gapdoc.dtd"
    [ <!ENTITY AGT "<Package>AGT</Package>">
-     <!ENTITY Grape "<Package>Grape</Package>">
+     <!ENTITY GRAPE "<Package>GRAPE</Package>">
+     <!ENTITY neq 
+       "<Alt Only='Text'>{&lt;&gt;}</Alt><Alt Not='Text'>\not=</Alt>">
      <#Include Label="PKGVERSIONDATA">
    ]>
 

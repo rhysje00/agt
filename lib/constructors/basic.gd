@@ -8,36 +8,45 @@
 ##  Declaration file for functions that construct basic graphs. 
 ##
 
-#TODO info on srg parms etc
 #############################################################################
 ##
-#F  CompleteMultipartiteGraph2( [<filter>, ]<list>  )
-#F  CompleteMultipartiteGraph2( [<filter>, ]<int>, <int>  )
+#F  CompleteMultipartiteGraph( [<filter>, ]<list>  )
+#F  CompleteMultipartiteGraph( [<filter>, ]<integer>, <integer>  )
 ##  
-##  <#GAPDoc Label="CompleteMultipartiteGraph2">
+##  <#GAPDoc Label="CompleteMultipartiteGraph">
 ##  <ManSection>
-##  <Func Name="CompleteMultipartiteGraph2"
+##  <Func Name="CompleteMultipartiteGraph"
 ##   Arg='[fil, ]sizes'/>
-##  <Func Name="CompleteMultipartiteGraph2"
-##   Arg='[fil, ]nparts, sparts' Label="for equal part sizes"/>
+##  <Func Name="CompleteMultipartiteGraph"
+##   Arg='[fil, ]nparts, size' Label="for parts of equal sizes"/>
 ##  <Returns>A graph.</Returns>
 ##	
 ##  <Description>
 ##  Given a list of positive integers <A>sizes</A>, this function returns the
 ##  complete multipartite graph with part sizes <A>sizes</A>. Given positive
-##  integers <A>nparts,sparts</A>, functions returns the complete
-##  multipartite graph with <A>nparts</A> parts, each of size <A>sparts</A>.
+##  integers <A>nparts,size</A>, this function returns the complete
+##  multipartite graph with <A>nparts</A> parts, each of size <A>size</A>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
-##  The resulting graph will have vertex names pairs of positive integers,
+##  Let <M>n_{1}, n_{2},..., n_{t}</M> be positive integers. The <E>complete
+##  multipartite graph</E>, <M>K_{{n_{1}, n_{2},..., n_{t}}}</M>, has vertex-set 
+##  the union of <M>t</M> disjoint sets <M>X_{1}, X_{2},..., X_{t}</M> of sizes 
+##  <M>n_{1}, n_{2},..., n_{t}</M> respectively. Two distinct vertices are 
+##  adjacent if and only if they belong to different parts <M>X_{i}</M>. If for
+##  some <M>n</M> we have <M>n_{i} = n</M> for all <M>i</M>, we denote the graph
+##  by <M>K_{{t \times n}}</M>, which is strongly regular with parameters 
+##  <M>(tn,(t-1)n,(t-2)n,(t-1)n)</M>.
+##  <P/>
+##  This function will give a graph with <C>Sum(sizes)</C> or 
+##  <C>nparts*size</C> vertices. Each vertex is a pair of positive integers,
 ##  with first entry denoting the part the vertex is contained in, and the
-##  second entry denoting the number of the vertex in its part.
+##  second entry denoting the number of the vertex in its part. 
 ##    <Example>
 ##      <![CDATA[
-##gap> CompleteMultipartiteGraph2(3,4);
+##gap> CompleteMultipartiteGraph(3,4);
 ##rec( adjacencies := [ [ 5, 6, 7, 8, 9, 10, 11, 12 ] ], 
 ##  group := Group([ (1,2,3,4), (1,2), (1,5)(2,6)(3,7)(4,8), (1,5,9)
 ##      (2,6,10)(3,7,11)(4,8,12) ]), isGraph := true, 
@@ -52,26 +61,25 @@
 ##  <#/GAPDoc>
 ##
 DeclareConstructor( "CompleteMultipartiteGraphCons", [IsObject, IsInt, IsInt]);
-DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
+DeclareGlobalFunction( "CompleteMultipartiteGraph" );
 
-#TODO info on parms
 #############################################################################
 ##
-#F  CycleGraph( <int> )
+#F  CycleGraph( <integer> )
 ##  
 ##  <#GAPDoc Label="CycleGraph">
 ##  <ManSection>
 ##  <Func Name="CycleGraph"
-##   Arg='int'/>
+##   Arg='n'/>
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given an integer <A>int</A> greater than 1, this function returns the  
-##  cycle graph with <A>int</A> vertices.
+##  Given an integer <A>n</A> where <C><A>n</A>&gt;1</C>, this function returns 
+##  the cycle graph of order <A>n</A>.
 ##  <P/>
-##  The resulting graph <C>gamma</C> will have vertex names <C>[1..int]</C>, 
-##  and vertices <M>x,y</M> are adjacent if and only if 
-##  <M>x-y\equiv\pm 1\;(mod\;<A>int</A>)</M>.
+##  Let <M>n</M> be an integer, <M>n&gt;1</M>. The <E>cycle graph</E> of 
+##  order <M>n</M> has vertex-set <M>\{1,..., n\}</M>, and two distinct vertices
+##  <M>x,y</M> are adjacent if and only if <M>x-y \equiv \pm 1\;(mod\; n)</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> CycleGraph(5);
@@ -87,22 +95,25 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 ##
 DeclareGlobalFunction( "CycleGraph" );
 
+# In BVM_2022 1.1.3 not specific
 #############################################################################
 ##
-#F  CocktailPartyGraph( <int> )
+#F  CocktailPartyGraph( <integer> )
 ##  
 ##  <#GAPDoc Label="CocktailPartyGraph">
 ##  <ManSection>
 ##  <Func Name="CocktailPartyGraph"
-##   Arg='int'/>
+##   Arg='n'/>
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given a positive integer <A>int</A>, this graph returns the Cocktail 
-##  party graph with <A>int</A> parts. 
+##  Given a positive integer <A>n</A>, this graph returns the cocktail 
+##  party graph with <A>n</A> parts. 
 ##  <P/>
-##  The Cocktail party graphs are the complete multipartite graphs with all
-##  parts of size 2 (see <Ref Func="CompleteMultipartiteGraph2"/>).
+##  Let <M>n</M> be a positive integer. The <E>cocktail party graph</E> with
+##  <M>n</M> parts is the complete multipartite graph <M>K_{{n \times 2}}</M> 
+##  (see <Ref Func="CompleteMultipartiteGraph"/>). This graph is strongly 
+##  regular with parameters <M>(2n,2(n-1),2(n-2),2(n-1))</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> CocktailPartyGraph(4);
@@ -121,27 +132,30 @@ DeclareGlobalFunction( "CycleGraph" );
 ##
 DeclareGlobalFunction( "CocktailPartyGraph" );
 
+# In BCN_1989 1.3 not specific BVM_2022 1.1.9 not specific 
 #############################################################################
 ##
-#F  PaleyGraph( <int> )
+#F  PaleyGraph( <integer> )
 ##  
 ##  <#GAPDoc Label="PaleyGraph">
 ##  <ManSection>
 ##  <Func Name="PaleyGraph"
-##   Arg='int'/>
+##   Arg='q'/>
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given <A>int</A>, postive power of an odd prime, this function returns the  
-##  Paley graph of order <A>int</A>.
+##  Given an odd prime power <A>q</A>, this function returns the  
+##  Paley graph of order <A>q</A>.
 ##  <P/>
 ##  Let <M>q</M> be a positive power of an odd prime number. Then the   
-##  <E>Paley graph</E> of order <M>q</M>,<M>P_q</M> is the graph with vertex-set 
-##  <M>GF(q)</M>, and distinct vertices <M>x,y</M> are adjacent if 
+##  <E>Paley graph</E> of order <M>q</M>, <M>P(q)</M>, is the graph with 
+##  vertex-set <M>GF(q)</M>, and distinct vertices <M>x,y</M> are adjacent if 
 ##  and only if <M>x-y</M> is a square. Therefore, this graph is undirected
 ##  if and only if <M>q\equiv 1\;(mod\; 4)</M>. When 
-##  <M>q\equiv 1\;(mod\; 4)</M>, <M>P_q</M> is strongly regular with parameters
-##  <M>(q,(q-1)/2,(q-5)/4,(q-1)/4)</M>.
+##  <M>q\equiv 1\;(mod\; 4)</M>, <M>P(q)</M> is strongly regular with parameters
+##  <M>(q,(q-1)/2,(q-5)/4,(q-1)/4)</M>. 
+##  <P/>
+##  For more information on this graph, see <Cite Key="J_2016"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> PaleyGraph(9);
@@ -160,7 +174,7 @@ DeclareGlobalFunction( "CocktailPartyGraph" );
 ##
 DeclareGlobalFunction( "PaleyGraph" );
 
-#TODO AutGroup reference? Info on parms
+#TODO LatinSquareAdjacency not used?
 #############################################################################
 ##
 #F  LatinSquareGraph( <matrix> )
@@ -175,28 +189,44 @@ DeclareGlobalFunction( "PaleyGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given a matrix <A>mat</A>, this function returns the Latin Square graph
+##  Given a matrix <A>mat</A>, this function returns the Latin square graph
 ##  associated to <A>mat</A>. Given a group <A>grp</A>, this function 
 ##  returns the Latin square graph associated to the Cayley table of 
 ##  <A>grp</A>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
-##  described in <Ref Filt="FullAutomorphismGroup"/>.
+##  If the optional argument <A>fil</A> exists, it should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as described in 
+##  <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
-##  Let <M>M</M> be an <M>n\times m</M> matrix. Then <E>Latin square graph</E>
+##  If the optional argument <A>invt</A> exists, it should only take the value
+##  <K>true</K>. Then this function behaves as described in Section
+##  <Ref Subsect="The invariant vertex-set option of Graph"/>.
+##  <P/>
+##  Let <M>M</M> be an <M>n \times m</M> matrix. The <E>Latin square graph</E>
 ##  associated with <M>M</M> is the graph with vertex-set 
-##  <M>\{1..n\}\times \{1..m\}</M>, and distinct vertices <M>(i,j),(k,\ell)</M>
-##  are adjcacent if and only if either
+##  <M>\{1,..., n\} \times \{1,..., m\}</M>, and distinct vertices 
+##  <M>(i,j),(k,\ell)</M> are adjcacent if and only if either
 ##  <List>
 ##    <Item><M>i=k</M>, or </Item>
 ##    <Item><M>j=\ell</M>, or</Item>
 ##    <Item><M>M_{i,j}=M_{k,\ell}</M>.</Item>
 ##  </List>
-##  When associated to a Cayley table of a group <M>G</M>, the matrix is  
-##  indexed by <M>G\times G</M>, and the graph has vertex-set <M>G\times G</M>.
 ##  <P/>
-##  TODO invt change (no effect on matrix input)
+##  Let <M>G</M> be a group. The <E>Latin square graph</E> of <M>G</M> is the 
+##  Latin square graph associated with the Cayley table of <M>G</M>. The matrix
+##  is then indexed by <M>G</M> and the vertex-set of the graph is 
+##  <M>G \times G</M>.
+##  <P/>
+##  If the matrix is a latin square of order <M>n</M> in the above (e.g. a 
+##  Cayley table of a group), the resulting graph will be strongly regular with 
+##  parameters <M>(n^2,3(n-1),n,6)</M>.
+##  <P/>
+##  This function will give a graph with <C>Product(DimensionsMat(mat))</C> or 
+##  <C>Order(grp)^2</C> vertices. Each vertex is a pair of indices of the matrix
+##  the graph is defined on.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BV_2022" Where="Section 8.4"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> LatinSquareGraph(CyclicGroup(4));
@@ -219,7 +249,6 @@ DeclareGlobalFunction( "PaleyGraph" );
 DeclareConstructor( "LatinSquareGraphCons", [IsObject, IsObject, IsBool]);
 DeclareGlobalFunction( "LatinSquareGraph" );
 
-#TODO info on parms
 #############################################################################
 ##
 #F  CompleteTaylorGraph( <integer> )
@@ -227,21 +256,27 @@ DeclareGlobalFunction( "LatinSquareGraph" );
 ##  <#GAPDoc Label="CompleteTaylorGraph">
 ##  <ManSection>
 ##  <Func Name="CompleteTaylorGraph"
-##   Arg='int'/>
+##   Arg='n'/>
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given an integer <A>int</A> greater than 1, this function returns the 
-##  complete Taylor graph with <A>2*int</A> vertices.
+##  Given an integer <A>n</A> where <C><A>n</A>&gt;1</C>, this function returns 
+##  the complete Taylor graph with <C>2*<A>n</A></C> vertices.
 ##  <P/>
-##  Let <M>n</M> be an integer greater than 1. The <E>complete Taylor graph</E>
+##  Let <M>n</M> be an integer, <M>n&gt;1</M>. The <E>complete Taylor graph</E>
 ##  with parts of size <M>n</M> (a.k.a the <M>n</M>-crown graph) is the
-##  bipartite graph with parts <M>\{x_1,...,x_n\},\{y_1,...,y_n\}</M>,
-##  and vertices <M>x_i,y_j</M> are adjacent if and only if <M>i\not=j</M>.
+##  bipartite graph with parts <M>\{x_1,..., x_n\},\{y_1,..., y_n\}</M>,
+##  and vertices <M>x_i,y_j</M> are adjacent if and only if <M>i&neq;j</M>.
+##  This graph is distance-regular with intersection array 
+##  <M>\{n-1,n-2,1;1,n-2,n-1\}</M>.
 ##  <P/>
-##  The graph returned by this function has vertex-set consisting of pairs 
-##  of integers. The first entry corresponds to the part the vertex is 
-##  contained in, the second entry is its index in the part.
+##  This function will return a graph for which each vertex is a pair of 
+##  integers. For a given vertex, the first entry denotes the part the vertex is
+##  contained in, and the second entry denotes the number of the vertex in its 
+##  part. 
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section1.5"/>
 ##    <Example>
 ##      <![CDATA[
 ##gap> CompleteTaylorGraph(3);
@@ -262,20 +297,31 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 #TODO why have a filter?
 #############################################################################
 ##
-#F  HaarGraph( [<filter>, ]<integer>[, <list>] )
+#F  HaarGraph( <integer>[, <list>] )
 ##  
 ##  <#GAPDoc Label="HaarGraph">
 ##  <ManSection>
 ##  <Func Name="HaarGraph"
-##   Arg='[fil, ]int[, list]'/>
+##   Arg='k[, list]'/>
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given an integer <A>int</A>, this graph returns the Haar graph of 
-##  <A>int</A>. If <A>list</A> is given, this function returns the cyclic
-##  cyclic Haar graph with symbol <A>list</A>
+##  Given an integer <A>k</A>, this graph returns the Haar graph of <A>k</A>. 
+##  If <A>list</A> is given, this function returns the cyclic Haar graph with 
+##  symbol <A>list</A>.
 ##  <P/>
-##  TODO insert definition(s) or reference.
+##  Let <M>k</M> be an integer and <M>A</M> be a list of elements in the group
+##  <M>&ZZ;_k</M>. The <E>cyclic Haar graph</E> with symbol <M>A</M>, 
+##  <M>H(&ZZ;_k,A)</M>, has vertex-set <M>\{1, 2\} \times \{1,..., k\}</M>. Two 
+##  distinct vertices <M>(i,x),(j,y)</M> are adjacent if and only if 
+##  <M>(x-y)(-1)^i\;(mod\; k)</M> is in <M>A</M>. 
+##  <P/>
+##  Now let <M>n</M> be an integer with binary length 
+##  <M>k=1+\lfloor log_2(n) \rfloor</M> and binary vector
+##  <M>b(n)=(b_{{k-1}},..., b_0)</M>. The <E>Haar graph</E> of <M>n</M> is the 
+##  graph <M>H(&ZZ;_k,B(n))</M>, where <M>B(n)=\{i\in &ZZ;_k: b_i=1\}</M>.
+##  <P/>
+##  For more information on this graph, see <Cite Key="HMP_2002"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> HaarGraph(11);

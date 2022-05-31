@@ -11,7 +11,7 @@
 
 #############################################################################
 ##
-#F  CompleteMultipartiteGraph2( [<filter>, ]<list>  )
+#O  CompleteMultipartiteGraph( [<filter>, ]<list>  )
 ##  
 InstallOtherMethod( CompleteMultipartiteGraphCons,
      "for a list of part sizes with full automorphism group", true,
@@ -32,7 +32,6 @@ function(filter, sizes)
   return H;
 end );
 
-# Complete multipartite graphs given a list of part sizes,
 InstallOtherMethod( CompleteMultipartiteGraphCons, "for a list of part sizes",
      true, [IsObject, IsList], 0,
 function(filter, sizes)
@@ -43,6 +42,10 @@ function(filter, sizes)
     OnSum(dp), DifferentParts, true);
 end );
 
+#############################################################################
+##
+#O  CompleteMultipartiteGraph( [<filter>, ]<integer>, <integer>  )
+##  
 InstallMethod( CompleteMultipartiteGraphCons,
      "for equal part sizes with full automorphism group", true,
      [FullAutomorphismGroup, IsInt, IsInt], 0,
@@ -56,17 +59,18 @@ function(filter, m, n)
                end, DifferentParts, true);
 end );
 
-#############################################################################
-##
-#F  CompleteMultipartiteGraph2( [<filter>, ]<int>, <int>  )
-##  
 InstallMethod( CompleteMultipartiteGraphCons, "for equal part sizes",
      true, [IsObject, IsInt, IsInt], 0,
 function(filter, m, n)
   return CompleteMultipartiteGraphCons(FullAutomorphismGroup, m, n);
 end );
 
-InstallGlobalFunction( CompleteMultipartiteGraph2,
+#############################################################################
+##
+#F  CompleteMultipartiteGraph( [<filter>, ]<list>  )
+#F  CompleteMultipartiteGraph( [<filter>, ]<integer>, <integer>  )
+##  
+InstallGlobalFunction( CompleteMultipartiteGraph,
 function(arg)
   local j, filt;
   if IsAFilter(arg[1]) then
@@ -87,7 +91,7 @@ end );
 
 #############################################################################
 ##
-#F  CycleGraph( <int> )
+#F  CycleGraph( <integer> )
 ##  
 InstallGlobalFunction( CycleGraph,
 n -> Graph(DihedralGroup(IsPermGroup, 2*n), [1..n],
@@ -98,7 +102,7 @@ n -> Graph(DihedralGroup(IsPermGroup, 2*n), [1..n],
 
 #############################################################################
 ##
-#F  CocktailPartyGraph( <int> )
+#F  CocktailPartyGraph( <integer> )
 ##  
 InstallGlobalFunction( CocktailPartyGraph,
    n -> CompleteMultipartiteGraphCons(FullAutomorphismGroup, n, 2)
@@ -106,7 +110,7 @@ InstallGlobalFunction( CocktailPartyGraph,
 
 #############################################################################
 ##
-#F  PaleyGraph( <int> )
+#F  PaleyGraph( <integer> )
 ##  
 InstallGlobalFunction( PaleyGraph,
 function(q)
@@ -121,7 +125,7 @@ end );
 
 #############################################################################
 ##
-#F  LatinSquareGraph( <matrix> )
+#O  LatinSquareGraph( <matrix> )
 ##  
 InstallMethod( LatinSquareGraphCons,
      "for Cayley tables", true,
@@ -146,7 +150,7 @@ end );
 
 #############################################################################
 ##
-#F  LatinSquareGraph( [<filter>, ]<group>[, <bool>] )
+#O  LatinSquareGraph( [<filter>, ]<group>[, <bool>] )
 ##  
 InstallMethod( LatinSquareGraphCons,
      "for groups with full automorphism group", true,
@@ -190,7 +194,6 @@ function(filter, G, invt)
   fi;
 end );
 
-# Latin square graphs from groups.
 InstallMethod( LatinSquareGraphCons,
      "for groups", true,
      [IsObject, IsGroup, IsBool], 0,
@@ -211,6 +214,11 @@ function(filter, G, invt)
   return Graph(dp, vcs, OnLatinSquare(dp), LatinSquareAdjacency, invt);
 end );
 
+#############################################################################
+##
+#F  LatinSquareGraph( <matrix> )
+#F  LatinSquareGraph( [<filter>, ]<group>[, <bool>] )
+##  
 InstallGlobalFunction( LatinSquareGraph,
 function(arg)
   local j, filt;
@@ -246,7 +254,7 @@ end );
 
 #############################################################################
 ##
-#F  HaarGraph( [<filter>, ]<integer>[, <list>] )
+#O  HaarGraph( <integer>[, <list>] )
 ##  
 InstallMethod( HaarGraphCons, "", true, [IsObject, IsInt, IsList], 0,
 function(filter, n, adj)
@@ -262,6 +270,10 @@ function(filter, n, adj)
                     end, true);
 end );
 
+#############################################################################
+##
+#F  HaarGraph( <integer>[, <list>] )
+##  
 InstallGlobalFunction( HaarGraph,
 function(arg)
   local j, m, n, adj, filt;
@@ -287,7 +299,7 @@ function(arg)
     n := arg[j];
     adj := arg[j+1];
   else
-    Error("usage: HaarGraph( [<filter>, ]<int>[, <list> ])");
+    Error("usage: HaarGraph( <integer>[, <list> ])");
   fi;
   return HaarGraphCons(filt, n, adj);
 end );

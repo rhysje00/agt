@@ -8,7 +8,7 @@
 ##  Declaration file for functions that construct code graphs. 
 ##
 
-
+# In BCN_1989 11.1D not specific
 # De Caen, Mathon and Moorhouse's Preparata graph Pr(t, e)
 # TODO add ref, and other input type as cover
 #############################################################################
@@ -51,6 +51,7 @@
 DeclareConstructor( "PreparataGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PreparataGraph" );
 
+# In BCN_1989 11.2 not specific
 # The coset graph of a Kasami code over an odd power extension
 # of a binary field.
 # TODO ref and code def, gcd(m,2j+1)=1 condition?
@@ -89,6 +90,7 @@ DeclareGlobalFunction( "PreparataGraph" );
 ##
 DeclareGlobalFunction( "KasamiGraph" );
 
+# In BCN_1989 11.2 not specific
 #############################################################################
 ##
 #F  ExtendedKasamiGraph( <integer>, <integer>, <integer> )

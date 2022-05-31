@@ -494,9 +494,9 @@ end );
 
 #############################################################################
 ##
-#F  CompleteMultipartiteGraph( <n1> , <n2> , ... )
+#F  CompleteMultipartiteGraph2( <n1> , <n2> , ... )
 ##  
-InstallGlobalFunction( CompleteMultipartiteGraph, 
+InstallGlobalFunction( CompleteMultipartiteGraph2, 
 function( arg... )
   local   sum, Grs, Grp,  i, fvtx, comb, gamma;
 

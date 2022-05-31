@@ -8,6 +8,7 @@
 ##  Declaration file for functions that construct forms graphs. 
 ##
 
+# In BCN_1989 9.5A BVM_2022 3.4.1
 #############################################################################
 ##
 #F  BilinearFormsGraph( [<filter>, ]<int>, <int>, <int> )
@@ -31,6 +32,10 @@
 ##  <E>bilinear forms graph</E> <M>H_q(d,e)</M> is the graph with vertex-set
 ##  <M>M_{{d \times e}}(GF(q))</M>, and distinct vertices <M>A,B</M> are 
 ##  adjacent if and only if the rank of <M>A-B</M> is 1. 
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.5A"/> or
+##  <Cite Key="BV_2022" Where="Section 3.4.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=BilinearFormsGraph(2,2,2);;
@@ -45,6 +50,7 @@
 DeclareConstructor( "BilinearFormsGraphCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "BilinearFormsGraph" );
 
+# In BCN_1989 9.5C BVM_2022 3.4.4
 #############################################################################
 ##
 #F  HermiteanFormsGraph( [<filter>, ]<int>, <int> )
@@ -65,6 +71,10 @@ DeclareGlobalFunction( "BilinearFormsGraph" );
 ##  the hermitean matrices in <M>M_{d\times d}(GF(r^2))</M>, and 
 ##  distinct vertices <M>A,B</M> are adjacent if and only if the rank of 
 ##  <M>A-B</M> is 1. 
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.5C"/> or
+##  <Cite Key="BV_2022" Where="Section 3.4.4"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=HermiteanFormsGraph(2,3);;

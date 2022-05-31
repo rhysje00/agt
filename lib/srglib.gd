@@ -800,11 +800,11 @@ DeclareGlobalFunction( "DisjointUnionOfCliques" );
 
 #############################################################################
 ##
-#F  CompleteMultipartiteGraph( <n1> , <n2>, ... )
+#F  CompleteMultipartiteGraph2( <n1> , <n2>, ... )
 ##  
-##  <#GAPDoc Label="CompleteMultipartiteGraph">
+##  <#GAPDoc Label="CompleteMultipartiteGraph2">
 ##  <ManSection>
-##  <Func Name="CompleteMultipartiteGraph"
+##  <Func Name="CompleteMultipartiteGraph2"
 ##   Arg='n1, n2, ... '/>
 ##  <Returns>A record.</Returns>
 ##
@@ -831,7 +831,7 @@ DeclareGlobalFunction( "DisjointUnionOfCliques" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "CompleteMultipartiteGraph" );
+DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 
 #############################################################################
 ##
@@ -948,6 +948,7 @@ DeclareGlobalFunction( "SquareLatticeGraph" );
 ##
 DeclareGlobalFunction( "HoffmanSingletonGraph" );
 
+# In BVM_2022 Sec 10.31
 #############################################################################
 ##
 #F  HigmanSimsGraph(  )

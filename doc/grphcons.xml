@@ -2,12 +2,32 @@
 <Heading>Graph constructors</Heading>
 
 In this chapter we give functions which return various graphs found in the 
-literature. 
+literature. Many of the graphs made available here are from well-known or 
+general constructions. For the functions which construct strongly regular and 
+distance-regular graphs, the definitions and notation are often based on the 
+books of Brouwer, Cohen and Neumaier <Cite Key="BCN_1989"/> and Brouwer and 
+Van Maldeghem <Cite Key="BV_2022"/>. 
+<P/>
+Before using one of these functions, you may need to consider the size of the 
+graph you are trying to construct. The &AGT; package does not impose
+any restrictions on the size of a graph it will attempt to construct, so the 
+user can try to construct graphs on hundreds or thousands of vertices. However, 
+trying to construct such a graph will take a large amount of time, and will 
+often cause a system error. 
+<P/>
+<Ref BookName="GRAPE" Sect="Grape"/>
+The graph constructors in the &AGT; package are designed to use the known 
+symmetries of a graph to construct and represent the resulting graphs in a 
+compact manner in &GRAPE; format (also, see 
+<Ref Sect="Vertex naming and automorphisms"/>). It is a good idea to remind 
+yourself on how interrupt (usually Ctrl-C) and terminate (usually Ctrl-Z) a
+&GAP; session before using these constructors.
+
 
 <Section Label="Vertex naming and automorphisms">
 <Heading>Vertex naming and automorphisms</Heading>
 
-The &AGT; package is designed to investigate and manipulate graphs in &Grape;
+The &AGT; package is designed to investigate and manipulate graphs in &GRAPE;
 format. When graphs are constructed in this format, useful information on the
 structure and properties of the graph is stored as record entries. Here, we 
 describe how two of these entries are constructed by functions in the &AGT; 
@@ -22,7 +42,23 @@ resulting graph.
 
 <#Include Label="FullAutomorphismGroup">
 
+<Subsection Label="The invariant vertex-set option of Graph">
+<Heading>The invariant vertex-set option of <C>Graph</C></Heading>
 
+Another option in some of the graph constructors is made available through the 
+optional argument <A>invt</A>. In this case, the function will use the function 
+<C>Graph</C> from the &GRAPE; package to construct the graph. Please see 
+<Ref BookName="GRAPE" Label="Graph"/> for information on the arguments and use 
+of this function.
+<P/>
+When the argument <A>invt</A> exists, it should take value <K>true</K> or 
+<K>false</K>. If it takes the value <K>true</K>, the function will first 
+construct the full vertex-set of the graph, and then construct the graph using 
+the function <C>Graph</C> with the optional argument <C>invt=true</C>. 
+Otherwise, the function will use a subset of the vertex-set and 
+<C>invt=false</C> when using the function <C>Graph</C>. 
+
+</Subsection>
 
 <P/>
 TODO: Describe 
@@ -88,7 +124,7 @@ relatively well-known and simple definitions. These include complete
 multipartite, Paley and Latin square graphs. 
 
 
-<#Include Label="CompleteMultipartiteGraph2">
+<#Include Label="CompleteMultipartiteGraph">
 
 <#Include Label="CycleGraph">
 
@@ -125,9 +161,11 @@ subset of a finite set (for example, the Kneser and Odd graphs).
 <Section Label="Vector constructions">
 <Heading>Vector constructions</Heading>
 
-In this section, each function constructs a graph for which each vertex is a 
-vector lying in a finite vector space (for example, the Hamming and Affine 
-polar graphs). 
+In this section, each function constructs a graph for which each vertex is a
+tuple defined over a finite set(s) or a vector lying in a finite vector space 
+(for example, the Hamming and Affine polar graphs). 
+<P/>
+TODO: add definition of e
 
 <#Include Label="HammingGraph2">
 
@@ -159,7 +197,8 @@ polar graphs).
 <Heading>Bilinear form constructions</Heading>
 
 In this section, each function constructs a graph for which each vertex is a 
-matrix defined over a finite field, and considered as certain sesuilinear forms. 
+matrix defined over a finite field, and considered as certain sesquilinear 
+forms. 
 
 <#Include Label="BilinearFormsGraph">
 
@@ -171,7 +210,7 @@ matrix defined over a finite field, and considered as certain sesuilinear forms.
 <Heading>Subspace constructions</Heading>
 
 In this section, each function constructs a graph for which each vertex is a 
-subspace in a finite vector space (for example, the Grassmann and Polar graphs). 
+subspace in a finite vector space (for example, the Grassmann and polar graphs). 
 
 <#Include Label="GrassmannGraph">
 
@@ -206,9 +245,8 @@ subspace in a finite vector space (for example, the Grassmann and Polar graphs).
 <Section Label="Code constructions">
 <Heading>Code constructions</Heading>
 
-In this section, each function constructs a graph for which each vertex is a 
-vector lying in a finite vector space (for example, the Hamming and Affine 
-polar graphs). 
+In this section, each function constructs a graph related to a certain code (for
+ example, the Preparata and Kasami graphs). 
 
 
 <#Include Label="PreparataGraph">
@@ -225,6 +263,10 @@ polar graphs).
 
 <Section Label="Geometry constructions">
 <Heading>Geometry constructions</Heading>
+
+In this section, each function constructs a graph related to a certain object 
+from finite geometry (for example, incidence graphs of the Desarguesian plane 
+and generalized quadrangles). 
 
 <#Include Label="DesarguesianPlaneIncidenceGraph">
 
@@ -251,6 +293,11 @@ polar graphs).
 
 <Section Label="Named constructions">
 <Heading>Named constructions</Heading>
+
+In this section, each function constructs a graph which has a specific name. 
+These graphs are often thought of as sporadic because they have some unique 
+mathematical property (for example, the Hoffman-Singleton and Biggs-Smith 
+graphs). 
 
 <#Include Label="TetrahedronGraph">
 

@@ -479,7 +479,7 @@ DeclareGlobalFunction( "StrongPowerGraph" );
 DeclareConstructor("GraphJoinCons", [IsObject, IsList]);
 DeclareGlobalFunction( "GraphJoin" );
 
-#############################################################################
+# In BCN_1989 1.11 #############################################################################
 ##
 #F  BipartiteDoubleGraph( <graph> )
 ##  
@@ -497,6 +497,9 @@ DeclareGlobalFunction( "GraphJoin" );
 ##  <M>\Gamma</M> is the graph with vertex-set <M>V(\Gamma) \times \{-,+\}</M>, 
 ##  and distinct vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if 
 ##  <M>\circ\not=\ast</M> and <M>x,y</M> are adjacent in <M>\Gamma.</M> 
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 1.11"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
@@ -519,6 +522,7 @@ DeclareGlobalFunction( "GraphJoin" );
 ##
 DeclareGlobalFunction( "BipartiteDoubleGraph" );
 
+# In BCN_1989 1.11
 #############################################################################
 ##
 #F  ExtendedBipartiteDoubleGraph( [<filter, ]<graph> )
@@ -541,6 +545,9 @@ DeclareGlobalFunction( "BipartiteDoubleGraph" );
 ##  <M>\Gamma</M> is the graph with vertex-set <M>V(\Gamma)\times \{-,+\}</M>, 
 ##  and distinct vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if
 ##  <M>\circ=\ast</M> or <M>x,y</M> are adjacent in <M>\Gamma.</M> 
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 1.11"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
@@ -564,6 +571,7 @@ DeclareGlobalFunction( "BipartiteDoubleGraph" );
 DeclareConstructor("ExtendedBipartiteDoubleGraphCons", [IsObject, IsRecord]);
 DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 
+# In BCN_1989 4.2,A.5 not specific BVM_2022 1.2.6
 #############################################################################
 ##
 #F  HalvedGraph( <graph>[, <integer>] )
@@ -600,6 +608,7 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 ##
 DeclareGlobalFunction( "HalvedGraph" );
 
+# In BCN_1989 4.2,A.5 not specific BVM_2022 1.2.6 'folded' not specific
 #############################################################################
 ##
 #F  AntipodalQuotientGraph( [<filter>, ]<graph> )

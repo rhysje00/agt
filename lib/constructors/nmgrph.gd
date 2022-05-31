@@ -70,6 +70,7 @@ DeclareGlobalFunction( "TetrahedronGraph" );
 ##
 DeclareGlobalFunction( "OctahedronGraph" );
 
+# In BVM_2022 Sec 10.3  # In BCN_1989 3.11
 #############################################################################
 ##
 #F  PetersenGraph2(  )
@@ -89,6 +90,10 @@ DeclareGlobalFunction( "OctahedronGraph" );
 ##  this is exactly the Odd graph of diameter <M>2</M> and the Kneser graph
 ##  <M>K(5,2)</M> (see <Ref Func="OddGraph"/> and <Ref Func="KneserGraph"/>).
 ##  This graph is strongly regular with parameters <M>(10,3,0,1)</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.3"/> or 
+##  <Cite Key="BCN_1989" Where="Section 3.11"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> PetersenGraph2();
@@ -107,6 +112,7 @@ DeclareGlobalFunction( "OctahedronGraph" );
 ##
 DeclareGlobalFunction( "PetersenGraph2" );
 
+# In BVM_2022 Sec 10.6   # In BCN_1989 3.11
 #############################################################################
 ##
 #F  ShrikhandeGraph(  )
@@ -121,9 +127,12 @@ DeclareGlobalFunction( "PetersenGraph2" );
 ##  This function returns the Shrikhande graph.
 ##  <P/>
 ##  The <E>Shrikhande graph</E> is the complement graph of the Latin square
-##  graph of the group <M>&ZZ;_4</M> 
-##  (see <Ref Func="LatinSquareGraph"/>). This graph is strongly regular 
-##  with parameters <M>(16,6,2,2)</M>.
+##  graph of the group <M>&ZZ;_4</M> (see <Ref Func="LatinSquareGraph"/>). This
+##  graph is strongly regular with parameters <M>(16,6,2,2)</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.6"/> or 
+##  <Cite Key="BCN_1989" Where="Section 3.11"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=ShrikhandeGraph();;
@@ -138,7 +147,7 @@ DeclareGlobalFunction( "PetersenGraph2" );
 DeclareConstructor("ShrikhandeGraphCons", [IsObject]);
 DeclareGlobalFunction( "ShrikhandeGraph" );
 
-# The Clebsch graph with v=16, k=10, lm=6, mu=6.
+# In BVM_2022 Sec 10.7  # In BCN_1989 3.11
 #############################################################################
 ##
 #F  ClebschGraph(  )
@@ -156,6 +165,10 @@ DeclareGlobalFunction( "ShrikhandeGraph" );
 ##  hypercube graph (see <Ref Func="HalvedCubeGraph"/>, 
 ##  <Ref Func="HypercubeGraph"/> and <Ref Func="HalvedGraph"/> ). This graph
 ##  is strongly regular with parameters <M>(16,10,6,6)</M>.
+##  <P/>
+##  For more information on this, see 
+##  <Cite Key="BV_2022" Where="Section 10.7"/> or 
+##  <Cite Key="BCN_1989" Where="Section 3.11"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=ClebschGraph();;
@@ -169,6 +182,7 @@ DeclareGlobalFunction( "ShrikhandeGraph" );
 ##
 DeclareGlobalFunction( "ClebschGraph" );
 
+# In BVM_2022 Sec 10.10  # In BCN_1989 3.11
 #TODO need def
 #############################################################################
 ##
@@ -184,7 +198,11 @@ DeclareGlobalFunction( "ClebschGraph" );
 ##  This function returns the Schläfli graph.
 ##  <P/>
 ##  The <E>Schläfli graph</E> is the TODO. This graph
-##  is strongly regular with parameters <M>(27,16,10,8)</M>.ä
+##  is strongly regular with parameters <M>(27,16,10,8)</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.10"/> or 
+##  <Cite Key="BCN_1989" Where="Section 3.11"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=SchlaefliGraph();;
@@ -198,6 +216,7 @@ DeclareGlobalFunction( "ClebschGraph" );
 ##
 DeclareGlobalFunction( "SchlaefliGraph" );
 
+# In BVM_2022 Sec 10.19  # In BCN_1989 13.1
 #TODO implementation list use?
 #############################################################################
 ##
@@ -218,8 +237,11 @@ DeclareGlobalFunction( "SchlaefliGraph" );
 ##  add an edge between <M>j\in P_h</M> and <M>hi+j\in Q_i</M> for each 
 ##  <M>j\in P_h</M> and <M>i\in\{1,...,5\}</M>. The resulting graph is 
 ##  the Hoffman-Singleton graph, which is strongly regular with parameters
-##  <M>(50,7,0,1)</M>. For more information on this graph, see 
-##  <Cite Key="B_2018b"/>. 
+##  <M>(50,7,0,1)</M>. 
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.19"/> or 
+##  <Cite Key="BCN_1989" Where="Section 13.1"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph(arg);
@@ -232,6 +254,7 @@ DeclareGlobalFunction( "SchlaefliGraph" );
 ##
 DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 
+# In BVM_2022 Sec 10.20  # In BCN_1989 11.4G not specific
 #############################################################################
 ##
 #F  GewirtzGraph(  )
@@ -250,8 +273,11 @@ DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 ##  unique Steiner system in <M>S(3,6,22)</M> which do not contain a fixed
 ##  point. Any two distinct vertices are adjacent if and only if their 
 ##  intersection is empty. This graph is strongly regular with parameters#
-##  <M>(56,10,0,2)</M>. For more information on this graph, see 
-##  <Cite Key="B_2018b"/>. 
+##  <M>(56,10,0,2)</M>. 
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.20"/> or 
+##  <Cite Key="BCN_1989" Where="Section 11.4G"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=GewirtzGraph();;
@@ -265,6 +291,7 @@ DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 ##
 DeclareGlobalFunction( "GewirtzGraph" );
 
+# In BVM_2022 Sec 10.27  # In BCN_1989 11.4C not specific
 #############################################################################
 ##
 #F  WittStronglyRegularGraph(  )
@@ -283,8 +310,11 @@ DeclareGlobalFunction( "GewirtzGraph" );
 ##  the blocks of the unique Steiner system in <M>S(3,6,22)</M>. Any 
 ##  two distinct vertices are adjacent if and only if their 
 ##  intersection is empty. This graph is strongly regular with 
-##  parameters <M>(77,16,0,4)</M>. For more information on this graph, see 
-##  <Cite Key="B_2018b"/>. 
+##  parameters <M>(77,16,0,4)</M>. 
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.27"/> or 
+##  <Cite Key="BCN_1989" Where="Section 11.4C"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=WittStronglyRegularGraph();;
@@ -298,6 +328,7 @@ DeclareGlobalFunction( "GewirtzGraph" );
 ##
 DeclareGlobalFunction( "WittStronglyRegularGraph" );
 
+# In BVM_2022 Sec 10.53
 #############################################################################
 ##
 #F  KlinGraph(  )
@@ -319,7 +350,9 @@ DeclareGlobalFunction( "WittStronglyRegularGraph" );
 ##  <Display> \{(3,4,5,6,7), (2,4,6,3,5,7), (3,5,6,7), (2,4,5,6,7,3),
 ##              (2,3,5,6,7), (2,4,5,6), (2,3,5,6)\}.</Display>
 ##  This graph is strongly regular with parameters <M>(210,99,48,45)</M>.
-##  For more information on this graph, see REF.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.53"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gap> gamma:=KlinGraph();;
@@ -368,6 +401,7 @@ DeclareGlobalFunction( "KlinGraph" );
 ##
 DeclareGlobalFunction( "CubeGraph" );
 
+# In BCN_1989 6.9 not specific
 #############################################################################
 ##
 #F  HeawoodGraph(  )
@@ -426,7 +460,7 @@ DeclareGlobalFunction( "HeawoodGraph" );
 ##
 DeclareGlobalFunction( "IcosahedronGraph" );
 
-#TODO def
+# In BCN_1989 13.1A 
 #############################################################################
 ##
 #F  SylvesterGraph(  )
@@ -443,6 +477,9 @@ DeclareGlobalFunction( "IcosahedronGraph" );
 ##  The <E>Sylvester graph</E> is the TODO.
 ##  This graph is distance-regular with intersection array 
 ##  <M>\{5,4,2;1,1,4\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 13.1A"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=SylvesterGraph();;
@@ -456,7 +493,7 @@ DeclareGlobalFunction( "IcosahedronGraph" );
 ##
 DeclareGlobalFunction( "SylvesterGraph" );
 
-#TODO def
+# In BCN_1989 13.3
 #############################################################################
 ##
 #F  PerkelGraph(  )
@@ -473,6 +510,9 @@ DeclareGlobalFunction( "SylvesterGraph" );
 ##  The <E>Perkel graph</E> is the TODO.
 ##  This graph is distance-regular with intersection array 
 ##  <M>\{6,5,2;1,1,3\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 13.3"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=PerkelGraph();;
@@ -487,6 +527,7 @@ DeclareGlobalFunction( "SylvesterGraph" );
 DeclareConstructor( "PerkelGraphCons", [IsObject]);
 DeclareGlobalFunction( "PerkelGraph" );
 
+# In BCN_1989 3.11
 #############################################################################
 ##
 #F  GossetGraph(  )
@@ -507,6 +548,9 @@ DeclareGlobalFunction( "PerkelGraph" );
 ##  distinct vectors <M>u,w</M> are adjacent if and only if their inner 
 ##  product <M>u.v</M> is equal to 8. This graph is distance-regular with
 ##  intersection array <M>\{27,10,1;1,10,27\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 3.11"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=GossetGraph();;
@@ -520,7 +564,7 @@ DeclareGlobalFunction( "PerkelGraph" );
 ##
 DeclareGlobalFunction( "GossetGraph" );
 
-#TODO ref
+# In BCN_1989 11.4B
 #############################################################################
 ##
 #F  Witt23Graph(  )
@@ -540,6 +584,9 @@ DeclareGlobalFunction( "GossetGraph" );
 ##  <M>u,w</M> are adjacent if and only if the intersection of their 
 ##  supports is empty. This graph is distance-regular with
 ##  intersection array <M>\{15,14,12;1,1,9\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 11.4B"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=Witt23Graph();;
@@ -553,7 +600,7 @@ DeclareGlobalFunction( "GossetGraph" );
 ##
 DeclareGlobalFunction( "Witt23Graph" );
 
-#TODO ref
+# In BCN_1989 11.4A
 #############################################################################
 ##
 #F  Witt24Graph(  )
@@ -572,6 +619,9 @@ DeclareGlobalFunction( "Witt23Graph" );
 ##  Witt design. Any two distinct vertices <M>u,w</M> are adjacent if and
 ##  only if the intersection of their supports is empty. This graph is
 ##  distance-regular with intersection array <M>\{30,28,24;1,3,15\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 11.4A"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=Witt24Graph();;
@@ -585,7 +635,7 @@ DeclareGlobalFunction( "Witt23Graph" );
 ##
 DeclareGlobalFunction( "Witt24Graph" );
 
-#TODO ref
+# In BCN_1989 11.4E
 #############################################################################
 ##
 #F  HigmanGraph(  )
@@ -602,6 +652,9 @@ DeclareGlobalFunction( "Witt24Graph" );
 ##  The <E>Higman graph</E> is the incidence graph of Higman's symmetric 
 ##  design. This graph is distance-regular with intersection array 
 ##  <M>\{50,49,36;1,14,50\}</M>.
+##  <P/>
+##  For more information on this graph, see  
+##  <Cite Key="BCN_1989" Where="Section 11.4E"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=HigmanGraph();;
@@ -615,6 +668,7 @@ DeclareGlobalFunction( "Witt24Graph" );
 ##
 DeclareGlobalFunction( "HigmanGraph" );
 
+# In BCN_1989 12.3
 # TODO def in how we define it?
 #############################################################################
 ##
@@ -631,6 +685,9 @@ DeclareGlobalFunction( "HigmanGraph" );
 ##  <P/>
 ##  The <E>Coxeter graph</E> is the TODO. This graph is distance-regular 
 ##  with intersection array <M>\{3,2,2,1;1,1,1,2\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 12.3"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=CoxeterGraph();;
@@ -644,7 +701,7 @@ DeclareGlobalFunction( "HigmanGraph" );
 ##
 DeclareGlobalFunction( "CoxeterGraph" );
 
-#TODO ref
+# In BCN_1989 11.4C
 #############################################################################
 ##
 #F  Witt22Graph(  )
@@ -664,6 +721,9 @@ DeclareGlobalFunction( "CoxeterGraph" );
 ##  <M>u,w</M> are adjacent if and only if the intersection of their 
 ##  supports is empty. This graph is distance-regular with
 ##  intersection array <M>\{7,6,4,4;1,1,1,6\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 11.4C"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=Witt22Graph();;
@@ -677,6 +737,7 @@ DeclareGlobalFunction( "CoxeterGraph" );
 ##
 DeclareGlobalFunction( "Witt22Graph" );
 
+# In BCN_1989 11.2G
 #TODO notation, ref and check def
 #############################################################################
 ##
@@ -696,6 +757,9 @@ DeclareGlobalFunction( "Witt22Graph" );
 ##  isomorphic to <M>AG(2,3)</M>. Any two distinct vertices <M>U,W</M> are 
 ##  adjacent if and only if they intersect in one point. This graph is 
 ##  distance-regular with intersection array <M>\{9,8,6,3;1,1,3,8\}</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 11.2G"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap>  gamma:=UnitalGraph();;
@@ -769,6 +833,7 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 ##
 DeclareGlobalFunction( "DesarguesGraph" );
 
+# In BCN_1989 13.4
 #TODO def ref
 #############################################################################
 ##
@@ -785,6 +850,9 @@ DeclareGlobalFunction( "DesarguesGraph" );
 ##  <P/>
 ##  The <E>Biggs-Smith graph</E> is TODO. This graph is distance-regular with 
 ##  parameters  <M>\{3,2,2,2,1,1,1;1,1,1,1,1,1,3\}</M>. 
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 13.4"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=BiggsSmithGraph();;

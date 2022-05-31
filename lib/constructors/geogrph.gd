@@ -8,6 +8,7 @@
 ##  Declaration file for functions that construct geometry graphs. 
 ##
 
+# In BVM_2022 6.2 not specific # In BCN_1989 A.6 not specific 
 #############################################################################
 ##
 #F  DesarguesianPlaneIncidenceGraph( <integer> )
@@ -114,6 +115,8 @@ DeclareGlobalFunction( "HallPlaneIncidenceGraph" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "HughesPlaneIncidenceGraph" );
+
+#BVM_2022 pp40 for further referenes on GQs
 
 # The collinearity graph of the generalized quadrangle Q(d, q)
 # of order (q, q^{d-3}).

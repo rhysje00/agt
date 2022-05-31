@@ -31,7 +31,7 @@
 ##  arbitrary numbering of the individual objects. 
 ##  <P/>
 ##  Graphs constructed by functions available in the &AGT; package use the 
-##  &Grape; package. A graph in &Grape; has an internal representation and 
+##  &GRAPE; package. A graph in &GRAPE; has an internal representation and 
 ##  a separate list of names for its vertices.
 ##    <Example>
 ##      <![CDATA[
@@ -92,7 +92,7 @@ DeclareFilter("NoVertexNames");
 ##  of the automorphism group. 
 ##  <P/>
 ##  Graphs constructed by functions available in the &AGT; package use the 
-##  &Grape; package. When constructing and storing a graph, &Grape; uses 
+##  &GRAPE; package. When constructing and storing a graph, &GRAPE; uses 
 ##  knowledge of the automorphisms of the graph to make computations and 
 ##  storage more efficient. 
 ##    <Example>

@@ -8,6 +8,7 @@
 ##  Declaration file for functions that construct set graphs. 
 ##
 
+# In BCN_1989 9.1A not specific
 # TODO parms, invt
 #############################################################################
 ##
@@ -51,7 +52,7 @@
 DeclareConstructor( "KneserGraphCons", [IsObject, IsInt, IsInt, IsBool]);
 DeclareGlobalFunction( "KneserGraph" );
 
-# TODO parms
+# In BCN_1989 9.1D
 #############################################################################
 ##
 #F  OddGraph( [<filter>, ]<integer> )
@@ -73,6 +74,9 @@ DeclareGlobalFunction( "KneserGraph" );
 ##  Let <M>d</M> be a positive integer. Then the <E>Odd graph</E> of 
 ##  diameter <M>d</M> is the graph <M>K(2d+1,d)</M>. (see 
 ##  <Ref Func="KneserGraph"/>).
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 9.1D"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> OddGraph(2);
@@ -91,7 +95,7 @@ DeclareGlobalFunction( "KneserGraph" );
 ##
 DeclareGlobalFunction( "OddGraph" );
 
-# TODO parms
+# In BCN_1989 9.1D
 #############################################################################
 ##
 #F  DoubledOddGraph( [<filter>, ]<integer> )
@@ -118,6 +122,9 @@ DeclareGlobalFunction( "OddGraph" );
 ##  This is isomorphic to the  bipartite double of the Odd
 ##  graph given by <Ref Func="OddGraph"/> and
 ##  <Ref Func="BipartiteDoubleGraph"/>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 9.1D"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> DoubledOddGraph(2);
@@ -142,7 +149,7 @@ DeclareGlobalFunction( "OddGraph" );
 DeclareConstructor( "DoubledOddGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "DoubledOddGraph" );
 
-# TODO parms
+# In BCN_1989 9.1C
 #############################################################################
 ##
 #F  FoldedJohnsonGraph( [<filter>, ]<integer> )
@@ -164,6 +171,9 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 ##  Let <M>d</M> be an integer where <M>d&gt;2</M>. The <E>folded Johnson
 ##  graph</E> <M>\overline{J}(2d,d)</M> is the antipodal quotient of the
 ##  Johnson graph <M>J(2d,d)</M> (see <Ref Func="AntipodalQuotientGraph"/>).
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BCN_1989" Where="Section 9.1C"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> FoldedJohnsonGraph(3);
@@ -187,7 +197,7 @@ DeclareConstructor("JohnsonGraphCons", [IsObject, IsInt, IsInt]);
 DeclareConstructor("FoldedJohnsonGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "FoldedJohnsonGraph" );
 
-#TODO check ref matches our def
+#TODO check ref matches our def # In BCN_1989 3.11 BVM_2022 10.11
 #############################################################################
 ##
 #F  ChangGraph( [<filter>, ]<integer> )
@@ -210,6 +220,10 @@ DeclareGlobalFunction( "FoldedJohnsonGraph" );
 ##  parameters <M>(28,12,6,4)</M>. They are the triangular graph
 ##  <M>T(8)</M> (<Ref Func="TriangularGraph"/>) and the <E>Chang graphs</E>
 ##  (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>).
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.11"/> or 
+##  <Cite Key="BCN_1989" Where="Section 3.11"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> ChangGraph(1);

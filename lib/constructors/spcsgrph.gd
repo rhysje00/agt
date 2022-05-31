@@ -9,6 +9,7 @@
 ##
 
 #TODO n>=d
+# In BVM_2022 1.2.4 not specific BCN_1989 9.3
 #############################################################################
 ##
 #F  GrassmannGraph( [<filter>, ]<int>, <int>, <int> )
@@ -24,24 +25,18 @@
 ##  function returns the Grassmann graph 
 ##  <M>J_{<A>q</A>}(<A>n</A>,<A>d</A>)</M>.
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>n,d</M> be positive integers. 
 ##  The <E>Grassmann graph</E> <M>J_q(n,d)</M> is the graph with vertex-set 
 ##  the <M>d</M>-dimensional subspaces of <M>GF(q)^n</M>,  and 
 ##  distinct vertices <M>U,V</M> are adjacent if and only if 
 ##  <M>U\cap V</M> has dimension <M>d-1</M>. 
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.3"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=GrassmannGraph(4,4,2);;
@@ -56,6 +51,7 @@
 DeclareConstructor( "GrassmannGraphCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "GrassmannGraph" );
 
+# In BCN_1989 9.3C
 #############################################################################
 ##
 #F  DoubledGrassmannGraph( [<filter>, ]<int>, <int> )
@@ -71,18 +67,9 @@ DeclareGlobalFunction( "GrassmannGraph" );
 ##  function returns the doubled Grassmann graph 
 ##  <M>2J_{<A>q</A>}(2<A>d</A>+1,<A>d</A>)</M>.
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> be a positive integer. 
 ##  The <E>doubled Grassmann graph</E> <M>J_q(n,d)</M> is the graph with 
@@ -92,6 +79,9 @@ DeclareGlobalFunction( "GrassmannGraph" );
 ##  isomorphic to the bipartite double of the Grassmann graph 
 ##  <M>J_q(2d+1,d)</M> (See <Ref Func="BipartiteDoubleGraph"/> and 
 ##  <Ref Func="GrassmannGraph"/>).
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.3C"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DoubledGrassmannGraph(3,1);;
@@ -106,6 +96,7 @@ DeclareGlobalFunction( "GrassmannGraph" );
 DeclareConstructor( "DoubledGrassmannGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DoubledGrassmannGraph" );
 
+# In BCN_1989 BVM_2022 1.2.5 not specific BH_2011 12.3.4 not specific
 #############################################################################
 ##
 #F  TwistedGrassmannGraph( [<filter>, ]<int>, <int> )
@@ -121,18 +112,9 @@ DeclareGlobalFunction( "DoubledGrassmannGraph" );
 ##  function returns the twisted Grassmann graph 
 ##  <M>\tilde{J}_{<A>q</A>}(2<A>d</A>+1, <A>d</A>)</M>.
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power, <M>d</M> be a positive integer and 
 ##  <M>H</M> be a fixed hyperplane in <M>GF(q)^{2d+1}</M>. For the
@@ -140,7 +122,8 @@ DeclareGlobalFunction( "DoubledGrassmannGraph" );
 ##  <M>d+1</M>-dimensional subspaces not contained in <M>H</M>, and <M>B</M> 
 ##  be all <M>d-1</M>-dimensional subspaces in <M>V</M>. The <E>twisted 
 ##  Grassmann graph</E> <M>\tilde{J}_q(2d+1,d)</M> has 
-##  vertex-set <M>A\cup B</M>, and distinct vertices <M>U,W</M> are adjacent ##  if and only if one of the following is true. 
+##  vertex-set <M>A\cup B</M>, and distinct vertices <M>U,W</M> are adjacent 
+##  if and only if one of the following is true. 
 ##  <List>
 ##    <Item><M>U,W\in A</M> and <M>U\cap W</M> has dimension <M>d</M>, or 
 ##    </Item>
@@ -162,6 +145,7 @@ DeclareGlobalFunction( "DoubledGrassmannGraph" );
 DeclareConstructor( "TwistedGrassmannGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "TwistedGrassmannGraph" );
 
+# In BVM_2022 2.6(.2)
 # The polar graph O^{(+/-)}(d, q) of isotropic lines of F_q^d
 # with respect to a nondegenerate quadratic form.
 ##  isotropic lines = vectors, Elements[2] is non-zero , B is bilinear form 
@@ -196,6 +180,9 @@ DeclareGlobalFunction( "TwistedGrassmannGraph" );
 ##  <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
 ##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BV_2022" Where="Section 2.6"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=PolarGraphO(5,3);;
@@ -210,6 +197,7 @@ DeclareGlobalFunction( "TwistedGrassmannGraph" );
 DeclareConstructor( "PolarGraphOCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphO" );
 
+# In BVM_2022 3.1.2 not as general as this function
 # The polar graph NO^{+/-}orth(d, q) of nonisotropic lines of F_q^d
 # with respect to a nondegenerate quadratic form.
 #############################################################################
@@ -253,6 +241,7 @@ DeclareGlobalFunction( "PolarGraphO" );
 DeclareConstructor( "PolarGraphNOorthCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphNOorth" );
 
+# In BVM_2022 2.5(.1)
 # The polar graph Sp(d, q) of isotropic lines of F_q^d
 # with respect to a nondegenerate symplectic form.
 #############################################################################
@@ -278,6 +267,9 @@ DeclareGlobalFunction( "PolarGraphNOorth" );
 ##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
 ##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BV_2022" Where="Section 2.5"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=PolarGraphSp(4,5);;
@@ -292,6 +284,7 @@ DeclareGlobalFunction( "PolarGraphNOorth" );
 DeclareConstructor( "PolarGraphSpCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphSp" );
 
+# In BVM_2022 2.7
 # The polar graph U(d, r) of isotropic lines of F_{r^2}^d
 # with respect to a nondegenerate Hermitean form.
 ## In function, seems to calculate unnecessary things?
@@ -318,6 +311,9 @@ DeclareGlobalFunction( "PolarGraphSp" );
 ##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
 ##  <M>GF(r^2)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BV_2022" Where="Section 2.7"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=PolarGraphU(4,2);;
@@ -332,6 +328,7 @@ DeclareGlobalFunction( "PolarGraphSp" );
 DeclareConstructor( "PolarGraphUCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphU" );
 
+# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraphB( [<filter>, ]<integer>, <integer> )
@@ -346,18 +343,9 @@ DeclareGlobalFunction( "PolarGraphU" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>B_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate parabolic quadratic form acting on  
@@ -382,6 +370,7 @@ DeclareGlobalFunction( "PolarGraphU" );
 DeclareConstructor( "DualPolarGraphBCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphB" );
 
+# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraphC( [<filter>, ]<integer>, <integer> )
@@ -396,18 +385,9 @@ DeclareGlobalFunction( "DualPolarGraphB" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>C_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
@@ -432,6 +412,7 @@ DeclareGlobalFunction( "DualPolarGraphB" );
 DeclareConstructor( "DualPolarGraphCCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphC" );
 
+# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraphD( [<filter>, ]<integer>, <integer> )
@@ -446,18 +427,9 @@ DeclareGlobalFunction( "DualPolarGraphC" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>D_{<A>d</A>}(<A>q</A>)</M>. 
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate hyperbolic quadratic form acting on  
@@ -482,6 +454,7 @@ DeclareGlobalFunction( "DualPolarGraphC" );
 DeclareConstructor( "DualPolarGraphDCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphD" );
 
+# In BCN_1989 9.4 not specific
 # The dual polar graph ^2D_{d+1}(q) of isotropic d-dimensional subspaces of
 # F_q^{2d+2} with respect to a nondegenerate quadratic form of Witt index d.
 #############################################################################
@@ -498,18 +471,9 @@ DeclareGlobalFunction( "DualPolarGraphD" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the dual polar graph <M>^2D_{<A>d</A>+1}(<A>q</A>)</M>. 
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate elliptic quadratic form acting on  
@@ -535,6 +499,7 @@ DeclareGlobalFunction( "DualPolarGraphD" );
 DeclareConstructor( "DualPolarGraph2DCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraph2D" );
 
+# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraph2A( [<filter>, ]<integer>, <integer> )
@@ -549,18 +514,9 @@ DeclareGlobalFunction( "DualPolarGraph2D" );
 ##  Given a prime power <A>r</A> and positive integer <A>e</A>, this function 
 ##  returns the dual polar graph <M>^2A_{<A>e</A>-1}(<A>r</A>)</M>. 
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>e</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate hermitean form acting on  
@@ -587,6 +543,7 @@ DeclareGlobalFunction( "DualPolarGraph2D" );
 DeclareConstructor( "DualPolarGraph2ACons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraph2A" );
 
+# In BCN_1989 12.1
 #TODO unsure of the definition (elliptic, hyperbolic line)
 # implemented uses {[4]} is garunteed Nonisotropic?
 #############################################################################
@@ -603,18 +560,9 @@ DeclareGlobalFunction( "DualPolarGraph2A" );
 ##  Given a prime power <A>q</A>, this function returns the Doro graoh 
 ##  <M>Doro(<A>q</A>)</M>. 
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>Q</M> be a nondegenerate elliptic 
 ##  quadratic form acting on <M>GF(q)^4</M>.
@@ -624,6 +572,9 @@ DeclareGlobalFunction( "DualPolarGraph2A" );
 ##  that <M>Q(u)\not=0</M> for all non-zero <M>u\in U</M> (i.e. nonisotropic 
 ##  subspaces in <M>GF(q)^4</M>). Any two distinct vertices 
 ##  <M>U,W</M> are adjacent if and only if <M>U + W</M> is a hyperbolic line.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 12.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DoroGraph(4);;
@@ -638,6 +589,7 @@ DeclareGlobalFunction( "DualPolarGraph2A" );
 DeclareConstructor( "DoroGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "DoroGraph" );
 
+# In BCN_1989 12.4
 # The unitary nonisotropics graph of 1-dimensional subspaces of F_(r^2)^3 with
 # respect to a nondegenerate sesquilinear form.
 #############################################################################
@@ -654,18 +606,9 @@ DeclareGlobalFunction( "DoroGraph" );
 ##  Given a prime power <A>r</A>, this function returns the unitary 
 ##  nonisotropics graph on <M>GF(<A>r</A>^2)^3</M>. 
 ##  <P/>
-<<<<<<< HEAD
 ##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
-=======
-##  If <A>fil</A> is not given, or is <C>IsObject</C>,  the resulting graph 
-##  <C>gamma</C> may not have been constructed using its full automorphism
-##  group, and <C>gamma.group</C> may be a strict subgroup of the 
-##  automorphism group. If <A>fil</A> is <C>FullAutomorphismGroup</C>, then
-##  we construct the full automorphism group and use it to construct the 
-##  graph, and <C>gamma.group</C> is this group.
->>>>>>> 86e898e94947af6c0ad6cce62d9b38d306c4dd17
 ##  <P/>  
 ##  Let <M>r</M> be a prime power and <M>B</M> be a nondegenerate hermitean 
 ##  form acting on <M>GF(r^2)^3</M>.
@@ -676,6 +619,9 @@ DeclareGlobalFunction( "DoroGraph" );
 ##  <M>u\in U</M> (i.e. nonisotropic subspaces in <M>GF(r^2)^3</M>). 
 ##  Any two distinct vertices <M>U,W</M> are adjacent if and only if 
 ##  <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 12.4"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=UnitaryNonisotropicsGraph(3);;

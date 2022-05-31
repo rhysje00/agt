@@ -74,7 +74,7 @@ are strongly regular graphs.
 
 <#Include Label="DisjointUnionOfCliques">
 
-<#Include Label="CompleteMultipartiteGraph">
+<#Include Label="CompleteMultipartiteGraph2">
 
 <#Include Label="TriangularGraph">
 
