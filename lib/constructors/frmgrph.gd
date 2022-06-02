@@ -8,10 +8,9 @@
 ##  Declaration file for functions that construct forms graphs. 
 ##
 
-# In BCN_1989 9.5A BVM_2022 3.4.1
 #############################################################################
 ##
-#F  BilinearFormsGraph( [<filter>, ]<int>, <int>, <int> )
+#F  BilinearFormsGraph( [<filter>, ]<integer>, <integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="BilinearFormsGraph">
 ##  <ManSection>
@@ -22,16 +21,24 @@
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integers <A>d,e</A>, this 
 ##  function returns the bilinear forms graph 
-##  <M>H_{<A>q</A>}(<A>d</A>,<A>e</A>)</M>.
+##  <M>H(<A>q</A>,<A>d</A>,<A>e</A>)</M>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>FullAutomorphismGroup</K>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>
-##  Let <M>q</M> be a prime power and <M>d,e</M> be positive integers. The
-##  <E>bilinear forms graph</E> <M>H_q(d,e)</M> is the graph with vertex-set
-##  <M>M_{{d \times e}}(GF(q))</M>, and distinct vertices <M>A,B</M> are 
-##  adjacent if and only if the rank of <M>A-B</M> is 1. 
+##  Let <M>q</M> be a prime power and <M>d,e</M> be positive integers, where 
+##  <M>d \leq e</M>. The <E>bilinear forms graph</E> <M>H(q,d,e)</M>
+##  <Alt Not='Text'>(more commonly written as <M>H_q(d,e)</M>)</Alt>
+##  has vertex-set the <M>d \times e</M> matrices over <M>GF(q)</M>. Two
+##  distinct vertices <M>A,B</M> are adjacent if and only if the rank of 
+##  <M>A-B</M> is 1. This graph has <M>q^{{de}}</M> vertices and is 
+##  distance-regular with diameter <M>d</M> and intersection array given by 
+##  <Display Mode="M">
+##     b_j = q^{{2j}}(q - 1)G(d - j, 1)G(e - j, 1),
+##     c_j = q^{{j-1}}G(j, 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 9.5A"/> or
@@ -50,10 +57,9 @@
 DeclareConstructor( "BilinearFormsGraphCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "BilinearFormsGraph" );
 
-# In BCN_1989 9.5C BVM_2022 3.4.4
 #############################################################################
 ##
-#F  HermiteanFormsGraph( [<filter>, ]<int>, <int> )
+#F  HermiteanFormsGraph( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="HermiteanFormsGraph">
 ##  <ManSection>
@@ -63,14 +69,21 @@ DeclareGlobalFunction( "BilinearFormsGraph" );
 ##
 ##  <Description>
 ##  Given a prime power <A>r</A> and positive integer <A>d</A>, this 
-##  function returns the hemritean forms graph 
-##  <M>Q_{<A>q</A>}(<A>d</A>)</M>.
+##  function returns the hermitean forms graph 
+##  <M>Q(<A>d</A>,<A>r</A>)</M>.
 ##  <P/>
-##  Let <M>r</M> be a prime power and <M>d</M> be a positive integer. The
-##  <E>hermitean forms graph</E> <M>Q_{r}(d)</M> is the graph with vertex-set
-##  the hermitean matrices in <M>M_{d\times d}(GF(r^2))</M>, and 
-##  distinct vertices <M>A,B</M> are adjacent if and only if the rank of 
-##  <M>A-B</M> is 1. 
+##  Let <M>r</M> be a prime power, <M>d</M> be a positive integer and set 
+##  <M>q = r^2</M>. The <E>hermitean forms graph</E> <M>Q(d,r)</M>
+##  <Alt Not='Text'>(more commonly written as <M>Q_{r}(d)</M>)</Alt>
+##  has vertex-set the <M>d \times d</M> hermitean matrices over 
+##  <M>GF(q)</M>. Two distinct vertices <M>A,B</M> are adjacent if and only if 
+##  the rank of <M>A-B</M> is 1. This graph has <M>r^{({d}^2)}</M> vertices and is 
+##  distance-regular with diameter <M>d</M> and intersection array given by 
+##  <Display Mode="M">
+##     b_j = (q^d - q^j)/(r + 1),
+##     c_j = r^{{j-1}}(r^j - (-1)^j)/(r + 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 9.5C"/> or

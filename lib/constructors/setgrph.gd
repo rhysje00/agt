@@ -35,8 +35,7 @@
 ##  <E>Kneser graph</E> <M>K(n,k)</M> has vertex-set the <M>k</M>-subsets
 ##  of <M>\{1,..., n\}</M>, and distinct vertices <M>X,Y</M> are adjacent
 ##  if and only if <M>X \cap Y = \emptyset.</M> This graph is edge-regular with
-##  parameters <M>(C(n,k),C(n-k,k),C(n-2k,k))</M>, where <M>C(a,b)</M> denotes 
-##  the binomial coefficient for <M>a \geq b </M>.
+##  parameters <M>(C(n,k),C(n-k,k),C(n-2k,k))</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> KneserGraph(6,2);
@@ -77,7 +76,8 @@ DeclareGlobalFunction( "KneserGraph" );
 ##  <P/>
 ##  Let <M>d</M> be a positive integer. The <E>Odd graph</E> <M>O_{{d+1}}</M>
 ##  is the graph <M>K(2d+1,d)</M>. (see <Ref Func="KneserGraph"/>). This graph 
-##  is distance-regular with intersection array given by
+##  has <M>C(2d+1,d)</M> vertices and is distance-regular with intersection 
+##  array given by
 ##  <Display Mode="M">
 ##     b_j = d+1 - \lfloor (j+1)/2 \rfloor,
 ##     c_j = \lfloor (j+1)/2 \rfloor 
@@ -128,8 +128,9 @@ DeclareGlobalFunction( "OddGraph" );
 ##  adjacent if and only if <M>X \subset Y</M> or <M>Y \subset X</M>.
 ##  This gives a graph isomorphic to the bipartite double of the Odd
 ##  graph given by <Ref Func="OddGraph"/> and
-##  <Ref Func="BipartiteDoubleGraph"/>. This graph is distance-regular with 
-##  diameter <M>2d+1</M> and intersection array given by
+##  <Ref Func="BipartiteDoubleGraph"/>. This graph has <M>C(2d+1,d)</M> 
+##  vertices, and is distance-regular with diameter <M>2d+1</M> and 
+##  intersection array given by
 ##  <Display Mode="M">
 ##     b_j = 2d+2 - \lfloor (j+1)/2 \rfloor,
 ##     c_j = \lfloor (j+1)/2 \rfloor 
@@ -183,7 +184,15 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 ##  <P/>
 ##  Let <M>d</M> be an integer where <M>d&gt;2</M>. The <E>folded Johnson
 ##  graph</E> <M>&Jbar;(2d,d)</M> is the antipodal quotient of the
-##  Johnson graph <M>J(2d,d)</M> (see <Ref Func="AntipodalQuotientGraph"/>).
+##  Johnson graph <M>J(2d,d)</M> (see <Ref Func="AntipodalQuotientGraph"/>). 
+##  This graph has <M>C(2d,d)/2</M> vertices, and is distance-regular with 
+##  diameter <M>\lfloor d/2 \rfloor</M> and intersection array given by
+##  <Display Mode="M">
+##     b_j = (d-j)^2,
+##     c_j = j^2 
+##  </Display>
+##  for <M>0 \leq j \leq d/2</M>, except for <M>c_{{d/2}} = 2d^2</M> if 
+##  <M>d</M> is even.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 9.1C"/>. 

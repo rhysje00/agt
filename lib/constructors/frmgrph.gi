@@ -11,9 +11,8 @@
 
 #############################################################################
 ##
-#F  BilinearFormsGraph( [<filter>, ]<int>, <int>, <int> )
+#O  BilinearFormsGraphCons( [<filter>, ]<integer>, <integer>, <integer> )
 ##  
-# The bilinear forms graph H_q(d, e) of matrices over GF(r^2).
 InstallMethod( BilinearFormsGraphCons,
      "as a forms graph with full automorphism group", true,
      [IsFormsGraph and FullAutomorphismGroup, IsInt, IsInt, IsInt], 0,
@@ -50,6 +49,10 @@ function(filter, q, d, e)
   return BilinearFormsGraphCons(IsFormsGraph, q, d, e);
 end );
 
+#############################################################################
+##
+#F  BilinearFormsGraph( [<filter>, ]<integer>, <integer>, <integer> )
+##  
 InstallGlobalFunction( BilinearFormsGraph,
 function(arg)
   local j, filt;
@@ -69,7 +72,7 @@ end );
 
 #############################################################################
 ##
-#F  HermiteanFormsGraph( [<filter>, ]<int>, <int> )
+#O  HermiteanFormsGraphCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( HermiteanFormsGraphCons, "as a forms graph", true,
      [IsFormsGraph, IsInt, IsInt], 0,
@@ -87,6 +90,10 @@ function(filter, d, r)
   return HermiteanFormsGraphCons(IsFormsGraph, d, r);
 end );
 
+#############################################################################
+##
+#F  HermiteanFormsGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( HermiteanFormsGraph,
 function(arg)
   local j, filt;

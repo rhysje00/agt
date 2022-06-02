@@ -231,7 +231,7 @@ end );
 
 #############################################################################
 ##
-#O  FoldedJohnsonGraph( [<filter>, ]<integer> )
+#F  FoldedJohnsonGraph( [<filter>, ]<integer> )
 ##  
 InstallGlobalFunction( FoldedJohnsonGraph,
 function(arg)

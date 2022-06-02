@@ -66,7 +66,11 @@ TODO: Describe
         - Additional info: .primality, .duality, .halfPrimality, .halfDuality
         
 This will make function entries less convoluted.
-
+<P/>
+definitions to include:
+  where <M>C(n,k)</M> denotes the binomial coefficient for <M>a \geq b </M>
+  Type of nondegenerate quadratic forms etc
+  gaussian coefficient G(n,k)
 
 
 </Section>
@@ -119,9 +123,9 @@ quotients.
 <Section Label="Basic constructions">
 <Heading>Basic constructions</Heading>
 
-In this section, we introduce functions which construct graphs that have 
-relatively well-known and simple definitions. These include complete 
-multipartite, Paley and Latin square graphs. 
+In this section, each function constructs a graph for which each vertex is a 
+relatively simple object in &GAP;. These include complete multipartite, Paley 
+and Latin square graphs. 
 
 
 <#Include Label="CompleteMultipartiteGraph">

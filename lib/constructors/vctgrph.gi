@@ -11,7 +11,7 @@
 
 #############################################################################
 ##
-#F  HammingGraph2( [<filter>, ]<integer>, <integer> )
+#O  HammingGraphCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( HammingGraphCons,
      "as a vector graph with full automorphism group", true,
@@ -39,6 +39,10 @@ function(filter, d, e)
   return HammingGraphCons(IsVectorGraph, d, e);
 end );
 
+#############################################################################
+##
+#F  HammingGraph2( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( HammingGraph2,
 function(arg)
   local j, filt;
@@ -79,7 +83,7 @@ end );
     
 #############################################################################
 ##
-#F  DoobGraph( [<filter>, ]<integer>, <integer> )
+#O  DoobGraphCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( DoobGraphCons,
      "as a vector graph with full automorphism group", true,
@@ -108,6 +112,10 @@ function(filter, n, d)
   return DoobGraphCons(IsVectorGraph, n, d);
 end );
 
+#############################################################################
+##
+#F  DoobGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( DoobGraph,
 function(arg)
   local j, filt;
@@ -127,7 +135,7 @@ end );
 
 #############################################################################
 ##
-#F  HalvedCubeGraph( [<filter>, ]<integer> )
+#O  HalvedCubeGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( HalvedCubeGraphCons,
      "as a vector graph with full automorphism group", true,
@@ -168,6 +176,10 @@ function(filter, d)
   return HalvedCubeGraphCons(IsVectorGraph, d);
 end );
 
+#############################################################################
+##
+#F  HalvedCubeGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( HalvedCubeGraph,
 function(arg)
   local G, j, filt;
@@ -187,7 +199,7 @@ end );
 
 #############################################################################
 ##
-#F  FoldedCubeGraph( [<filter>, ]<integer> )
+#O  FoldedCubeGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( FoldedCubeGraphCons,
      "as a vector graph with full automorphism group", true,
@@ -229,6 +241,10 @@ function(filter, d)
   return FoldedCubeGraphCons(IsVectorGraph, d);
 end );
 
+#############################################################################
+##
+#F  FoldedCubeGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( FoldedCubeGraph,
 function(arg)
   local G, j, filt;
@@ -246,7 +262,10 @@ function(arg)
   fi;
 end );
 
-# The folded halved 2d-cube.
+#############################################################################
+##
+#O  FoldedHalvedCubeGraphCons( [<filter>, ]<integer> )
+##  
 InstallMethod( FoldedHalvedCubeGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt], 0,
@@ -289,6 +308,10 @@ function(filter, d)
   return FoldedHalvedCubeGraphCons(IsVectorGraph, d);
 end );
 
+#############################################################################
+##
+#F  FoldedHalvedCubeGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( FoldedHalvedCubeGraph,
 function(arg)
   local G, j, filt;
@@ -317,7 +340,10 @@ BindGlobal("IntToBits", function(x, w)
     return List([1..w], i -> Int(x / 2^(w-i)) mod 2);
 end);
 
-
+#############################################################################
+##
+#O  BrouwerGraphCons( [<filter>, ]<integer> )
+##  
 InstallMethod( BrouwerGraphCons,
      "as a vector graph with full automorphism group", true,
      [IsVectorGraph and FullAutomorphismGroup, IsInt], 0,
@@ -382,6 +408,10 @@ function(filter, q)
   return BrouwerGraphCons(IsVectorGraph, q);
 end );
 
+#############################################################################
+##
+#F  BrouwerGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( BrouwerGraph,
 function(arg)
   local j, filt;
@@ -401,7 +431,7 @@ end );
 
 #############################################################################
 ##
-#F  PasechnikGraph( [<filter>, ]<integer> )
+#O  PasechnikGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( PasechnikGraphCons, "as a vector graph", true,
      [IsVectorGraph, IsInt], 0,
@@ -416,6 +446,10 @@ function(filter, q)
   return PasechnikGraphCons(IsVectorGraph, q);
 end );
 
+#############################################################################
+##
+#F  PasechnikGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( PasechnikGraph,
 function(arg)
   local j, filt;
@@ -435,7 +469,8 @@ end );
 
 #############################################################################
 ##
-#F  AdditiveSymplecticCoverGraph( [<filter>, ]<integer>, <integer>[, <integer>] )
+#O  AdditiveSymplecticCoverGraphCons( [<filter>, ]<integer>, <integer>
+##                                                            [, <integer>] )
 ##  
 InstallMethod( AdditiveSymplecticCoverGraphCons,
      "as a vector graph with full automorphism group", true,
@@ -504,7 +539,7 @@ end );
 
 #############################################################################
 ##
-#F  AdditiveSymplecticCoverGraph( [<filter>, ]<graph>[, <integer>] )
+#O  AdditiveSymplecticCoverGraphCons( [<filter>, ]<graph>[, <integer>] )
 ##  
 InstallOtherMethod( AdditiveSymplecticCoverGraphCons,
      "as a code graph for quotients given a graph", true,
@@ -546,6 +581,12 @@ function(filter, G, h)
   return AdditiveSymplecticCoverGraphCons(IsVectorGraph, G, h);
 end );
 
+#############################################################################
+##
+#F  AdditiveSymplecticCoverGraph( [<filter>, ]<integer>, <integer>
+##                                                            [, <integer>] )
+#F  AdditiveSymplecticCoverGraph( [<filter>, ]<graph>[, <integer>] )
+##  
 InstallGlobalFunction( AdditiveSymplecticCoverGraph,
 function(arg)
   local j, filt;
@@ -577,7 +618,7 @@ end );
 
 #############################################################################
 ##
-#F  MultiplicativeSymplecticCoverGraph( [<filter>, ]<integer>, <integer> )
+#O  MultiplicativeSymplecticCoverGraphCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( MultiplicativeSymplecticCoverGraphCons,
      "as a vector graph with full automorphism group", true,
@@ -630,6 +671,10 @@ function(filter, q, m)
   return MultiplicativeSymplecticCoverGraphCons(IsVectorGraph, q, m);
 end );
 
+#############################################################################
+##
+#F  MultiplicativeSymplecticCoverGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( MultiplicativeSymplecticCoverGraph,
 function(arg)
   local j, filt;
@@ -675,9 +720,10 @@ function(arg)
               end, true);
 end );
 
-# The affine polar graph VNO^{(+/-)}(d, q)
-# with respect to a nondegenerate quadratic form.
-# TODO q even handling
+#############################################################################
+##
+#F  AffinePolarGraphVNO( [<integer>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( AffinePolarGraphVNO,
 function(arg)
   local d, e, q, B, G, H, Q, V, dp;
