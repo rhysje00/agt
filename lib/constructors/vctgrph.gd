@@ -100,7 +100,6 @@ DeclareGlobalFunction( "HammingGraph2" );
 ##
 DeclareGlobalFunction( "HypercubeGraph" );
 
-# In BCN_1989 9.2B 
 #############################################################################
 ##
 #F  DoobGraph( [<filter>, ]<integer>, <integer> )
@@ -488,7 +487,8 @@ DeclareConstructor("MultiplicativeSymplecticCoverGraphCons",
 DeclareGlobalFunction( "MultiplicativeSymplecticCoverGraph" );
 
 ## TODO q even e=0 drg of diameter 3 array 
-##  {q^{d-1}-1,q^{d-1}-q^{d-2},1;1,q^{d-2},q^{d-1}-1}
+##  {q^{d-1}-1,q^{d-1}-q^{d-2},1;1,q^{d-2},q^{d-1}-1} (symplectic cover? 12,5)
+## TODO shorten notation explanation i.e take e out to definition somewhere
 #############################################################################
 ##
 #F  AffinePolarGraphVO( [<integer>, ]<integer>, <integer> )
@@ -553,6 +553,7 @@ DeclareGlobalFunction( "MultiplicativeSymplecticCoverGraph" );
 ##
 DeclareGlobalFunction( "AffinePolarGraphVO" );
 
+# TODO shorten notation explanation i.e take e out to definition somewhere
 # TODO q even handling
 #############################################################################
 ##

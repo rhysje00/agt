@@ -9,6 +9,7 @@
 ##
 
 # In BVM_2022 6.2 not specific # In BCN_1989 A.6 not specific 
+# TODO check parameters and find reference REF
 #############################################################################
 ##
 #F  DesarguesianPlaneIncidenceGraph( <integer> )
@@ -24,11 +25,14 @@
 ##  of the Desarguesian plane <M>PG(2,<A>q</A>)</M>. 
 ##  <P/>  
 ##  Let <M>q</M> be a prime power. The 
-##  <E>Desarguesian plane incidence graph</E> has vertex-set consisting 
-##  of the 1-dimensional and 2-dimensional subspaces <M>GF(q)^{3}</M>.
-##  Any two distinct vertices <M>U,W</M> are adjacent if and only if 
-##  <M>U\cap W</M> is <M>U</M> or <M>W</M> (they are incident in the 
-##  projective space <M>PG(2,q)</M>.
+##  <E>Desarguesian plane incidence graph</E> has vertex-set the 1-dimensional
+##  and 2-dimensional subspaces <M>GF(q)^{3}</M>. Distinct vertices <M>U,W</M> 
+##  are adjacent if and only if <M>U \cap W \in \{U, W\}</M> (they are incident
+##  in the projective space <M>PG(2,q)</M>).
+##  <P/>
+##  This graph has <M>2(q^3 - 1)/(q - 1)</M> vertices, and is bipartite and 
+##  distance-regular with intersection array 
+##  <M>\{q + 1, q, q; 1, 1, q + 1\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DesarguesianPlaneIncidenceGraph(4);;
@@ -42,26 +46,29 @@
 ##
 DeclareGlobalFunction( "DesarguesianPlaneIncidenceGraph" );
 
-#TODO ref to Hall plane, inefficient
+#TODO ref to Hall plane, inefficient: ok for q<4
 #############################################################################
 ##
-#F  HallPlaneIncidenceGraph( <parms> )
+#F  HallPlaneIncidenceGraph( <integer> )
 ##  
 ##  <#GAPDoc Label="HallPlaneIncidenceGraph">
 ##  <ManSection>
 ##  <Func Name="HallPlaneIncidenceGraph"
-##   Arg='arg'/>
+##   Arg='q'/>
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
 ##  Given a prime power <A>q</A>, this function returns the incidence graph 
 ##  of the Hall plane of order <M><A>q</A>^2</M>. 
 ##  <P/>  
-##  Let <M>q</M> be a prime power. The 
-##  <E>Hall plane incidence graph</E> has vertex-set consisting 
-##  of the points and lines of the Hall plane of order <M>q^2</M> (see REF).
-##  Any two distinct vertices <M>U,W</M> are adjacent if and only if they are
+##  Let <M>q</M> be a prime power. The <E>Hall plane incidence graph</E> has 
+##  vertex-set the points and lines of the Hall plane of order <M>q^2</M> (see 
+##  REF). Distinct vertices <M>U,W</M> are adjacent if and only if they are
 ##  incident in the Hall plane of order <M>q^2</M>.
+##  <P/>
+##  This graph has <M>2(q^6 - 1)/(q^2 - 1)</M> vertices, and is bipartite and 
+##  distance-regular with intersection array 
+##  <M>\{q^2 + 1, q^2, q^2; 1, 1, q^2 + 1\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=HallPlaneIncidenceGraph(2);;
@@ -75,7 +82,7 @@ DeclareGlobalFunction( "DesarguesianPlaneIncidenceGraph" );
 ##
 DeclareGlobalFunction( "HallPlaneIncidenceGraph" );
 
-#inefficient?
+#inefficient? need def and REF
 #############################################################################
 ##
 #F  HughesPlaneIncidenceGraph( <integer>[, <integer>] )
@@ -98,11 +105,14 @@ DeclareGlobalFunction( "HallPlaneIncidenceGraph" );
 ##  constructs a graph associated with the second exceptional near-field of 
 ##  order <M>11^2</M>.
 ##  <P/>  
-##  Let <M>q</M> be an odd prime power. The 
-##  <E>Hughes plane incidence graph</E> has vertex-set consisting 
-##  of the points and lines of the Hughes plane of order <M>q^2</M> (see REF).
-##  Any two distinct vertices <M>U,W</M> are adjacent if and only if they are
+##  Let <M>q</M> be an odd prime power. The <E>Hughes plane incidence graph</E> 
+##  has vertex-set the points and lines of the Hughes plane of order <M>q^2</M> 
+##  (see REF). Distinct vertices <M>U,W</M> are adjacent if and only if they are
 ##  incident in the Hughes plane of order <M>q^2</M>. 
+##  <P/>
+##  This graph has <M>2(q^6 - 1)/(q^2 - 1)</M> vertices, and is bipartite and 
+##  distance-regular with intersection array 
+##  <M>\{q^2 + 1, q^2, q^2; 1, 1, q^2 + 1\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=HughesPlaneIncidenceGraph(5);;
@@ -134,17 +144,48 @@ DeclareGlobalFunction( "HughesPlaneIncidenceGraph" );
 ##  Given a prime power <A>q</A> and <A>d</A> in <C>[3,4,5]</C>, this 
 ##  function returns the collinearity graph of the generalized quadrangle
 ##  <M>Q(<A>d</A>,<A>q</A>)</M> of order 
-##  <M>(<A>q</A>,<A>q</A>^{<A>d</A>-3}</M>. 
+##  <M>(<A>q</A>,<A>q</A>^{{<A>d</A>-3}})</M>. 
 ##  <P/>  
 ##  Let <M>q</M> be a prime power, <M>d</M> be in <M>\{3,4,5\}</M> and 
-##  <M>e=4-d</M>. Then the vertices of the polar graph <M>O^e(d+1,q)</M> 
-##  are the points of the generalised quadrangle <M>Q(d,q)</M>, and 
-##  adjacency in <M>O^e(d+1,q)</M> corresponds to collinearity in 
-##  <M>Q(d,q)</M> (see <Ref Func="PolarGraphO"/>). 
+##  <M>e=4-d</M>. The <E>generalised quadrangle</E> <M>Q(d,q)</M> has points the 
+##  vertices of the polar graph <M>O(e,d+1,q)</M>, and collinearity corresponds 
+##  to adjacency in <M>O(e,d+1,q)</M> (see <Ref Func="PolarGraphO"/>). 
 ##  <P/>
 ##  The <E>collinearity graph</E> of <M>Q(d,q)</M> has vertices the points of
 ##  <M>Q(d,q)</M>, and distinct vertices are adjacent if they are collinear in
-##  <M>Q(d,q)</M>. By the above, this graph is exactly <M>O^e(d+1,q)</M>. 
+##  <M>Q(d,q)</M>. By the above, this graph is exactly <M>O(e,d+1,q)</M>. 
+##  <P/>
+##  This graph is strongly regular with the following parameters, depending on 
+##  the value of <M>d</M>.
+##  <Table Align='ccccccc'>
+##    <Row><Item><M>d = 3: </M></Item>
+##         <Item><M>(</M></Item>
+##         <Item><M>(q + 1)^2, </M></Item>
+##         <Item><M>2q, </M></Item>
+##         <Item><M>q - 1, </M></Item> 
+##         <Item><M>2</M></Item>
+##         <Item><M>)</M></Item>
+##    </Row>
+##    <Row><Item><M>d = 4: </M></Item>
+##         <Item><M>(</M></Item>
+##         <Item><M>q^3 + q^2 + q + 1, </M></Item>
+##         <Item><M>q(q + 1), </M></Item>
+##         <Item><M>q - 1, </M></Item> 
+##         <Item><M>q + 1</M></Item>
+##         <Item><M>)</M></Item>
+##    </Row>
+##    <Row><Item><M>d = 5: </M></Item>
+##         <Item><M>(</M></Item>
+##         <Item><M>(q^3 + 1)(q + 1), </M></Item>
+##         <Item><M>q(q^2 + 1), </M></Item>
+##         <Item><M>q - 1, </M></Item> 
+##         <Item><M>q^2 + 1</M></Item>
+##         <Item><M>)</M></Item>
+##    </Row>
+##  </Table>
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=GeneralizedQuadrangleQ(3,5);;                             
@@ -171,18 +212,41 @@ DeclareGlobalFunction( "GeneralizedQuadrangleQ" );
 ##  <Description>
 ##  Given a prime power <A>r</A> and <A>d</A> in <C>[3,4]</C>, this 
 ##  function returns the collinearity graph of the generalized quadrangle
-##  <M>H(<A>d</A>,<A>q</A>)</M> of order 
+##  <M>H(<A>d</A>,<A>r</A>^2)</M> of order 
 ##  <M>(<A>r</A>^2,<A>r</A>^{<A>d</A>-5/2})</M>.
 ##  <P/>  
-##  Let <M>q</M> be a prime power and <M>d</M> be in <M>\{3,4\}</M>. 
-##  Then the vertices of the polar graph <M>U(d+1,q)</M> 
-##  are the points of the generalised quadrangle <M>U(d,q)</M>, and 
-##  adjacency in <M>U(d+1,q)</M> corresponds to collinearity in 
-##  <M>H(d,q)</M> (see <Ref Func="PolarGraphU"/>). 
+##  Let <M>r</M> be a prime power, <M>d</M> be in <M>\{3,4\}</M> and set 
+##  <M>q = r^2</M>. The <E>generalised quadrangle</E> <M>H(d,q)</M> has points 
+##  the vertices of the polar graph <M>U(d+1,r)</M>, and collinearity 
+##  corresponds to adjacency in <M>U(d+1,r)</M> (see <Ref Func="PolarGraphU"/>). 
 ##  <P/>
 ##  The <E>collinearity graph</E> of <M>H(d,q)</M> has vertices the points of
 ##  <M>H(d,q)</M>, and distinct vertices are adjacent if they are collinear in
 ##  <M>H(d,q)</M>. By the above, this graph is exactly <M>U(d+1,q)</M>. 
+##  <P/>
+##  This graph is strongly regular with the following parameters, depending on 
+##  the value of <M>d</M>.
+##  <Table Align='lllllll'>
+##    <Row><Item><M>d = 3: </M></Item>
+##         <Item><M>(</M></Item>
+##         <Item><M>(r^3 + 1)(r^2 + 1), </M></Item>
+##         <Item><M>r^2(r + 1), </M></Item>
+##         <Item><M>r^2 - 1, </M></Item> 
+##         <Item><M>r + 1</M></Item>
+##         <Item><M>)</M></Item>
+##    </Row>
+##    <Row><Item><M>d = 4: </M></Item>
+##         <Item><M>(</M></Item>
+##         <Item><M>(r^5 + 1)(r^2 + 1), </M></Item>
+##         <Item><M>r^2(r^3 + 1), </M></Item>
+##         <Item><M>r^2 - 1, </M></Item> 
+##         <Item><M>r^3 + 1</M></Item>
+##         <Item><M>)</M></Item>
+##    </Row>
+##  </Table>
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap>  gamma:=GeneralizedQuadrangleH(3,2);;
@@ -212,14 +276,20 @@ DeclareGlobalFunction( "GeneralizedQuadrangleH" );
 ##  of the generalized quadrangle <M>W(<A>d</A>,<A>q</A>)</M> of order 
 ##  <M>(<A>q</A>,<A>q</A>)</M>. 
 ##  <P/>  
-##  Let <M>q</M> be a prime power. Then the vertices of the polar graph 
-##  <M>Sp(4,q)</M> are the points of the generalised quadrangle <M>W(q)</M>, 
-##  and adjacency in <M>Sp(4,q)</M> corresponds to collinearity in 
-##  <M>W(q)</M> (see <Ref Func="PolarGraphSp"/>). 
+##  Let <M>q</M> be a prime power. The <E>generalised quadrangle</E> 
+##  <M>W(q)</M> has points the vertices of the polar graph <M>Sp(4,q)</M>, and 
+##  collinearity corresponds to adjacency in <M>Sp(4,q)</M> (see 
+##  <Ref Func="PolarGraphSp"/>). 
 ##  <P/>
 ##  The <E>collinearity graph</E> of <M>W(q)</M> has vertices the points of
 ##  <M>W(q)</M>, and distinct vertices are adjacent if they are collinear in
 ##  <M>W(q)</M>. By the above, this graph is exactly <M>Sp(4,q)</M>. 
+##  <P/>
+##  This graph is strongly regular with parameters 
+##  <M>(q^3 + q^2 + q + 1, q(q + 1), q - 1, q + 1)</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=GeneralizedQuadrangleW(4);;                               
@@ -251,16 +321,41 @@ DeclareGlobalFunction( "GeneralizedQuadrangleW" );
 ##  Given a prime power <A>q</A>, <A>d</A> in <C>[2,3]</C> and <A>O</A> an 
 ##  oval/ovoid in <M>PG(<A>d</A>,<A>q</A>)</M> (as a list of subspaces of
 ##  <C>GF(<A>q</A>)^{<A>d</A>+1}</C>), this  function returns the collinearity 
-##  graph of  the generalized quadrangle <M>T_{<A>d</A>}(<A>O</A>)</M> of 
+##  graph of  the generalized quadrangle <M>T(<A>d</A>,<A>O</A>)</M> of 
 ##  order <M>(<A>q</A>,<A>q</A>^{<A>d</A>-1})</M>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power, <M>d</M> be in <M>\{2,3\}</M> and 
-##  <M>O</M> be an oval/ovoid in <M>PG(d,q)</M>. Then the generalised 
-##  quadrangle <M>T_d(O)</M> is as defined in REF. 
+##  <M>O</M> be an oval/ovoid in <M>PG(d,q)</M>. The 
+##  <E>generalised quadrangle</E> <M>T(d,O)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>T_{d}(O)</M>)</Alt>
+##  is defined as in <Cite Key="PT_2009" Where="Section 3.1.2"/>. 
 ##  <P/>
-##  The <E>collinearity graph</E> of <M>T_d(O)</M> has vertices the points of
-##  <M>T_d(O)</M>, and distinct vertices are adjacent if they are collinear in
-##  <M>T_d(O)</M>.
+##  The <E>collinearity graph</E> of <M>T(d,O)</M> has vertices the points of
+##  <M>T(d,O)</M>, and distinct vertices are adjacent if they are collinear in
+##  <M>T(d,O)</M>.
+##  <P/>
+##  This graph is strongly regular with the following parameters, depending on 
+##  the value of <M>d</M>.
+##  <Table Align='lllllll'>
+##    <Row><Item><M>d = 2: </M></Item>
+##         <Item><M>(</M></Item>
+##         <Item><M>(q^2 + 1)(q + 1), </M></Item>
+##         <Item><M>q(q + 1), </M></Item>
+##         <Item><M>q - 1, </M></Item> 
+##         <Item><M>q + 1</M></Item>
+##         <Item><M>)</M></Item>
+##    </Row>
+##    <Row><Item><M>d = 3: </M></Item>
+##         <Item><M>(</M></Item>
+##         <Item><M>(q^3 + 1)(q + 1), </M></Item>
+##         <Item><M>q(q^2 + 1), </M></Item>
+##         <Item><M>q - 1, </M></Item> 
+##         <Item><M>q^2 + 1</M></Item>
+##         <Item><M>)</M></Item>
+##    </Row>
+##  </Table>
+##  For more information on this graph, see
+##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph(arg);
@@ -276,6 +371,7 @@ DeclareGlobalFunction( "GeneralizedQuadrangleT" );
 # The collinearity graph of the generalized quadrangle T*(O) of order
 # (2^h-1, 2^h+1) derived from the projective space PG(3, 2^h) containing the
 # hyperoval O in a hyperplane.
+#TODO example and use of group G
 #############################################################################
 ##
 #F  GeneralizedQuadrangleTstar( <integer>, <list>[, <group>] )
@@ -294,12 +390,19 @@ DeclareGlobalFunction( "GeneralizedQuadrangleT" );
 ##  order <M>(<A>q</A>-1,<A>q</A>+1)</M>.
 ##  <P/>  
 ##  Let <M>q</M> be a power of 2 and <M>O</M> be a hyperoval in 
-##  <M>PG(2,q)</M>. Then the generalised quadrangle <M>T_2^*(O)</M> is as 
-##  defined in REF. 
+##  <M>PG(2,q)</M>. The <E>generalised quadrangle</E> <M>Tstar(2,O)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>T_2^*(O)</M>)</Alt>
+##  is defined as in <Cite Key="PT_2009" Where="Section 3.1.3"/>. 
 ##  <P/>
-##  The <E>collinearity graph</E> of <M>T_2(O)</M> has vertices the points of
-##  <M>T_2^*(q)</M>, and distinct vertices are adjacent if they are collinear 
-##  in <M>T_2^*(q)</M>.
+##  The <E>collinearity graph</E> of <M>Tstar(2,O)</M> has vertices the points 
+##  of <M>Tstar(2,O)</M>, and distinct vertices are adjacent if they are 
+##  collinear in <M>Tstart(2,O)</M>.
+##  <P/>
+##  This graph is strongly regular with parameters 
+##  <M>(q^3, (q - 1)(q + 2), q - 2, q + 2)</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph(arg);
@@ -329,15 +432,21 @@ DeclareGlobalFunction( "GeneralizedQuadrangleTstar" );
 ##  Given a collinearity graph <A>gamma</A> of a generalized quadrangle 
 ##  <M>Q</M> of order <M>(s,s)</M> and a regular point <A>z</A> in <A>Q</A>, 
 ##  this function returns the collinearity graph of the generalized quadrangle 
-##  <M>P(<A>Q</A>,<A>z</A>)</M> of order <M>(<A>q</A>-1,<A>q</A>+1)</M>.
+##  <M>P(<A>Q</A>,<A>z</A>)</M> of order <M>(s-1,s+1)</M>.
 ##  <P/>  
-##  Let <M>Q</M> a generlized quadrangle of order <M>(s,s)</M> and <M>z</M> be 
-##  a regular point of <M>Q</M>. Then the generalised quadrangle <M>P(Q,z)</M> 
-##  is as defined in REF. 
+##  Let <M>Q</M> a generalized quadrangle of order <M>(s,s)</M> and <M>z</M> be 
+##  a regular point of <M>Q</M>. The <E>generalised quadrangle</E> <M>P(Q,z)</M> 
+##  is defined as in <Cite Key="PT_2009" Where="Section 3.1.4"/>. 
 ##  <P/>
 ##  The <E>collinearity graph</E> of <M>P(Q,z)</M> has vertices the points of
 ##  <M>P(Q,z)</M>, and distinct vertices are adjacent if they are collinear 
 ##  in <M>P(Q,z)</M>.
+##  <P/>
+##  This graph is strongly regular with parameters 
+##  <M>(s^3, (s - 1)(s + 2), s - 2, s + 2)</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=GeneralizedQuadrangleQ(4,4);;    
@@ -370,12 +479,18 @@ DeclareGlobalFunction( "GeneralizedQuadrangleP" );
 ##  graph of the generalized quadrangle <M>AS(q)</M> of order 
 ##  <M>(<A>q</A>-1,<A>q</A>+1)</M>.
 ##  <P/>  
-##  Let <M>q</M> be an odd prime power. Then the generalised quadrangle 
-##  <M>AS(q)</M> is as defined in REF. 
+##  Let <M>q</M> be an odd prime power. The <E>generalised quadrangle</E> 
+##  <M>AS(q)</M> is defined as in <Cite Key="PT_2009" Where="Section 3.1.5"/>.
 ##  <P/>
 ##  The <E>collinearity graph</E> of <M>AS(q)</M> has vertices the points of
 ##  <M>AS(q)</M>, and distinct vertices are adjacent if they are collinear in
 ##  <M>AS(q)</M>.
+##  <P/>
+##  This graph is strongly regular with parameters 
+##  <M>(q^3, (q - 1)(q + 2), q - 2, q + 2)</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="PT_2009" Where="Section 3.1"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=GeneralizedQuadrangleAS(5);;

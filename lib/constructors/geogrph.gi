@@ -27,7 +27,10 @@ function(q)
   return G;
 end );
 
-# The incidence graph of a Hall plane.
+#############################################################################
+##
+#F  HallPlaneIncidenceGraph( <integer> )
+##  
 InstallGlobalFunction( HallPlaneIncidenceGraph,
 function(q)
   local c, p, G, H, L, P, dp, mul;
@@ -295,8 +298,10 @@ function(Q, z)
   return H;
 end );
 
-# The collinearity graph of the generalized quadrangle AS(q)
-# of order (q-1, q+1).
+#############################################################################
+##
+#F  GeneralizedQuadrangleAS( <integer> )
+##  
 InstallGlobalFunction( GeneralizedQuadrangleAS,
 q -> GeneralizedQuadrangleP(GeneralizedQuadrangleW(q), 1)
 );

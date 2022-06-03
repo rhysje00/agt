@@ -8,11 +8,9 @@
 ##  Declaration file for functions that construct subspace graphs. 
 ##
 
-#TODO n>=d
-# In BVM_2022 1.2.4 not specific BCN_1989 9.3
 #############################################################################
 ##
-#F  GrassmannGraph( [<filter>, ]<int>, <int>, <int> )
+#F  GrassmannGraph( [<filter>, ]<integer>, <integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="GrassmannGraph">
 ##  <ManSection>
@@ -21,19 +19,27 @@
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given a prime power <A>q</A> and positive integers <A>n,d</A>, this 
-##  function returns the Grassmann graph 
-##  <M>J_{<A>q</A>}(<A>n</A>,<A>d</A>)</M>.
+##  Given a prime power <A>q</A> and positive integers <C><A>n</A>,<A>d</A></C> 
+##  where <C><A>n</A>&gt;<A>d</A></C>, this function returns the Grassmann graph 
+##  <M>J(<A>q</A>,<A>n</A>,<A>d</A>)</M>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
-##  Let <M>q</M> be a prime power and <M>n,d</M> be positive integers. 
-##  The <E>Grassmann graph</E> <M>J_q(n,d)</M> is the graph with vertex-set 
-##  the <M>d</M>-dimensional subspaces of <M>GF(q)^n</M>,  and 
-##  distinct vertices <M>U,V</M> are adjacent if and only if 
-##  <M>U\cap V</M> has dimension <M>d-1</M>. 
+##  Let <M>q</M> be a prime power and <M>n,d</M> be positive integers, 
+##  <M>n&gt;d</M>. The <E>Grassmann graph</E> <M>J(q,n,d)</M>
+##  <Alt Not='Text'>(more commonly written as <M>J_q(n,d)</M>)</Alt>
+##  has vertex-set the <M>d</M>-dimensional subspaces of <M>GF(q)^n</M>. Two 
+##  distinct vertices <M>U,V</M> are adjacent if and only if <M>U\cap V</M> has 
+##  dimension <M>d-1</M>. This graph has <M>G(n,d)</M> vertices and is 
+##  distance-regular with diameter <M>e = min(d,n-d)</M> and intersection 
+##  array given by 
+##  <Display Mode="M">
+##     b_j = q^{{2j+1}}G(d - j, 1)G(n - d - j, 1),
+##     c_j = G(j, 1)^2 
+##  </Display>
+##  for <M>0 \leq j \leq e</M>.
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 9.3"/>.
@@ -51,10 +57,9 @@
 DeclareConstructor( "GrassmannGraphCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "GrassmannGraph" );
 
-# In BCN_1989 9.3C
 #############################################################################
 ##
-#F  DoubledGrassmannGraph( [<filter>, ]<int>, <int> )
+#F  DoubledGrassmannGraph( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="DoubledGrassmannGraph">
 ##  <ManSection>
@@ -65,20 +70,28 @@ DeclareGlobalFunction( "GrassmannGraph" );
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this 
 ##  function returns the doubled Grassmann graph 
-##  <M>2J_{<A>q</A>}(2<A>d</A>+1,<A>d</A>)</M>.
+##  <M>2J(<A>q</A>,2<A>d</A>+1,<A>d</A>)</M>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> be a positive integer. 
-##  The <E>doubled Grassmann graph</E> <M>J_q(n,d)</M> is the graph with 
-##  vertex-set the <M>d</M>-dimensional and <M>d+1</M>-dimensional subspaces 
-##  of <M>GF(q)^n</M>, and distinct vertices <M>U,V</M> are adjacent if 
-##  and only if <M>U\subseteq V</M> or <M>V\subseteq U</M>. This graph is 
+##  The <E>doubled Grassmann graph</E> <M>2J(q,n,d)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>2J_q(n,d)</M>)</Alt>
+##  has vertex-set the <M>d</M>-dimensional and <M>(d+1)</M>-dimensional 
+##  subspaces of <M>GF(q)^n</M>. Two distinct vertices <M>U,V</M> are adjacent 
+##  if and only if <M>U \subseteq V</M> or <M>V \subseteq U</M>. This graph is 
 ##  isomorphic to the bipartite double of the Grassmann graph 
-##  <M>J_q(2d+1,d)</M> (See <Ref Func="BipartiteDoubleGraph"/> and 
-##  <Ref Func="GrassmannGraph"/>).
+##  <M>J(q,2d+1,d)</M> (see <Ref Func="BipartiteDoubleGraph"/> and 
+##  <Ref Func="GrassmannGraph"/>). This graph has <M>2G(2d+1,d)</M> vertices 
+##  and is distance-regular with diameter <M>e = 2d+1</M> and intersection 
+##  array given by 
+##  <Display Mode="M">
+##     b_{{2j}} = b_{{2j-1}} = q^{j}G(d +1 - j, 1),
+##     c_{{2j}} = c_{{2j-1}} = G(j, 1)
+##  </Display>
+##  for <M>0 \leq j \leq e/2</M>.
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 9.3C"/>.
@@ -96,10 +109,9 @@ DeclareGlobalFunction( "GrassmannGraph" );
 DeclareConstructor( "DoubledGrassmannGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DoubledGrassmannGraph" );
 
-# In BCN_1989 BVM_2022 1.2.5 not specific BH_2011 12.3.4 not specific
 #############################################################################
 ##
-#F  TwistedGrassmannGraph( [<filter>, ]<int>, <int> )
+#F  TwistedGrassmannGraph( [<filter>, ]<integer>, <integer> )
 ##  
 ##  <#GAPDoc Label="TwistedGrassmannGraph">
 ##  <ManSection>
@@ -110,27 +122,38 @@ DeclareGlobalFunction( "DoubledGrassmannGraph" );
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this 
 ##  function returns the twisted Grassmann graph 
-##  <M>\tilde{J}_{<A>q</A>}(2<A>d</A>+1, <A>d</A>)</M>.
+##  <M>Jtld(<A>q</A>,2<A>d</A>+1,<A>d</A>)</M>.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, can only take value 
 ##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power, <M>d</M> be a positive integer and 
-##  <M>H</M> be a fixed hyperplane in <M>GF(q)^{2d+1}</M>. For the
-##  vector space <M>V=GF(q)^{2d+1}</M>, let <M>A</M> be the set of 
-##  <M>d+1</M>-dimensional subspaces not contained in <M>H</M>, and <M>B</M> 
-##  be all <M>d-1</M>-dimensional subspaces in <M>V</M>. The <E>twisted 
-##  Grassmann graph</E> <M>\tilde{J}_q(2d+1,d)</M> has 
-##  vertex-set <M>A\cup B</M>, and distinct vertices <M>U,W</M> are adjacent 
+##  <M>H</M> be a fixed hyperplane in <M>V = GF(q)^{{2d+1}}</M>. Let <M>A</M> 
+##  be the set of <M>(d+1)</M>-dimensional subspaces not contained in <M>H</M>, 
+##  and <M>B</M> be all <M>(d-1)</M>-dimensional subspaces in <M>V</M>. 
+##  <P/>
+##  The <E>twisted Grassmann graph</E> <M>Jtld(q,2d+1,d)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>\tilde{J}_q(n,d)</M>)</Alt>
+##  has vertex-set <M>A \cup B</M>. Distinct vertices <M>U,W</M> are adjacent 
 ##  if and only if one of the following is true. 
 ##  <List>
-##    <Item><M>U,W\in A</M> and <M>U\cap W</M> has dimension <M>d</M>, or 
+##    <Item><M>U,W \in A</M> and <M>U \cap W</M> has dimension <M>d</M>, or 
 ##    </Item>
-##    <Item><M>U\in A, W\in B</M> and <M>B\subset A</M>, or</Item>
-##    <Item><M>U, W\in B</M> and <M>U\cap W</M> has dimension <M>d-2</M>.
+##    <Item><M>U \in A, W \in B</M> and <M>B \subset A</M>, or</Item>
+##    <Item><M>U,W \in B</M> and <M>U \cap W</M> has dimension <M>d-2</M>.
 ##    </Item>
 ##  </List>
+##  This graph has <M>G(2d+1,d)</M> vertices and is distance-regular with 
+##  diameter <M>d</M> and intersection array given by
+##  <Display Mode="M">
+##     b_j = q^{{2j+1}}G(d - j, 1)G(d + 1 - j, 1),
+##     c_j = G(j, 1)^2 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="DK_2005"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=TwistedGrassmannGraph(2,2);;
@@ -145,11 +168,7 @@ DeclareGlobalFunction( "DoubledGrassmannGraph" );
 DeclareConstructor( "TwistedGrassmannGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "TwistedGrassmannGraph" );
 
-# In BVM_2022 2.6(.2)
-# The polar graph O^{(+/-)}(d, q) of isotropic lines of F_q^d
-# with respect to a nondegenerate quadratic form.
-##  isotropic lines = vectors, Elements[2] is non-zero , B is bilinear form 
-##  use InvariantBilinearForm?
+#  TODO use InvariantBilinearForm? Q and B name?
 #############################################################################
 ##
 #F  PolarGraphO( [<filter>, <integer>, ]<integer>, <integer> )
@@ -164,22 +183,48 @@ DeclareGlobalFunction( "TwistedGrassmannGraph" );
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
 ##  returns the polar graph <M>O(<A>d</A>, <A>q</A>)</M>. If 
 ##  <A>e</A> is given and lies in <C>[0,-1,1]</C>, then this function returns
-##  the affine polar graph <M>O^{<A>e</A>}(<A>d</A>, <A>q</A>)</M> with 
-##  respect to a parabolic, elliptic and hyperbolic quadratic form, 
-##  repectively. If <A>e</A> is not given, the function works as if 
-##  <A>e</A> is <C>0</C>.
+##  the affine polar graph <M>O(<A>e</A>,<A>d</A>,<A>q</A>)</M>. If <A>e</A> is
+##  not given, the function works as if <A>e</A> is <C>0</C>.
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
-##  <M>Q</M> be a nondegenerate quadratic form acting on  
-##  <M>GF(q)^d</M>. If <M>Q</M> is parabolic let <M>e=0</M>, 
-##  elliptic let <M>e=-1</M> or hyperbolic let <M>e=1</M>. Further, let 
-##  <M>B</M> be the bilinear form associated with the quadratic form <M>Q</M>.
+##  <M>Q</M> be a nondegenerate quadratic form acting on <M>GF(q)^d</M>, and
+##  <M>e</M> be the type of <M>Q</M>. Note that this means <M>d</M> is odd if
+##  and only if <M>e=0</M>. Further, let <M>B</M> be the bilinear form 
+##  associated with the quadratic form <M>Q</M>.
 ##  <P/>
-##  The <E>polar graph</E> <M>O^{e}(d,q)</M> has vertex-set consisting of the
-##  1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such that 
-##  <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
-##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
-##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  The <E>polar graph</E> <M>O(e,d,q)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>O_{d}^{e}(q)</M> or 
+##  <M>O^{e}(d,q)</M>)</Alt>
+##  has vertex-set the 1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such 
+##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. the totally singular 1-spaces 
+##  in <M>GF(q)^d</M>). Distinct vertices <M>U,W</M> are adjacent if and only if 
+##  <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>. 
+##  <P/>
+##  If <M>d = 2m</M> is even and <M>e \in \{1, -1\}</M>, this graph is strongly 
+##  regular with parameters
+##  <Table Align='ccc'>
+##    <Row><Item><M>v</M></Item><Item><M>=</M></Item>
+##      <Item><M>(q^m - e)(q^{{m-1}} + e)/(q - 1)</M></Item></Row>
+##    <Row><Item><M>k</M></Item><Item><M>=</M></Item>
+##      <Item><M>q(q^{{m-1}} - e)(q^{{m-2}} + e)/(q - 1)</M></Item></Row>
+##    <Row><Item><M>\lambda</M></Item><Item><M>=</M></Item>
+##      <Item><M>q^2(q^{{m-2}} - e)(q^{{m-3}} + e)/(q - 1) + q - 1</M></Item>
+##    </Row>
+##    <Row><Item><M>\mu</M></Item><Item><M>=</M></Item>
+##      <Item><M>(q^{{m-1}} - e)(q^{{m-2}} + e)/(q - 1)</M></Item></Row>
+##  </Table>
+##  If <M>d = 2m+1</M> is odd and <M>e = 0</M>, this graph is strongly regular 
+##  with parameters
+##  <Table Align='ccc'>
+##    <Row><Item><M>v</M></Item><Item><M>=</M></Item>
+##      <Item><M>(q^{{2m}} - 1)/(q - 1)</M></Item></Row>
+##    <Row><Item><M>k</M></Item><Item><M>=</M></Item>
+##      <Item><M>q(q^{{2m-2}} - 1)/(q - 1)</M></Item></Row>
+##    <Row><Item><M>\lambda</M></Item><Item><M>=</M></Item>
+##      <Item><M>q^2(q^{{2m-4}} - 1)/(q - 1) + q - 1</M></Item></Row>
+##    <Row><Item><M>\mu</M></Item><Item><M>=</M></Item>
+##      <Item><M>(q^{{2m-2}} - 1)/(q - 1)</M></Item></Row>
+##  </Table>
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BV_2022" Where="Section 2.6"/>.
@@ -197,9 +242,13 @@ DeclareGlobalFunction( "TwistedGrassmannGraph" );
 DeclareConstructor( "PolarGraphOCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphO" );
 
-# In BVM_2022 3.1.2 not as general as this function
+# TODO : :
+# In BVM_2022 3.1.2 not the same as this function
 # The polar graph NO^{+/-}orth(d, q) of nonisotropic lines of F_q^d
 # with respect to a nondegenerate quadratic form.
+# help: 7.1.9D - this is not what Brouwer defines this graph as: checked for
+# q=5. only for q=2,3 would it coincide, but there is a definition for further
+# q 
 #############################################################################
 ##
 #F  PolarGraphNOorth( [<filter>, ]<integer>, <integer>, <integer> )
@@ -213,18 +262,19 @@ DeclareGlobalFunction( "PolarGraphO" );
 ##  <Description>
 ##  Given a prime power <A>q</A>, positive integer <A>d</A> and <A>e</A> in
 ##  <C>[-1,1]</C>, this function returns the polar graph 
-##  <M>NO^{<A>e</A>}(<A>d</A>, <A>q</A>)</M> with respect to an elliptic and 
-##  hyperbolic quadratic form, repectively.
+##  <M>NO^{<A>e</A>}(<A>d</A>, <A>q</A>)</M>.
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
-##  <M>Q</M> be an elliptic or hyperbolic nondegenerate quadratic form acting 
-##  on <M>GF(q)^d</M>. If <M>Q</M> is elliptic let <M>e=-1</M> and 
-##  if it is hyperbolic let <M>e=1</M>. Further, let <M>B</M> be the bilinear
-##  form associated with the quadratic form <M>Q</M>.
+##  <M>Q</M> be a nondegenerate quadratic form acting on <M>GF(q)^d</M>, and
+##  <M>e</M> be the type of <M>Q</M>, <M>e \in \{1, -1\}</M>. Note that this 
+##  means <M>d</M> is odd if
+##  and only if <M>e=0</M>. Further, let <M>B</M> be the bilinear form 
+##  associated with the quadratic form <M>Q</M> and 
+##  <M>z \in GF(q)  \{0\}</M>.
 ##  <P/>
 ##  The <E>polar graph</E> <M>NO^{e}(d,q)</M> has vertex-set consisting of the
 ##  1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such that 
-##  <M>Q(u)\not=0</M> for all <M>u\in U</M> (i.e. the nonisotropic lines in 
+##  <M>Q(u)=z</M> for some <M>u\in U</M> (so are nonisotropic lines in 
 ##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
 ##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
 ##    <Example>
@@ -241,9 +291,6 @@ DeclareGlobalFunction( "PolarGraphO" );
 DeclareConstructor( "PolarGraphNOorthCons", [IsObject, IsInt, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphNOorth" );
 
-# In BVM_2022 2.5(.1)
-# The polar graph Sp(d, q) of isotropic lines of F_q^d
-# with respect to a nondegenerate symplectic form.
 #############################################################################
 ##
 #F  PolarGraphSp( [<filter>, ]<integer>, <integer> )
@@ -260,13 +307,28 @@ DeclareGlobalFunction( "PolarGraphNOorth" );
 ##  <P/>
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
-##  <M>GF(q)^d</M>.
+##  <M>GF(q)^d</M>. Note that this means <M>d</M> is even.
 ##  <P/>
-##  The <E>polar graph</E> <M>Sp(d,q)</M> has vertex-set consisting of the
-##  1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such that 
-##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
-##  <M>GF(q)^d</M>). Any two distinct vertices <M>U,W</M>
-##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  The <E>polar graph</E> <M>Sp(d,q)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>Sp_{d}(q)</M> or 
+##  <M>W_{{d-1}}(q)</M>)</Alt>
+##  has vertex-set the 1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such 
+##  that <M>B(u,w)=0</M> for all <M>u,w \in U</M> (i.e. the totally isotropic 
+##  1-spaces in <M>GF(q)^d</M>). Distinct vertices <M>U,W</M> are adjacent if 
+##  and only if <M>B(u,w)=0</M> for all <M>u \in U, w \in W</M>.
+##  <P/>
+##  If <M>d = 2m</M> for some <M>m &gt; 2</M>, this graph is strongly regular 
+##  with parameters
+##  <Table Align='ccc'>
+##    <Row><Item><M>v</M></Item><Item><M>=</M></Item>
+##      <Item><M>(q^{{2m}} - 1)/(q - 1)</M></Item></Row>
+##    <Row><Item><M>k</M></Item><Item><M>=</M></Item>
+##      <Item><M>q(q^{{2m-2}} - 1)/(q - 1)</M></Item></Row>
+##    <Row><Item><M>\lambda</M></Item><Item><M>=</M></Item>
+##      <Item><M>q^2(q^{{2m-4}} - 1)/(q - 1) + q - 1</M></Item></Row>
+##    <Row><Item><M>\mu</M></Item><Item><M>=</M></Item>
+##      <Item><M>(q^{{2m-2}} - 1)/(q - 1)</M></Item></Row>
+##  </Table>
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BV_2022" Where="Section 2.5"/>.
@@ -284,10 +346,7 @@ DeclareGlobalFunction( "PolarGraphNOorth" );
 DeclareConstructor( "PolarGraphSpCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphSp" );
 
-# In BVM_2022 2.7
-# The polar graph U(d, r) of isotropic lines of F_{r^2}^d
-# with respect to a nondegenerate Hermitean form.
-## In function, seems to calculate unnecessary things?
+##TODO In function, seems to calculate unnecessary things?
 #############################################################################
 ##
 #F  PolarGraphU( [<filter>, ]<integer>, <integer> )
@@ -302,15 +361,31 @@ DeclareGlobalFunction( "PolarGraphSp" );
 ##  Given a prime power <A>r</A> and positive integer <A>d</A>, this function 
 ##  returns the polar graph <M>U(<A>d</A>, <A>r</A>)</M>.
 ##  <P/>
-##  Let <M>r</M> be a prime power and <M>d</M> and positive integer. Let
-##  <M>B</M> be a nondegenerate hermitean form acting on  
-##  <M>GF(r^2)^d</M>.
+##  Let <M>r</M> be a prime power, <M>d</M> be a positive integer and set 
+##  <M>q = r^2</M>. Let <M>B</M> be a nondegenerate hermitean form acting on  
+##  <M>GF(q)^d</M>.
 ##  <P/>
-##  The <E>polar graph</E> <M>U(d,r)</M> has vertex-set consisting of the
-##  1-dimensional subspaces <M>U</M> of <M>GF(r^2)^d</M> such that 
-##  <M>B(u,u)=0</M> for all <M>u\in U</M> (i.e. the isotropic lines in 
-##  <M>GF(r^2)^d</M>). Any two distinct vertices <M>U,W</M>
-##  are adjacent if and only if <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  The <E>polar graph</E> <M>U(d,r)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>U_{d}(r)</M> or 
+##  <M>H_{{d-1}}(r^2)</M>)</Alt>
+##  has vertex-set the 1-dimensional subspaces <M>U</M> of <M>GF(q)^d</M> such 
+##  that <M>B(u,w)=0</M> for all <M>u,w \in U</M> (i.e. the totally isotropic 
+##  1-spaces in <M>GF(q)^d</M>). Distinct vertices <M>U,W</M> are adjacent if 
+##  and only if <M>B(u,w)=0</M> for all <M>u \in U, w \in W</M>.
+##  <P/>
+##  For <M>d \geq 4</M> and <M>e = (-1)^d</M>, this graph is strongly regular 
+##  with parameters
+##  <Table Align='ccc'>
+##    <Row><Item><M>v</M></Item><Item><M>=</M></Item>
+##      <Item><M>(r^d - e)(r^{{d-1}} + e)/(r^2 - 1)</M></Item></Row>
+##    <Row><Item><M>k</M></Item><Item><M>=</M></Item>
+##      <Item><M>r^2(r^{{d-2}} - e)(r^{{d-3}} + e)/(r^2 - 1)</M></Item></Row>
+##    <Row><Item><M>\lambda</M></Item><Item><M>=</M></Item>
+##      <Item><M>r^4(r^{{d-4}} - e)(r^{{d-5}} + e)/(r^2 - 1) + r^2 - 1</M>
+##      </Item></Row>
+##    <Row><Item><M>\mu</M></Item><Item><M>=</M></Item>
+##      <Item><M>(r^{{d-2}} - e)(r^{{d-3}} + e)/(r^2 - 1)</M></Item></Row>
+##  </Table>
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BV_2022" Where="Section 2.7"/>.
@@ -328,7 +403,6 @@ DeclareGlobalFunction( "PolarGraphSp" );
 DeclareConstructor( "PolarGraphUCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "PolarGraphU" );
 
-# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraphB( [<filter>, ]<integer>, <integer> )
@@ -341,21 +415,38 @@ DeclareGlobalFunction( "PolarGraphU" );
 ##
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
-##  returns the dual polar graph <M>B_{<A>d</A>}(<A>q</A>)</M>. 
+##  returns the dual polar graph <M>B(<A>d</A>,<A>q</A>)</M>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate parabolic quadratic form acting on  
-##  <M>GF(q)^{2d+1}</M>.
+##  <M>GF(q)^{{2d+1}}</M>.
 ##  <P/>
-##  The <E>dual polar graph</E> <M>B_d(q)</M> has vertex-set consisting of the
-##  <M>d</M>-dimensional subspaces <M>U</M> of <M>GF(q)^{2d+1}</M> such 
-##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
-##  in <M>GF(q)^{2d+1}</M>). Any two distinct vertices <M>U,W</M>
-##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
+##  The <E>dual polar graph</E> <M>B(d,q)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>B_{d}(q)</M>)</Alt>
+##  has vertex-set the <M>d</M>-dimensional subspaces <M>U</M> of 
+##  <M>GF(q)^{{2d+1}}</M> such that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e.
+##  the totally singular <M>d</M>-spaces in <M>GF(q)^{{2d+1}}</M>). Distinct 
+##  vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> has dimension 
+##  <M>d-1</M>. 
+##  <P/>
+##  This graph has
+##  <Display Mode="M">
+##    \prod_{{i=0}}^{{d-1}} (q^{{d-i}} + 1)
+##  </Display>
+##  vertices, and is distance-regular with diameter <M>d</M> and intersection 
+##  array given by
+##  <Display Mode="M">
+##     b_j = q^{{j+1}}G(d - j, 1),
+##     c_j = G(j, 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.4"/>.   
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DualPolarGraphB(2,4);;
@@ -370,7 +461,6 @@ DeclareGlobalFunction( "PolarGraphU" );
 DeclareConstructor( "DualPolarGraphBCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphB" );
 
-# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraphC( [<filter>, ]<integer>, <integer> )
@@ -383,21 +473,38 @@ DeclareGlobalFunction( "DualPolarGraphB" );
 ##
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
-##  returns the dual polar graph <M>C_{<A>d</A>}(<A>q</A>)</M>. 
+##  returns the dual polar graph <M>C(<A>d</A>,<A>q</A>)</M>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>B</M> be a nondegenerate symplectic bilinear form acting on  
-##  <M>GF(q)^{2d}</M>.
+##  <M>GF(q)^{{2d}}</M>.
 ##  <P/>
-##  The <E>dual polar graph</E> <M>C_d(q)</M> has vertex-set consisting of the
-##  <M>d</M>-dimensional subspaces <M>U</M> of <M>GF(q)^{2d}</M> such 
-##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
-##  in <M>GF(q)^{2d}</M>). Any two distinct vertices <M>U,W</M>
-##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
+##  The <E>dual polar graph</E> <M>C(d,q)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>C_{d}(q)</M>)</Alt>
+##  has vertex-set the <M>d</M>-dimensional subspaces <M>U</M> of 
+##  <M>GF(q)^{{2d}}</M> such that <M>B(u,w)=0</M> for all <M>u,w \in U</M> 
+##  (i.e. the totally singular <M>d</M>-spaces in <M>GF(q)^{{2d}}</M>). 
+##  Distinct vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> has 
+##  dimension <M>d-1</M>. 
+##  <P/>
+##  This graph has
+##  <Display Mode="M">
+##    \prod_{{i=0}}^{{d-1}} (q^{{d-i}} + 1)
+##  </Display>
+##  vertices, and is distance-regular with diameter <M>d</M> and intersection 
+##  array given by
+##  <Display Mode="M">
+##     b_j = q^{{j+1}}G(d - j, 1),
+##     c_j = G(j, 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.4"/>.   
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DualPolarGraphC(2,5);;
@@ -412,7 +519,6 @@ DeclareGlobalFunction( "DualPolarGraphB" );
 DeclareConstructor( "DualPolarGraphCCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphC" );
 
-# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraphD( [<filter>, ]<integer>, <integer> )
@@ -425,21 +531,38 @@ DeclareGlobalFunction( "DualPolarGraphC" );
 ##
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
-##  returns the dual polar graph <M>D_{<A>d</A>}(<A>q</A>)</M>. 
+##  returns the dual polar graph <M>D(<A>d</A>,<A>q</A>)</M>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate hyperbolic quadratic form acting on  
-##  <M>GF(q)^{2d}</M>.
+##  <M>GF(q)^{{2d}}</M>.
 ##  <P/>
-##  The <E>dual polar graph</E> <M>D_d(q)</M> has vertex-set consisting of the
-##  <M>d</M>-dimensional subspaces <M>U</M> of <M>GF(q)^{2d}</M> such 
-##  that <M>Q(u)=0</M> for all <M>u\in U</M> (i.e. totally isotropic subspaces 
-##  in <M>GF(q)^{2d}</M>). Any two distinct vertices <M>U,W</M>
-##  are adjacent if and only if <M>U\cap W</M> has dimension <M>d-1</M>.
+##  The <E>dual polar graph</E> <M>D(d,q)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>D_{d}(q)</M>)</Alt>
+##  has vertex-set the <M>d</M>-dimensional subspaces <M>U</M> of 
+##  <M>GF(q)^{{2d}}</M> such that <M>B(u,w)=0</M> for all <M>u,w \in U</M> 
+##  (i.e. the totally singular <M>d</M>-spaces in <M>GF(q)^{{2d}}</M>). 
+##  Distinct vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> has 
+##  dimension <M>d-1</M>. 
+##  <P/>
+##  This graph has
+##  <Display Mode="M">
+##    \prod_{{i=0}}^{{d-1}} (q^{{d-i-1}} + 1)
+##  </Display>
+##  vertices, and is distance-regular with diameter <M>d</M> and intersection 
+##  array given by
+##  <Display Mode="M">
+##     b_j = q^{{j}}G(d - j, 1),
+##     c_j = G(j, 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.4"/>.   
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DualPolarGraphD(4,2);;
@@ -454,9 +577,6 @@ DeclareGlobalFunction( "DualPolarGraphC" );
 DeclareConstructor( "DualPolarGraphDCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraphD" );
 
-# In BCN_1989 9.4 not specific
-# The dual polar graph ^2D_{d+1}(q) of isotropic d-dimensional subspaces of
-# F_q^{2d+2} with respect to a nondegenerate quadratic form of Witt index d.
 #############################################################################
 ##
 #F  DualPolarGraph2D( [<filter>, ]<integer>, <integer> )
@@ -469,22 +589,38 @@ DeclareGlobalFunction( "DualPolarGraphD" );
 ##
 ##  <Description>
 ##  Given a prime power <A>q</A> and positive integer <A>d</A>, this function 
-##  returns the dual polar graph <M>^2D_{<A>d</A>+1}(<A>q</A>)</M>. 
+##  returns the dual polar graph <M>2D(<A>d</A>+1,<A>q</A>)</M>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>d</M> and positive integer. Let
 ##  <M>Q</M> be a nondegenerate elliptic quadratic form acting on  
-##  <M>GF(q)^{2d+2}</M>.
+##  <M>GF(q)^{{2d+2}}</M>.
 ##  <P/>
-##  The <E>dual polar graph</E> <M>^2D_{d+1}(q)</M> has vertex-set consisting 
-##  of the <M>d</M>-dimensional subspaces <M>U</M> of 
-##  <M>GF(q)^{2d+2}</M> such that <M>Q(u)=0</M> for all <M>u\in U</M> 
-##  (i.e. totally isotropic subspaces in <M>GF(q)^{2d+2}</M>). Any two 
-##  distinct vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> 
-##  has dimension <M>d-1</M>.
+##  The <E>dual polar graph</E> <M>2D(d+1,q)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>^2D_{d+1}(q)</M>)</Alt>
+##  has vertex-set the <M>d</M>-dimensional subspaces <M>U</M> of 
+##  <M>GF(q)^{{2d+2}}</M> such that <M>B(u,w)=0</M> for all <M>u,w \in U</M> 
+##  (i.e. the totally singular <M>d</M>-spaces in <M>GF(q)^{{2d+2}}</M>). 
+##  Distinct vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> has 
+##  dimension <M>d-1</M>. 
+##  <P/>
+##  This graph has
+##  <Display Mode="M">
+##    \prod_{{i=0}}^{{d-1}} (q^{{d-i+1}} + 1)
+##  </Display>
+##  vertices, and is distance-regular with diameter <M>d</M> and intersection 
+##  array given by
+##  <Display Mode="M">
+##     b_j = q^{{j+2}}G(d - j, 1),
+##     c_j = G(j, 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.4"/>.   
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DualPolarGraph2D(2,2);;
@@ -499,7 +635,6 @@ DeclareGlobalFunction( "DualPolarGraphD" );
 DeclareConstructor( "DualPolarGraph2DCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraph2D" );
 
-# In BCN_1989 9.4 not specific
 #############################################################################
 ##
 #F  DualPolarGraph2A( [<filter>, ]<integer>, <integer> )
@@ -512,23 +647,50 @@ DeclareGlobalFunction( "DualPolarGraph2D" );
 ##
 ##  <Description>
 ##  Given a prime power <A>r</A> and positive integer <A>e</A>, this function 
-##  returns the dual polar graph <M>^2A_{<A>e</A>-1}(<A>r</A>)</M>. 
+##  returns the dual polar graph <M>2A(<A>e</A>-1,<A>r</A>)</M>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
-##  Let <M>q</M> be a prime power and <M>e</M> and positive integer. Let
-##  <M>B</M> be a nondegenerate hermitean form acting on  
-##  <M>GF(r^2)^e</M>.
+##  Let <M>r</M> be a prime power, <M>e</M> be a positive integer, and set 
+##  <M>q = r^2</M> and <M>d = \lfloor e/2 \rfloor</M>. Let <M>B</M> be a 
+##  nondegenerate hermitean form acting on <M>GF(q)^e</M>.
 ##  <P/>
-##  The <E>dual polar graph</E> <M>^2A_{e-1}(r)</M> has vertex-set consisting 
-##  of the <M>\lfloor e/2 \rfloor</M>-dimensional subspaces <M>U</M> of 
-##  <M>GF(r^2)^e</M> such that <M>B(u,w)=0</M> for all 
-##  <M>u,w\in U</M> (i.e. totally isotropic subspaces in 
-##  <M>GF(r^2)^e</M>). Any two distinct vertices <M>U,W</M> are 
-##  adjacent if and only if <M>U\cap W</M> has dimension 
-##  <M>\lfloor e/2 \rfloor -1</M>.
+##  The <E>dual polar graph</E> <M>2A(e-1,r)</M> 
+##  <Alt Not='Text'>(more commonly written as <M>^2D_{e-1}(r)</M>)</Alt>
+##  has vertex-set the <M>d</M>-dimensional subspaces <M>U</M> of 
+##  <M>GF(q)^e</M> such that <M>B(u,w)=0</M> for all <M>u,w \in U</M> 
+##  (i.e. the totally singular <M>d</M>-spaces in <M>GF(q)^e</M>). 
+##  Distinct vertices <M>U,W</M> are adjacent if and only if <M>U\cap W</M> has 
+##  dimension <M>d-1</M>. 
+##  <P/>
+##  If <M>e</M> is odd, this graph has
+##  <Display Mode="M">
+##    \prod_{{i=0}}^{{d-1}} (q^{{d-i+1/2}} + 1)
+##  </Display>
+##  vertices, and is distance-regular with diameter <M>d</M> and intersection 
+##  array given by
+##  <Display Mode="M">
+##     b_j = q^{{j+3/2}}G(d - j, 1),
+##     c_j = G(j, 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
+##  <P/>
+##  If <M>e</M> is even, this graph has
+##  <Display Mode="M">
+##    \prod_{{i=0}}^{{d-1}} (q^{{d-i-1/2}} + 1)
+##  </Display>
+##  vertices, and is distance-regular with diameter <M>d</M> and intersection 
+##  array given by
+##  <Display Mode="M">
+##     b_j = q^{{j+1/2}}G(d - j, 1),
+##     c_j = G(j, 1) 
+##  </Display>
+##  for <M>0 \leq j \leq d</M>.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 9.4"/>.   
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=DualPolarGraph2A(4,3);;
@@ -544,8 +706,10 @@ DeclareConstructor( "DualPolarGraph2ACons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "DualPolarGraph2A" );
 
 # In BCN_1989 12.1
-#TODO unsure of the definition (elliptic, hyperbolic line)
+#TODO  :  : 
+#  unsure of the definition (elliptic, hyperbolic line)
 # implemented uses {[4]} is garunteed Nonisotropic?
+# full automorphism group not fully implemented
 #############################################################################
 ##
 #F  DoroGraph( [<filter>, ]q )
@@ -560,18 +724,18 @@ DeclareGlobalFunction( "DualPolarGraph2A" );
 ##  Given a prime power <A>q</A>, this function returns the Doro graoh 
 ##  <M>Doro(<A>q</A>)</M>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
 ##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
 ##  Let <M>q</M> be a prime power and <M>Q</M> be a nondegenerate elliptic 
 ##  quadratic form acting on <M>GF(q)^4</M>.
 ##  <P/>
-##  The <E>Doro graph</E> <M>Doro(q)</M> has vertex-set consisting 
-##  of the 1-dimensional subspaces <M>U</M> of <M>GF(q)^4</M> such 
-##  that <M>Q(u)\not=0</M> for all non-zero <M>u\in U</M> (i.e. nonisotropic 
-##  subspaces in <M>GF(q)^4</M>). Any two distinct vertices 
-##  <M>U,W</M> are adjacent if and only if <M>U + W</M> is a hyperbolic line.
+##  The <E>Doro graph</E> <M>Doro(q)</M> has vertex-set the 1-dimensional 
+##  subspaces <M>U</M> of <M>GF(q)^4</M> such that <M>Q(u)&neq;0</M> for all
+##  non-zero <M>u\in U</M> (i.e. nonisotropic 1-spaces in <M>GF(q)^4</M>). 
+##  Distinct vertices <M>U,W</M> are adjacent if and only if <M>U + W</M> is a 
+##  hyperbolic line.
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 12.1"/>.
@@ -589,9 +753,6 @@ DeclareGlobalFunction( "DualPolarGraph2A" );
 DeclareConstructor( "DoroGraphCons", [IsObject, IsInt]);
 DeclareGlobalFunction( "DoroGraph" );
 
-# In BCN_1989 12.4
-# The unitary nonisotropics graph of 1-dimensional subspaces of F_(r^2)^3 with
-# respect to a nondegenerate sesquilinear form.
 #############################################################################
 ##
 #F  UnitaryNonisotropicsGraph( [<filter>, ]<integer> )
@@ -605,20 +766,19 @@ DeclareGlobalFunction( "DoroGraph" );
 ##  <Description>
 ##  Given a prime power <A>r</A>, this function returns the unitary 
 ##  nonisotropics graph on <M>GF(<A>r</A>^2)^3</M>. 
-##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>FullAutomorphismGroup</C>. The vertex naming of this function behaves as 
-##  described in <Ref Filt="FullAutomorphismGroup"/>.
 ##  <P/>  
-##  Let <M>r</M> be a prime power and <M>B</M> be a nondegenerate hermitean 
-##  form acting on <M>GF(r^2)^3</M>.
+##  Let <M>r</M> be a prime power, and set <M>q = r^2</M>. Let <M>B</M> be a 
+##  nondegenerate hermitean form acting on <M>GF(q)^3</M>. 
 ##  <P/>
-##  The <E>unitary nonisotropics graph</E> on <M>GF(r^2)^3</M> has 
+##  The <E>unitary nonisotropics graph</E> on <M>GF(q)^3</M> has 
 ##  vertex-set consisting of the 1-dimensional subspaces <M>U</M> of 
-##  <M>GF(r^2)^3</M> such that <M>B(u,u)\not=0</M> for all 
-##  <M>u\in U</M> (i.e. nonisotropic subspaces in <M>GF(r^2)^3</M>). 
-##  Any two distinct vertices <M>U,W</M> are adjacent if and only if 
-##  <M>B(u,w)=0</M> for all <M>u\in U,w\in W</M>.
+##  <M>GF(q)^3</M> such that <M>B(u,w)&neq;0</M> for all <M>u,w \in U</M> (i.e.
+##  nonisotropic subspaces in <M>GF(q)^3</M>). Distinct vertices <M>U,W</M> are 
+##  adjacent if and only if <M>B(u,w)=0</M> for all <M>u \in U, w \in W</M>.
+##  <P/>
+##  This graph has <M>r^2(r^2 - r + 1)</M> vertices, and for <M>r &gt; 2</M> it
+##  is distance-regular with intersection array 
+##  <M>\{q^2 - q, q^2 - q - 2, q + 1; 1, 1, q^2 - 2q\}</M>.
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 12.4"/>.

@@ -70,7 +70,6 @@ DeclareGlobalFunction( "TetrahedronGraph" );
 ##
 DeclareGlobalFunction( "OctahedronGraph" );
 
-# In BVM_2022 Sec 10.3  # In BCN_1989 3.11
 #############################################################################
 ##
 #F  PetersenGraph2(  )
@@ -85,8 +84,8 @@ DeclareGlobalFunction( "OctahedronGraph" );
 ##  This function returns the Petersen graph.
 ##  <P/>
 ##  The <E>Petersen graph</E> is the graph with vertex-set the 
-##  <M>2</M>-subsets of <M>\{1,...,5\}</M>, and distinct vertices are 
-##  adjacent if and onlt if their intersection is empty. By definition, 
+##  <M>2</M>-subsets of <M>\{1,..., 5\}</M>, and distinct vertices are 
+##  adjacent if and only if their intersection is empty. By definition, 
 ##  this is exactly the Odd graph of diameter <M>2</M> and the Kneser graph
 ##  <M>K(5,2)</M> (see <Ref Func="OddGraph"/> and <Ref Func="KneserGraph"/>).
 ##  This graph is strongly regular with parameters <M>(10,3,0,1)</M>.
@@ -112,7 +111,6 @@ DeclareGlobalFunction( "OctahedronGraph" );
 ##
 DeclareGlobalFunction( "PetersenGraph2" );
 
-# In BVM_2022 Sec 10.6   # In BCN_1989 3.11
 #############################################################################
 ##
 #F  ShrikhandeGraph(  )
@@ -147,7 +145,6 @@ DeclareGlobalFunction( "PetersenGraph2" );
 DeclareConstructor("ShrikhandeGraphCons", [IsObject]);
 DeclareGlobalFunction( "ShrikhandeGraph" );
 
-# In BVM_2022 Sec 10.7  # In BCN_1989 3.11
 #############################################################################
 ##
 #F  ClebschGraph(  )
@@ -216,8 +213,7 @@ DeclareGlobalFunction( "ClebschGraph" );
 ##
 DeclareGlobalFunction( "SchlaefliGraph" );
 
-# In BVM_2022 Sec 10.19  # In BCN_1989 13.1
-#TODO implementation list use?
+#TODO implementation list use? example
 #############################################################################
 ##
 #F  HoffmanSingletonGraph2(  )
@@ -233,9 +229,9 @@ DeclareGlobalFunction( "SchlaefliGraph" );
 ##  <P/>
 ##  The <E>Hoffman-Singleton graph</E> can be constructed as follows. Let 
 ##  <M>P_h</M> be a pentagon and <M>Q_i</M> be a pentagram for 
-##  <M>h,i\in\{1,...,5\}</M>, and consider the union of these graphs. Then 
-##  add an edge between <M>j\in P_h</M> and <M>hi+j\in Q_i</M> for each 
-##  <M>j\in P_h</M> and <M>i\in\{1,...,5\}</M>. The resulting graph is 
+##  <M>h,i \in \{1,..., 5\}</M>, and consider the union of these graphs. Then 
+##  add an edge between <M>j \in P_h</M> and <M>hi+j \in Q_i</M> for each 
+##  <M>j \in P_h</M> and <M>i \in \{1,...,5\}</M>. The resulting graph is 
 ##  the Hoffman-Singleton graph, which is strongly regular with parameters
 ##  <M>(50,7,0,1)</M>. 
 ##  <P/>
@@ -271,8 +267,8 @@ DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 ##  <P/>
 ##  The <E>Gewirtz graph</E> has vertex-set consisting of the blocks of the
 ##  unique Steiner system in <M>S(3,6,22)</M> which do not contain a fixed
-##  point. Any two distinct vertices are adjacent if and only if their 
-##  intersection is empty. This graph is strongly regular with parameters#
+##  point. Distinct vertices are adjacent if and only if their 
+##  intersection is empty. This graph is strongly regular with parameters
 ##  <M>(56,10,0,2)</M>. 
 ##  <P/>
 ##  For more information on this graph, see 
@@ -291,7 +287,6 @@ DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 ##
 DeclareGlobalFunction( "GewirtzGraph" );
 
-# In BVM_2022 Sec 10.27  # In BCN_1989 11.4C not specific
 #############################################################################
 ##
 #F  WittStronglyRegularGraph(  )
@@ -307,10 +302,9 @@ DeclareGlobalFunction( "GewirtzGraph" );
 ##  the <M>M_{22}</M> graph).
 ##  <P/>
 ##  The <E>Witt strongly regular graph</E> has vertex-set consisting of 
-##  the blocks of the unique Steiner system in <M>S(3,6,22)</M>. Any 
-##  two distinct vertices are adjacent if and only if their 
-##  intersection is empty. This graph is strongly regular with 
-##  parameters <M>(77,16,0,4)</M>. 
+##  the blocks of the unique Steiner system in <M>S(3,6,22)</M>. Distinct 
+##  vertices are adjacent if and only if their intersection is empty. This graph 
+##  is strongly regular with parameters <M>(77,16,0,4)</M>. 
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BV_2022" Where="Section 10.27"/> or 

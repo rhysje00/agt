@@ -155,7 +155,9 @@ DeclareGlobalFunction( "CocktailPartyGraph" );
 ##  <M>q\equiv 1\;(mod\; 4)</M>, <M>P(q)</M> is strongly regular with parameters
 ##  <M>(q,(q-1)/2,(q-5)/4,(q-1)/4)</M>. 
 ##  <P/>
-##  For more information on this graph, see <Cite Key="J_2016"/>.
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 7.4.4"/> or
+##  <Cite Key="J_2016"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> PaleyGraph(9);

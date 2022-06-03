@@ -11,7 +11,7 @@
 
 #############################################################################
 ##
-#F  GrassmannGraph( [<filter>, ]<int>, <int>, <int> )
+#O  GrassmannGraphCons( [<filter>, ]<integer>, <integer>, <integer> )
 ##  
 InstallMethod( GrassmannGraphCons,
      "as a spaces graph with full automorphism group", true,
@@ -62,6 +62,10 @@ function(filter, q, n, d)
   return GrassmannGraphCons(IsSpacesGraph, q, n, d);
 end );
 
+#############################################################################
+##
+#F  GrassmannGraph( [<filter>, ]<integer>, <integer>, <integer> )
+##  
 InstallGlobalFunction( GrassmannGraph,
 function(arg)
   local j, filt;
@@ -81,7 +85,7 @@ end );
 
 #############################################################################
 ##
-#F  DoubledGrassmannGraph( [<filter>, ]<int>, <int> )
+#O  DoubledGrassmannGraphCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( DoubledGrassmannGraphCons,
      "as a spaces graph with full automorphism group", true,
@@ -119,6 +123,10 @@ function(filter, q, d)
   return DoubledGrassmannGraphCons(IsSpacesGraph, q, d);
 end );
 
+#############################################################################
+##
+#F  DoubledGrassmannGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( DoubledGrassmannGraph,
 function(arg)
   local j, filt;
@@ -138,7 +146,7 @@ end );
 
 #############################################################################
 ##
-#F  TwistedGrassmannGraph( [<filter>, ]<int>, <int> )
+#O  TwistedGrassmannGraphCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( TwistedGrassmannGraphCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt], 0,
@@ -167,6 +175,10 @@ function(filter, d, q)
   return TwistedGrassmannGraphCons(IsSpacesGraph, d, q);
 end );
 
+#############################################################################
+##
+#F  TwistedGrassmannGraph( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( TwistedGrassmannGraph,
 function(arg)
   local j, filt;
@@ -186,7 +198,7 @@ end );
 
 #############################################################################
 ##
-#F  PolarGraphO( [<filter>, <integer>, ]<integer>, <integer> )
+#O  PolarGraphOCons( [<filter>,][ <integer>, ]<integer>, <integer> )
 ##  
 InstallMethod( PolarGraphOCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt, IsInt], 0,
@@ -211,6 +223,10 @@ function(filter, e, d, q)
   return PolarGraphOCons(IsSpacesGraph, e, d, q);
 end );
 
+#############################################################################
+##
+#F  PolarGraphO( [<filter>,][ <integer>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( PolarGraphO,
 function(arg)
   local d, e, j, q, filt;
@@ -237,7 +253,7 @@ end );
 
 #############################################################################
 ##
-#F  PolarGraphNOorth( [<filter>, ]<integer>, <integer>, <integer> )
+#O  PolarGraphNOorthCons( [<filter>, ]<integer>, <integer>, <integer> )
 ##  
 InstallMethod( PolarGraphNOorthCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt, IsInt], 0,
@@ -269,6 +285,10 @@ function(filter, e, d, q)
   return PolarGraphNOorthCons(IsSpacesGraph, e, d, q);
 end );
 
+#############################################################################
+##
+#F  PolarGraphNOorth( [<filter>, ]<integer>, <integer>, <integer> )
+##  
 InstallGlobalFunction( PolarGraphNOorth,
 function(arg)
   local j, filt;
@@ -288,7 +308,7 @@ end );
 
 #############################################################################
 ##
-#F  PolarGraphSp( [<filter>, ]<integer>, <integer> )
+#O  PolarGraphSpCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( PolarGraphSpCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt], 0,
@@ -312,6 +332,10 @@ function(filter, d, q)
   return PolarGraphSpCons(IsSpacesGraph, d, q);
 end );
 
+#############################################################################
+##
+#F  PolarGraphSp( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( PolarGraphSp,
 function(arg)
   local j, filt;
@@ -331,7 +355,7 @@ end );
 
 #############################################################################
 ##
-#F  PolarGraphU( [<filter>, ]<integer>, <integer> )
+#O  PolarGraphUCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( PolarGraphUCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt, IsInt], 0,
@@ -358,6 +382,10 @@ function(filter, d, r)
   return PolarGraphUCons(IsSpacesGraph, d, r);
 end );
 
+#############################################################################
+##
+#F  PolarGraphU( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( PolarGraphU,
 function(arg)
   local j, filt;
@@ -377,7 +405,7 @@ end );
 
 #############################################################################
 ##
-#F  DualPolarGraphB( [<filter>, ]<integer>, <integer> )
+#O  DualPolarGraphBCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( DualPolarGraphBCons,
      "as a spaces graph with full automorphism group", true,
@@ -435,6 +463,10 @@ function(filter, d, q)
   return DualPolarGraphBCons(IsSpacesGraph, d, q);
 end );
 
+#############################################################################
+##
+#F  DualPolarGraphB( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( DualPolarGraphB,
 function(arg)
   local j, filt;
@@ -454,7 +486,7 @@ end );
 
 #############################################################################
 ##
-#F  DualPolarGraphC( [<filter>, ]<integer>, <integer> )
+#O  DualPolarGraphCCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( DualPolarGraphCCons,
      "as a spaces graph with full automorphism group", true,
@@ -503,6 +535,10 @@ function(filter, d, q)
   return DualPolarGraphCCons(IsSpacesGraph, d, q);
 end );
 
+#############################################################################
+##
+#F  DualPolarGraphC( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( DualPolarGraphC,
 function(arg)
   local j, filt;
@@ -522,7 +558,7 @@ end );
 
 #############################################################################
 ##
-#F  DualPolarGraphD( [<filter>, ]<integer>, <integer> )
+#F  DualPolarGraphDCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( DualPolarGraphDCons,
      "as a spaces graph with full automorphism group", true,
@@ -584,6 +620,10 @@ function(filter, d, q)
   return DualPolarGraphDCons(IsSpacesGraph, d, q);
 end );
 
+#############################################################################
+##
+#F  DualPolarGraphD( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( DualPolarGraphD,
 function(arg)
   local j, filt;
@@ -603,7 +643,7 @@ end );
 
 #############################################################################
 ##
-#F  DualPolarGraph2D( [<filter>, ]<integer>, <integer> )
+#O  DualPolarGraph2DCons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( DualPolarGraph2DCons,
      "as a spaces graph with full automorphism group", true,
@@ -652,6 +692,10 @@ function(filter, d, q)
   return DualPolarGraph2DCons(IsSpacesGraph, d, q);
 end );
 
+#############################################################################
+##
+#F  DualPolarGraph2D( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( DualPolarGraph2D,
 function(arg)
   local j, filt;
@@ -671,7 +715,7 @@ end );
 
 #############################################################################
 ##
-#F  DualPolarGraph2A( [<filter>, ]<integer>, <integer> )
+#O  DualPolarGraph2ACons( [<filter>, ]<integer>, <integer> )
 ##  
 InstallMethod( DualPolarGraph2ACons,
      "as a spaces graph with full automorphism group", true,
@@ -725,6 +769,10 @@ function(filter, e, r)
   return DualPolarGraph2ACons(IsSpacesGraph, e, r);
 end );
 
+#############################################################################
+##
+#F  DualPolarGraph2A( [<filter>, ]<integer>, <integer> )
+##  
 InstallGlobalFunction( DualPolarGraph2A,
 function(arg)
   local j, filt;
@@ -744,7 +792,7 @@ end );
 
 #############################################################################
 ##
-#F  DoroGraph( [<filter>, ]q )
+#O  DoroGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( DoroGraphCons,
      "as a spaces graph with full automorphism group", true,
@@ -793,6 +841,10 @@ function(filter, q)
   return DoroGraphCons(IsSpacesGraph, q);
 end );
 
+#############################################################################
+##
+#F  DoroGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( DoroGraph,
 function(arg)
   local j, filt;
@@ -812,7 +864,7 @@ end );
 
 #############################################################################
 ##
-#F  UnitaryNonisotropicsGraph( [<filter>, ]<integer> )
+#O  UnitaryNonisotropicsGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( UnitaryNonisotropicsGraphCons, "as a spaces graph", true,
      [IsSpacesGraph, IsInt], 0,
@@ -831,6 +883,10 @@ function(filter, r)
   return UnitaryNonisotropicsGraphCons(IsSpacesGraph, r);
 end );
 
+#############################################################################
+##
+#F  UnitaryNonisotropicsGraph( [<filter>, ]<integer> )
+##  
 InstallGlobalFunction( UnitaryNonisotropicsGraph,
 function(arg)
   local j, filt;
