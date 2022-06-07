@@ -70,6 +70,7 @@ DeclareGlobalFunction( "TetrahedronGraph" );
 ##
 DeclareGlobalFunction( "OctahedronGraph" );
 
+#TODO conflict with digraphs
 #############################################################################
 ##
 #F  PetersenGraph2(  )
@@ -83,12 +84,12 @@ DeclareGlobalFunction( "OctahedronGraph" );
 ##  <Description>
 ##  This function returns the Petersen graph.
 ##  <P/>
-##  The <E>Petersen graph</E> is the graph with vertex-set the 
-##  <M>2</M>-subsets of <M>\{1,..., 5\}</M>, and distinct vertices are 
-##  adjacent if and only if their intersection is empty. By definition, 
-##  this is exactly the Odd graph of diameter <M>2</M> and the Kneser graph
-##  <M>K(5,2)</M> (see <Ref Func="OddGraph"/> and <Ref Func="KneserGraph"/>).
-##  This graph is strongly regular with parameters <M>(10,3,0,1)</M>.
+##  The <E>Petersen graph</E> has vertex-set the <M>2</M>-subsets of 
+##  <M>\{1,..., 5\}</M>, and distinct vertices are adjacent if and only if their 
+##  intersection is empty. By definition, this is exactly the Odd graph 
+##  <M>O_3</M> and the Kneser graph <M>K(5,2)</M> (see <Ref Func="OddGraph"/> 
+##  and <Ref Func="KneserGraph"/>). This graph is strongly regular with 
+##  parameters <M>(10,3,0,1)</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BV_2022" Where="Section 10.3"/> or 
@@ -160,7 +161,7 @@ DeclareGlobalFunction( "ShrikhandeGraph" );
 ##  <P/>
 ##  The <E>Clebsch graph</E> is the halved graph of the <M>5</M>-dimensional
 ##  hypercube graph (see <Ref Func="HalvedCubeGraph"/>, 
-##  <Ref Func="HypercubeGraph"/> and <Ref Func="HalvedGraph"/> ). This graph
+##  <Ref Func="HypercubeGraph"/> and <Ref Func="HalvedGraph"/>). This graph
 ##  is strongly regular with parameters <M>(16,10,6,6)</M>.
 ##  <P/>
 ##  For more information on this, see 
@@ -179,8 +180,7 @@ DeclareGlobalFunction( "ShrikhandeGraph" );
 ##
 DeclareGlobalFunction( "ClebschGraph" );
 
-# In BVM_2022 Sec 10.10  # In BCN_1989 3.11
-#TODO need def
+#TODO not full automorphism group
 #############################################################################
 ##
 #F  SchlaefliGraph(  )
@@ -194,8 +194,13 @@ DeclareGlobalFunction( "ClebschGraph" );
 ##  <Description>
 ##  This function returns the Schläfli graph.
 ##  <P/>
-##  The <E>Schläfli graph</E> is the TODO. This graph
-##  is strongly regular with parameters <M>(27,16,10,8)</M>.
+##  Let 
+##  <M>e = (-3, -3, 1, 1, 1, 1, 1, 1), f = (3, -1, -1, -1, -1, -1, -1, 3)</M>.
+##  The <E>Schläfli graph</E> has vertex-set the vectors obtained from 
+##  permuting the first 6 and last 2 entries of <M>e</M> and <M>f</M>. Distinct
+##  vertices <M>a,b</M> are adjacent if <M>a . b = 8</M> (where <M>.</M> is the
+##  standard dot product). This graph is strongly regular with parameters
+##  <M>(27,16,10,8)</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BV_2022" Where="Section 10.10"/> or 
@@ -213,14 +218,14 @@ DeclareGlobalFunction( "ClebschGraph" );
 ##
 DeclareGlobalFunction( "SchlaefliGraph" );
 
-#TODO implementation list use? example
+#TODO implementation list use? not full auto, might want to explain vertices
 #############################################################################
 ##
-#F  HoffmanSingletonGraph2(  )
+#F  HoffmanSingletonGraph(  )
 ##  
-##  <#GAPDoc Label="HoffmanSingletonGraph2">
+##  <#GAPDoc Label="HoffmanSingletonGraph">
 ##  <ManSection>
-##  <Func Name="HoffmanSingletonGraph2"
+##  <Func Name="HoffmanSingletonGraph"
 ##   Arg=''/>
 ##  <Returns>A graph.</Returns>
 ##
@@ -230,8 +235,8 @@ DeclareGlobalFunction( "SchlaefliGraph" );
 ##  The <E>Hoffman-Singleton graph</E> can be constructed as follows. Let 
 ##  <M>P_h</M> be a pentagon and <M>Q_i</M> be a pentagram for 
 ##  <M>h,i \in \{1,..., 5\}</M>, and consider the union of these graphs. Then 
-##  add an edge between <M>j \in P_h</M> and <M>hi+j \in Q_i</M> for each 
-##  <M>j \in P_h</M> and <M>i \in \{1,...,5\}</M>. The resulting graph is 
+##  add an edge between <M>j \in P_h</M> and <M>hi+j\in Q_i</M> (modulo 5) for 
+##  each <M>j \in P_h</M> and <M>i \in \{1,..., 5\}</M>. The resulting graph is 
 ##  the Hoffman-Singleton graph, which is strongly regular with parameters
 ##  <M>(50,7,0,1)</M>. 
 ##  <P/>
@@ -240,17 +245,18 @@ DeclareGlobalFunction( "SchlaefliGraph" );
 ##  <Cite Key="BCN_1989" Where="Section 13.1"/>. 
 ##    <Example>
 ##      <![CDATA[
-##gap> AdjFunGraph(arg);
-##[ 16, 6, 2, 2 ]
+##gap> gamma:=HoffmanSingletonGraph();;                                 
+##gap> SRGParameters(gamma);
+##[ 50, 7, 0, 1 ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "HoffmanSingletonGraph2" );
+DeclareGlobalFunction( "HoffmanSingletonGraph" );
 
-# In BVM_2022 Sec 10.20  # In BCN_1989 11.4G not specific
+# TODO full auto
 #############################################################################
 ##
 #F  GewirtzGraph(  )
@@ -265,11 +271,10 @@ DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 ##  This function returns the Gewirtz graph (also known as the Sims-Gewirtz
 ##  graph).
 ##  <P/>
-##  The <E>Gewirtz graph</E> has vertex-set consisting of the blocks of the
-##  unique Steiner system in <M>S(3,6,22)</M> which do not contain a fixed
-##  point. Distinct vertices are adjacent if and only if their 
-##  intersection is empty. This graph is strongly regular with parameters
-##  <M>(56,10,0,2)</M>. 
+##  The <E>Gewirtz graph</E> has vertex-set the blocks of the unique Steiner 
+##  system in <M>S(3,6,22)</M> which do not contain a fixed point. Distinct 
+##  vertices are adjacent if and only if their intersection is empty. This graph 
+##  is strongly regular with parameters <M>(56,10,0,2)</M>. 
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BV_2022" Where="Section 10.20"/> or 
@@ -287,6 +292,7 @@ DeclareGlobalFunction( "HoffmanSingletonGraph2" );
 ##
 DeclareGlobalFunction( "GewirtzGraph" );
 
+#TODO full auto
 #############################################################################
 ##
 #F  WittStronglyRegularGraph(  )
@@ -299,12 +305,12 @@ DeclareGlobalFunction( "GewirtzGraph" );
 ##
 ##  <Description>
 ##  This function returns the Witt strongly regular graph (also known as 
-##  the <M>M_{22}</M> graph).
+##  the <M>M_{{22}}</M> graph).
 ##  <P/>
-##  The <E>Witt strongly regular graph</E> has vertex-set consisting of 
-##  the blocks of the unique Steiner system in <M>S(3,6,22)</M>. Distinct 
-##  vertices are adjacent if and only if their intersection is empty. This graph 
-##  is strongly regular with parameters <M>(77,16,0,4)</M>. 
+##  The <E>Witt strongly regular graph</E> has vertex-set the blocks of the 
+##  unique Steiner system in <M>S(3,6,22)</M>. Distinct vertices are adjacent if 
+##  and only if their intersection is empty. This graph is strongly regular with 
+##  parameters <M>(77,16,0,4)</M>. 
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BV_2022" Where="Section 10.27"/> or 
@@ -322,7 +328,6 @@ DeclareGlobalFunction( "GewirtzGraph" );
 ##
 DeclareGlobalFunction( "WittStronglyRegularGraph" );
 
-# In BVM_2022 Sec 10.53
 #############################################################################
 ##
 #F  KlinGraph(  )
@@ -336,12 +341,12 @@ DeclareGlobalFunction( "WittStronglyRegularGraph" );
 ##  <Description>
 ##  This function returns the Klin graph.
 ##  <P/>
-##  The <E>Klin graph</E> can be constructed as follows. Let <M>G=S_7</M>
-##  and <M>H=\langle (1,2,3,4,5,6),(1,4) \rangle</M> be a subgroup of 
-##  <M>G</M>. The vertex-set of the Klin graph is the set of right cosets
-##   of <M>H</M> in <M>G</M>. Any two distinct vertices <M>Hg_1,Hg_2</M> 
-##  are adjacent if and if <M>g_2g_1^{-1}</M> is in 
-##  <Display> \{(3,4,5,6,7), (2,4,6,3,5,7), (3,5,6,7), (2,4,5,6,7,3),
+##  The <E>Klin graph</E> can be constructed as follows. Let <M>G = S_7</M>
+##  and <M>H = \langle (1,2,3,4,5,6), (1,4) \rangle</M> be a subgroup of 
+##  <M>G</M>. The vertex-set of the Klin graph is the set of right cosets of 
+##  <M>H</M> in <M>G</M>. Distinct vertices <M>Ha,Hb</M> 
+##  are adjacent if and if <M>ab^{{-1}}</M> is in 
+##  <Display Mode="M"> \{(3,4,5,6,7), (2,4,6,3,5,7), (3,5,6,7), (2,4,5,6,7,3),
 ##              (2,3,5,6,7), (2,4,5,6), (2,3,5,6)\}.</Display>
 ##  This graph is strongly regular with parameters <M>(210,99,48,45)</M>.
 ##  <P/>
@@ -376,8 +381,8 @@ DeclareGlobalFunction( "KlinGraph" );
 ##  The <E>Cube graph</E> is the skeleton of the cube. This graph is 
 ##  isomorphic to the 3-dimensional hypercube graph and the Hamming graph
 ##  <M>H(3,2)</M> (see <Ref Func="HypercubeGraph"/> and 
-##  <Ref Func="HammingGraph2"/>). This graph is distance-regular with 
-##  intersection array <M>\{3,2,1;1,2,3\}</M>.
+##  <Ref Func="HammingGraph2"/>). This graph has 8 vertices and is 
+##  distance-regular with intersection array <M>\{3, 2, 1; 1, 2, 3\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> CubeGraph();
@@ -411,8 +416,8 @@ DeclareGlobalFunction( "CubeGraph" );
 ##  <P/>
 ##  The <E>Heawood graph</E> is the incidence graph of the Desarguesian 
 ##  plane <M>PG(2,2)</M> (see <Ref Func="DesarguesianPlaneIncidenceGraph"/>).
-##  This graph is distance-regular with intersection array 
-##  <M>\{3,2,2;1,1,3\}</M>.
+##  This graph has 14 vertices and is distance-regular with intersection array 
+##  <M>\{3, 2, 2; 1, 1, 3\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph(arg);
@@ -425,6 +430,7 @@ DeclareGlobalFunction( "CubeGraph" );
 ##
 DeclareGlobalFunction( "HeawoodGraph" );
 
+# TODO explain vertices?
 #############################################################################
 ##
 #F  IcosahedronGraph(  )
@@ -439,8 +445,8 @@ DeclareGlobalFunction( "HeawoodGraph" );
 ##  This function returns the Icosahedron graph.
 ##  <P/>
 ##  The <E>Icosahedron graph</E> is the skeleton of the icosahedron. This 
-##  graph is distance-regular with intersection array 
-##  <M>\{5,2,1;1,2,5\}</M>.
+##  graph has 12 vertices and is distance-regular with intersection array 
+##  <M>\{5, 2, 1; 1, 2, 5\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> gamma:=IcosahedronGraph();;
@@ -454,7 +460,7 @@ DeclareGlobalFunction( "HeawoodGraph" );
 ##
 DeclareGlobalFunction( "IcosahedronGraph" );
 
-# In BCN_1989 13.1A 
+#TODO full auto PGammaO(3,9) Aut(S_6)
 #############################################################################
 ##
 #F  SylvesterGraph(  )
@@ -466,11 +472,23 @@ DeclareGlobalFunction( "IcosahedronGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  This function returns the Sylvester graph.
+##  This function returns the Sylvester graph (a.k.a. Sylvester's double six
+##  graph).
 ##  <P/>
-##  The <E>Sylvester graph</E> is the TODO.
-##  This graph is distance-regular with intersection array 
-##  <M>\{5,4,2;1,1,4\}</M>.
+##  Let <M>\Omega = \{1, 2,..., 6\}</M>. The generalized quadrangle
+##  <M>GQ(2,2)</M> can be constructed as having points 
+##  <M>P = \{p \subset \Omega: |p| = 2\}</M> and lines <M>L</M> being the set of 
+##  partitions of <M>\Omega</M> by points in <M>P</M>.
+##  <P/>
+##  Let <M>O_a = \{p \in P: a \in p\}</M> for each <M>a \in \Omega</M> (the
+##  ovoids of <M>GQ(2,2)</M>). Let <M>\Sigma</M> be the set of spreads of
+##  <M>GQ(2,2)</M>.
+##  <P/>
+##  The <E>Sylvester graph</E> has vertex-set <M>\Omega \times \Sigma</M>. 
+##  Distinct vertices <M>(a,S),(b,T)</M> are adjacent if and only if 
+##  <M>a&neq;b, S&neq;T</M>, and the unique point in <M>O_a \cap O_b</M> lies on 
+##  the unique line in <M>S \cap T</M>. This graph has 36 vertices and is 
+##  distance-regular with intersection array <M>\{5, 4, 2; 1, 1, 4\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 13.1A"/>.
@@ -487,7 +505,6 @@ DeclareGlobalFunction( "IcosahedronGraph" );
 ##
 DeclareGlobalFunction( "SylvesterGraph" );
 
-# In BCN_1989 13.3
 #############################################################################
 ##
 #F  PerkelGraph(  )
@@ -501,9 +518,11 @@ DeclareGlobalFunction( "SylvesterGraph" );
 ##  <Description>
 ##  This function returns the Perkel graph.
 ##  <P/>
-##  The <E>Perkel graph</E> is the TODO.
-##  This graph is distance-regular with intersection array 
-##  <M>\{6,5,2;1,1,3\}</M>.
+##  The <E>Perkel graph</E> has vertex-set a conjugacy class in <M>PSL(2,19)</M> 
+##  of a subgroup isomorphic to <M>Alt(5)</M>. Distinct vertices <M>A,B</M> are 
+##  adjacent if and only if <M>A \cap B</M> contains an element of order 5. This 
+##  graph has 57 vertices and is distance-regular with intersection array 
+##  <M>\{6, 5, 2; 1, 1, 3\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 13.3"/>. 
@@ -521,7 +540,7 @@ DeclareGlobalFunction( "SylvesterGraph" );
 DeclareConstructor( "PerkelGraphCons", [IsObject]);
 DeclareGlobalFunction( "PerkelGraph" );
 
-# In BCN_1989 3.11
+#TODO full aut 
 #############################################################################
 ##
 #F  GossetGraph(  )
@@ -535,13 +554,11 @@ DeclareGlobalFunction( "PerkelGraph" );
 ##  <Description>
 ##  This function returns the Gosset graph.
 ##  <P/>
-##  The <E>Gosset graph</E> can be constructed as follows. Consider the 
-##  vector <M>e=(-3,-3,1,1,1,1,1,1)</M> in <M>&RR;^8</M>. The
-##  vertex-set of the Gosset graph  is the set of vecotrs obtained from 
-##  permuting coordinates and taking opposite vectors of <M>e</M>. Any two
-##  distinct vectors <M>u,w</M> are adjacent if and only if their inner 
-##  product <M>u.v</M> is equal to 8. This graph is distance-regular with
-##  intersection array <M>\{27,10,1;1,10,27\}</M>.
+##  Let <M>e=(-3,-3,1,1,1,1,1,1)</M>. The <E>Gosset graph</E> has vertex-set the 
+##  vectors obtained from permuting coordinates and/or taking opposite vectors
+##  of <M>e</M>. Distinct vectors <M>u,w</M> are adjacent if and only if 
+##  <M>u.w = 8</M> (the standard inner product). This graph has 56 vertices and
+##  is distance-regular with intersection array <M>\{27, 10, 1; 1, 10, 27\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 3.11"/>. 
@@ -558,7 +575,6 @@ DeclareGlobalFunction( "PerkelGraph" );
 ##
 DeclareGlobalFunction( "GossetGraph" );
 
-# In BCN_1989 11.4B
 #############################################################################
 ##
 #F  Witt23Graph(  )
@@ -572,12 +588,11 @@ DeclareGlobalFunction( "GossetGraph" );
 ##  <Description>
 ##  This function returns the truncated Witt graph.
 ##  <P/>
-##  The <E>truncated Witt graph</E> can be constructed as follows. The
-##  vertex-set of the graph is the set of weight 8 vectors of the large 
-##  Witt design not containing a fixed symbol. Any two distinct vertices
-##  <M>u,w</M> are adjacent if and only if the intersection of their 
-##  supports is empty. This graph is distance-regular with
-##  intersection array <M>\{15,14,12;1,1,9\}</M>.
+##  The <E>truncated Witt graph</E> has vertex-set the blocks of a Steiner 
+##  system <M>S(5,8,24)</M> that do not contain a fixed symbol. Distinct 
+##  vertices <M>A,B</M> are adjacent if and only if <M>A cap B = \emptyset</M>. 
+##  This graph has 506 vertices and is distance-regular with intersection array 
+##  <M>\{15, 14, 12; 1, 1, 9\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 11.4B"/>. 
@@ -594,7 +609,6 @@ DeclareGlobalFunction( "GossetGraph" );
 ##
 DeclareGlobalFunction( "Witt23Graph" );
 
-# In BCN_1989 11.4A
 #############################################################################
 ##
 #F  Witt24Graph(  )
@@ -608,11 +622,10 @@ DeclareGlobalFunction( "Witt23Graph" );
 ##  <Description>
 ##  This function returns the large Witt graph.
 ##  <P/>
-##  The <E>large Witt graph</E> can be constructed as follows. The
-##  vertex-set of the graph is the set of weight 8 vectors of the large 
-##  Witt design. Any two distinct vertices <M>u,w</M> are adjacent if and
-##  only if the intersection of their supports is empty. This graph is
-##  distance-regular with intersection array <M>\{30,28,24;1,3,15\}</M>.
+##  The <E>large Witt graph</E> has vertex-set the blocks of a Steiner 
+##  system <M>S(5,8,24)</M>. Distinct vertices <M>A,B</M> are adjacent if and 
+##  only if <M>A cap B = \emptyset</M>. This graph has 759 vertices and is
+##  distance-regular with intersection array <M>\{30, 28, 24; 1, 3, 15\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 11.4A"/>. 
@@ -629,7 +642,7 @@ DeclareGlobalFunction( "Witt23Graph" );
 ##
 DeclareGlobalFunction( "Witt24Graph" );
 
-# In BCN_1989 11.4E
+#TODO full aut
 #############################################################################
 ##
 #F  HigmanGraph(  )
@@ -641,11 +654,16 @@ DeclareGlobalFunction( "Witt24Graph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  This function returns the Higman graph.
+##  This function returns the Higman graph. 
 ##  <P/>
-##  The <E>Higman graph</E> is the incidence graph of Higman's symmetric 
-##  design. This graph is distance-regular with intersection array 
-##  <M>\{50,49,36;1,14,50\}</M>.
+##  Let <M>\Sigma = \{1, 2,..., 24\}</M> and <M>i,j \in \Sigma</M>be distinct. 
+##  The <E>Higman graph</E> has vertex-set the blocks of a Steiner system 
+##  <M>S(5,8,24)</M> which contain exactly one of the symbols <M>i,j</M>. 
+##  Distinct vertices <M>A,B</M> are adjacent if and only if 
+##  <M>|(A \cap B) \setminus \{i,j\}| \in \{0, 4\}</M>. This definition results 
+##  in a graph isomorphic to the incidence graph of Higman's symmetric design.
+##  This graph has 352 vertices and is distance-regular with intersection array 
+##  <M>\{50, 49, 36; 1, 14, 50\}</M>.
 ##  <P/>
 ##  For more information on this graph, see  
 ##  <Cite Key="BCN_1989" Where="Section 11.4E"/>. 
@@ -662,8 +680,6 @@ DeclareGlobalFunction( "Witt24Graph" );
 ##
 DeclareGlobalFunction( "HigmanGraph" );
 
-# In BCN_1989 12.3
-# TODO def in how we define it?
 #############################################################################
 ##
 #F  CoxeterGraph(  )
@@ -677,8 +693,9 @@ DeclareGlobalFunction( "HigmanGraph" );
 ##  <Description>
 ##  This function returns the Coxeter graph.
 ##  <P/>
-##  The <E>Coxeter graph</E> is the TODO. This graph is distance-regular 
-##  with intersection array <M>\{3,2,2,1;1,1,1,2\}</M>.
+##  The <E>Coxeter graph</E> is the polar graph <M>NOorth(1,3,7)</M> (see 
+##  <Ref Func="PolarGraphNOorth"/>). This graph has 28 vertices and is 
+##  distance-regular with intersection array <M>\{3, 2, 2, 1; 1, 1, 1, 2\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 12.3"/>. 
@@ -695,7 +712,7 @@ DeclareGlobalFunction( "HigmanGraph" );
 ##
 DeclareGlobalFunction( "CoxeterGraph" );
 
-# In BCN_1989 11.4C
+#TODO full aut
 #############################################################################
 ##
 #F  Witt22Graph(  )
@@ -709,12 +726,12 @@ DeclareGlobalFunction( "CoxeterGraph" );
 ##  <Description>
 ##  This function returns the doubly truncated Witt graph.
 ##  <P/>
-##  The <E>doubly truncated Witt graph</E> can be constructed as follows. 
-##  Thevertex-set of the graph is the set of weight 8 vectors of the large 
-##  Witt design not containing two fixed symbols. Any two distinct vertices
-##  <M>u,w</M> are adjacent if and only if the intersection of their 
-##  supports is empty. This graph is distance-regular with
-##  intersection array <M>\{7,6,4,4;1,1,1,6\}</M>.
+##  Let <M>i,j \in \{1, 2,..., 24\}</M> be distinct. The 
+##  <E>doubly truncated Witt graph</E> has vertex-set the blocks of a Steiner 
+##  system <M>S(5,8,24)</M> which do not contain <M>i</M> or <M>j</M>. Distinct 
+##  vertices <M>A,B</M> are adjacent if and only if <M>A \cap B = \emptyset</M>. 
+##  This graph has 330 vertices and is distance-regular with intersection array 
+##  <M>\{7, 6, 4, 4; 1, 1, 1, 6\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 11.4C"/>. 
@@ -731,8 +748,7 @@ DeclareGlobalFunction( "CoxeterGraph" );
 ##
 DeclareGlobalFunction( "Witt22Graph" );
 
-# In BCN_1989 11.2G
-#TODO notation, ref and check def
+#TODO full aut, check def
 #############################################################################
 ##
 #F  UnitalGraph(  )
@@ -746,14 +762,14 @@ DeclareGlobalFunction( "Witt22Graph" );
 ##  <Description>
 ##  This function returns the Unital graph.
 ##  <P/>
-##  The <E>Unital graph</E> can be constructed as follows. 
-##  The vertex-set of the graph is the set of subplanes in <M>PG(2,4)</M> 
-##  isomorphic to <M>AG(2,3)</M>. Any two distinct vertices <M>U,W</M> are 
-##  adjacent if and only if they intersect in one point. This graph is 
-##  distance-regular with intersection array <M>\{9,8,6,3;1,1,3,8\}</M>.
+##  The <E>Unital graph</E> has vertex-set the subplanes in <M>PG(2,4)</M> 
+##  isomorphic to <M>AG(2,3)</M>. Distinct vertices <M>U,W</M> are 
+##  adjacent if and only if they intersect in one point. This graph has 280 
+##  vertices and is distance-regular with intersection array 
+##  <M>\{9, 8, 6, 3; 1, 1, 3, 8\}</M>.
 ##  <P/>
 ##  For more information on this graph, see 
-##  <Cite Key="BCN_1989" Where="Section 11.2G"/>. 
+##  <Cite Key="BCN_1989" Where="Section 11.3G"/>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap>  gamma:=UnitalGraph();;
@@ -768,6 +784,7 @@ DeclareGlobalFunction( "Witt22Graph" );
 DeclareConstructor("UnitalGraphCons", [IsObject]);
 DeclareGlobalFunction( "UnitalGraph" );
 
+#TODO explain vertices
 #############################################################################
 ##
 #F  DodecahedronGraph(  )
@@ -781,9 +798,9 @@ DeclareGlobalFunction( "UnitalGraph" );
 ##  <Description>
 ##  This function returns the Dodecahedron graph.
 ##  <P/>
-##  The <E>Dodecahedron graph</E> is the skeleton of the dodecahedron. This
-##  graph is distance-regular with parameters 
-##  <M>\{3,2,1,1,1;1,1,1,2,3\}</M>.
+##  The <E>Dodecahedron graph</E> is the skeleton of the dodecahedron. This 
+##  graph has 20 vertices and is distance-regular with parameters 
+##  <M>\{3, 2, 1, 1, 1; 1, 1, 1, 2, 3\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> GlobalParameters(gamma);
@@ -797,6 +814,7 @@ DeclareGlobalFunction( "UnitalGraph" );
 ##
 DeclareGlobalFunction( "DodecahedronGraph" );
 
+#TODO Ref?
 #############################################################################
 ##
 #F  DesarguesGraph(  )
@@ -812,8 +830,9 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 ##  <P/>
 ##  The <E>Desargues graph</E> is the bipartite double of the Petersen 
 ##  graph (see <Ref Func="PetersenGraph2"/> and 
-##  <Ref Func="DoubledOddGraph"/>). This graph is distance-regular with 
-##  parameters  <M>\{3,2,2,1,1;1,1,2,2,3\}</M>.
+##  <Ref Func="DoubledOddGraph"/>). This graph has 20 vertices and is 
+##  distance-regular with intersection array 
+##  <M>\{3, 2, 2, 1, 1; 1, 1, 2, 2, 3\}</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> GlobalParameters(gamma);
@@ -827,8 +846,6 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 ##
 DeclareGlobalFunction( "DesarguesGraph" );
 
-# In BCN_1989 13.4
-#TODO def ref
 #############################################################################
 ##
 #F  BiggsSmithGraph(  )
@@ -842,8 +859,11 @@ DeclareGlobalFunction( "DesarguesGraph" );
 ##  <Description>
 ##  This function returns the Biggs-Smith graph.
 ##  <P/>
-##  The <E>Biggs-Smith graph</E> is TODO. This graph is distance-regular with 
-##  parameters  <M>\{3,2,2,2,1,1,1;1,1,1,1,1,1,3\}</M>. 
+##  The <E>Biggs-Smith graph</E> has vertex-set a conjugacy class of a subgroup
+##  of <M>PSL(2,17)</M> which is isomorphic to <M>Sym(4)</M>. Distinct vertices
+##  are adjacent if and only if their intersection is isomorphic to the dihedral
+##  group of order 8. This graph has 102 vertices and is distance-regular with 
+##  intersection array <M>\{3, 2, 2, 2, 1, 1, 1; 1, 1, 1, 1, 1, 1, 3\}</M>. 
 ##  <P/>
 ##  For more information on this graph, see 
 ##  <Cite Key="BCN_1989" Where="Section 13.4"/>. 

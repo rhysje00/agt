@@ -492,36 +492,6 @@ function( arg... )
   return NewGroupGraph(AutomorphismGroup(gamma),gamma);
 end );
 
-#############################################################################
-##
-#F  CompleteMultipartiteGraph2( <n1> , <n2> , ... )
-##  
-InstallGlobalFunction( CompleteMultipartiteGraph2, 
-function( arg... )
-  local   sum, Grs, Grp,  i, fvtx, comb, gamma;
-
-  if not ForAll(arg,IsPosInt) then
-    Error("usage: CompleteMultipartiteGraph(<n1>,<n2>,...), where \n\
-          <n1>,<n2>,... are positive integers.");
-  fi;
-
-  sum := 0;
-  Grs := [];
-  fvtx := [];
-
-  for i in arg do
-    sum := sum + i;
-    Add(fvtx,sum-i+1);
-    Add(Grs,SymmetricGroup([sum-i+1..sum]));
-  od;      
-
-  comb:=Combinations(fvtx,2);
-  Grp:=DirectProduct(Grs);
-  gamma:=EdgeOrbitsGraph(Grp,comb,sum);
-  gamma:=UnderlyingGraph(gamma);
-
-  return NewGroupGraph(AutomorphismGroup(gamma),gamma);
-end );
 
 #############################################################################
 ##
@@ -549,52 +519,6 @@ function( n )
   fi;
 
   return HammingGraph(2,n);
-end );
-
-#############################################################################
-##
-#F  HoffmanSingletonGraph(  )
-##  
-InstallGlobalFunction( HoffmanSingletonGraph, 
-function(  )
-  local G, cyrng, cyflip, permlist, edgelist, gamma, i,j,h,hi,hij;
-
-  permlist := [];
-  edgelist:=[];
-
-  # Create initial groups to add multiple edges as orbit members
-  for i in [0..9] do
-    cyrng := (5*i+1,5*i+2,5*i+3,5*i+4,5*i+5);
-    Add(permlist,cyrng);
-  od;
-
-  # Add edge. We have 5 5-cycles and then 5 pentagrams
-  for i in [0..4] do
-    Append(edgelist,[[5*i+1,5*i+2],[5*i+2,5*i+1]]);
-    Append(edgelist,[25+[5*i+1,5*i+3],25+[5*i+3,5*i+1]]);
-  od;
-
-  G := Group(permlist);
-  gamma := EdgeOrbitsGraph(G,edgelist,50);
-
-  # Get rid of the group as it may not consist of automorphisms of 
-  # the complete graph
-  gamma := NewGroupGraph(Group(()),gamma);
-  
-
-  # Adding edges as described by Brouwer
-  for h in [1..5] do
-    for i in [1..5] do 
-      hi := h*i;
-      for j in [1..5] do
-        hij := ((hi+j) mod 5)+1 ;
-        AddEdgeOrbit(gamma,[5*(h-1)+j,20+5*i+hij]);
-        AddEdgeOrbit(gamma,[20+5*i+hij,5*(h-1)+j]);
-      od;
-    od;
-  od;  
-
-  return NewGroupGraph(AutomorphismGroup(gamma),gamma);
 end );
 
 #############################################################################

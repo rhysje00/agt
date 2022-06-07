@@ -768,7 +768,6 @@ DeclareGlobalFunction( "IsKnownSRGParameterTuple" );
 ##
 DeclareGlobalFunction( "IsAllSRGsStored" );
 
-
 #############################################################################
 ##
 #F  DisjointUnionOfCliques( <n1> , <n2>, ... )
@@ -797,41 +796,6 @@ DeclareGlobalFunction( "IsAllSRGsStored" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "DisjointUnionOfCliques" );
-
-#############################################################################
-##
-#F  CompleteMultipartiteGraph2( <n1> , <n2>, ... )
-##  
-##  <#GAPDoc Label="CompleteMultipartiteGraph2">
-##  <ManSection>
-##  <Func Name="CompleteMultipartiteGraph2"
-##   Arg='n1, n2, ... '/>
-##  <Returns>A record.</Returns>
-##
-##  <Description>
-##  Given positive integers <A>n1, n2,...</A>, this function returns the complete multipartite
-##  graph with parts of orders <A>n1, n2,...</A>. 
-##  <P/>
-##  Let <M>n_{1},n_{2},...,n_{t}</M> be positive integers. Then the <E>complete
-##  multipartite graph</E>, <M>K_{n_{1},n_{2},...,n_{t}}</M>, has vertex set that
-##  can be partitioned into <M>t</M> disjoint sets <M>X_{1},X_{2},...,X_{t}</M> of sizes <M>n_{1},n_{2},...,n_{t}</M>
-##  such that distinct vertices are adjacent if and only if they belong to different
-##  <M>X_{i}</M>.
-##    <Example>
-##      <![CDATA[
-##gap> CompleteMultipartiteGraph(4,2,1);
-##rec( adjacencies := [ [ 5, 6, 7 ], [ 1, 2, 3, 4, 7 ], [ 1, 2, 3, 4, 5, 6 ] ], 
-##  autGroup := Group([ (5,6), (3,4), (2,3), (1,2) ]), group := Group([ (5,6),
-##    (3,4), (2,3), (1,2) ]), isGraph := true, isSimple := true, order := 7, 
-##  representatives := [ 1, 5, 7 ], 
-##  schreierVector := [ -1, 4, 3, 2, -2, 1, -3 ] )
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "CompleteMultipartiteGraph2" );
 
 #############################################################################
 ##
@@ -922,31 +886,6 @@ DeclareGlobalFunction( "TriangularGraph" );
 ##
 DeclareGlobalFunction( "SquareLatticeGraph" );
 
-#############################################################################
-##
-#F  HoffmanSingletonGraph(  )
-##  
-##  <#GAPDoc Label="HoffmanSingletonGraph">
-##  <ManSection>
-##  <Func Name="HoffmanSingletonGraph"
-##   Arg=''/>
-##  <Returns>A record.</Returns>
-##
-##  <Description>
-##  This function returns the Hoffman-Singleton graph.
-##  <P/>
-##  The <E>Hoffman-Singleton graph</E> is the unique strongly regular graph with
-##  parameters <M>(50,7,0,1)</M>. For more information on this graph, see <Cite Key="B_2018b"/>. 
-##    <Example>
-##      <![CDATA[
-##gap> gamma:=HoffmanSingletonGraph();;
-##      ]]>
-##    </Example>
-##  </Description>
-##  </ManSection>
-##  <#/GAPDoc>
-##
-DeclareGlobalFunction( "HoffmanSingletonGraph" );
 
 # In BVM_2022 Sec 10.31
 #############################################################################

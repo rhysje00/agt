@@ -72,9 +72,9 @@ end );
 
 #############################################################################
 ##
-#F  HoffmanSingletonGraph2(  )
+#F  HoffmanSingletonGraph(  )
 ##  
-InstallGlobalFunction( HoffmanSingletonGraph2,
+InstallGlobalFunction( HoffmanSingletonGraph,
 function()
   return List([function()
         local G, dp, p1, p2, p3, p4;
@@ -195,7 +195,10 @@ function()
                     end);
 end );
 
-# The Perkel graph with intersection array {6, 5, 2; 1, 1, 3}.
+#############################################################################
+##
+#O  PerkelGraphCons( filter )
+##  
 InstallMethod( PerkelGraphCons, "as a conjugacy class graph", true,
      [IsConjugacyClassGraph], 0,
 function(filter)
@@ -205,6 +208,10 @@ function(filter)
            Elements(Group( [ ( 2,12,15)( 3,17,16)( 4, 8,10)( 5, 6,13)( 9,20,18)(11,19,14),( 1, 2)( 3,20)( 4,19)( 5,18)( 6,17)( 7,16)( 8,15)( 9,14)(10,13)(11,12) ] )^G), ConjugateGroup, GroupIntersection(10), true);
 end );
 
+#############################################################################
+##
+#F  PerkelGraph(  )
+##  
 InstallGlobalFunction( PerkelGraph,
 function()
   return PerkelGraphCons(IsConjugacyClassGraph);
@@ -275,7 +282,7 @@ end );
 
 #############################################################################
 ##
-#F  UnitalGraph(  )
+#O  UnitalGraphCons( filter )
 ##  
 InstallMethod( UnitalGraphCons, "as a spaces graph", true, [IsSpacesGraph], 0,
 function(filter)
@@ -295,6 +302,10 @@ function(filter)
                OnSetsSubspaces(V), A);
 end );
 
+#############################################################################
+##
+#F  UnitalGraph(  )
+##  
 InstallGlobalFunction( UnitalGraph,
 function()
   return UnitalGraphCons(IsSpacesGraph);
@@ -335,7 +346,7 @@ end );
 
 #############################################################################
 ##
-#F  BiggsSmithGraph(  )
+#O  BiggsSmithGraphCons(  )
 ##  
 InstallMethod(BiggsSmithGraphCons, "as a conjugacy class graph", true,
      [IsConjugacyClassGraph], 0,
@@ -350,6 +361,10 @@ function(filter)
                         ConjugateGroup, GroupIntersection(8), true);
 end );
 
+#############################################################################
+##
+#F  BiggsSmithGraph(  )
+##  
 InstallGlobalFunction( BiggsSmithGraph,
 function()
   return BiggsSmithGraphCons(IsConjugacyClassGraph);
