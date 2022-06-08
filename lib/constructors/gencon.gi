@@ -11,7 +11,7 @@
 
 #############################################################################
 ##
-#F  AdjFunGraph( <V>, <F> )
+#F  AdjFunGraph( <vertices>, <function> )
 ##  
 InstallGlobalFunction( AdjFunGraph,
 function(V, F)
@@ -20,7 +20,7 @@ end);
 
 #############################################################################
 ##
-#F  ProductGraph( [<filter>, ]<graphs>, <func> )
+#O  ProductGraphCons( [<filter>, ]<graphs>, <function> )
 ##  
 InstallMethod( ProductGraphCons, "without names", true,
                [NoVertexNames, IsList, IsFunction], 0,
@@ -52,6 +52,10 @@ function(filter, Gs, F)
   return G;
 end );
 
+#############################################################################
+##
+#F  ProductGraph( [<filter>, ]<graphs>, <function> )
+##  
 InstallGlobalFunction( ProductGraph,
 function(arg)
   local j, filt;
@@ -71,7 +75,7 @@ end );
 
 #############################################################################
 ##
-#F  PowerGraph( [<filter>, ]<graph>, <int>, <func> )
+#O  PowerGraphCons( [<filter>, ]<graph>, <integer>, <function> )
 ##  
 InstallMethod( PowerGraphCons, "without names", true,
     [NoVertexNames, IsRecord, IsInt, IsFunction], 0,
@@ -100,6 +104,10 @@ function(filter, G, n, F)
   return H;
 end );
 
+#############################################################################
+##
+#F  PowerGraph( [<filter>, ]<graph>, <integer>, <function> )
+##  
 InstallGlobalFunction( PowerGraph,
 function(arg)
   local j, filt;
@@ -145,7 +153,7 @@ end );
 
 #############################################################################
 ##
-#F  BoxPowerGraph( [<filter>, ]<graph>, <int> )
+#F  BoxPowerGraph( [<filter>, ]<graph>, <integer> )
 ##  
 InstallGlobalFunction( BoxPowerGraph,
 function(arg)
@@ -197,7 +205,7 @@ end );
 
 #############################################################################
 ##
-#F  CrossPowerGraph( [<filter, ]<graph>, <int> )
+#F  CrossPowerGraph( [<filter, ]<graph>, <integer> )
 ##  
 InstallGlobalFunction( CrossPowerGraph,
 function(arg)
@@ -247,7 +255,7 @@ end );
 
 #############################################################################
 ##
-#F  StrongPowerGraph( [<filter, ]<graph>, <int> )
+#F  StrongPowerGraph( [<filter, ]<graph>, <integer> )
 ##  
 InstallGlobalFunction( StrongPowerGraph,
 function(arg)
@@ -272,7 +280,7 @@ end );
 
 #############################################################################
 ##
-#F  GraphJoin( [<filter>, ]<graphs> )
+#O  GraphJoinCons( [<filter>, ]<graphs> )
 ##  
 InstallMethod( GraphJoinCons, "without names", true,
      [NoVertexNames, IsList], 0,
@@ -284,7 +292,6 @@ function(filter, Gs)
                OnSum(dp), GraphJoinAdjacency(Gs), true);
 end );
 
-# The join of a list of graphs.
 InstallMethod( GraphJoinCons, "with names", true,
      [IsObject, IsList], 0,
 function(filter, Gs)
@@ -299,7 +306,10 @@ function(filter, Gs)
   return G;
 end );
 
-# The join of two or more graphs.
+#############################################################################
+##
+#F  GraphJoin( [<filter>, ]<graphs> )
+##  
 InstallGlobalFunction( GraphJoin,
 function(arg)
   local Gs, j, filt;
@@ -335,7 +345,7 @@ end );
 
 #############################################################################
 ##
-#F  ExtendedBipartiteDoubleGraph( <graph> )
+#O  ExtendedBipartiteDoubleGraphCons( <graph> )
 ##  
 InstallMethod( ExtendedBipartiteDoubleGraphCons, "without names", true,
      [NoVertexNames, IsRecord], 0,
@@ -372,6 +382,10 @@ function(filter, G)
   return H;
 end );
 
+#############################################################################
+##
+#F  ExtendedBipartiteDoubleGraph( <graph> )
+##  
 InstallGlobalFunction( ExtendedBipartiteDoubleGraph,
 function(arg)
   local j, filt;
@@ -391,7 +405,7 @@ end );
 
 #############################################################################
 ##
-#F  HalvedGraph( <graph>[, <int>] )
+#F  HalvedGraph( <graph>[, <integer>] )
 ##  
 InstallGlobalFunction( HalvedGraph,
 function(arg)
@@ -439,7 +453,7 @@ end );
 
 #############################################################################
 ##
-#F  AntipodalQuotientGraph( [<filter>, ]<graph> )
+#O  AntipodalQuotientGraphCons( [<filter>, ]<graph> )
 ##  
 InstallMethod( AntipodalQuotientGraphCons, "without names", true,
      [NoVertexNames, IsRecord], 0,
@@ -475,6 +489,10 @@ function(filter, G)
   return H;
 end );
 
+#############################################################################
+##
+#F  AntipodalQuotientGraph( [<filter>, ]<graph> )
+##  
 InstallGlobalFunction( AntipodalQuotientGraph,
 function(arg)
   local j, filt;
@@ -494,7 +512,8 @@ end );
 
 #############################################################################
 ##
-#F  SubspaceGraph( <mtrxgrp>, <subspcs>, <vctspc>, <int>[, <act>, <invt>] )
+#F  SubspaceGraph( <mtrxgrp>, <subspcs>, <vctrspc>, <integer>[, <action>,
+##                                                                  <invt>] )
 ##  
 InstallGlobalFunction( SubspaceGraph,
 function(arg)
@@ -534,7 +553,7 @@ end );
 
 #############################################################################
 ##
-#F  CliqueGraph( [<filter>, ]<graph>[, <list>] )
+#O  CliqueGraphCons( [<filter>, ]<graph>[, <list>] )
 ##  
 InstallMethod( CliqueGraphCons, "without names", true,
      [NoVertexNames, IsRecord, IsList], 0,
@@ -552,7 +571,6 @@ function(filter, G, C)
   return H;
 end );
 
-# The clique graph of a collinearity graph given a list of cliques.
 InstallMethod( CliqueGraphCons, "with names", true,
     [IsObject, IsRecord, IsList], 0,
 function(filter, G, C)
@@ -576,8 +594,10 @@ function(filter, G, C)
   return H;
 end );
 
-# The clique (dual geometry) graph of a collinearity graph. The optional second
-# argument allows choosing a connected component of the resulting graph.
+#############################################################################
+##
+#F  CliqueGraph( [<filter>, ]<graph>[, <list>] )
+##  
 InstallGlobalFunction( CliqueGraph,
 function(arg)
   local C, G, H, j, n, filt;
@@ -603,7 +623,7 @@ end );
 
 #############################################################################
 ##
-#F  IncidenceGraph( [<filter>, ]<graph>[, <list>] )
+#O  IncidenceGraphCons( [<filter>, ]<graph>[, <list>] )
 ##  
 InstallMethod( IncidenceGraphCons, "without names", true,
     [NoVertexNames, IsRecord, IsList], 0,
@@ -627,7 +647,6 @@ function(filter, G, C)
   return H;
 end );
 
-# The incidence graph of a collinearity graph given a list of cliques.
 InstallMethod( IncidenceGraphCons, "with names", true,
      [IsObject, IsRecord, IsList], 0,
 function(filter, G, C)
@@ -656,7 +675,10 @@ function(filter, G, C)
   return H;
 end );
 
-# The incidence graph of a collinearity graph.
+#############################################################################
+##
+#F  IncidenceGraph( [<filter>, ]<graph>[, <list>] )
+##  
 InstallGlobalFunction( AGT_IncidenceGraph,
 function(arg)
   local C, G, H, j, n, filt;

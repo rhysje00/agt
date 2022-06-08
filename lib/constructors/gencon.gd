@@ -10,7 +10,7 @@
 
 #############################################################################
 ##
-#F  AdjFunGraph( <V>, <func> )
+#F  AdjFunGraph( <vertices>, <function> )
 ##  
 ##  <#GAPDoc Label="AdjFunGraph">
 ##  <ManSection>
@@ -26,15 +26,15 @@
 ##    <Example>
 ##      <![CDATA[
 ##gap> AdjFunGraph([24..33],function(x,y) return Gcd(x,y)=1; end);
-##rec( 
-##  adjacencies := [ [ 2, 6, 8 ], [ 1, 3, 4, 5, 6, 8, 9, 10 ], 
-##      [ 2, 4, 6, 8, 10 ], [ 2, 3, 5, 6, 8, 9 ], [ 2, 4, 6, 8, 10 ], 
-##      [ 1, 2, 3, 4, 5, 7, 8, 9, 10 ], [ 6, 8 ], 
-##      [ 1, 2, 3, 4, 5, 6, 7, 9, 10 ], [ 2, 4, 6, 8, 10 ], 
-##      [ 2, 3, 5, 6, 8, 9 ] ], group := Group(()), isGraph := true, 
-##  names := [ 24 .. 33 ], order := 10, 
-##  representatives := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ], 
-##  schreierVector := [ -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 ] )
+##rec( adjacencies := [ [ 2, 6, 8 ], [ 1, 3, 4, 5, 6, 8, 9, 10 ], 
+##                [ 2, 4, 6, 8, 10 ], [ 2, 3, 5, 6, 8, 9 ], [ 2, 4, 6, 8, 10 ], 
+##                [ 1, 2, 3, 4, 5, 7, 8, 9, 10 ], [ 6, 8 ], 
+##                [ 1, 2, 3, 4, 5, 6, 7, 9, 10 ], [ 2, 4, 6, 8, 10 ], 
+##                [ 2, 3, 5, 6, 8, 9 ] ], 
+##     group := Group(()), isGraph := true, names := [ 24 .. 33 ], 
+##     order := 10, representatives := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ], 
+##     schreierVector := [ -1, -2, -3, -4, -5, -6, -7, -8, -9, -10 ] 
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -46,7 +46,7 @@ DeclareGlobalFunction( "AdjFunGraph" );
 # A generic product graph.
 #############################################################################
 ##
-#F  ProductGraph( [<filter>, ]<graphs>, <func> )
+#F  ProductGraph( [<filter>, ]<graphs>, <function> )
 ##  
 ##  <#GAPDoc Label="ProductGraph">
 ##  <ManSection>
@@ -58,29 +58,34 @@ DeclareGlobalFunction( "AdjFunGraph" );
 ##  This is a general function to construct a graph with vertices consisting
 ##  of the cartesian product of vertices from a list of graphs.
 ##  <P/>
-##  The input <A>Gs</A> should be a list of graphs and <A>func</A> should be a boolean 
-##  function defining a relation on the cartesian product of the lists 
-##  <C>[1..Gs[i].order]</C>. Then this function returns the graph with vertex-set the 
-##  cartesian product of the vertices of the graphs in <A>Gs</A>, and vertices 
-##  <C>x,y</C> are adjacent if and only if <C>func(x,y)=true</C>. 
+##  The input <A>Gs</A> should be a list of graphs and <A>func</A> should be a 
+##  boolean function defining a relation on the cartesian product of the lists 
+##  <C>[1..Gs[i].order]</C>. Then this function returns the graph with 
+##  vertex-set the cartesian product of the vertices of the graphs in <A>Gs</A>, 
+##  and vertices <C>x,y</C> are adjacent if and only if <C>func(x,y)=true</C>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> g:=CompleteGraph(SymmetricGroup(3));;
 ##gap> h:=HammingGraph(2,2);;
-##gap> ProductGraph([g,h],function(x,y) return (x<>y) and (x[1]=y[1] or x[2]=y[2]); 
-##> end);
+##gap> ProductGraph([g,h],function(x,y) return (x<>y) and 
+##>                                            (x[1]=y[1] or x[2]=y[2]); 
+##>                       end);
 ##rec( adjacencies := [ [ 2, 3, 4, 5, 9 ] ], 
-##  group := Group([ (1,5,9)(2,6,10)(3,7,11)(4,8,12), (1,5)(2,6)(3,7)(4,8), (1,3)(2,4)
-##(5,7)(6,8)(9,11)(10,12), (1,2)(3,4)(5,6)(7,8)(9,10)(11,12), (2,3)(6,7)(10,11) ]), 
-##  isGraph := true, names := [ [ 1, [ 1, 1 ] ], [ 1, [ 1, 2 ] ], [ 1, [ 2, 1 ] ], 
-##  [ 1, [ 2, 2 ] ], [ 2, [ 1, 1 ] ], [ 2, [ 1, 2 ] ], [ 2, [ 2, 1 ] ], 
-##  [ 2, [ 2, 2 ] ], [ 3, [ 1, 1 ] ], [ 3, [ 1, 2 ] ], [ 3, [ 2, 1 ] ], 
-##  [ 3, [ 2, 2 ] ] ], order := 12, representatives := [ 1 ], 
-##  schreierVector := [ -1, 4, 3, 4, 1, 4, 3, 4, 1, 4, 3, 4 ] )
+##     group := Group([ (1,5,9)(2,6,10)(3,7,11)(4,8,12), (1,5)(2,6)(3,7)(4,8),
+##                      (1,3)(2,4)(5,7)(6,8)(9,11)(10,12), 
+##                      (1,2)(3,4)(5,6)(7,8)(9,10)(11,12), (2,3)(6,7)(10,11) ]), 
+##     isGraph := true, 
+##     names := [ [ 1, [ 1, 1 ] ], [ 1, [ 1, 2 ] ], [ 1, [ 2, 1 ] ], 
+##                [ 1, [ 2, 2 ] ], [ 2, [ 1, 1 ] ], [ 2, [ 1, 2 ] ], 
+##                [ 2, [ 2, 1 ] ], [ 2, [ 2, 2 ] ], [ 3, [ 1, 1 ] ], 
+##                [ 3, [ 1, 2 ] ], [ 3, [ 2, 1 ] ], [ 3, [ 2, 2 ] ] ], 
+##     order := 12, representatives := [ 1 ], 
+##     schreierVector := [ -1, 4, 3, 4, 1, 4, 3, 4, 1, 4, 3, 4 ] 
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -92,7 +97,7 @@ DeclareGlobalFunction( "ProductGraph" );
 
 #############################################################################
 ##
-#F  PowerGraph( [<filter>, ]<graph>, <int>, <func> )
+#F  PowerGraph( [<filter>, ]<graph>, <integer>, <function> )
 ##  
 ##  <#GAPDoc Label="PowerGraph">
 ##  <ManSection>
@@ -104,30 +109,35 @@ DeclareGlobalFunction( "ProductGraph" );
 ##  This is a general function to construct a graph with vertices consisting
 ##  of the <A>n</A>-tuples of vertices from of a graph.
 ##  <P/>
-##  The input <A>gamma</A> should be a graph, and <A>func</A> should be a boolean 
-##  function defining a relation on the <A>n</A>-tuples of elements of 
-##  <C>[1..gamma.order]</C>. Then this function returns the graph with vertex-set 
-##  consisting of the <A>n</A>-tuples of elements of vertices of <A>gamma</A>, and 
-##  vertices <C>x,y</C> are adjacent if and only if <C>func(x,y)=true</C>. 
+##  The input <A>gamma</A> should be a graph, and <A>func</A> should be a 
+##  boolean function defining a relation on the <A>n</A>-tuples of elements of 
+##  <C>[1..gamma.order]</C>. Then this function returns the graph with 
+##  vertex-set consisting of the <A>n</A>-tuples of elements of vertices of 
+##  <A>gamma</A>, and vertices <C>x,y</C> are adjacent if and only if 
+##  <C>func(x,y)=true</C>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
 ##gap> PowerGraph(h,2,function(x,y) return (x<>y) and (x[1]=y[1] or x[2]=y[2]); 
-##> end);
+##>                   end);
 ##rec( adjacencies := [ [ 2, 3, 4, 5, 9, 13 ] ], 
 ##     group := <permutation group with 7 generators>, 
-##      isGraph := true, names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
-##      [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], [ [ 1, 2 ], [ 1, 1 ] ],
-##      [ [ 1, 2 ], [ 1, 2 ] ], [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ],
-##      [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], [ [ 2, 1 ], [ 2, 1 ] ], 
-##      [ [ 2, 1 ], [ 2, 2 ] ], [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ],
-##      [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], order := 16,
-##     representatives := [ 1 ], 
-##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ] )
+##     isGraph := true, 
+##     names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
+##                [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
+##                [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
+##                [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ],
+##                [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
+##                [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
+##                [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ],
+##                [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
+##     order := 16, representatives := [ 1 ], 
+##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ] 
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -150,38 +160,40 @@ DeclareGlobalFunction( "PowerGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function returns
-##  the box product of the given graphs. 
+##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function 
+##  returns the box product of the given graphs. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
-##  Let <M>\Gamma,\Delta</M> be graphs. The <E>box product</E> of the graphs 
-##  <M>\Gamma</M> and <M>\Delta</M> is the graph <M>\Gamma\square \Delta</M> with 
-##  vertex-set <M>V(\Gamma)\times V(\Delta)</M>, such that two distinct vertices 
-##  <M>(x_1,y_1),(x_2,y_2)</M> are adjacent if and only if either
+##  Let <M>\Gamma,\Delta</M> be graphs. The <E>box product</E> of <M>\Gamma</M>
+##  and <M>\Delta</M>, <M>\Gamma \Box \Delta</M>, has vertex-set 
+##  <M>V(\Gamma) \times V(\Delta)</M>. Distinct vertices 
+##  <M>(a,x),(b,y)</M> are adjacent if and only if either
 ##  <List>
-##    <Item><M>x_1=x_2</M> and <M>y_1,y_2</M> are adjacent vertices in <M>\Delta</M>, or </Item>
-##    <Item><M>y_1=y_2</M> and <M>x_1,x_2</M> are adjacent vertices in <M>\Gamma</M>.</Item>
+##    <Item><M>a=b</M> and <M>x,y</M> are adjacent vertices in <M>\Delta</M>, or
+##    </Item>
+##    <Item><M>x=y</M> and <M>a,b</M> are adjacent vertices in <M>\Gamma</M>.
+##    </Item>
 ##  </List>
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
 ##gap> BoxProductGraph(h,h);
 ##rec( adjacencies := [ [ 2, 3, 5, 9 ] ], 
-##  group := <permutation group with 6 generators>, isGraph := true, 
-##  names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
-##      [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
-##      [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
-##      [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
-##      [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
-##      [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
-##      [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
-##      [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
-##  order := 16, representatives := [ 1 ], 
-##  schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 
-##      5 ] )
+##     group := <permutation group with 6 generators>, isGraph := true, 
+##     names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
+##                [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
+##                [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
+##                [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
+##                [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
+##                [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
+##                [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
+##                [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
+##     order := 16, representatives := [ 1 ], 
+##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ]
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -192,7 +204,7 @@ DeclareGlobalFunction( "BoxProductGraph" );
 
 #############################################################################
 ##
-#F  BoxPowerGraph( [<filter>, ]<graph>, <int> )
+#F  BoxPowerGraph( [<filter>, ]<graph>, <integer> )
 ##  
 ##  <#GAPDoc Label="BoxPowerGraph">
 ##  <ManSection>
@@ -201,30 +213,30 @@ DeclareGlobalFunction( "BoxProductGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given a graph <A>gamma</A> and positive integer <A>n</A>, this function returns
-##  <A>n</A>th power of <A>gamma</A>, with respect to the box product operation
-##  (see <Ref Func="BoxProductGraph"/>). 
+##  Given a graph <A>gamma</A> and positive integer <A>n</A>, this function 
+##  returns <M><A>n</A>^{th}</M> power of <A>gamma</A>, with respect to the box 
+##  product operation (see <Ref Func="BoxProductGraph"/>). 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
 ##gap> BoxPowerGraph(h,2);
 ##rec( adjacencies := [ [ 2, 3, 5, 9 ] ], 
-##  group := <permutation group with 7 generators>, isGraph := true, 
-##  names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
-##      [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
-##      [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
-##      [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
-##      [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
-##      [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
-##      [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
-##      [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], order := 16, 
-##  representatives := [ 1 ], 
-##  schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 
-##      5 ] )
+##     group := <permutation group with 7 generators>, isGraph := true, 
+##     names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
+##                [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
+##                [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
+##                [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
+##                [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
+##                [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
+##                [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
+##                [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
+##     order := 16, representatives := [ 1 ], 
+##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ]
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -246,36 +258,36 @@ DeclareGlobalFunction( "BoxPowerGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function returns
-##  the cross product of the given graphs. 
+##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function 
+##  returns the cross product of the given graphs. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
-##  Let <M>\Gamma,\Delta</M> be graphs. The <E>cross product</E> of the graphs 
-##  <M>\Gamma</M> and <M>\Delta</M> (also known as the tensor product) is the graph 
-##  <M>\Gamma\times \Delta</M> with vertex-set <M>V(\Gamma)\times V(\Delta)</M>, 
-##  such that two distinct vertices <M>(x_1,y_1),(x_2,y_2)</M> are adjacent if
-##  and only if <M>x_1,x_2</M> are adjacent in <M>\Gamma</M> and <M>y_1,y_2</M> are
-##  adjacent in <M>\Delta</M>.
+##  Let <M>\Gamma,\Delta</M> be graphs. The <E>cross product</E> of 
+##  <M>\Gamma</M> and <M>\Delta</M> (also known as the tensor product),
+##  <M>\Gamma \times \Delta</M>, has vertex-set 
+##  <M>V(\Gamma) \times V(\Delta)</M>. Distinct vertices 
+##  <M>(a,x),(b,y)</M> are adjacent if and only if <M>a,b</M> are adjacent in 
+##  <M>\Gamma</M> and <M>x,y</M> are adjacent in <M>\Delta</M>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
 ##gap> CrossProductGraph(h,h);
 ##rec( adjacencies := [ [ 6, 7, 10, 11 ] ], 
-##  group := <permutation group with 6 generators>, isGraph := true, 
-##  names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
-##      [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
-##      [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
-##      [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
-##      [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
-##      [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
-##      [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
-##      [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], order := 16, 
-##  representatives := [ 1 ], 
-##  schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 
-##      5 ] )
+##     group := <permutation group with 6 generators>, isGraph := true, 
+##     names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
+##                [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
+##                [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
+##                [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
+##                [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
+##                [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
+##                [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
+##                [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
+##     order := 16, representatives := [ 1 ], 
+##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ]
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -286,7 +298,7 @@ DeclareGlobalFunction( "CrossProductGraph" );
 
 #############################################################################
 ##
-#F  CrossPowerGraph( [<filter, ]<graph>, <int> )
+#F  CrossPowerGraph( [<filter, ]<graph>, <integer> )
 ##  
 ##  <#GAPDoc Label="CrossPowerGraph">
 ##  <ManSection>
@@ -295,30 +307,30 @@ DeclareGlobalFunction( "CrossProductGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given a graph <A>gamma</A> and positive integer <A>n</A>, this function returns
-##  <A>n</A>th power of <A>gamma</A>, with respect to the cross product operation
-##  (see <Ref Func="CrossProductGraph"/>). 
+##  Given a graph <A>gamma</A> and positive integer <A>n</A>, this function 
+##  returns the <M><A>n</A>^{th}</M> power of <A>gamma</A>, with respect to the 
+##  cross product operation (see <Ref Func="CrossProductGraph"/>). 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
 ##gap> CrossPowerGraph(h,2);
 ##rec( adjacencies := [ [ 6, 7, 10, 11 ] ], 
-##  group := <permutation group with 7 generators>, isGraph := true, 
-##  names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
-##      [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
-##      [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
-##      [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
-##      [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
-##      [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
-##      [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
-##      [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], order := 16, 
-##  representatives := [ 1 ], 
-##  schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 
-##      5 ] )
+##     group := <permutation group with 7 generators>, isGraph := true, 
+##     names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
+##                [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
+##                [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
+##                [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
+##                [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
+##                [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
+##                [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
+##                [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
+##     order := 16, representatives := [ 1 ], 
+##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ]
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -340,40 +352,42 @@ DeclareGlobalFunction( "CrossPowerGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function returns
-##  the strong product of the given graphs. 
+##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function 
+##  returns the strong product of the given graphs. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
-##  Let <M>\Gamma,\Delta</M> be graphs. The <E>strong product</E> of the graphs 
-##  <M>\Gamma</M> and <M>\Delta</M> is the graph <M>\Gamma\boxtimes \Delta</M> with
-##  vertex-set <M>V(\Gamma)\times V(\Delta)</M>, such that two distinct vertices
-##  <M>(x_1,y_1),(x_2,y_2)</M> are adjacent if and only if either
+##  Let <M>\Gamma,\Delta</M> be graphs. The <E>strong product</E> of 
+##  <M>\Gamma</M> and <M>\Delta</M>, <M>\Gamma \boxtimes \Delta</M>, has
+##  vertex-set <M>V(\Gamma) \times V(\Delta)</M>. Distinct vertices
+##  <M>(a,x),(b,y)</M> are adjacent if and only if either
 ##  <List>
-##    <Item><M>x_1=x_2</M> and <M>y_1,y_2</M> are adjacent vertices in <M>\Delta</M>, or </Item>
-##    <Item><M>y_1=y_2</M> and <M>x_1,x_2</M> are adjacent vertices in <M>\Gamma</M>, or</Item>
-##    <Item><M>x_1,x_2</M> are adjacent in <M>\Gamma</M> and <M>y_1,y_2</M> are
-##             adjacent in <M>\Delta</M>.</Item>
+##    <Item><M>a=b</M> and <M>x,y</M> are adjacent vertices in <M>\Delta</M>, or
+##    </Item>
+##    <Item><M>x=y</M> and <M>a,b</M> are adjacent vertices in <M>\Gamma</M>, or
+##    </Item>
+##    <Item><M>a,b</M> are adjacent in <M>\Gamma</M> and <M>x,y</M> are adjacent
+##          in <M>\Delta</M>.</Item>
 ##  </List>
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
 ##gap> StrongProductGraph(h,h);
 ##rec( adjacencies := [ [ 2, 3, 5, 6, 7, 9, 10, 11 ] ], 
-##  group := <permutation group with 6 generators>, isGraph := true, 
-##  names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
-##      [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
-##      [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
-##      [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
-##      [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
-##      [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
-##      [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
-##      [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], order := 16, 
-##  representatives := [ 1 ], 
-##  schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 
-##      5 ] )
+##     group := <permutation group with 6 generators>, isGraph := true, 
+##     names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
+##                [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
+##                [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
+##                [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
+##                [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
+##                [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
+##                [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
+##                [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
+##     order := 16, representatives := [ 1 ], 
+##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ]
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -384,7 +398,7 @@ DeclareGlobalFunction( "StrongProductGraph" );
 
 #############################################################################
 ##
-#F  StrongPowerGraph( [<filter, ]<graph>, <int> )
+#F  StrongPowerGraph( [<filter, ]<graph>, <integer> )
 ##  
 ##  <#GAPDoc Label="StrongPowerGraph">
 ##  <ManSection>
@@ -393,30 +407,30 @@ DeclareGlobalFunction( "StrongProductGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given a graph <A>gamma</A> and positive integer <A>n</A>, this function returns
-##  <A>n</A>th power of <A>gamma</A>, with respect to the strong product operation
-##  (see <Ref Func="StrongProductGraph"/>). 
+##  Given a graph <A>gamma</A> and positive integer <A>n</A>, this function 
+##  returns <M><A>n</A>^{th}</M> power of <A>gamma</A>, with respect to the 
+##  strong product operation (see <Ref Func="StrongProductGraph"/>). 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=HammingGraph(2,2);;
 ##gap> StrongPowerGraph(h,2);
 ##rec( adjacencies := [ [ 2, 3, 5, 6, 7, 9, 10, 11 ] ], 
-##  group := <permutation group with 7 generators>, isGraph := true, 
-##  names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
-##      [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
-##      [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
-##      [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
-##      [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
-##      [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
-##      [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
-##      [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], order := 16, 
-##  representatives := [ 1 ], 
-##  schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 
-##      5 ] )
+##     group := <permutation group with 7 generators>, isGraph := true, 
+##     names := [ [ [ 1, 1 ], [ 1, 1 ] ], [ [ 1, 1 ], [ 1, 2 ] ], 
+##                [ [ 1, 1 ], [ 2, 1 ] ], [ [ 1, 1 ], [ 2, 2 ] ], 
+##                [ [ 1, 2 ], [ 1, 1 ] ], [ [ 1, 2 ], [ 1, 2 ] ], 
+##                [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 2 ] ], 
+##                [ [ 2, 1 ], [ 1, 1 ] ], [ [ 2, 1 ], [ 1, 2 ] ], 
+##                [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 1 ], [ 2, 2 ] ], 
+##                [ [ 2, 2 ], [ 1, 1 ] ], [ [ 2, 2 ], [ 1, 2 ] ], 
+##                [ [ 2, 2 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 2, 2 ] ] ], 
+##     order := 16, representatives := [ 1 ], 
+##     schreierVector := [ -1, 5, 4, 5, 2, 5, 4, 5, 1, 5, 4, 5, 2, 5, 4, 5 ]
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -438,21 +452,22 @@ DeclareGlobalFunction( "StrongPowerGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function returns
-##  the graph join of the given graphs. 
+##  Given graphs <A>G1,G2,...</A> or list of graphs <A>Gs</A>, this function 
+##  returns the graph join of the given graphs. 
 ##  <P/>
-##  Each vertex of the resulting graph will correspond to a unique vertex from the 
-##  union of vertex-sets of the given graphs. The vertex corresponding to a vertex 
-##  <C>name</C> in <A>Gi</A> will be named <C>[i,name]</C> in our new graph. 
+##  Each vertex of the resulting graph will correspond to a unique vertex from 
+##  the union of vertex-sets of the given graphs. The vertex corresponding to a 
+##  vertex <C>name</C> in <A>Gi</A> will be named <C>[i,name]</C> in our new 
+##  graph. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
-##  Let <M>\Gamma,\Delta</M> be graphs. The <E>graph join</E> of the graphs 
-##  <M>\Gamma</M> and <M>\Delta</M> is the graph <M>\Gamma + \Delta</M> with
-##  vertex-set <M>V(\Gamma)\cup V(\Delta)</M>, such that two distinct vertices
-##  <M>x,y</M> are adjacent if and only if either
+##  Let <M>\Gamma,\Delta</M> be graphs. The <E>graph join</E> of <M>\Gamma</M>
+##  and <M>\Delta</M>, <M>\Gamma + \Delta</M>, has vertex-set 
+##  <M>V(\Gamma) \cup V(\Delta)</M>. Distinct vertices <M>x,y</M> are adjacent 
+##  if and only if either
 ##  <List>
 ##    <Item><M>x</M> and <M>y</M> are vertices from different graphs, or </Item>
 ##    <Item><M>x</M> and <M>y</M> are vertices from the same graph, and are
@@ -463,13 +478,15 @@ DeclareGlobalFunction( "StrongPowerGraph" );
 ##gap> h:=HammingGraph(2,2);;
 ##gap> GraphJoin(h,h);
 ##rec( adjacencies := [ [ 2, 3, 5, 6, 7, 8 ], [ 1, 2, 3, 4, 6, 7 ] ], 
-##  group := Group([ (1,3)(2,4), (1,2)(3,4), (2,3), (5,7)(6,8), (5,6)
-##      (7,8), (6,7) ]), isGraph := true, 
-##  names := [ [ 1, [ 1, 1 ] ], [ 1, [ 1, 2 ] ], [ 1, [ 2, 1 ] ], 
-##      [ 1, [ 2, 2 ] ], [ 2, [ 1, 1 ] ], [ 2, [ 1, 2 ] ], 
-##      [ 2, [ 2, 1 ] ], [ 2, [ 2, 2 ] ] ], order := 8, 
-##  representatives := [ 1, 5 ], 
-##  schreierVector := [ -1, 2, 1, 2, -2, 5, 4, 5 ] )
+##     group := Group([ (1,3)(2,4), (1,2)(3,4), (2,3), (5,7)(6,8), (5,6)(7,8),
+##                      (6,7) ]), 
+##     isGraph := true, 
+##     names := [ [ 1, [ 1, 1 ] ], [ 1, [ 1, 2 ] ], [ 1, [ 2, 1 ] ], 
+##                [ 1, [ 2, 2 ] ], [ 2, [ 1, 1 ] ], [ 2, [ 1, 2 ] ], 
+##                [ 2, [ 2, 1 ] ], [ 2, [ 2, 2 ] ] ], 
+##     order := 8, representatives := [ 1, 5 ], 
+##     schreierVector := [ -1, 2, 1, 2, -2, 5, 4, 5 ] 
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -479,7 +496,8 @@ DeclareGlobalFunction( "StrongPowerGraph" );
 DeclareConstructor("GraphJoinCons", [IsObject, IsList]);
 DeclareGlobalFunction( "GraphJoin" );
 
-# In BCN_1989 1.11 #############################################################################
+#TODO duality functions
+#############################################################################
 ##
 #F  BipartiteDoubleGraph( <graph> )
 ##  
@@ -494,9 +512,9 @@ DeclareGlobalFunction( "GraphJoin" );
 ##  of <A>gamma</A>. 
 ##  <P/>
 ##  Let <M>\Gamma</M> be a graph. The <E>bipartite double cover</E> of 
-##  <M>\Gamma</M> is the graph with vertex-set <M>V(\Gamma) \times \{-,+\}</M>, 
-##  and distinct vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if 
-##  <M>\circ\not=\ast</M> and <M>x,y</M> are adjacent in <M>\Gamma.</M> 
+##  <M>\Gamma</M> has vertex-set <M>V(\Gamma) \times \{-,+\}</M>. Distinct 
+##  vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if 
+##  <M>\circ \neq \ast</M> and <M>x,y</M> are adjacent in <M>\Gamma.</M> 
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 1.11"/>. 
@@ -505,15 +523,16 @@ DeclareGlobalFunction( "GraphJoin" );
 ##gap> h:=HammingGraph(2,2);;
 ##gap> BipartiteDoubleGraph(h);
 ##rec( adjacencies := [ [ 6, 7 ] ], 
-##  group := Group([ (1,3)(2,4)(5,7)(6,8), (1,2)(3,4)(5,6)(7,8), (2,3)
-##      (6,7), (1,5)(2,6)(3,7)(4,8) ]), 
-##  halfDuality := function( x ) ... end, 
-##  halfPrimality := function( x ) ... end, isGraph := true, 
-##  names := [ [ [ 1, 1 ], "+" ], [ [ 1, 2 ], "+" ], [ [ 2, 1 ], "+" ],
-##      [ [ 2, 2 ], "+" ], [ [ 1, 1 ], "-" ], [ [ 1, 2 ], "-" ], 
-##      [ [ 2, 1 ], "-" ], [ [ 2, 2 ], "-" ] ], order := 8, 
-##  representatives := [ 1 ], 
-##  schreierVector := [ -1, 2, 1, 2, 4, 4, 4, 4 ] )
+##     group := Group([ (1,3)(2,4)(5,7)(6,8), (1,2)(3,4)(5,6)(7,8), (2,3)(6,7),
+##                      (1,5)(2,6)(3,7)(4,8) ]), 
+##     halfDuality := function( x ) ... end, 
+##     halfPrimality := function( x ) ... end, isGraph := true, 
+##     names := [ [ [ 1, 1 ], "+" ], [ [ 1, 2 ], "+" ], [ [ 2, 1 ], "+" ],
+##                [ [ 2, 2 ], "+" ], [ [ 1, 1 ], "-" ], [ [ 1, 2 ], "-" ], 
+##                [ [ 2, 1 ], "-" ], [ [ 2, 2 ], "-" ] ], 
+##     order := 8, representatives := [ 1 ], 
+##     schreierVector := [ -1, 2, 1, 2, 4, 4, 4, 4 ] 
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -522,7 +541,7 @@ DeclareGlobalFunction( "GraphJoin" );
 ##
 DeclareGlobalFunction( "BipartiteDoubleGraph" );
 
-# In BCN_1989 1.11
+#TODO duality functions
 #############################################################################
 ##
 #F  ExtendedBipartiteDoubleGraph( [<filter, ]<graph> )
@@ -537,14 +556,14 @@ DeclareGlobalFunction( "BipartiteDoubleGraph" );
 ##  Given a graph <A>gamma</A>, this function returns the extended 
 ##  bipartite double cover of <A>gamma</A>. 
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <K>NoVertexNames</K>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
 ##  Let <M>\Gamma</M> be a graph. The <E>extended bipartite double cover</E> of 
-##  <M>\Gamma</M> is the graph with vertex-set <M>V(\Gamma)\times \{-,+\}</M>, 
-##  and distinct vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if
-##  <M>\circ=\ast</M> or <M>x,y</M> are adjacent in <M>\Gamma.</M> 
+##  <M>\Gamma</M> has vertex-set <M>V(\Gamma) \times \{-,+\}</M>. Distinct 
+##  vertices <M>(x,\circ),(y,\ast)</M> are adjacent if and only if
+##  <M>\circ = \ast</M> or <M>x,y</M> are adjacent in <M>\Gamma.</M> 
 ##  <P/>
 ##  For more information on this graph, see
 ##  <Cite Key="BCN_1989" Where="Section 1.11"/>.
@@ -553,15 +572,16 @@ DeclareGlobalFunction( "BipartiteDoubleGraph" );
 ##gap> h:=HammingGraph(2,2);;
 ##gap> ExtendedBipartiteDoubleGraph(h);
 ##rec( adjacencies := [ [ 5, 6, 7 ] ], 
-##  group := Group([ (1,2)(3,4)(5,6)(7,8), (1,3)(2,4)(5,7)(6,8), (2,3)
-##      (6,7), (1,5)(2,6)(3,7)(4,8) ]), 
-##  halfDuality := function( x ) ... end, 
-##  halfPrimality := function( x ) ... end, isGraph := true, 
-##  names := [ [ [ 1, 1 ], "+" ], [ [ 2, 1 ], "+" ], [ [ 1, 2 ], "+" ],
-##      [ [ 2, 2 ], "+" ], [ [ 1, 1 ], "-" ], [ [ 2, 1 ], "-" ], 
-##      [ [ 1, 2 ], "-" ], [ [ 2, 2 ], "-" ] ], order := 8, 
-##  representatives := [ 1 ], 
-##  schreierVector := [ -1, 1, 2, 2, 4, 4, 4, 4 ] )
+##     group := Group([ (1,2)(3,4)(5,6)(7,8), (1,3)(2,4)(5,7)(6,8), (2,3)(6,7),
+##                      (1,5)(2,6)(3,7)(4,8) ]), 
+##     halfDuality := function( x ) ... end, 
+##     halfPrimality := function( x ) ... end, isGraph := true, 
+##     names := [ [ [ 1, 1 ], "+" ], [ [ 2, 1 ], "+" ], [ [ 1, 2 ], "+" ],
+##                [ [ 2, 2 ], "+" ], [ [ 1, 1 ], "-" ], [ [ 2, 1 ], "-" ], 
+##                [ [ 1, 2 ], "-" ], [ [ 2, 2 ], "-" ] ], 
+##     order := 8, representatives := [ 1 ], 
+##     schreierVector := [ -1, 1, 2, 2, 4, 4, 4, 4 ]
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -571,7 +591,6 @@ DeclareGlobalFunction( "BipartiteDoubleGraph" );
 DeclareConstructor("ExtendedBipartiteDoubleGraphCons", [IsObject, IsRecord]);
 DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 
-# In BCN_1989 4.2,A.5 not specific BVM_2022 1.2.6
 #############################################################################
 ##
 #F  HalvedGraph( <graph>[, <integer>] )
@@ -585,21 +604,24 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 ##  <Description>
 ##  Given a connected bipartite graph <A>gamma</A>, this function returns a 
 ##  halved graph of <A>gamma</A>. The optional input <A>n</A> should take a 
-##  value from <C>[1,2]</C>, and determines the part of the bipartition for which
-##  the halved graph is defined.
+##  value in <C>[1,2]</C>, and determines the part of the bipartition for which
+##  the halved graph is defined on.
 ##  <P/>
-##  Let <M>\Gamma</M> be a connected bipartite graph with bipartition <M>U,W</M>.
-##  The <E>halved graph</E> of <M>\Gamma</M> with respect to <M>U</M> is the 
-##  graph with vertex-set <M>U</M>, and distinct vertices <M>x,y</M> are adjacent
+##  Let <M>\Gamma</M> be a connected bipartite graph with bipartition 
+##  <M>U,W</M>. The <E>halved graph</E> of <M>\Gamma</M> with respect to <M>U</M> 
+##  has vertex-set <M>U</M>, and distinct vertices <M>x,y</M> are adjacent
 ##  if and only if <M>x,y</M> are at graph distance 2 in <M>\Gamma.</M> 
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 4.2"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=CycleGraph(8);;
 ##gap> HalvedGraph(h);
-##rec( adjacencies := [ [ 2, 4 ] ], 
-##  group := Group([ (2,4), (1,2)(3,4) ]), isGraph := true, 
-##  isSimple := true, names := [ 1, 3, 5, 7 ], order := 4, 
-##  representatives := [ 1 ], schreierVector := [ -1, 2, 2, 1 ] )
+##rec( adjacencies := [ [ 2, 4 ] ], group := Group([ (2,4), (1,2)(3,4) ]),
+##     isGraph := true, isSimple := true, names := [ 1, 3, 5, 7 ], order := 4, 
+##     representatives := [ 1 ], schreierVector := [ -1, 2, 2, 1 ] 
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -608,7 +630,6 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 ##
 DeclareGlobalFunction( "HalvedGraph" );
 
-# In BCN_1989 4.2,A.5 not specific BVM_2022 1.2.6 'folded' not specific
 #############################################################################
 ##
 #F  AntipodalQuotientGraph( [<filter>, ]<graph> )
@@ -623,26 +644,39 @@ DeclareGlobalFunction( "HalvedGraph" );
 ##  Given a distance-regular graph <A>gamma</A> which is an antipodal cover, 
 ##  this function returns the anitpodal quotient graph of <A>gamma</A>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
-##  Let <M>\Gamma</M> be a distance-regular graph with diameter <M>d</M>. For
-##  any <M>u\in V(\Gamma)</M>, let <M>\Gamma_d\left[u\right]</M> denote the set
-##  of vertices at distance <M>d</M> from <M>u</M>, and <M>u</M> itself. 
-##  Then <M>\Gamma</M> is <E>antipodal</E> if for all <M>u\in V(\Gamma)</M>,
-##  the set <M>\Gamma_d\left[u\right]</M> consists of vertices which are pairwise
-##  at distance <M>d</M>. The <E>antipodal quotient</E> of <M>\Gamma</M> is 
-##  the graph with vertex-set <M>\{\Gamma_d\left[u\right]:u\in V(\Gamma)\}</M>,
-##  and distinct vertices are adjacent if there is an edge between them in 
-##  <M>\Gamma</M>.
+##  Let <M>\Gamma</M> be a distance-regular graph with <M>v</M> vertices, 
+##  diameter <M>d</M> and intersection array 
+##  <M>\{B_0,...,B_{{D-1}};C_1,...,C_D\}</M>. For any <M>u \in V(\Gamma)</M>, 
+##  let <M>\Gamma_D\left[u\right]</M> be the set of vertices at distance 
+##  <M>D</M> from <M>u</M>, and <M>u</M> itself. The graph <M>\Gamma</M> is 
+##  <E>antipodal</E> if for all <M>u \in V(\Gamma)</M>, the set 
+##  <M>\Gamma_D\left[u\right]</M> consists of vertices which are pairwise at 
+##  distance <M>D</M>. Let <M>d = \lfloor D/2 \rfloor</M> and 
+##  <M>r = 1 + B_d/C_{{D-d}}</M>.
+##  <P/>
+##  Then, the <E>antipodal quotient</E> of <M>\Gamma</M> is 
+##  the graph with vertex-set 
+##  <M>\{\Gamma_d\left[u\right]: u \in V(\Gamma)\}</M>, and distinct vertices
+##  are adjacent if there is an edge between them in <M>\Gamma</M>. This graph
+##  has <M>v/r</M> vertices and if <M>D &gt; 2</M>, it is distance-regular with 
+##  intersection array given by <M>b_j = B_j, c_j = C_j</M> for 
+##  <M>0 \leq j \leq d-1</M>, and <M>c_d = rC_d</M> if <M>D</M> is even, 
+##  <M>c_d = C_d</M> if <M>D</M> is odd.
+##  <P/>
+##  For more information on this graph, see
+##  <Cite Key="BCN_1989" Where="Section 4.2"/>.
 ##    <Example>
 ##      <![CDATA[
 ##gap> h:=CycleGraph(8);;
 ##gap> AntipodalQuotientGraph(h);
 ##rec( adjacencies := [ [ 2, 4 ] ], group := Group([ (1,2,3,4), (2,4) ]), 
-##  isGraph := true, names := [ [ 1, 5 ], [ 2, 6 ], [ 3, 7 ], [ 4, 8 ] ], 
-##  order := 4, representatives := [ 1 ], schreierVector := [ -1, 1, 1, 2 ] )
+##     isGraph := true, names := [ [ 1, 5 ], [ 2, 6 ], [ 3, 7 ], [ 4, 8 ] ], 
+##     order := 4, representatives := [ 1 ], schreierVector := [ -1, 1, 1, 2 ] 
+##   )
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -652,9 +686,12 @@ DeclareGlobalFunction( "HalvedGraph" );
 DeclareConstructor("AntipodalQuotientGraphCons", [IsObject, IsRecord]);
 DeclareGlobalFunction( "AntipodalQuotientGraph" );
 
+#TODO duality functions
+#TODO only spcsgrph? make more general?
 #############################################################################
 ##
-#F  SubspaceGraph( <mtrxgrp>, <subspcs>, <vctspc>, <int>[, <act>, <invt>] )
+#F  SubspaceGraph( <mtrxgrp>, <subspcs>, <vctspc>, <integer>[, <action>,
+##                                                                  <invt>] )
 ##  
 ##  <#GAPDoc Label="SubspaceGraph">
 ##  <ManSection>
@@ -664,21 +701,24 @@ DeclareGlobalFunction( "AntipodalQuotientGraph" );
 ##
 ##  <Description>
 ##  This is a general function to construct a graph with vertex-set
-##  a subset of <A>d</A>-dimensional subspaces <A>S</A> of a vector space <A>V</A>, 
-##  and distinct vertices are adjacent if and only if their intersection has
-##  dimension <M><A>d</A>-1</M>.
+##  a subset of <A>d</A>-dimensional subspaces <A>S</A> of a vector space 
+##  <A>V</A>, and distinct vertices are adjacent if and only if their 
+##  intersection has dimension <M><A>d</A>-1</M>.
 ##  <P/>
 ##  This function accepts the following arguments.
 ##  <List>
 ##    <Mark><A>G</A></Mark>
-##    <Item>A subgroup of the matrix group of invertible linear 
-##          transformations acting on vector space <A>V</A>.</Item>
+##    <Item>If <A>A</A> is not given, <A>G</A> should be a subgroup of the 
+##          matrix group of invertible linear transformations acting on 
+##          <A>V</A>. If <A>A</A> is given, this group should act on <A>V</A> 
+##          by the action <A>A</A>.</Item>
 ##    <Mark><A>S</A></Mark>
 ##    <Item>This argument can be either
 ##      <List>
 ##        <Item>a list of <A>d</A>-dimensional subspaces of <A>V</A>, or</Item>
-##        <Item>a function which acts as a filter on the set of 
-##              <A>d</A>-dimensional subspaces of <A>V</A>.</Item>
+##        <Item>a function which acts as a filter on the domain of 
+##              <A>d</A>-dimensional subspaces of <A>V</A>, 
+##              <C>Subspaces(V,d)</C>.</Item>
 ##      </List>
 ##    </Item>
 ##    <Mark><A>V</A></Mark>
@@ -689,11 +729,12 @@ DeclareGlobalFunction( "AntipodalQuotientGraph" );
 ##    <Item>If <A>A</A> is given, it must define a group action of <A>G</A> on 
 ##          the subspaces <A>S</A>. The resulting graph will be defined by this
 ##          action. If <A>A</A> is not given, the action of <A>G</A> on 
-##          the subspaces <A>S</A> is assumed to be the natural action.</Item>
+##          the subspaces <A>S</A> is assumed to be the natural action of a 
+##          matrix group.</Item>
 ##    <Mark><A>invt</A></Mark>
-##    <Item>If <A>invt</A> is given, it must take a boolean value. If <A>invt</A>
-##          is <C>true</C>, the subspaces <A>S</A> will be to be invariant under 
-##          the action of <A>G</A>. Otherwise, this is not assumed. 
+##    <Item>If <A>invt</A> is given, it must be <K>true</K> or <K>false</K>. 
+##          Then this function behaves as described in Section
+##          <Ref Sect="The invariant vertex-set option of Graph"/>.
 ##    </Item>
 ##  </List>
 ##    <Example>
@@ -710,6 +751,9 @@ DeclareGlobalFunction( "AntipodalQuotientGraph" );
 ##
 DeclareGlobalFunction( "SubspaceGraph" );
 
+#TODO duality functions, explain connected component?
+# The clique (dual geometry) graph of a collinearity graph pg. The optional second
+# argument allows choosing a connected component of the resulting graph.
 #############################################################################
 ##
 #F  CliqueGraph( [<filter>, ]<graph>[, <list>] )
@@ -721,46 +765,40 @@ DeclareGlobalFunction( "SubspaceGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  TODO
-##  Given a collinearity graph <A>gamma</A> of a partial geometry (true?), this function 
-##  returns the clique graph of <A>gamma</A>.
+##  Given a graph <A>gamma</A>, this function returns the clique graph of
+##  <A>gamma</A>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  If <A>ls</A> is not given, the resulting graph will have vertex-set the 
+##  union of orbits of the maximal cliques <C>Cliques(<A>gamma</A>)</C> under the 
+##  action of <C><A>gamma</A>.group</C>. If <A>ls</A> is given, it must be a 
+##  positive integer or list of positive integers. Then, the resulting graph will 
+##  have vertex-set the union of orbits of the maximal cliques 
+##  <C>Cliques(gamma){ls}</C> under the action of <C><A>gamma</A>.group</C>.
+##  <P/>
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
-##  If <A>ls</A> is given, it must be an positive integer or list of positive 
-##  integers. Then the resulting graph will be defined on the orbit of the lines
-##  <C>Cliques(gamma){ls}</C> under gamma.group.
+##  Let <M>\Gamma</M> be a graph and <M>S</M> be a set of maximal cliques in 
+##  <M>\Gamma</M>. The <E>clique graph</E> of <M>\Gamma</M> on the cliques 
+##  <M>S</M> has vertex-set <M>S</M>. Distinct vertices <M>A,B</M> are adjacent 
+##  if and only if <M>|A \cap B| = 1</M>.
 ##  <P/>
-##  Let <M>P</M> be a partial geometry with collinearity graph <A>gamma</A>. 
-##  The <E>clique graph</E> of <M>P</M> is the graph with vertex-set the lines of 
-##  <M>P</M>, and distinct vertices are adjacent if they intersect at a single 
-##  point. As the maximal cliques of <M>\Gamma</M> are the lines in <M>P</M>,
-##  we can construct this graph by using <M>\Gamma</M>.
+##  If <M>\Gamma</M> is the point graph (a.k.a. the collinearity graph) of a 
+##  partial geometry <M>PG</M>, the clique graph of <M>\Gamma</M> is then the 
+##  <E>line graph</E> of the partial geometry <M>PG</M>. If <M>PG</M> has 
+##  parameters <M>(s,t,\alpha)</M>, then its point graph is strongly regular 
+##  with parameters 
+##  <M>((s+1)(st+\alpha)/\alpha, s(t+1), s-1 + t(\alpha-1), \alpha(t+1))</M> 
+##  and its line graph is strongly regular with parameters 
+##  <M>((t+1)(st+\alpha)/\alpha, t(s+1), t-1 + s(\alpha-1), \alpha(s+1))</M>. 
 ##    <Example>
 ##      <![CDATA[
 ##gap> K7:=CompleteGraph(SymmetricGroup(7));;
 ##gap> P:=PartialLinearSpaces(K7,2,2)[1];;
-##gap> CliqueGraph(gamma);
-##rec( adjacencies := [ [ 2, 4, 9, 21 ] ], 
-##  duality := function( x ) ... end, 
-##  group := Group([ (1,2)(3,6)(5,10)(7,14)(9,18)(11,17)(15,16)
-##      (19,21), (1,2,4)(3,6,13)(5,10,8)(7,15,17)(9,18,12)(11,16,14)
-##      (19,20,21), (1,2,4)(3,7,16)(5,11,15)(6,8,17)(9,19,20)
-##      (10,13,14)(12,21,18), (1,3,8,17,18,11,20)(2,5,12,21,6,7,16)
-##      (4,9,13,14,10,19,15) ]), isGraph := true, 
-##  names := [ [ 1, [ 1, 2, 3 ] ], [ 2, [ 1, 2, 3 ] ], 
-##      [ 4, [ 1, 4, 5 ] ], [ 3, [ 1, 2, 3 ] ], [ 5, [ 1, 4, 5 ] ], 
-##      [ 4, [ 2, 4, 6 ] ], [ 7, [ 2, 5, 7 ] ], [ 7, [ 3, 4, 7 ] ], 
-##      [ 1, [ 1, 4, 5 ] ], [ 6, [ 2, 4, 6 ] ], [ 5, [ 2, 5, 7 ] ], 
-##      [ 3, [ 3, 4, 7 ] ], [ 4, [ 3, 4, 7 ] ], [ 7, [ 1, 6, 7 ] ], 
-##      [ 5, [ 3, 5, 6 ] ], [ 6, [ 3, 5, 6 ] ], [ 6, [ 1, 6, 7 ] ], 
-##      [ 2, [ 2, 4, 6 ] ], [ 2, [ 2, 5, 7 ] ], [ 3, [ 3, 5, 6 ] ], 
-##      [ 1, [ 1, 6, 7 ] ] ], order := 21, 
-##  primality := function( x ) ... end, representatives := [ 1 ], 
-##  schreierVector := [ -1, 1, 4, 2, 4, 1, 3, 4, 4, 1, 3, 4, 2, 1, 
-##      2, 3, 3, 1, 3, 4, 3 ] )
+##gap> gamma:=CliqueGraph(P);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 4 ], [ 1, 1, 2 ], [ 1, 1, 2 ], [ 2, 2, 0 ] ] 
 ##      ]]>
 ##    </Example>
 ##  </Description>
@@ -770,8 +808,10 @@ DeclareGlobalFunction( "SubspaceGraph" );
 DeclareConstructor("CliqueGraphCons", [IsObject, IsRecord, IsList]);
 DeclareGlobalFunction( "CliqueGraph" );
 
+#TODO duality functions, explain connected component?
 # TODO this is in conflict with fining package. Not good as use of both packages
 # quite likely.
+# The incidence graph of a collinearity graph.
 #############################################################################
 ##
 #F  IncidenceGraph( [<filter>, ]<graph>[, <list>] )
@@ -783,46 +823,36 @@ DeclareGlobalFunction( "CliqueGraph" );
 ##  <Returns>A graph.</Returns>
 ##
 ##  <Description>
-##  TODO
-##  Given a collinearity graph <A>gamma</A> of a partial geometry (true?), this function 
-##  returns the incidence graph of <A>gamma</A>.
+##  Given a graph <A>gamma</A>, this function returns the incidence graph of 
+##  <A>gamma</A>.
 ##  <P/>
-##  The optional argument <A>fil</A>, if used, can only take value 
-##  <C>NoVertexNames</C>. The vertex naming of this function behaves as described in
+##  If <A>ls</A> is not given, the resulting graph will have vertex-set the 
+##  union of <C>Vertices(<A>gamma</A>)</C> and each orbit of the maximal cliques 
+##  <C>Cliques(<A>gamma</A>)</C> under the action of <C><A>gamma</A>.group</C>. 
+##  If <A>ls</A> is given, it must be a positive integer or list of positive 
+##  integers. Then, the resulting graph will have vertex-set the union of 
+##  <C>Vertices(<A>gamma</A>)</C> and each orbit of the maximal cliques 
+##  <C>Cliques(gamma){ls}</C> under the action of <C><A>gamma</A>.group</C>.
+##  <P/>
+##  The optional argument <A>fil</A>, if used, should only take the value 
+##  <C>NoVertexNames</C>. Then this function behaves as described in 
 ##  <Ref Filt="NoVertexNames"/>.
 ##  <P/>
-##  If <A>ls</A> is given, it must be an positive integer or list of positive 
-##  integers. Then the resulting graph will be defined on the orbit of the lines
-##  <C>Cliques(gamma){ls}</C> under gamma.group.
+##  Let <M>\Gamma</M> be a graph and <M>S</M> be a set of maximal cliques in 
+##  <M>\Gamma</M>. The <E>incidence graph</E> of <M>\Gamma</M> on the cliques 
+##  <M>S</M> has vertex-set <M>V(\Gamma) \cup S</M>. Distinct vertices 
+##  <M>u,w</M> are adjacent if and only if <M>u \subseteq w</M> or 
+##  <M>w \subseteq u</M>.
 ##  <P/>
-##  Let <M>P</M> be a partial geometry with collinearity graph <A>gamma</A>. 
-##  The <E>incidence graph</E> of <M>P</M> is the graph with vertex-set the union
-##  of the points and lines of <M>P</M>, and distinct vertices are adjacent if 
-##  they are incident. As the maximal cliques of <M>\Gamma</M> are the lines of
-##  <M>P</M>, we can construct this graph by using <M>\Gamma</M>.
+##  If <M>\Gamma</M> is the point graph (a.k.a. the collinearity graph) of a 
+##  partial geometry <M>PG</M>, the incidence graph of <M>\Gamma</M> is the 
+##  <E>incidence graph</E> of the partial geometry <M>PG</M>. 
 ##    <Example>
 ##      <![CDATA[
-##gap> K7:=CompleteGraph(SymmetricGroup(7));;
-##gap> P:=PartialLinearSpaces(K7,2,2)[1];;
-##gap> IncidenceGraph(P);    
-##rec( adjacencies := [ [ 15, 23, 35 ], [ 15, 16, 18 ], [ 1, 8 ] ], 
-##  group := <permutation group with 4 generators>, 
-##  halfDuality := function( x ) ... end, 
-##  halfPrimality := function( x ) ... end, isGraph := true, 
-##  names := [ 1, 2, 4, 3, 5, 7, 6, [ 1, 2, 3 ], [ 1, 4, 5 ], 
-##      [ 2, 4, 6 ], [ 2, 5, 7 ], [ 3, 4, 7 ], [ 1, 6, 7 ], 
-##      [ 3, 5, 6 ], [ 1, [ 1, 2, 3 ] ], [ 2, [ 1, 2, 3 ] ], 
-##      [ 4, [ 1, 4, 5 ] ], [ 3, [ 1, 2, 3 ] ], [ 5, [ 1, 4, 5 ] ], 
-##      [ 4, [ 2, 4, 6 ] ], [ 7, [ 2, 5, 7 ] ], [ 7, [ 3, 4, 7 ] ], 
-##      [ 1, [ 1, 4, 5 ] ], [ 6, [ 2, 4, 6 ] ], [ 5, [ 2, 5, 7 ] ], 
-##      [ 3, [ 3, 4, 7 ] ], [ 4, [ 3, 4, 7 ] ], [ 7, [ 1, 6, 7 ] ], 
-##      [ 5, [ 3, 5, 6 ] ], [ 6, [ 3, 5, 6 ] ], [ 6, [ 1, 6, 7 ] ], 
-##      [ 2, [ 2, 4, 6 ] ], [ 2, [ 2, 5, 7 ] ], [ 3, [ 3, 5, 6 ] ], 
-##      [ 1, [ 1, 6, 7 ] ] ], order := 35, 
-##  representatives := [ 1, 8, 15 ], 
-##  schreierVector := [ -1, 1, 4, 2, 4, 3, 1, -2, 4, 1, 3, 4, 1, 2, 
-##      -3, 1, 4, 2, 4, 1, 3, 4, 4, 1, 3, 4, 2, 1, 2, 3, 3, 1, 3, 4, 
-##      3 ] )
+##gap> pg:=GeneralizedQuadrangleQ(4,3);;
+##gap> gamma:=AGT_IncidenceGraph(pg);;
+##gap> GlobalParameters(gamma);
+##[ [ 0, 0, 4 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 1, 0, 3 ], [ 4, 0, 0 ] ]
 ##      ]]>
 ##    </Example>
 ##  </Description>
