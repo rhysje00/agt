@@ -98,7 +98,7 @@ DeclareGlobalFunction( "HammingGraph2" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "HypercubeGraph" );
+DeclareGlobalFunction( "HypercubeGraph2" );
 
 #############################################################################
 ##
@@ -192,7 +192,7 @@ DeclareGlobalFunction( "DoobGraph" );
 ##  <#/GAPDoc>
 ##
 DeclareConstructor( "HalvedCubeGraphCons", [IsObject, IsInt]);
-DeclareGlobalFunction( "HalvedCubeGraph" );
+DeclareGlobalFunction( "HalvedCubeGraph2" );
 
 #############################################################################
 ##

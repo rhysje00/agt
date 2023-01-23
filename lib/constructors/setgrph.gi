@@ -65,7 +65,7 @@ end );
 ##
 #F  KneserGraph( [<filter>, ]<integer> <integer>[, <bool>] )
 ##  
-InstallGlobalFunction( KneserGraph,
+InstallGlobalFunction( KneserGraph2,
 function(arg)
   local j, filt;
   if IsAFilter(arg[1]) then
@@ -88,7 +88,7 @@ end );
 ##
 #F  OddGraph( [<filter>, ]<integer> )
 ##  
-InstallGlobalFunction( OddGraph,
+InstallGlobalFunction( OddGraph2,
 function(arg)
   local j, filt;
   if IsAFilter(arg[1]) then

@@ -93,7 +93,7 @@ end );
 ##
 #F  CycleGraph( <integer> )
 ##  
-InstallGlobalFunction( CycleGraph,
+InstallGlobalFunction( CycleGraph2,
 n -> Graph(DihedralGroup(IsPermGroup, 2*n), [1..n],
   OnPoints, function(x, y)
     return (x-y) mod n in [1,n-1];
@@ -274,7 +274,7 @@ end );
 ##
 #F  HaarGraph( <integer>[, <list>] )
 ##  
-InstallGlobalFunction( HaarGraph,
+InstallGlobalFunction( HaarGraph2,
 function(arg)
   local j, m, n, adj, filt;
   if IsAFilter(arg[1]) then

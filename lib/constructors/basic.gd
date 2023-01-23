@@ -65,11 +65,11 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph" );
 
 #############################################################################
 ##
-#F  CycleGraph( <integer> )
+#F  CycleGraph2( <integer> )
 ##  
 ##  <#GAPDoc Label="CycleGraph">
 ##  <ManSection>
-##  <Func Name="CycleGraph"
+##  <Func Name="CycleGraph2"
 ##   Arg='n'/>
 ##  <Returns>A graph.</Returns>
 ##
@@ -82,7 +82,7 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph" );
 ##  <M>x,y</M> are adjacent if and only if <M>x-y \equiv \pm 1\;(mod\; n)</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> CycleGraph(5);
+##gap> CycleGraph2(5);
 ##rec( adjacencies := [ [ 2, 5 ] ], 
 ##  group := Group([ (1,2,3,4,5), (2,5)(3,4) ]), isGraph := true, 
 ##  names := [ 1 .. 5 ], order := 5, representatives := [ 1 ], 
@@ -93,7 +93,7 @@ DeclareGlobalFunction( "CompleteMultipartiteGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "CycleGraph" );
+DeclareGlobalFunction( "CycleGraph2" );
 
 # In BVM_2022 1.1.3 not specific
 #############################################################################
@@ -299,11 +299,11 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 #TODO why have a filter?
 #############################################################################
 ##
-#F  HaarGraph( <integer>[, <list>] )
+#F  HaarGraph2( <integer>[, <list>] )
 ##  
 ##  <#GAPDoc Label="HaarGraph">
 ##  <ManSection>
-##  <Func Name="HaarGraph"
+##  <Func Name="HaarGraph2"
 ##   Arg='k[, list]'/>
 ##  <Returns>A graph.</Returns>
 ##
@@ -326,7 +326,7 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 ##  For more information on this graph, see <Cite Key="HMP_2002"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap> HaarGraph(11);
+##gap> HaarGraph2(11);
 ##rec( adjacencies := [ [ 5, 6, 8 ] ], 
 ##  group := Group([ (1,2,3,4)(5,6,7,8), (1,5)(2,8)(3,7)(4,6) ]), 
 ##  isGraph := true, 
@@ -340,7 +340,7 @@ DeclareGlobalFunction( "CompleteTaylorGraph" );
 ##  <#/GAPDoc>
 ##
 DeclareConstructor( "HaarGraphCons", [IsObject, IsInt, IsList]);
-DeclareGlobalFunction( "HaarGraph" );
+DeclareGlobalFunction( "HaarGraph2" );
 
 #############################################################################
 ##

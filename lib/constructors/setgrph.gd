@@ -11,7 +11,7 @@
 # In BCN_1989 9.1A not specific
 #############################################################################
 ##
-#F  KneserGraph( [<filter>, ]<integer> <integer>[, <bool>] )
+#F  KneserGraph2( [<filter>, ]<integer> <integer>[, <bool>] )
 ##  
 ##  <#GAPDoc Label="KneserGraph">
 ##  <ManSection>
@@ -38,7 +38,7 @@
 ##  parameters <M>(C(n,k),C(n-k,k),C(n-2k,k))</M>.
 ##    <Example>
 ##      <![CDATA[
-##gap> KneserGraph(6,2);
+##gap> KneserGraph2(6,2);
 ##rec( adjacencies := [ [ 10, 11, 12, 13, 14, 15 ] ], 
 ##  group := Group([ (1,6,10,13,15,5)(2,7,11,14,4,9)(3,8,12), (2,6)(3,7)(4,8)
 ##      (5,9) ]), isGraph := true, 
@@ -54,7 +54,7 @@
 ##  <#/GAPDoc>
 ##
 DeclareConstructor( "KneserGraphCons", [IsObject, IsInt, IsInt, IsBool]);
-DeclareGlobalFunction( "KneserGraph" );
+DeclareGlobalFunction( "KneserGraph2" );
 
 #############################################################################
 ##
@@ -102,7 +102,7 @@ DeclareGlobalFunction( "KneserGraph" );
 ##  </ManSection>
 ##  <#/GAPDoc>
 ##
-DeclareGlobalFunction( "OddGraph" );
+DeclareGlobalFunction( "OddGraph2" );
 
 #############################################################################
 ##

@@ -64,7 +64,7 @@ end );
 ##
 #F  HypercubeGraph( [<filter>, ]<integer> )
 ##  
-InstallGlobalFunction( HypercubeGraph,
+InstallGlobalFunction( HypercubeGraph2,
 function(arg)
   local j, filt;
   if IsAFilter(arg[1]) then
@@ -180,7 +180,7 @@ end );
 ##
 #F  HalvedCubeGraph( [<filter>, ]<integer> )
 ##  
-InstallGlobalFunction( HalvedCubeGraph,
+InstallGlobalFunction( HalvedCubeGraph2,
 function(arg)
   local G, j, filt;
   if IsAFilter(arg[1]) then
