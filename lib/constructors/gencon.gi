@@ -147,7 +147,7 @@ function(arg)
   return ProductGraph(filt, Gs, function(x, y)
         local l;
         l := List([1..Length(Gs)], i -> Distance(Gs[i], x[i], y[i]));
-        return WeightVecFFE(l) = 1 and 1 in l;
+        return (WeightVecFFE(l) = 1) and (1 in l);
     end);
 end );
 

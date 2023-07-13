@@ -616,7 +616,7 @@ DeclareGlobalFunction( "ExtendedBipartiteDoubleGraph" );
 ##  <Cite Key="BCN_1989" Where="Section 4.2"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap> h:=CycleGraph(8);;
+##gap> h:=CycleGraph2(8);;
 ##gap> HalvedGraph(h);
 ##rec( adjacencies := [ [ 2, 4 ] ], group := Group([ (2,4), (1,2)(3,4) ]),
 ##     isGraph := true, isSimple := true, names := [ 1, 3, 5, 7 ], order := 4, 

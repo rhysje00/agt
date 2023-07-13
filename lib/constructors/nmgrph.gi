@@ -33,7 +33,7 @@ end );
 ##  
 InstallGlobalFunction( PetersenGraph2,
 function()
-  return OddGraph(2);
+  return OddGraph2(2);
 end );
 
 #############################################################################
@@ -56,7 +56,7 @@ end );
 ##  
 InstallGlobalFunction( ClebschGraph,
 function()
-  return HalvedCubeGraph(5);
+  return HalvedCubeGraph2(5);
 end );
 
 #############################################################################

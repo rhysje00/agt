@@ -87,7 +87,7 @@ DeclareGlobalFunction( "OctahedronGraph" );
 ##  The <E>Petersen graph</E> has vertex-set the <M>2</M>-subsets of 
 ##  <M>\{1,..., 5\}</M>, and distinct vertices are adjacent if and only if their 
 ##  intersection is empty. By definition, this is exactly the Odd graph 
-##  <M>O_3</M> and the Kneser graph <M>K(5,2)</M> (see <Ref Func="OddGraph"/> 
+##  <M>O_3</M> and the Kneser graph <M>K(5,2)</M> (see <Ref Func="OddGraph2"/> 
 ##  and <Ref Func="KneserGraph"/>). This graph is strongly regular with 
 ##  parameters <M>(10,3,0,1)</M>.
 ##  <P/>
@@ -160,8 +160,8 @@ DeclareGlobalFunction( "ShrikhandeGraph" );
 ##  This function returns the Clebsch graph.
 ##  <P/>
 ##  The <E>Clebsch graph</E> is the halved graph of the <M>5</M>-dimensional
-##  hypercube graph (see <Ref Func="HalvedCubeGraph"/>, 
-##  <Ref Func="HypercubeGraph"/> and <Ref Func="HalvedGraph"/>). This graph
+##  hypercube graph (see <Ref Func="HalvedCubeGraph2"/>, 
+##  <Ref Func="HypercubeGraph2"/> and <Ref Func="HalvedGraph"/>). This graph
 ##  is strongly regular with parameters <M>(16,10,6,6)</M>.
 ##  <P/>
 ##  For more information on this, see 
@@ -354,7 +354,7 @@ DeclareGlobalFunction( "WittStronglyRegularGraph" );
 ##  <Cite Key="BV_2022" Where="Section 10.53"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap> gap> gamma:=KlinGraph();;
+##gap> gamma:=KlinGraph();;
 ##gap> SRGParameters(gamma);
 ##[ 210, 99, 48, 45 ]
 ##      ]]>
@@ -380,7 +380,7 @@ DeclareGlobalFunction( "KlinGraph" );
 ##  <P/>
 ##  The <E>Cube graph</E> is the skeleton of the cube. This graph is 
 ##  isomorphic to the 3-dimensional hypercube graph and the Hamming graph
-##  <M>H(3,2)</M> (see <Ref Func="HypercubeGraph"/> and 
+##  <M>H(3,2)</M> (see <Ref Func="HypercubeGraph2"/> and 
 ##  <Ref Func="HammingGraph2"/>). This graph has 8 vertices and is 
 ##  distance-regular with intersection array <M>\{3, 2, 1; 1, 2, 3\}</M>.
 ##    <Example>
@@ -803,6 +803,7 @@ DeclareGlobalFunction( "UnitalGraph" );
 ##  <M>\{3, 2, 1, 1, 1; 1, 1, 1, 2, 3\}</M>.
 ##    <Example>
 ##      <![CDATA[
+##gap> gamma:=DodecahedronGraph();;
 ##gap> GlobalParameters(gamma);
 ##[ [ 0, 0, 3 ], [ 1, 0, 2 ], [ 1, 1, 1 ], [ 1, 1, 1 ], [ 2, 0, 1 ], 
 ##  [ 3, 0, 0 ] ]
@@ -835,6 +836,7 @@ DeclareGlobalFunction( "DodecahedronGraph" );
 ##  <M>\{3, 2, 2, 1, 1; 1, 1, 2, 2, 3\}</M>.
 ##    <Example>
 ##      <![CDATA[
+##gap> gamma:=DesarguesGraph();;
 ##gap> GlobalParameters(gamma);
 ##[ [ 0, 0, 3 ], [ 1, 0, 2 ], [ 1, 0, 2 ], [ 2, 0, 1 ], [ 2, 0, 1 ], 
 ##  [ 3, 0, 0 ] ]

@@ -101,7 +101,7 @@ function(arg)
   if Length(arg) = j then
     return KneserGraphCons(filt, 2*arg[j]+1, arg[j], false);
   else
-    Error("usage: OddGraph( [<filter>, ]<int> )");
+    Error("usage: OddGraph2( [<filter>, ]<int> )");
   fi;
 end );
 

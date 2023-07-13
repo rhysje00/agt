@@ -19,7 +19,7 @@ InstallMethod( PreparataGraphCons,
 function(filter, t, e)
   local B, C, F, H, K, s, dp, p1, p2, p3, p4, pi, rho;
   if t = 1 then
-    H := HypercubeGraph(IsVectorGraph and FullAutomorphismGroup, 3);
+    H := HypercubeGraph2(IsVectorGraph and FullAutomorphismGroup, 3);
     AssignVertexNames(H, List(H.names,
                                 t -> ([t[1]+t[3], t[2]+t[3], t[3]-1])*Z(2)^0));
     return H;

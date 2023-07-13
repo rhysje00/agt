@@ -62,7 +62,7 @@ DeclareGlobalFunction( "KneserGraph2" );
 ##  
 ##  <#GAPDoc Label="OddGraph">
 ##  <ManSection>
-##  <Func Name="OddGraph"
+##  <Func Name="OddGraph2"
 ##   Arg='[fil, ]d'/>
 ##  <Returns>A graph.</Returns>
 ##
@@ -88,7 +88,7 @@ DeclareGlobalFunction( "KneserGraph2" );
 ##  <Cite Key="BCN_1989" Where="Section 9.1D"/>. 
 ##    <Example>
 ##      <![CDATA[
-##gap> OddGraph(2);
+##gap> OddGraph2(2);
 ##rec( adjacencies := [ [ 3, 5, 8 ] ], 
 ##  group := Group([ (1,2,3,5,7)(4,6,8,9,10), (2,4)(6,9)(7,10) ]), 
 ##  isGraph := true, 
@@ -127,7 +127,7 @@ DeclareGlobalFunction( "OddGraph2" );
 ##  in <M>\{d,d+1\}</M>, and distinct vertices <M>X,Y</M> are 
 ##  adjacent if and only if <M>X \subset Y</M> or <M>Y \subset X</M>.
 ##  This gives a graph isomorphic to the bipartite double of the Odd
-##  graph given by <Ref Func="OddGraph"/> and
+##  graph given by <Ref Func="OddGraph2"/> and
 ##  <Ref Func="BipartiteDoubleGraph"/>. This graph has <M>C(2d+1,d)</M> 
 ##  vertices, and is distance-regular with diameter <M>2d+1</M> and 
 ##  intersection array given by

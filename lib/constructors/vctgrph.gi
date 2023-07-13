@@ -77,7 +77,7 @@ function(arg)
   if Length(arg) = j then
     return HammingGraphCons(filt, arg[j], 2);
   else
-    Error("usage: HypercubeGraph( [<filter>, ]<int> )");
+    Error("usage: HypercubeGraph2( [<filter>, ]<int> )");
   fi;
 end );
     
@@ -193,7 +193,7 @@ function(arg)
   if Length(arg) = j then
     return HalvedCubeGraphCons(filt, arg[j]);
   else
-    Error("usage: HalvedCubeGraph( [<filter>, ]<int> )");
+    Error("usage: HalvedCubeGraph2( [<filter>, ]<int> )");
   fi;
 end );
 

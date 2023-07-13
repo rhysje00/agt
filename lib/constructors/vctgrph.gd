@@ -66,7 +66,7 @@ DeclareGlobalFunction( "HammingGraph2" );
 ##  
 ##  <#GAPDoc Label="HypercubeGraph">
 ##  <ManSection>
-##  <Func Name="HypercubeGraph"
+##  <Func Name="HypercubeGraph2"
 ##   Arg='[fil, ]d'/>
 ##  <Returns>A graph.</Returns>
 ##
@@ -85,7 +85,7 @@ DeclareGlobalFunction( "HammingGraph2" );
 ##  (see <Ref Func="HammingGraph2"/>).
 ##    <Example>
 ##      <![CDATA[
-##gap> HypercubeGraph(3);
+##gap> HypercubeGraph2(3);
 ##rec( adjacencies := [ [ 2, 3, 5 ] ], 
 ##  group := Group([ (1,5)(2,6)(3,7)(4,8), (1,3)(2,4)(5,7)(6,8), (1,2)(3,4)(5,6)
 ##      (7,8), (2,5,3)(4,6,7), (3,5)(4,6) ]), isGraph := true, 
@@ -149,7 +149,7 @@ DeclareGlobalFunction( "DoobGraph" );
 ##  
 ##  <#GAPDoc Label="HalvedCubeGraph">
 ##  <ManSection>
-##  <Func Name="HalvedCubeGraph"
+##  <Func Name="HalvedCubeGraph2"
 ##   Arg='[fil, ]d'/>
 ##  <Returns>A graph.</Returns>
 ##
@@ -163,7 +163,7 @@ DeclareGlobalFunction( "DoobGraph" );
 ##  <P/>  
 ##  Let <M>d</M> be a positive integer. The <E>halved <M>d</M>-cube</E> is
 ##  the halved graph of the <M>d</M>-dimensional hypercube graph (see  
-##  <Ref Func="HalvedGraph"/> and <Ref Func="HypercubeGraph"/>). This graph has 
+##  <Ref Func="HalvedGraph"/> and <Ref Func="HypercubeGraph2"/>). This graph has 
 ##  <M>2^{{d-1}}</M> vertices, and for <M>d \geq 3 </M>, this graph is 
 ##  distance-regular with diameter <M>\lfloor d/2 \rfloor</M> and intersection 
 ##  array given by
@@ -177,7 +177,7 @@ DeclareGlobalFunction( "DoobGraph" );
 ##  <Cite Key="BCN_1989" Where="Section 9.2D"/>.
 ##    <Example>
 ##      <![CDATA[
-##gap> HalvedCubeGraph(4);
+##gap> HalvedCubeGraph2(4);
 ##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7 ] ], 
 ##  group := Group([ (3,5)(4,6), (2,5,3)(4,6,7), (2,7)(4,5), (2,7)(3,6), 
 ##      (1,2,5,8,7,4)(3,6) ]), isGraph := true, isSimple := true, 
@@ -215,7 +215,7 @@ DeclareGlobalFunction( "HalvedCubeGraph2" );
 ##  Let <M>d</M> be a positive integer. The <E>folded <M>d</M>-cube</E> is
 ##  the antipodal quotient graph of the <M>d</M>-dimensional hypercube graph  
 ##  (see <Ref Func="AntipodalQuotientGraph"/> and 
-##  <Ref Func="HypercubeGraph"/>). This graph has <M>2^{{d-1}}</M> vertices 
+##  <Ref Func="HypercubeGraph2"/>). This graph has <M>2^{{d-1}}</M> vertices 
 ##  and for <M>d \geq 3 </M>, this graph is distance-regular with diameter 
 ##  <M>\lfloor d/2 \rfloor</M> and intersection array given by
 ##  <Display Mode="M">
@@ -273,7 +273,7 @@ DeclareGlobalFunction( "FoldedCubeGraph" );
 ##  <M>d</M>-cube</E> is the antipodal quotient of the halved graph of the
 ##  <M>d</M>-dimensional hypercube graph (see 
 ##  <Ref Func="AntipodalQuotientGraph"/>, <Ref Func="HalvedGraph"/> and 
-##  <Ref Func="HypercubeGraph"/>). This graph has <M>2^{{d-1}}</M> vertices and 
+##  <Ref Func="HypercubeGraph2"/>). This graph has <M>2^{{d-1}}</M> vertices and 
 ##  for <M>d \geq 3 </M>, this graph is distance-regular with diameter 
 ##  <M>\lfloor d/2 \rfloor</M> and intersection array given by
 ##  <Display Mode="M">
