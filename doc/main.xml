@@ -21,7 +21,7 @@
   <Date>&RELEASEDATE;</Date>
   <Author> Rhys J. Evans
     <Email>rhysjevans00@gmail.com</Email>
-    <Homepage>https://www.qmul.ac.uk/maths/profiles/evansr.html</Homepage>
+    <Homepage>https://rhysje00.github.io/</Homepage>
   </Author>
   <Author> Janoš Vidali
     <Email>janos.vidali@fmf.uni-lj.si</Email>
@@ -33,7 +33,7 @@
     &copyright; 2020 by Rhys J. Evans <P/>
     The &AGT; package is free software: you can redistribute it and/or modify
     it under the terms of the 
-    <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL>
+    <URL Text="GNU General Public License">https://www.fsf.org/licenses/gpl.html</URL>
     as published by the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version. 
   </Copyright>

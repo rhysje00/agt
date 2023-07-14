@@ -8,13 +8,13 @@ SetPackageInfo( rec(
 
   PackageName := "AGT",
   Subtitle := "Algebraic Graph Theory",
-  Version := "0.2",
-  Date := "02/03/2020",
+  Version := "0.3.1",
+  Date := "31/12/2022",
   License := "GPL-2.0-or-later",
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "0.2">
-##  <!ENTITY RELEASEDATE "2 March 2020">
+##  <!ENTITY VERSION "0.3.1">
+##  <!ENTITY RELEASEDATE "31 December 2022">
 ##  <!ENTITY PKGWWWHOME "https://gap-packages.github.io/agt/">
 ##  <#/GAPDoc>
 
@@ -43,11 +43,10 @@ SetPackageInfo( rec(
       IsMaintainer := true,
       FirstNames := "Rhys J.",
       LastName := "Evans",
-      WWWHome := "https://www.qmul.ac.uk/maths/profiles/evansr.html",
+      WWWHome := "https://rhysje00.github.io/",
       Email := "rhysjevans00@gmail.com",
-      PostalAddress := "Novosibirsk, Russia",
-      Place := "Akademgorodok, Novosibirsk",
-      Institution := "Sobolev Institute of Mathematics",
+      Place := "Ljubljana, Slovenia",
+      Institution := "Inštitut za matematiko, fiziko in mehaniko",
     ),
     
     rec(
@@ -77,7 +76,7 @@ SetPackageInfo( rec(
   PackageDoc := rec(
     BookName  := "agt",
     ArchiveURLSubset := ["doc"],
-    HTMLStart := "doc/chap0.html",
+    HTMLStart := "doc/chap0_mj.html",
     PDFFile   := "doc/manual.pdf",
     # the path to the .six file used by GAP's help system
     SixFile   := "doc/manual.six",
