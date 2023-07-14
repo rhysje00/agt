@@ -8,8 +8,9 @@ MakeGAPDocDoc( "doc",     # path to the directory containing the main file
                           # list of (probably source code) files relative 
                           # to path which contain pieces of documentation 
                           # which must be included in the document
-               [ "../PackageInfo.g", "../lib/regprop.gd", "../lib/eigenv.gd",
-                  "../lib/regsubs.gd", "../lib/srglib.gd", "../lib/utils.gd" ], 
+               [ "../PackageInfo.g", "../lib/regprop.gd", "../lib/transitivity.gd",
+                 "../lib/eigenv.gd", "../lib/regsubs.gd", "../lib/srglib.gd",
+                 "../lib/utils.gd" ], 
                "agt", # the name of the book used by GAP's online help
                "../../..",# optional: relative path to the main GAP root 
                           # directory to produce HTML files with relative 

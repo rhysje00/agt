@@ -13,6 +13,7 @@ ReadPackage( "agt", "lib/eigenv.gi" );
 ReadPackage( "agt", "lib/regsubs.gi" );
 ReadPackage( "agt", "srglib/Brouwer_Parameters.g" );
 ReadPackage( "agt", "lib/srglib.gi" );
+ReadPackage( "agt", "lib/transitivity.gi" );
 
 
 #############################################################################

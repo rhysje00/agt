@@ -40,6 +40,8 @@
 
 <#Include SYSTEM "regprop.xml">
 
+<#Include SYSTEM "transitivity.xml">
+
 <#Include SYSTEM "eigenv.xml">
 
 <#Include SYSTEM "regsub.xml">

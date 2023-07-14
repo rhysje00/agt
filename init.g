@@ -12,6 +12,7 @@ ReadPackage( "agt", "lib/eigenv.gd" );
 ReadPackage( "agt", "lib/regprop.gd" );
 ReadPackage( "agt", "lib/regsubs.gd" );
 ReadPackage( "agt", "lib/srglib.gd" );
+ReadPackage( "agt", "lib/transitivity.gd" );
 
 #############################################################################
 ##

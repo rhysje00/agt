@@ -1,0 +1,27 @@
+<Chapter Label="transitivity">
+<Heading>Transitivity properties of graphs</Heading>
+
+In this chapter we give functions used to investgiate various transitivity 
+properties of graphs.
+
+Given a graph <M>\Gamma = (V,E)</M>, a function <M>\phi:V\to V</M> is an 
+<E>automorphism</E> of <M>\Gamma</M> if it is a bijection such that for all
+<M>v,w\in V</M>, <M>v,w</M> are adjacent in <M>\Gamma</M> if and only if 
+<M>\phi(v),\phi(w)</M> are adjacent in <M>\Gamma</M>.
+
+<Section Label="Vertex, edge, and distance transitivity">
+<Heading>Vertex, edge, and distance transitivity</Heading>
+
+A graph <M>\Gamma</M> is <E>regular</E> with <E>parameters</E> <M>(v,k)</M>
+if <M>\Gamma</M> is simple and undirected, it has order <M>v</M>, 
+and every vertex of <M>\Gamma</M> has degree <M>k</M>.
+
+<#Include Label="IsVertexTransitiveGraph">
+
+<#Include Label="GraphPermutationRank">
+
+<#Include Label="IsEdgeTransitiveGraph">
+
+</Section>
+
+</Chapter>
