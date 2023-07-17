@@ -3,24 +3,51 @@
 
 In this chapter we give functions used to investgiate various transitivity 
 properties of graphs.
-
+<P/>
 Given a graph <M>\Gamma = (V,E)</M>, a function <M>\phi:V\to V</M> is an 
 <E>automorphism</E> of <M>\Gamma</M> if it is a bijection such that for all
 <M>v,w\in V</M>, <M>v,w</M> are adjacent in <M>\Gamma</M> if and only if 
 <M>\phi(v),\phi(w)</M> are adjacent in <M>\Gamma</M>.
 
-<Section Label="Vertex, edge, and distance transitivity">
-<Heading>Vertex, edge, and distance transitivity</Heading>
-
-A graph <M>\Gamma</M> is <E>regular</E> with <E>parameters</E> <M>(v,k)</M>
-if <M>\Gamma</M> is simple and undirected, it has order <M>v</M>, 
-and every vertex of <M>\Gamma</M> has degree <M>k</M>.
+<Section Label="Actions on the vertex-set">
+<Heading>Actions on the vertex-set</Heading>
 
 <#Include Label="IsVertexTransitiveGraph">
 
-<#Include Label="GraphPermutationRank">
+<#Include Label="GraphVertexOrbits">
+
+</Section>
+
+<Section Label="Actions on the edge-set">
+<Heading>Actions on the edge-set</Heading>
 
 <#Include Label="IsEdgeTransitiveGraph">
+
+<#Include Label="GraphEdgeOrbits">
+
+<#Include Label="IsSymmetricGraph">
+
+<#Include Label="IsSemisymmetricGraph">
+
+</Section>
+
+<Section Label="Actions on the arc-set">
+<Heading>Actions on the arc-set</Heading>
+
+<#Include Label="IsArcTransitiveGraph">
+
+<#Include Label="GraphArcOrbits">
+
+<#Include Label="IsHalfArcTransitiveGraph">
+
+</Section>
+
+<Section Label="Actions on distance-sets">
+<Heading>Actions on distance-sets</Heading>
+
+<#Include Label="IsDistanceTransitiveGraph">
+
+<#Include Label="GraphDistanceSetOrbits">
 
 </Section>
 

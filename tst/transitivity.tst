@@ -18,16 +18,19 @@ true
 # IsVertexTransitiveGraph
 gap> gamma:=CompleteGraph(Group(()),5);;
 gap> IsVertexTransitiveGraph(gamma);
+false
+gap> IsVertexTransitiveGraph(AutGroupGraph(gamma),gamma);
 true
 gap> RemoveEdgeOrbit(gamma,[1,2]);
-gap> IsVertexTransitiveGraph(gamma);
+gap> IsVertexTransitiveGraph(AutGroupGraph(gamma),gamma);
 false
 
-# GraphPermutationRank
-gap> Diameter(JohnsonGraph(6,3));
-3
-gap> GraphPermutationRank(JohnsonGraph(6,3));
-4
+# GraphVertexOrbits
+gap> gamma:=CompleteGraph(Group([(1,2),(3,4,5)]),5);;
+gap> GraphVertexOrbits(gamma);
+[ [ 1, 2 ], [ 3, 4, 5 ] ]
+gap> GraphVertexOrbits(AutGroupGraph(gamma),gamma);
+[ [ 1, 2, 3, 4, 5 ] ]
 
 # IsEdgeTransitiveGraph
 gap> gamma:=EdgeOrbitsGraph(Group([(1,2),(3,4,5)]),[[1,3],[3,1]]);;
@@ -35,6 +38,23 @@ gap> IsVertexTransitiveGraph(gamma);
 false
 gap> IsEdgeTransitiveGraph(gamma);
 true
+
+# GraphEdgeOrbits
+# TODO
+
+# IsSymmetricGraph
+# TODO
+
+# IsSemisymmetricGraph
+# TODO
+
+# IsArcTransitive
+
+# GraphArcOrbits
+
+# IsDistanceTransitiveGraph
+
+# GraphDistanceOrbits
 
 #
 gap> STOP_TEST("AGT package: transitivity.tst",0);
