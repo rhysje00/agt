@@ -123,6 +123,23 @@ end );
 
 #############################################################################
 ##
+#F  HigmanSimsGraph(  )
+##  
+InstallGlobalFunction( HigmanSimsGraph, 
+function(  )
+  local gamma, cocliqs;
+
+  gamma := HoffmanSingletonGraph();
+  gamma := ComplementGraph(gamma);
+
+  cocliqs := CompleteSubgraphsOfGivenSize(gamma,15,2,false);
+
+  return Graph(gamma.group,cocliqs,OnSets,
+               function(x,y) return Length(Intersection(x,y)) in [0,8]; end);
+end );
+
+#############################################################################
+##
 #F  KlinGraph(  )
 ##  
 InstallGlobalFunction( KlinGraph,
@@ -139,6 +156,39 @@ function()
         AssignVertexNames(G, V);
         return G;
     end])[1]();
+end );
+
+#############################################################################
+##
+#F  McLaughlinGraph(  )
+##  
+InstallGlobalFunction( McLaughlinGraph, 
+function()
+  local hoffman,gamma,cocliqs,edges,grp,pents,orbs;
+  
+  hoffman:=HoffmanSingletonGraph();
+  edges:=UndirectedEdges(hoffman);
+  
+  # Aut(Hoff) acts transitively on 5-cycles
+  pents:=PositionsProperty(hoffman.names,x->x{[2,3]}=[0*Z(5),1]);
+  pents:=Orbit(AutGroupGraph(hoffman),pents,OnSets);
+
+  hoffman:=ComplementGraph(hoffman);
+  cocliqs:=CompleteSubgraphsOfGivenSize(hoffman,15,2,false);
+  
+  gamma:= Graph(hoffman.autGroup,Union(edges,cocliqs),OnSets,function(x,y)
+                 if Length(x)=Length(y) then
+                   if Length(x)=2 then
+                     return ForAny(pents,p->IsSubset(p,x) and IsSubset(p,y)) and
+                            Intersection(x,y)=[];
+                   fi;
+                   return Length(Intersection(x,y)) in [0,3] and x<>y;
+                 fi;
+                 return Intersection(x,y)=[];
+               end);
+  AssignVertexNames(gamma,List(gamma.names,x->hoffman.names{x}));
+ 
+  return gamma;   
 end );
 
 #############################################################################

@@ -194,6 +194,20 @@ end );
 
 #############################################################################
 ##
+#F  TriangularGraph( <int> )
+##  
+InstallGlobalFunction( TriangularGraph, 
+function( n )
+  if not (IsPosInt(n) and n>2) then
+    Error("usage: TriangularGraph(<n>), where \n\
+          <n> is a positive integer of size at least 2.");
+  fi;
+
+  return JohnsonGraphCons(IsSetGraph and FullAutomorphismGroup,n,2);
+end );
+
+#############################################################################
+##
 #O  FoldedJohnsonGraphCons( [<filter>, ]<integer> )
 ##  
 InstallMethod( FoldedJohnsonGraphCons,

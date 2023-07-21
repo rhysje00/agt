@@ -165,6 +165,51 @@ DeclareGlobalFunction( "DoubledOddGraph" );
 
 #############################################################################
 ##
+#F  TriangularGraph( <int> )
+##  
+##  <#GAPDoc Label="TriangularGraph">
+##  <ManSection>
+##  <Func Name="TriangularGraph"
+##   Arg='n'/>
+##  <Returns>A graph.</Returns>
+##
+##  <Description>
+##  Given an integer <A>n</A>, where <M><A>n</A> \geq 3</M>, this function 
+##  returns the triangular graph on <A>n</A> points.
+##  <P/>
+##  Let <M>n</M> be an integer, where <M>n\geq 3</M>. The <E>triangular graph</E>
+##  <M>T(n)</M> has vertex set consisting of the subsets of <M>\{1,2,...,n\}</M> 
+##  of size <M>2</M>, and two distinct vertices <M>A,B</M> are joined by an edge
+##  precisely when <M>|A\cap B|=1</M>. In other words, <M>T(n)</M> is the Johnson 
+##  graph <M>J(n,2)</M> (see <Ref BookName="GRAPE" Label="JohnsonGraph"/>).
+##  <P/>
+##  The graph <M>T(n)</M> is strongly regular with parameters <M>({n \choose 2},2(n-2),n-2,4)</M>.
+##  For <M>n\not= 8</M>, <M>T(n)</M> is the unique strongly regular graph with its
+##  parameters. There are four pairwise non-isomomorphic strongly regular graphs that have the same
+##  parameters as <M>T(8)</M>, which are the triangular graph <M>T(8)</M> and the
+##  <E>Chang graphs</E> (see <Cite Key="C_1958"/> and <Cite Key="C_1959"/>). 
+##    <Example>
+##      <![CDATA[
+##gap> TriangularGraph(7); 
+##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ] ], 
+##  group := Group([ (1,7,12,16,19,21,6)(2,8,13,17,20,5,11)(3,9,14,18,4,10,15),
+##    (2,7)(3,8)(4,9)(5,10)(6,11) ]), isGraph := true, isSimple := true, 
+##  names := [ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [ 1, 7 ], 
+##      [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 2, 7 ], [ 3, 4 ], [ 3, 5 ], 
+##      [ 3, 6 ], [ 3, 7 ], [ 4, 5 ], [ 4, 6 ], [ 4, 7 ], [ 5, 6 ], [ 5, 7 ], 
+##      [ 6, 7 ] ], order := 21, representatives := [ 1 ], 
+##  schreierVector := [ -1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 
+##      1, 1, 1 ] )
+##      ]]>
+##    </Example>
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "TriangularGraph" );
+
+#############################################################################
+##
 #F  FoldedJohnsonGraph( [<filter>, ]<integer> )
 ##  
 ##  <#GAPDoc Label="FoldedJohnsonGraph">

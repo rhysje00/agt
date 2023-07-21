@@ -291,6 +291,7 @@ DeclareGlobalFunction( "HoffmanSingletonGraph" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "GewirtzGraph" );
+DeclareSynonym( "SimsGewirtzGraph", GewirtzGraph );
 
 #TODO full auto
 #############################################################################
@@ -328,6 +329,40 @@ DeclareGlobalFunction( "GewirtzGraph" );
 ##
 DeclareGlobalFunction( "WittStronglyRegularGraph" );
 
+#TODO full auto
+# In BVM_2022 Sec 10.31
+#############################################################################
+##
+#F  HigmanSimsGraph(  )
+##  
+##  <#GAPDoc Label="HigmanSimsGraph">
+##  <ManSection>
+##  <Func Name="HigmanSimsGraph"
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
+##
+##  <Description>
+##  This function returns the Higman-Sims graph.
+##  <P/>
+##  The <E>Higman-Sims graph</E> has vertex-set the cocliques of the 
+##  Hoffman-Singleton graph of size <M>15</M> (see 
+##  <Ref Func="HoffmanSingletonGraph"/>). Distinct vertices <M>A,B</M> are 
+##  adjacent if and only if <M>|A\cap B|\in \{0,8\}</M>. This graph is the
+##  unique strongly regular graph with parameters <M>(100,22,0,6)</M>. 
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.31"/>. 
+##    <Example>
+##      <![CDATA[
+##gap> gamma:=HigmanSimsGraph();;
+##      ]]>
+##    </Example>
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "HigmanSimsGraph" );
+
 #############################################################################
 ##
 #F  KlinGraph(  )
@@ -364,6 +399,51 @@ DeclareGlobalFunction( "WittStronglyRegularGraph" );
 ##  <#/GAPDoc>
 ##
 DeclareGlobalFunction( "KlinGraph" );
+
+# TODO Full aut
+#############################################################################
+##
+#F  McLaughlinGraph(  )
+##  
+##  <#GAPDoc Label="McLaughlinGraph">
+##  <ManSection>
+##  <Func Name="McLaughlinGraph"
+##   Arg=''/>
+##  <Returns>A graph.</Returns>
+##
+##  <Description>
+##  This function returns the McLaughlin graph.
+##  <P/>
+##  The <E>McLaughlin graph</E> can be constructed as follows. Consider the 
+##  Hoffman-Singleton graph <M>H</M> with edge-set <M>E</M> and set <M>C</M> of 
+##  cocliques of size <M>15</M>. The vertex-set of the McLaughlin graph is 
+##  the union <M>E\cup C</M>. Distinct vertices <M>U,W</M> are adjacent if 
+##  and only if one of the following is true. 
+##  <List>
+##    <Item><M>U,W \in E</M> are disjoint edges which lie in the same 5-cycle
+##          of <M>H</M>, or 
+##    </Item>
+##    <Item><M>U \in E, W \in C</M> and <M>U\cap W= \emptyset</M>, or
+##    </Item>
+##    <Item><M>U,W \in C</M> and <M>|U \cap W|\in \{0,3\}</M>.
+##    </Item>
+##  </List> 
+##  This graph is the unique strongly regular with parameters <M>(275,112,30,56)</M>.
+##  <P/>
+##  For more information on this graph, see 
+##  <Cite Key="BV_2022" Where="Section 10.61"/>.
+##    <Example>
+##      <![CDATA[
+##gap> gamma:=McLaughlinGraph();;
+##gap> SRGParameters(gamma);
+##[ 275, 112, 30, 56 ]
+##      ]]>
+##    </Example>
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "McLaughlinGraph" );
 
 #############################################################################
 ##

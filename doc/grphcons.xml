@@ -156,6 +156,8 @@ subset of a finite set (for example, the Kneser and Odd graphs).
 
 <#Include Label="DoubledOddGraph">
 
+<#Include Label="TriangularGraph">
+
 <#Include Label="FoldedJohnsonGraph">
 
 <#Include Label="ChangGraph">
@@ -172,6 +174,8 @@ tuple defined over a finite set(s) or a vector lying in a finite vector space
 TODO: add definition of e
 
 <#Include Label="HammingGraph2">
+
+<#Include Label="SquareLatticeGraph">
 
 <#Include Label="HypercubeGraph">
 
@@ -321,7 +325,11 @@ graphs).
 
 <#Include Label="WittStronglyRegularGraph">
 
+<#Include Label="HigmanSimsGraph">
+
 <#Include Label="KlinGraph">
+
+<#Include Label="McLaughlinGraph">
 
 <#Include Label="CubeGraph">
 

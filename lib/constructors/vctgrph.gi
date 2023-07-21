@@ -62,6 +62,20 @@ end );
 
 #############################################################################
 ##
+#F  SquareLatticeGraph( <integer> )
+##  
+InstallGlobalFunction( SquareLatticeGraph, 
+function( n )   
+  if not (IsPosInt(n) and n>1) then
+    Error("usage: SquareLatticeGraph(<n>), where \n\
+                  <n> is a positive integer of size at least 1.");
+  fi;
+
+  return HammingGraphCons(IsVectorGraph and FullAutomorphismGroup,2,n);
+end );
+
+#############################################################################
+##
 #F  HypercubeGraph( [<filter>, ]<integer> )
 ##  
 InstallGlobalFunction( HypercubeGraph2,

@@ -67,10 +67,20 @@ gap> gamma:=WittStronglyRegularGraph();;
 gap> SRGParameters(gamma);
 [ 77, 16, 0, 4 ]
 
+# HigmanSimsGraph
+gap> gamma:= HigmanSimsGraph();;
+gap> SRGParameters(gamma);
+[ 100, 22, 0, 6 ]
+
 # KlinGraph
 gap> gamma:=KlinGraph();;
 gap> SRGParameters(gamma);
 [ 210, 99, 48, 45 ]
+
+# McLaughlinGraph
+gap> gamma:=McLaughlinGraph();;
+gap> SRGParameters(gamma);
+[ 275, 112, 30, 56 ]
 
 # CubeGraph
 gap> gamma:= CubeGraph();;

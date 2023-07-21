@@ -47,6 +47,16 @@ rec( adjacencies := [ [ 2, 3, 4 ] ],
   schreierVector := [ -1, 3, 3, 3, 2, 3, 3, 2, 3, 1, 1, 3, 3, 1, 3, 2, 1, 3, 
       1, 1 ] )
 
+# TriangularGraph
+gap> TriangularGraph(6);
+rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9 ] ], 
+  group := Group([ (1,6,10,13,15,5)(2,7,11,14,4,9)(3,8,12), (2,6)(3,7)(4,8)
+      (5,9) ]), isGraph := true, isSimple := true, 
+  names := [ [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], [ 2, 3 ], 
+      [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 3, 4 ], [ 3, 5 ], [ 3, 6 ], [ 4, 5 ], 
+      [ 4, 6 ], [ 5, 6 ] ], order := 15, representatives := [ 1 ], 
+  schreierVector := [ -1, 2, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1 ] )
+
 # FoldedJohnsonGraph
 gap> FoldedJohnsonGraph(3);
 rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 8, 9, 10 ] ], 

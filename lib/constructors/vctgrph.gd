@@ -20,7 +20,8 @@
 ##
 ##  <Description>
 ##  Given positive integers <A>d,e</A>, this function returns the Hamming 
-##  graph <M>H(<A>d</A>,<A>e</A>)</M>.
+##  graph <M>H(<A>d</A>,<A>e</A>)</M>. This function constructs the same 
+##  graph as <Ref BookName="Grape" Label="HammingGraph"/>.
 ##  <P/>
 ##  The optional argument <A>fil</A>, if used, should only take the value 
 ##  <C>FullAutomorphismGroup</C>. Then this function behaves as 
@@ -58,6 +59,52 @@
 ##
 DeclareConstructor( "HammingGraphCons", [IsObject, IsInt, IsInt]);
 DeclareGlobalFunction( "HammingGraph2" );
+
+#############################################################################
+##
+#F  SquareLatticeGraph( <int> )
+##  
+##  <#GAPDoc Label="SquareLatticeGraph">
+##  <ManSection>
+##  <Func Name="SquareLatticeGraph"
+##   Arg='n'/>
+##  <Returns>A graph.</Returns>
+##
+##  <Description>
+##  Given an integer <A>n</A>, where <M><A>n</A> \geq 2</M>, this function 
+##  returns the square lattice graph on <M>n^2</M> points.
+##  <P/>
+##  Let <M>n</M> be an integer, where <M>n\geq 2</M>. The <E>square lattice
+##  graph</E>, <M>L_{2}(n)</M>, has vertex set <M>\{1,2,...,n\}\times\{1,2,...,n\}</M>, and two 
+##  distinct vertices are joined by an edge precisely when they have the same 
+##  value at one coordinate. 
+##  <P/>
+##  The graph <M>L_{2}(n)</M> is strongly regular with parameters <M>(n^{2},2(n-1),n-2,2)</M>.
+##  For <M>n\not= 4</M>, <M>L_{2}(n)</M> is the unique strongly regular graph with its
+##  parameters. There are two pairwise non-isomomorphic strongly regular graphs that have the same
+##  parameters as <M>L_{2}(4)</M>, which are the square lattice graph graph <M>L_{2}(4)</M> and the
+##  <E>Shrikhande graph</E> (see <Ref Label="ShrikhandeGraph"/>).
+##   <Example>
+##      <![CDATA[
+##gap> SquareLatticeGraph(6);
+##rec( adjacencies := [ [ 2, 3, 4, 5, 6, 7, 13, 19, 25, 31 ] ], 
+##  group := <permutation group with 5 generators>, isGraph := true, 
+##  names := [ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 1, 5 ], [ 1, 6 ], 
+##      [ 2, 1 ], [ 2, 2 ], [ 2, 3 ], [ 2, 4 ], [ 2, 5 ], [ 2, 6 ], [ 3, 1 ], 
+##      [ 3, 2 ], [ 3, 3 ], [ 3, 4 ], [ 3, 5 ], [ 3, 6 ], [ 4, 1 ], [ 4, 2 ], 
+##      [ 4, 3 ], [ 4, 4 ], [ 4, 5 ], [ 4, 6 ], [ 5, 1 ], [ 5, 2 ], [ 5, 3 ], 
+##      [ 5, 4 ], [ 5, 5 ], [ 5, 6 ], [ 6, 1 ], [ 6, 2 ], [ 6, 3 ], [ 6, 4 ], 
+##      [ 6, 5 ], [ 6, 6 ] ], order := 36, representatives := [ 1 ], 
+##  schreierVector := [ -1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 
+##      1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3 ] )
+##      ]]>
+##    </Example>
+##  </Description>
+##  </ManSection>
+##  <#/GAPDoc>
+##
+DeclareGlobalFunction( "SquareLatticeGraph" );
+
 
 # In BH_20?? 12.3.1 not specific # In BCN_1989 1.2 1.3 not specific
 #############################################################################
