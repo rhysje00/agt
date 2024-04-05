@@ -125,7 +125,7 @@ function( gamma )
       adjy := Adjacency(gamma,y);
 
       if not Length(Intersection(adjx,adjy)) = a then
-        return false;
+        return fail;
       fi;
     od;
   od;
@@ -247,14 +247,14 @@ function( gamma )
       adjy := Adjacency(gamma,y);
 
       if not Length(Intersection(adjx,adjy)) = a then
-        return false;
+        return fail;
       fi;
     od;
     for y in Difference([1..gamma.order],Union(adjx,[reps[x]])) do
       nadjy:= Adjacency(gamma,y);
 
       if not Length(Intersection(adjx,nadjy)) = b then
-        return false;
+        return fail;
       fi;
     od;
   od;
